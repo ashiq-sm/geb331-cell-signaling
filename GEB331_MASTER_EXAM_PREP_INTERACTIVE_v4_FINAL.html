@@ -97,15 +97,93 @@
         }
         .live-btn:hover { background: #ffea70 !important; transform: scale(1.05); }
 
-        .quote-box {
-            background: var(--card-bg);
-            border-left: 5px solid #ffd966;
-            padding: 1rem;
+        .mission-section {
+            background: linear-gradient(135deg, rgba(6, 78, 59, 0.95), rgba(6, 95, 70, 0.9));
+            border-left: 5px solid #fbbf24;
+            padding: 1.5rem 2rem;
             margin-bottom: 2rem;
-            border-radius: 0 15px 15px 0;
+            border-radius: 1.5rem;
+            color: white;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .mission-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(251, 191, 36, 0.05) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .mission-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            font-weight: 500;
+            text-align: justify;
+        }
+        .dua-link {
+            display: block;
+            margin-top: 10px;
+            font-size: 0.85rem;
+            color: #fbbf24;
+            text-decoration: underline;
             cursor: pointer;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            opacity: 0.9;
+        }
+        .dua-link:hover { opacity: 1; text-shadow: 0 0 8px rgba(251, 191, 36, 0.5); }
+
+        /* Prayer Modal Styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.7);
+            backdrop-filter: blur(8px);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            padding: 20px;
+        }
+        .modal-content {
+            background: var(--card-bg);
+            padding: 2.5rem;
+            border-radius: 2rem;
+            max-width: 600px;
+            width: 100%;
+            position: relative;
+            text-align: center;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            border: 1px solid var(--border-color);
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+        .modal-overlay.active { display: flex; }
+        .modal-overlay.active .modal-content { transform: scale(1); }
+        .modal-close {
+            position: absolute;
+            top: 15px; right: 20px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-color);
+            opacity: 0.5;
+        }
+        .dua-arabic {
+            font-family: 'Times New Roman', serif;
+            font-size: 1.8rem;
+            color: var(--accent-color);
+            margin-bottom: 1.5rem;
+            direction: rtl;
+        }
+        .dua-meaning {
             font-style: italic;
+            color: var(--text-color);
+            margin-top: 1rem;
+            font-size: 1rem;
         }
 
         .quick-nav {
@@ -208,8 +286,24 @@
         </div>
     </div>
 
-    <div class="quote-box" onclick="showDuaAlert()">
-        "একজন মুমিনের ক্যারিয়ার হলো বাতিল শাসন ও দুর্নীতির বিরুদ্ধে লড়াই করার একটি লিগ্যাল প্লাটফর্ম, আপনি যতই উপরে উঠবেন দ্বীনের কথা ততই বেশি উঁচুতে উঠবে। আলম-এ আরওয়াহ (রূহ এর জগত) থেকে আখিরাত পর্যন্ত বিস্তৃত আমাদের ক্যারিয়ার!"
+    <div class="mission-section">
+        <div class="mission-text">
+            "দুনিয়ার এ ছোট সফরে, একজন মুমিনের ক্যারিয়ার হলো বাতিল শাসন ও দুর্নীতির বিরুদ্ধে লড়াই করার একটি লিগ্যাল প্লাটফর্ম, আপনি যতই উপরে উঠবেন দ্বীনের কথা ততই বেশি উঁচুতে উঠবে। আলম-এ আরওয়াহ (রূহ এর জগত) থেকে আলম-এ-আখিরাহ(শেষ জগত) পর্যন্ত বিস্তৃত আমাদের ক্যারিয়ার!"
+        </div>
+        <span class="dua-link" onclick="openDuaModal()">(click for a সুন্দর দোয়া here!)</span>
+    </div>
+
+    <!-- Custom Prayer Modal -->
+    <div class="modal-overlay" id="duaModal" onclick="closeDuaModal()">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <span class="modal-close" onclick="closeDuaModal()">&times;</span>
+            <div class="dua-arabic">رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً وَفِي الْآخِرَةِ حَسَنَةً وَقِنَا عَذَابَ النَّارِ</div>
+            <div class="dua-meaning">
+                <strong>উচ্চারণ:</strong> রাব্বানা আতিনা ফিদ দুনিয়া হাসানাতাওঁ ওয়া ফিল আখিরাতি হাসানাতাওঁ ওয়া কিনা আযাবান নার।<br><br>
+                <strong>অর্থ:</strong> হে আমাদের প্রতিপালক! আমাদের দুনিয়াতে কল্যাণ দিন এবং আখিরাতেও কল্যাণ দিন এবং আমাদের দোযখের আগুন থেকে রক্ষা করুন।
+            </div>
+            <button class="control-btn live-btn" style="margin-top: 2rem; width: 100%;" onclick="closeDuaModal()">আমীন (Ameen)</button>
+        </div>
     </div>
 
     <div class="search-bar"><input type="text" id="searchInput" placeholder="🔎 Search anything (GPCR, PI3K, Notch...)" autocomplete="off"></div>
@@ -241,8 +335,12 @@
 let currentFontSize = 16;
 const setsData = geb331_sets;
 
-function showDuaAlert() {
-    alert("Rabbana atina fidduniya hasana (হে রব !আমাদের দুনিয়ার জীবনে কল্যাণ দিন) wa fil akhirati hasana (আখিরাত এর জীবনেও কল্যাণ দিন) wa qina a'zabannar (এবং আগুনের আজাব থেকে আমাদের রক্ষা করুন), 'Ameen'");
+function openDuaModal() {
+    document.getElementById('duaModal').classList.add('active');
+}
+
+function closeDuaModal() {
+    document.getElementById('duaModal').classList.remove('active');
 }
 
 function toggleTheme() {
