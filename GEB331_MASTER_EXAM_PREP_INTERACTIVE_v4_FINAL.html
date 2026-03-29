@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>GEB 331 · Complete Cell Signaling Study (Ben+Eng)</title>
-    <!-- Include Marked.js for rendering beautiful Markdown to HTML -->
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <!-- Google Fonts for Eye-Saving Typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Noto+Sans+Bengali:wght@400;700&family=Outfit:wght@400;700&family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg-color: #f0f7f0;
@@ -16,6 +16,7 @@
             --accent-color: #1a4d1a;
             --nav-pill-bg: #e4f0e4;
             --font-size-base: 16px;
+            --body-font: 'Inter', 'Noto Sans Bengali', sans-serif;
         }
 
         [data-theme="dark"] {
@@ -31,13 +32,13 @@
         * { margin: 0; padding: 0; box-sizing: border-box; transition: background 0.3s, color 0.3s; }
         body {
             background: var(--bg-color);
-            font-family: 'Segoe UI', 'Noto Sans Bengali', 'Roboto', system-ui, sans-serif;
+            font-family: var(--body-font);
             line-height: 1.6;
             color: var(--text-color);
             padding: 1.5rem;
             font-size: var(--font-size-base);
         }
-        .container { max-width: 1300px; margin: 0 auto; }
+        .container { max-width: 1300px; margin: 0 auto; transition: max-width 0.4s ease; }
         
         .bismillah {
             text-align: center;
@@ -87,6 +88,14 @@
             font-size: 0.8rem;
         }
         .control-btn:hover { background: rgba(255,255,255,0.3); }
+        .live-btn {
+            background: #ffd966 !important;
+            color: #1b4d1b !important;
+            font-weight: bold;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            font-family: inherit;
+        }
+        .live-btn:hover { background: #ffea70 !important; transform: scale(1.05); }
 
         .quote-box {
             background: var(--card-bg);
@@ -168,22 +177,31 @@
 
         .highlight { background-color: #fff2b5; color: black; border-radius: 4px; padding: 0 2px; }
     </style>
+    <!-- Include Marked.js for rendering beautiful Markdown to HTML -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
 <body>
 <div class="container">
     <div class="bismillah">
-        بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ<br>
+        بِسْمِ اللهِ الرَّحْمٰনِ الرَّحِيْمِ<br>
         <span style="font-size: 0.9rem; font-weight: normal;">(পরম করুণাময় ও অসীম দয়ালু আল্লাহর নামে শুরু করছি)</span>
     </div>
 
     <div class="header">
         <h1>📘 GEB 331 — Cell Signaling <span>Bilingual Interactive Note</span></h1>
         <div class="controls">
+            <button class="control-btn live-btn" onclick="window.open('https://geb331-cell-signaling.vercel.app', '_blank')">🌐 View Live</button>
             <button class="control-btn" onclick="toggleTheme()">🌓 Theme</button>
             <button class="control-btn" onclick="changeFont(-1)">A-</button>
             <button class="control-btn" onclick="changeFont(1)">A+</button>
+            <select class="control-btn" id="fontFamily" onchange="applyFontFamily()">
+                <option value="'Inter', 'Noto Sans Bengali'">👁️ Eye Saver (Inter)</option>
+                <option value="'Outfit', 'Noto Sans Bengali'">✨ Premium (Outfit)</option>
+                <option value="'Roboto Slab', 'Noto Sans Bengali'">📖 Academic (Slab)</option>
+                <option value="system-ui">💻 System Default</option>
+            </select>
             <select class="control-btn" id="viewMode" onchange="applyViewMode()">
-                <option value="auto">🖥️ Auto</option>
+                <option value="auto">🖥️ Auto View</option>
                 <option value="mobile">📱 Mobile</option>
                 <option value="desktop">💻 Desktop</option>
             </select>
@@ -224,18 +242,26 @@ let currentFontSize = 16;
 const setsData = geb331_sets;
 
 function showDuaAlert() {
-    alert("Rabbana atina fidduniya hasana (হে রব আমাদের দুনিয়ার জীবনে কল্যাণ দিন) wa fil akhirati hasana (আখিরাত এর জীবনেও কল্যাণ দিন) wa qina azabannar (এবং আগুনের আজাব থেকে রক্ষা করুন), 'Ameen'");
+    alert("Rabbana atina fidduniya hasana (হে রব !আমাদের দুনিয়ার জীবনে কল্যাণ দিন) wa fil akhirati hasana (আখিরাত এর জীবনেও কল্যাণ দিন) wa qina a'zabannar (এবং আগুনের আজাব থেকে আমাদের রক্ষা করুন), 'Ameen'");
 }
 
 function toggleTheme() {
-    const body = document.body;
-    const theme = body.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-    body.setAttribute('data-theme', theme);
+    const root = document.documentElement;
+    const theme = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
 }
 
 function changeFont(delta) {
-    currentFontSize += delta;
+    currentFontSize = Math.max(12, Math.min(24, currentFontSize + delta));
     document.documentElement.style.setProperty('--font-size-base', currentFontSize + 'px');
+    localStorage.setItem('fontSize', currentFontSize);
+}
+
+function applyFontFamily() {
+    const font = document.getElementById('fontFamily').value;
+    document.documentElement.style.setProperty('--body-font', font);
+    localStorage.setItem('bodyFont', font);
 }
 
 function applyViewMode() {
@@ -296,10 +322,30 @@ function searchHighlights() {
     });
 }
 
+// Initial configuration
 document.getElementById('searchInput').addEventListener('input', searchHighlights);
 marked.setOptions({ gfm: true, breaks: true });
-renderSets();
-buildQuickNav();
+
+// Load saved settings
+window.onload = () => {
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) document.documentElement.setAttribute('data-theme', savedTheme);
+    
+    const savedSize = localStorage.getItem('fontSize');
+    if (savedSize) {
+        currentFontSize = parseInt(savedSize);
+        document.documentElement.style.setProperty('--font-size-base', currentFontSize + 'px');
+    }
+    
+    const savedFont = localStorage.getItem('bodyFont');
+    if (savedFont) {
+        document.documentElement.style.setProperty('--body-font', savedFont);
+        document.getElementById('fontFamily').value = savedFont;
+    }
+
+    renderSets();
+    buildQuickNav();
+};
 </script>
 </body>
 </html>

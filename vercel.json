@@ -1,0 +1,9 @@
+{
+  "version": 2,
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/GEB331_MASTER_EXAM_PREP_INTERACTIVE_v4_FINAL.html"
+    }
+  ]
+}
