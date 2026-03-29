@@ -1,0 +1,121 @@
+{
+  "project": {
+    "name": "GEB331 Cell Signaling - Comprehensive Solutions",
+    "version": "1.0",
+    "totalQuestions": 99,
+    "batches": {
+      "A": {
+        "range": "Q001-Q022",
+        "description": "Principles + GPCR Fundamentals",
+        "questions": 22,
+        "estimatedHours": 15,
+        "priority": 1
+      },
+      "B": {
+        "range": "Q023-Q047, Q059-Q075",
+        "description": "RTK/MAPK, Notch/NF-κB/TGF-β, Integration",
+        "questions": 47,
+        "estimatedHours": 20,
+        "priority": 2
+      },
+      "C": {
+        "range": "Q048-Q058, Q076-Q099",
+        "description": "Ca²⁺/CaMKII/ER/UPR, DNA Damage, New Curriculum",
+        "questions": 30,
+        "estimatedHours": 28,
+        "priority": 3
+      }
+    },
+    "bookReferences": {
+      "Alberts": {
+        "fullTitle": "Molecular Biology of the Cell (7th Edition)",
+        "chapters": {
+          "15": "Cell Communication",
+          "16": "Signal Transduction",
+          "17": "Gene Control in Development"
+        },
+        "relevantSections": {
+          "15": ["Introduction to Cell Signaling", "Signal Reception", "Transduction Cascade", "Amplification"],
+          "16": ["Signaling from Receptor to Nucleus", "Wnt Signaling", "Notch Signaling", "NF-κB Pathway"],
+          "17": ["Pattern Formation", "Cell Differentiation"]
+        }
+      },
+      "Lehninger": {
+        "fullTitle": "Lehninger Principles of Biochemistry (6th Edition)",
+        "chapters": {
+          "11": "Biological Membranes and Transport",
+          "12": "Biosignaling",
+          "13": "Lipid Biosynthesis"
+        },
+        "relevantSections": {
+          "12": ["Overview of Signal Transduction", "Ion Channels as Molecular Switches", "Phosphorylation Cascades", "Ca²⁺ Signaling", "Second Messengers"]
+        }
+      }
+    }
+  },
+  "contentTemplate": {
+    "structure": [
+      "ID and Marks",
+      "Root Word Meanings (Bengali-English)",
+      "Quick Mnemonic (Letter acronym + Memorable narrative)",
+      "Comprehensive Solution (700-900 words, Bengali-English mix)",
+      "Comparison Table (if multi-part)",
+      "Flowchart/Mechanism (ASCII or SVG reference)",
+      "Book Reference (Alberts Ch.X, Lehninger Ch.Y)",
+      "Exam Insight (what examiners want, common mistakes)"
+    ],
+    "bengaliIntegration": {
+      "rules": [
+        "Academic English preserved for technical terms",
+        "Bengali translations in parentheses for common concepts",
+        "[Bracket clarifications] for difficult English terms",
+        "Example: 'Signal transduction (সংকেত পরিবহন) is the process...'",
+        "Use Bengali for biology concepts that students think in Bengali"
+      ],
+      "commonTerms": {
+        "receptor": "গ্রাহক",
+        "ligand": "লিগ্যান্ড (binding molecule)",
+        "kinase": "কাইনেজ (phosphorylation enzyme)",
+        "phosphorylation": "ফসফেটাইলেশন",
+        "cascade": "ধারাবাহিক প্রতিক্রিয়া",
+        "feedback": "প্রতিক্রিয়া",
+        "amplification": "বর্ধন"
+      }
+    },
+    "mnemonicStyle": {
+      "approach": "Letter acronym + Memorable narrative (logical or funny)",
+      "examples": [
+        {
+          "acronym": "GPCR",
+          "narrative": "G-protein Coupled Protein Receptor = Granny's Perfectly Cooked Rice! (Sends signals like Granny's cooking aromas that reach everywhere)"
+        },
+        {
+          "acronym": "RTK",
+          "narrative": "Receptor Tyrosine Kinase = Really Tyrosine Killer (phosphorylates tyrosine residues like a sniper!)"
+        },
+        {
+          "acronym": "MAPK",
+          "narrative": "Mitogen Activated Protein Kinase = Many Angry Protein Knights (cascade of warrior kinases fighting for cell response)"
+        }
+      ]
+    },
+    "bookReferenceFormat": "[Alberts Ch.15, \"Signal Reception\", p.XXX] OR [Lehninger Ch.12, Section: Phosphorylation Cascades]"
+  },
+  "outputFormats": {
+    "primary": "HTML5 (interactive, searchable)",
+    "secondary": [
+      "PDF (printable, paginated)",
+      "Markdown (.md, editable)",
+      "Word (.docx, formatted)",
+      "LaTeX (.tex, academic)"
+    ]
+  },
+  "deliverables": {
+    "masterJsonDatabase": "GEB331_SOLUTIONS_DATABASE.json (all 99 Q solutions)",
+    "interactiveHtml": "GEB331_SOLUTIONS_MASTER_DATABASE_v1.html (searchable, filterable)",
+    "pdf": "GEB331_COMPREHENSIVE_SOLUTIONS.pdf (all 99 Q's, printable)",
+    "markdown": "GEB331_SOLUTIONS_BY_SET.md (markdown, version-controllable)",
+    "word": "GEB331_SOLUTIONS_FOR_STUDY.docx (editable in MS Word)",
+    "latex": "GEB331_SOLUTIONS_ACADEMIC.tex (publication-ready LaTeX)"
+  }
+}

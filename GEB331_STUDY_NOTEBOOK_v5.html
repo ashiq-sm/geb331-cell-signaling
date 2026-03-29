@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GEB 331 · Jupyter Study Notebook v5</title>
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --jp-ui-font-color1: #333333;
+            --jp-ui-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            --jp-border-color2: #e0e0e0;
+            --jp-layout-color0: white;
+            --jp-layout-color2: #f5f5f5;
+            --jp-cell-prompt-font-family: monospace;
+            --jp-cell-prompt-width: 64px;
+            --jp-brand-color1: #2196f3;
+            --jp-accent-color: #4caf50;
+            --jp-code-bg: #f7f7f7;
+            --jp-code-border: #e0e0e0;
+            --sidebar-width: 250px;
+        }
+
+        [data-theme="dark"] {
+            --jp-ui-font-color1: #e0e0e0;
+            --jp-border-color2: #424242;
+            --jp-layout-color0: #111111;
+            --jp-layout-color2: #212121;
+            --jp-brand-color1: #bb86fc;
+            --jp-code-bg: #1e1e1e;
+            --jp-code-border: #333333;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: var(--jp-ui-font-family);
+            color: var(--jp-ui-font-color1);
+            background: var(--jp-layout-color0);
+            display: flex;
+            height: 100vh;
+            overflow: hidden;
+            font-size: 14px;
+        }
+
+        /* Top bar mimicking JupyterLab headers */
+        .jp-TopBar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 28px;
+            background: var(--jp-border-color2);
+            display: flex;
+            align-items: center;
+            padding: 0 10px;
+            font-size: 13px;
+            z-index: 1000;
+        }
+
+        .jp-TopBar-item {
+            margin-right: 15px;
+            cursor: pointer;
+        }
+
+        /* Sidebar mimicking JupyterLab FileBrowser/ToC */
+        .jp-SideBar {
+            width: var(--sidebar-width);
+            background: var(--jp-layout-color2);
+            border-right: 1px solid var(--jp-border-color2);
+            height: 100vh;
+            padding-top: 28px;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+        }
+
+        .jp-SideBar-Tab {
+            padding: 8px 12px;
+            border-bottom: 1px solid var(--jp-border-color2);
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--jp-border-color2);
+        }
+
+        .toc-item {
+            padding: 6px 12px 6px 24px;
+            cursor: pointer;
+            border-left: 3px solid transparent;
+        }
+        
+        .toc-item:hover {
+            background: rgba(0,0,0,0.05);
+        }
+        
+        .toc-item.active {
+            border-left-color: var(--jp-brand-color1);
+            background: rgba(33, 150, 243, 0.1);
+        }
+
+        /* Main Workspace container */
+        .jp-Main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            padding-top: 28px;
+            background: var(--jp-layout-color0);
+            overflow-y: auto;
+            position: relative;
+        }
+
+        /* Toolbar above the notebook */
+        .jp-Toolbar {
+            height: 38px;
+            border-bottom: 1px solid var(--jp-border-color2);
+            display: flex;
+            align-items: center;
+            padding: 0 10px;
+            background: var(--jp-layout-color0);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .jp-Toolbar-btn {
+            background: transparent;
+            border: none;
+            color: var(--jp-ui-font-color1);
+            padding: 4px 8px;
+            cursor: pointer;
+            border-radius: 2px;
+            margin-right: 5px;
+        }
+
+        .jp-Toolbar-btn:hover {
+            background: var(--jp-border-color2);
+        }
+
+        /* The actual Notebook area */
+        .jp-Notebook {
+            padding: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        /* Cell structure */
+        .jp-Cell {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 20px;
+            padding: 5px;
+            border-left: 4px solid transparent;
+            transition: 0.2s;
+        }
+
+        .jp-Cell:hover {
+            border-left-color: var(--jp-brand-color1);
+            box-shadow: 0 0 10px rgba(0,0,0,0.05);
+        }
+
+        .jp-Cell-inputArea, .jp-Cell-outputArea {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .jp-Cell-outputArea {
+            margin-top: 5px;
+        }
+
+        /* Input / Output Prompts on the left (In [ ]: / Out [ ]:) */
+        .jp-InputPrompt {
+            width: var(--jp-cell-prompt-width);
+            font-family: var(--jp-cell-prompt-font-family);
+            color: #2b5b84;
+            text-align: right;
+            padding-right: 10px;
+            padding-top: 5px;
+            flex-shrink: 0;
+        }
+        
+        .jp-OutputPrompt {
+            width: var(--jp-cell-prompt-width);
+            font-family: var(--jp-cell-prompt-font-family);
+            color: #d84315;
+            text-align: right;
+            padding-right: 10px;
+            padding-top: 5px;
+            flex-shrink: 0;
+        }
+
+        [data-theme="dark"] .jp-InputPrompt { color: #64b5f6; }
+        [data-theme="dark"] .jp-OutputPrompt { color: #ff8a65; }
+
+        /* Content areas */
+        .jp-CodeMirror {
+            background: var(--jp-code-bg);
+            border: 1px solid var(--jp-code-border);
+            border-radius: 2px;
+            padding: 10px;
+            flex-grow: 1;
+            font-family: monospace;
+            font-size: 14px;
+            line-height: 1.5;
+            overflow-x: auto;
+        }
+
+        .jp-MarkdownOutput {
+            flex-grow: 1;
+            padding: 5px 10px;
+            font-family: "Noto Sans Bengali", Arial, sans-serif;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        /* Typography & elements inside Markdown */
+        h1, h2, h3 {
+            margin-top: 0;
+            color: var(--jp-ui-font-color1);
+            border-bottom: 1px solid var(--jp-border-color2);
+            padding-bottom: 5px;
+        }
+        
+        ul {
+            padding-left: 20px;
+        }
+        
+        li {
+            margin-bottom: 5px;
+        }
+        
+        .inline-bracket {
+            background: rgba(33, 150, 243, 0.1);
+            color: var(--jp-brand-color1);
+            padding: 1px 4px;
+            border-radius: 3px;
+            font-family: monospace;
+            font-size: 0.9em;
+        }
+
+        button.run-button {
+            border: none;
+            background: var(--jp-accent-color);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 3px;
+            cursor: pointer;
+            margin-bottom: 10px;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        button.run-button:hover {
+            opacity: 0.9;
+        }
+
+        /* Search Bar */
+        .search-container {
+            padding: 10px;
+            border-bottom: 1px solid var(--jp-border-color2);
+        }
+        
+        .search-container input {
+            width: 100%;
+            padding: 6px 10px;
+            box-sizing: border-box;
+            border: 1px solid var(--jp-border-color2);
+            border-radius: 3px;
+            background: var(--jp-layout-color0);
+            color: var(--jp-ui-font-color1);
+        }
+        
+        mark {
+            background: #ffe082;
+            color: #000;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Top Navigation Bar -->
+    <div class="jp-TopBar">
+        <div class="jp-TopBar-item">File</div>
+        <div class="jp-TopBar-item">Edit</div>
+        <div class="jp-TopBar-item">View</div>
+        <div class="jp-TopBar-item">Run</div>
+        <div class="jp-TopBar-item">Kernel</div>
+        <div class="jp-TopBar-item">Help</div>
+    </div>
+
+    <!-- Left Sidebar (Table of Contents) -->
+    <div class="jp-SideBar">
+        <div class="jp-SideBar-Tab">
+            <span><i class="fas fa-list"></i> Table of Contents</span>
+        </div>
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Filter questions...">
+        </div>
+        <div id="toc-container">
+            <!-- TOC items injected via JS -->
+        </div>
+    </div>
+
+    <!-- Main Workspace -->
+    <div class="jp-Main">
+        <!-- Toolbar -->
+        <div class="jp-Toolbar">
+            <button class="jp-Toolbar-btn" title="Save file"><i class="fas fa-save"></i></button>
+            <button class="jp-Toolbar-btn" title="Insert cell below"><i class="fas fa-plus"></i></button>
+            <button class="jp-Toolbar-btn" title="Cut cell"><i class="fas fa-cut"></i></button>
+            <button class="jp-Toolbar-btn" title="Copy cell"><i class="fas fa-copy"></i></button>
+            <button class="jp-Toolbar-btn" title="Paste cell"><i class="fas fa-paste"></i></button>
+            <button class="jp-Toolbar-btn" title="Run the selected cells and advance"><i class="fas fa-play"></i> Run</button>
+            <button class="jp-Toolbar-btn" title="Interrupt the kernel"><i class="fas fa-stop"></i></button>
+            <button class="jp-Toolbar-btn" title="Restart the kernel"><i class="fas fa-redo"></i></button>
+            
+            <div style="flex-grow: 1;"></div>
+            
+            <button class="jp-Toolbar-btn" id="themeToggle" title="Toggle Dark/Light Mode"><i class="fas fa-moon"></i> Theme</button>
+            <button class="jp-Toolbar-btn" onclick="window.print()" title="Print/Export to PDF"><i class="fas fa-file-pdf"></i> PDF</button>
+        </div>
+
+        <!-- The Notebook Document -->
+        <div class="jp-Notebook" id="notebook-container">
+            <!-- Cells injected via JS -->
+        </div>
+    </div>
+
+    <script>
+        // --- DATA INJECTION FROM THE PROVIDED CHAT TEXT ---
+        // This simulates the IPYNB cell structure: alternating between headings, inputs (Questions), and outputs (Answers).
+        
+        const notebookCells = [
+            // Headings / Intro
+            { type: 'markdown', content: '<h1>GEB 331 — Cell Signaling Interactive Notebook</h1>\n<p>This notebook executes the fully solved Q&A pipeline for Cell Signaling Basics, GPCR, RTK, Wnt/Notch, and Stress Responses. All Bengali answers contain bracketed root definitions.</p>' },
+            
+            // SET 1
+            { type: 'markdown', content: '<h2>🔹 SET 1 — Principles of Cell Signaling (Basics)</h2>' },
+            { 
+                type: 'code_qa', 
+                qNum: 1,
+                question: 'question_001 = "a) Intracellular signaling pathway describe.\nb) Compare synaptic and endocrine signaling.\nc) Why are response speeds different.\nd) How cells respond to signal combinations?"',
+                answer: '<p><strong>[Q001] a) সাধারণ অন্তঃকোষীয় সিগন্যালিং পাথওয়ে:</strong> একটি সাধারণ পাথওয়ে শুরু হয় যখন একটি বহিঃকোষীয় সিগন্যাল অণু (লিগ্যান্ড) টার্গেট কোষের রিসেপ্টর প্রোটিনের সাথে যুক্ত হয়। এই বাইন্ডিংয়ের ফলে রিসেপ্টর সক্রিয় হয় এবং এক বা একাধিক ইন্ট্রাসেলুলার সিগন্যালিং প্রোটিন সক্রিয় করে সংকেত কোষের ভেতরে ছড়িয়ে দেয়। শেষে <strong>ইফেক্টর প্রোটিন</strong> সক্রিয় হয়ে কোষের আচরণ পরিবর্তন করে।</p>\n<p><strong>b) সিন্যাপটিক বনাম এন্ডোক্রাইন:</strong> এন্ডোক্রাইন পদ্ধতিতে হরমোন রক্তের মাধ্যমে দূরবর্তী কোষে যায় (ধীর গতির এবং কম ঘনত্ব)। সিন্যাপটিক নিউরনের মাধ্যমে দ্রুত এবং সুনির্দিষ্ট স্থানে (সিন্যাপস) নিউরোট্রান্সমিটার নিঃসরণ করে, যা দ্রুত কাজ করে।</p>\n<p><strong>c) গতির ভিন্নতা:</strong> সাড়ার গতি নির্ভর করে সংকেত ডেলিভারির পদ্ধতির ওপর। পূর্ববর্তী প্রোটিনের পরিবর্তন (যেমন- ফসফোরাইলেশন) খুব দ্রুত হয়, কিন্তু নতুন প্রোটিন সংশ্লেষণ ধীর গতির হয়।</p>' 
+            },
+            {
+                type: 'code_qa',
+                qNum: 2,
+                question: 'question_002_003_004 = "Define Signal Transduction, Dual-Function Molecules and same ligand different response."',
+                answer: '<p><strong>[Q002] সিগন্যাল ট্রান্সডাকশন:</strong> বহিঃকোষীয় সংকেতকে কোষের ভেতরে রাসায়নিক সংকেতে রূপান্তর করার প্রক্রিয়ায় ৪টি বৈশিষ্ট্য আছে: Specificity (সুনির্দিষ্টতা), Amplification (সংকেত বৃদ্ধি), Cooperativity (সহযোগিতা) এবং Integration (সমন্বয়)।</p>\n<p><strong>[Q003] ভিন্ন সাড়া:</strong> একই লিগ্যান্ড (যেমন অ্যাসিটাইলকোলিন) হার্টের পেশী কোষে হার্ট বিট কমিয়ে দেয়, কিন্তু লালা গ্রন্থির কোষে সিক্রেশন বাড়ায় কারণ ইন্ট্রাসেলুলার প্রোটিন বা জিনের বিন্যাস কোষভেদে ভিন্ন থাকে।</p>\n<p><strong>[Q004] Dual-Function (রিসেপ্টর ও ইফেক্টর):</strong> নিউক্লিয়ার রিসেপ্টরগুলো হাইড্রোফোবিক লিগ্যান্ড (স্টেরয়েড) বাইন্ড করলে সরাসরি ডিএনএ-র সাথে যুক্ত হয়ে জিন ট্রান্সক্রিপশন নিয়ন্ত্রণ করে। তাই এরা একই সাথে সংকেত গ্রহীতা এবং কার্য সম্পাদনকারী।</p>'
+            },
+            {
+                type: 'code_qa',
+                qNum: 3,
+                question: 'question_077_078 = "Properties of Second Messengers and Monomeric vs Heterotrimeric G-proteins"',
+                answer: '<p><strong>[Q077] সেকেন্ড মেসেঞ্জার:</strong> এরা দ্রুত সংশ্লেষিত বা মুক্তি পায় এবং দ্রুত নিষ্ক্রিয় হয়। ছোট অণুগুলো (যেমন cAMP, Ca²⁺) খুব দ্রুত ডিফিউজ হতে পারে এবং গ্যাপ জাংশন দিয়ে অন্য কোষে যেতে পারে।</p>\n<p><strong>[Q078] G-proteins:</strong> হেটেরোট্রিমেরিক জি-প্রোটিন তিনটি সাবইউনিট (α,β,γ) দ্বারা গঠিত ও GPCR-এ যুক্ত থাকে। মনোমারিক જી-প্রোটিন একটি সাবইউনিট বিশিষ্ট (যেমন Ras)। <strong>GEF</strong> এদের GDP সরিয়ে GTP বসিয়ে সক্রিয় করে, আর <strong>GAP</strong> ইনট্রিনসিক GTPase ক্ষমতা বাড়িয়ে GTP ভেঙে নিষ্ক্রিয় করে।</p>'
+            },
+
+            // SET 2
+            { type: 'markdown', content: '<h2>🔹 SET 2 — GPCR & G-Protein Signaling</h2>' },
+            {
+                type: 'code_qa',
+                qNum: 4,
+                question: 'question_013 = "a) Enable PKA via G-protein\nb) Calmodulin signaling\nc) GPCR Desensitization"',
+                answer: '<p><strong>[Q013] PKA অ্যাক্টিভেশন:</strong> এপিনেফ্রিন GPCR-এ যুক্ত হলে Gs প্রোটিন সক্রিয় হয়। Gsα Adenylyl Cyclase এনজাইমকে সক্রিয় করে যা ATP থেকে cAMP তৈরি করে। cAMP PKA-এর রেগুলেটরি সাবইউনিটে যুক্ত হয়ে ক্যাটালিটিক সাবইউনিটগুলো মুক্ত করে।</p>\n<p><strong>Calmodulin:</strong> কোষে ক্যালসিয়াম বেড়ে গেলে ক্যালমোডুলিনের সাথে যুক্ত হয়ে CaM-kinase বা টার্গেট প্রোটিনের কার্যকলাপ পরিবর্তন করে।</p>\n<p><strong>Desensitization:</strong> 1. Phosphorylation by GRK. 2. Arrestin binding (blocks G-protein). 3. Internalization (endocytosis)।</p>'
+            },
+            {
+                type: 'code_qa',
+                qNum: 5,
+                question: 'question_014 = "Why ATP cannot activate G-protein? Cholera toxicity effect."',
+                answer: '<p><strong>[Q014/Q079] ATP vs GTP (Ala-146):</strong> জি-প্রোটিনের α সাবইউনিটের Alanine-146 অ্যামিনো অ্যাসিডটি গুয়ানিনের অক্সিজেন পরমাণুর সাথে হাইড্রোজেন বন্ড তৈরি করে সুনির্দিষ্টভাবে GTP-র সাথে বাইন্ড করে; অ্যাডেনিনের (ATP) কাঠামোতে এই অক্সিজেন নেই বলে বসতে পারে না।</p>\n<p><strong>Cholera Toxin:</strong> কোলেরা টক্সিন Gsα সাবইউনিটের আর্জিনিনে ADP-ribosylation ঘটায়। এর ফলে জি-প্রোটিন তার ইনট্রিনসিক GTPase activity হারিয়ে ফেলে এবং স্থায়ীভাবে On থেকে ডায়রিয়া ঘটায় (কন্টিনিউয়াস cAMP তৈরি)।</p>'
+            },
+            {
+                type: 'code_qa',
+                qNum: 6,
+                question: 'get_mechanism(target="phototransduction", type="GPCR")',
+                answer: '<p><strong>[Q015/083] ফটোট্রান্সডাকশন (দৃষ্টিপ্রক্রিয়া):</strong> আলো ফটোন হিসেবে Rhodopsin (GPCR) এ পড়লে Transducin (Gt) জি-প্রোটিন সক্রিয় হয়। এটি cGMP PDE এনজাইমকে সক্রিয় করে cGMP ভেঙে ফেলে। ফলে cGMP-গেটেড সোডিয়াম চ্যানেল બંધ হয়ে যায় এবং কোষ Hyperpolarized হয়, যা বৈদ্যুতিক সংকেত হিসেবে মস্তিষ্কে পৌঁছায়।</p>'
+            },
+
+            // SET 3
+            { type: 'markdown', content: '<h2>🔹 SET 3 — Enzyme-linked Receptors (RTK, MAPK)</h2>' },
+            {
+                type: 'code_qa',
+                qNum: 7,
+                question: 'question_024 = "Ras protein and Cancer role. PI3K anti-apoptotic function."',
+                answer: '<p><strong>[Q024] Ras ও ক্যান্সার:</strong> Ras হলো মনোমারিক জি-প্রোটিন যা মলিকিউলার সুইচ হিসেবে কাজ করে। মিউটেশন ঘটলে নিজস্ব GTPase activity হারিয়ে ফেলে এবং স্থায়ীভাবে সক্রিয় থেকে অবিরাম বিভাজনের (ক্যান্সার) সংকেত দেয়।</p>\n<p><strong>PI3K:</strong> সক্রিয় PI3K এনজাইম মেমব্রেনে PIP₃ তৈরি করে যা Akt কে সক্রিয় করে। Akt Bad নামক প্রোটিনকে নিষ্ক্রিয় করে Bcl2-কে মুক্ত করে কোষের মৃত্যু (অ্যাপোপ্টোসিস) রোধ করে।</p>'
+            },
+
+            // SET 4
+            { type: 'markdown', content: '<h2>🔹 SET 4 — Notch-Delta, NF-κB, Wnt/β-catenin</h2>' },
+            {
+                type: 'code_qa',
+                qNum: 8,
+                question: 'notch_activation.run(cleavages=["Golgi", "Extracellular ADAM", "Gamma-secretase"])',
+                answer: '<p><strong>[Q032] Notch ক্লিভেজ:</strong> 1. Golgi Cleavage. 2. Extracellular Cleavage (ADAM). 3. γ-secretase Cleavage: মেমব্রেনের ভেতরে লেজটি (NICD) মুক্ত হয়ে নিউক্লিয়াসে যায়।</p>\n<p><strong>Lateral Inhibition:</strong> একটি কোষ Delta লিগ্যান্ড বেশি তৈরি করলে তা পাশের কোষের Notch কে সক্রিয় করে Hes জিন চালু করে, যা প্রথম কোষের মতো হতে বাধা দেয়।</p>'
+            },
+            {
+                type: 'code_qa',
+                qNum: 9,
+                question: 'wnt_beta_catenin.evaluate(mutation="APC")',
+                answer: '<p><strong>[Q034] APC মিউটেশন ও कैंसर (Cancer):</strong> APC একটি টিউমার সাপ্রেসর স্কাফোল্ড প্রোটিন। এর মিউটেশন হলে ডিগ্রেডেশন কমপ্লেক্স গঠিত হয় না, ফলে Wnt সংকেত ছাড়াই কোষে প্রচুর β-catenin জমা হয়ে নিউক্লিয়াসে গিয়ে c-Myc জিন প্রকাশ ঘটায় (কোলন ক্যান্সার)।</p>'
+            },
+            {
+                type: 'code_qa',
+                qNum: 10,
+                question: 'nfkb_pathway.trigger(ligand="TNF-alpha")',
+                answer: '<p><strong>[Q032c] NF-κB Pathway:</strong> TNFα রিসেপ্টরে যুক্ত হলে IKK complex সক্রিয় হয়। এটি <strong>IκB</strong> പ്രোटीनকে ফসফোরাইলেট করে প্রোটিসোমে ধ্বংস করে। মুক্ত NF-κB নিউক্লিয়াসে প্রবেশ করে ইনফ্লামেশন ও ইমিউন জিনের প্রকাশ ঘটায়।</p>'
+            },
+
+            // SET 5
+            { type: 'markdown', content: '<h2>🔹 SET 5 & 6 — TGF-β, Calcium, ER Stress, DDR</h2>' },
+            {
+                type: 'code_qa',
+                qNum: 11,
+                question: 'query = "Canonical TGF-beta pathway and its dual role in cancer"',
+                answer: '<p><strong>[Q040] SMAD Pathway:</strong> TGF-β Type II receptor Type I কে ফসফোরাইলেট করে। Type I তখন R-SMAD (Smad2/3) কে ফসফোরাইলেট করে Smad4 এর সাথে কমপ্লেক্স করে নিউক্লিয়াসে পঠায় (G1 arrest p15, p21)। I-Smad (Smad7) এটি ব্লক করে।</p>\n<p><strong>Dual Role:</strong> প্রাথমিক অবস্থায় এটি টিউমার সাপ্রেসর। কিন্তু মিউটেশন হলে শেষ পর্যায়ে এটি টিউমার প্রোমোটার (EMT, মেটাস্ট্যাসিস) হিসেবে কাজ করে।</p>'
+            },
+            {
+                type: 'code_qa',
+                qNum: 12,
+                question: 'print(evaluate_stress_response(type="Hypoxia"))',
+                answer: '<p><strong>Hypoxia (অক্সিজেন সংকট):</strong> অক্সিজেনের অভাব হলে PHD এনজাইম নিষ্ক্রিয় থাকে, ফলে HIF-1α ধ্বংস না হয়ে স্থিতিশীল হয়ে নিউক্লিয়াসে যায়। এটি গ্লাইকোলাইসিস, VEGF (Angiogenesis) এবং PDK (TCA cycle বন্ধ) জিন সক্রিয় করে।</p>'
+            },
+            {
+                type: 'code_qa',
+                qNum: 13,
+                question: 'print(evaluate_stress_response(type="ER Stress / UPR"))',
+                answer: '<p><strong>UPR Pathway:</strong> ভাঁজ না হওয়া ప్రোटीन (Misfolded proteins) ER-এ জমলে IRE1, PERK, ATF6 সেন্সরগুলো সক্রিয় হয়। এরা গ্লোবাল প্রোটিন সংশ্লেষণ থামিয়ে চ্যাপেরোন বানায়। ব্যর্থ হলে CHOP অ্যাপোপ্টোসিস ঘটায়।</p>'
+            }
+        ];
+
+        // --- RENDER LOGIC ---
+        
+        const notebookContainer = document.getElementById('notebook-container');
+        const tocContainer = document.getElementById('toc-container');
+        let executionCount = 1;
+
+        function renderNotebook() {
+            notebookContainer.innerHTML = '';
+            tocContainer.innerHTML = '';
+
+            notebookCells.forEach((cell, index) => {
+                const cellElement = document.createElement('div');
+                cellElement.className = 'jp-Cell';
+                
+                if (cell.type === 'markdown') {
+                    // It's a Markdown cell (just output HTML)
+                    const outputArea = document.createElement('div');
+                    outputArea.className = 'jp-Cell-outputArea';
+                    
+                    const prompt = document.createElement('div');
+                    prompt.className = 'jp-OutputPrompt';
+                    prompt.innerHTML = ''; // Empty for markdown
+                    
+                    const mdContent = document.createElement('div');
+                    mdContent.className = 'jp-MarkdownOutput';
+                    mdContent.innerHTML = cell.content;
+                    
+                    outputArea.appendChild(prompt);
+                    outputArea.appendChild(mdContent);
+                    cellElement.appendChild(outputArea);
+
+                    // If it contains a heading, add to ToC
+                    const temp = document.createElement('div');
+                    temp.innerHTML = cell.content;
+                    const heading = temp.querySelector('h1, h2, h3');
+                    if (heading) {
+                        cellElement.id = 'section-' + index;
+                        const tocItem = document.createElement('div');
+                        tocItem.className = 'toc-item';
+                        tocItem.textContent = heading.innerText;
+                        tocItem.onclick = () => {
+                            document.querySelectorAll('.toc-item').forEach(el => el.classList.remove('active'));
+                            tocItem.classList.add('active');
+                            cellElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        };
+                        tocContainer.appendChild(tocItem);
+                    }
+
+                } else if (cell.type === 'code_qa') {
+                    // It's a Code cell (Input is Question, Output is Answer)
+                    // 1. Input Area
+                    const inputArea = document.createElement('div');
+                    inputArea.className = 'jp-Cell-inputArea';
+                    
+                    const inPrompt = document.createElement('div');
+                    inPrompt.className = 'jp-InputPrompt';
+                    inPrompt.innerHTML = `In [${cell.qNum || executionCount}]:`;
+                    
+                    const codeBlock = document.createElement('div');
+                    codeBlock.className = 'jp-CodeMirror';
+                    // Apply simple syntax highligting (coloring string text)
+                    let highlightedCode = cell.question.replace(/("[^"]*")/g, '<span style="color:#2e7d32;">$1</span>');
+                    highlightedCode = highlightedCode.replace(/([a-zA-Z_]+)(?=\()/g, '<span style="color:#1565c0;">$1</span>'); // functions
+                    codeBlock.innerHTML = highlightedCode;
+                    
+                    inputArea.appendChild(inPrompt);
+                    inputArea.appendChild(codeBlock);
+                    
+                    // 2. Output Area
+                    const outputArea = document.createElement('div');
+                    outputArea.className = 'jp-Cell-outputArea';
+                    
+                    const outPrompt = document.createElement('div');
+                    outPrompt.className = 'jp-OutputPrompt';
+                    outPrompt.innerHTML = `Out[${cell.qNum || executionCount}]:`;
+                    
+                    const answerContent = document.createElement('div');
+                    answerContent.className = 'jp-MarkdownOutput';
+                    answerContent.innerHTML = cell.answer;
+                    
+                    outputArea.appendChild(outPrompt);
+                    outputArea.appendChild(answerContent);
+                    
+                    cellElement.appendChild(inputArea);
+                    cellElement.appendChild(outputArea);
+                    
+                    executionCount++;
+                }
+
+                notebookContainer.appendChild(cellElement);
+            });
+        }
+
+        renderNotebook();
+
+        // Theme Toggle
+        document.getElementById('themeToggle').addEventListener('click', () => {
+            const currentTheme = document.body.getAttribute('data-theme');
+            if (currentTheme === 'dark') {
+                document.body.removeAttribute('data-theme');
+            } else {
+                document.body.setAttribute('data-theme', 'dark');
+            }
+        });
+
+        // Search Filter
+        document.getElementById('searchInput').addEventListener('input', (e) => {
+            const term = e.target.value.toLowerCase();
+            const cells = document.querySelectorAll('.jp-Cell');
+            
+            cells.forEach(cell => {
+                if(cell.innerText.toLowerCase().includes(term)) {
+                    cell.style.display = 'flex';
+                } else {
+                    cell.style.display = 'none';
+                }
+            });
+        });
+
+    </script>
+</body>
+</html>

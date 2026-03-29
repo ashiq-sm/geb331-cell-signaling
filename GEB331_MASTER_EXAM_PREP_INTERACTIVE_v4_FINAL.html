@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>GEB 331 · Complete Cell Signaling Study (Ben+Eng)</title>
+    <!-- Include Marked.js for rendering beautiful Markdown to HTML -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <style>
+        :root {
+            --bg-color: #f0f7f0;
+            --text-color: #1a2e1a;
+            --card-bg: #ffffff;
+            --header-grad: linear-gradient(135deg, #1b4d1b, #0e2c0e);
+            --border-color: #ddebe0;
+            --accent-color: #1a4d1a;
+            --nav-pill-bg: #e4f0e4;
+            --font-size-base: 16px;
+        }
+
+        [data-theme="dark"] {
+            --bg-color: #121212;
+            --text-color: #e0e0e0;
+            --card-bg: #1e1e1e;
+            --header-grad: linear-gradient(135deg, #0a1f0a, #000000);
+            --border-color: #333;
+            --accent-color: #4caf50;
+            --nav-pill-bg: #2a2a2a;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; transition: background 0.3s, color 0.3s; }
+        body {
+            background: var(--bg-color);
+            font-family: 'Segoe UI', 'Noto Sans Bengali', 'Roboto', system-ui, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            padding: 1.5rem;
+            font-size: var(--font-size-base);
+        }
+        .container { max-width: 1300px; margin: 0 auto; }
+        
+        .bismillah {
+            text-align: center;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+
+        .header {
+            background: var(--header-grad);
+            color: white;
+            padding: 1.8rem 2rem;
+            border-radius: 2rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            position: relative;
+        }
+        .header h1 {
+            font-size: 1.9rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .header h1 span {
+            background: #ffd966;
+            color: #1e3a1e;
+            font-size: 0.9rem;
+            padding: 0.2rem 0.8rem;
+            border-radius: 40px;
+        }
+        
+        .controls {
+            display: flex;
+            gap: 10px;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+        .control-btn {
+            background: rgba(255,255,255,0.2);
+            border: 1px solid rgba(255,255,255,0.3);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 0.8rem;
+        }
+        .control-btn:hover { background: rgba(255,255,255,0.3); }
+
+        .quote-box {
+            background: var(--card-bg);
+            border-left: 5px solid #ffd966;
+            padding: 1rem;
+            margin-bottom: 2rem;
+            border-radius: 0 15px 15px 0;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            font-style: italic;
+        }
+
+        .quick-nav {
+            display: flex; flex-wrap: wrap; gap: 0.6rem; margin-bottom: 2rem;
+            background: var(--card-bg); padding: 1rem 1.2rem; border-radius: 3rem;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+        }
+        .nav-pill {
+            background: var(--nav-pill-bg); color: var(--text-color); border: none; padding: 0.4rem 1.2rem;
+            border-radius: 2rem; font-weight: 600; font-size: 0.85rem; cursor: pointer; transition: 0.2s;
+        }
+        .nav-pill:hover { background: #bdd8bd; transform: translateY(-2px); }
+        .search-bar { margin-bottom: 1.6rem; display: flex; gap: 0.5rem; }
+        #searchInput {
+            flex: 1; padding: 0.7rem 1rem; border-radius: 3rem; border: 1px solid var(--border-color); 
+            background: var(--card-bg); color: var(--text-color); font-size: 0.9rem;
+        }
+        .set-card {
+            background: var(--card-bg); border-radius: 1.8rem; margin-bottom: 2.5rem;
+            box-shadow: 0 6px 14px rgba(0,20,0,0.08); overflow: hidden; border: 1px solid var(--border-color);
+        }
+        .set-header {
+            padding: 1rem 1.8rem; border-bottom: 1px solid var(--border-color);
+            cursor: pointer; display: flex; justify-content: space-between; align-items: center;
+            font-weight: 700; font-size: 1.2rem; color: var(--accent-color);
+        }
+        .toggle-icon { font-size: 1.5rem; transition: transform 0.2s; }
+        .set-content { padding: 1.2rem 1.8rem 1.8rem; display: none; }
+        .set-card.open .set-content { display: block; }
+        .set-card.open .toggle-icon { transform: rotate(90deg); }
+        
+        .markdown-body h3 {
+            font-weight: 800; font-size: 1.1rem; color: var(--accent-color); margin-top: 1.5rem; margin-bottom: 0.8rem;
+            background: var(--nav-pill-bg); padding: 0.4rem 1.2rem; border-radius: 20px; display: inline-block;
+        }
+        .markdown-body table {
+            width: 100%; border-collapse: collapse; margin: 1.2rem 0; font-size: 0.9rem;
+            border-radius: 12px; overflow: hidden;
+        }
+        .markdown-body th, .markdown-body td {
+            border: 1px solid var(--border-color); padding: 0.8rem 1rem;
+        }
+        .markdown-body th { background: var(--nav-pill-bg); }
+
+        .footer {
+            margin-top: 4rem;
+            padding: 2rem;
+            background: var(--header-grad);
+            color: white;
+            border-radius: 2rem 2rem 0 0;
+            text-align: center;
+        }
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+        .footer-links a {
+            color: #ffd966;
+            text-decoration: none;
+            font-size: 0.9rem;
+            background: rgba(255,255,255,0.1);
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+        .footer-links a:hover { background: rgba(255,255,255,0.2); }
+
+        .highlight { background-color: #fff2b5; color: black; border-radius: 4px; padding: 0 2px; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="bismillah">
+        بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ<br>
+        <span style="font-size: 0.9rem; font-weight: normal;">(পরম করুণাময় ও অসীম দয়ালু আল্লাহর নামে শুরু করছি)</span>
+    </div>
+
+    <div class="header">
+        <h1>📘 GEB 331 — Cell Signaling <span>Bilingual Interactive Note</span></h1>
+        <div class="controls">
+            <button class="control-btn" onclick="toggleTheme()">🌓 Theme</button>
+            <button class="control-btn" onclick="changeFont(-1)">A-</button>
+            <button class="control-btn" onclick="changeFont(1)">A+</button>
+            <select class="control-btn" id="viewMode" onchange="applyViewMode()">
+                <option value="auto">🖥️ Auto</option>
+                <option value="mobile">📱 Mobile</option>
+                <option value="desktop">💻 Desktop</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="quote-box" onclick="showDuaAlert()">
+        "একজন মুমিনের ক্যারিয়ার হলো বাতিল শাসন ও দুর্নীতির বিরুদ্ধে লড়াই করার একটি লিগ্যাল প্লাটফর্ম, আপনি যতই উপরে উঠবেন দ্বীনের কথা ততই বেশি উঁচুতে উঠবে। আলম-এ আরওয়াহ (রূহ এর জগত) থেকে আখিরাত পর্যন্ত বিস্তৃত আমাদের ক্যারিয়ার!"
+    </div>
+
+    <div class="search-bar"><input type="text" id="searchInput" placeholder="🔎 Search anything (GPCR, PI3K, Notch...)" autocomplete="off"></div>
+    <div class="quick-nav" id="quickNav"></div>
+    <div id="setsContainer"></div>
+    
+    <div class="footer">
+        <h3>Developed with 💚 for GEB 331</h3>
+        <p>Created by: <b>SM Ashikur Rahman</b></p>
+        <div class="footer-links">
+            <a href="https://www.linkedin.com/in/sm-ashikur-rahman/" target="_blank">LinkedIn</a>
+            <a href="https://github.com/ashiq-sm" target="_blank">GitHub</a>
+            <a href="https://www.youtube.com/@smashiqurrahman8150" target="_blank">YouTube</a>
+            <a href="https://x.com/smar1ashiq" target="_blank">Twitter (X)</a>
+            <a href="http://smashiq.blogspot.com/" target="_blank">Blog</a>
+            <a href="https://facebook.com/sm1ar" target="_blank">Facebook</a>
+            <a href="https://t.me/sm_ash1q" target="_blank">Telegram</a>
+            <a href="https://wa.me/+8801773971905" target="_blank">WhatsApp</a>
+        </div>
+    </div>
+</div>
+
+<!-- Load external data -->
+<script src="geb331_data.js"></script>
+<script src="geb331_data_part2.js"></script>
+<script src="geb331_data_part3.js"></script>
+<script src="geb331_data_part4.js"></script>
+<script>
+let currentFontSize = 16;
+const setsData = geb331_sets;
+
+function showDuaAlert() {
+    alert("Rabbana atina fidduniya hasana (হে রব আমাদের দুনিয়ার জীবনে কল্যাণ দিন) wa fil akhirati hasana (আখিরাত এর জীবনেও কল্যাণ দিন) wa qina azabannar (এবং আগুনের আজাব থেকে রক্ষা করুন), 'Ameen'");
+}
+
+function toggleTheme() {
+    const body = document.body;
+    const theme = body.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    body.setAttribute('data-theme', theme);
+}
+
+function changeFont(delta) {
+    currentFontSize += delta;
+    document.documentElement.style.setProperty('--font-size-base', currentFontSize + 'px');
+}
+
+function applyViewMode() {
+    const mode = document.getElementById('viewMode').value;
+    const container = document.querySelector('.container');
+    if(mode === 'mobile') {
+        container.style.maxWidth = '450px';
+    } else if(mode === 'desktop') {
+        container.style.maxWidth = '1300px';
+    } else {
+        container.style.maxWidth = '100%';
+    }
+}
+
+function renderSets() {
+    const container = document.getElementById('setsContainer');
+    container.innerHTML = '';
+    setsData.forEach((item, idx) => {
+        const card = document.createElement('div');
+        card.className = 'set-card';
+        card.id = item.id;
+        const parsedHTML = marked.parse(item.rawMd);
+        card.innerHTML = `
+            <div class="set-header"><h2>${item.title}</h2><span class="toggle-icon">▶</span></div>
+            <div class="set-content"><div class="markdown-body">${parsedHTML}</div></div>
+        `;
+        container.appendChild(card);
+        card.querySelector('.set-header').addEventListener('click', () => {
+            card.classList.toggle('open');
+            card.querySelector('.toggle-icon').innerHTML = card.classList.contains('open') ? '▼' : '▶';
+        });
+        if(idx === 0) { card.classList.add('open'); card.querySelector('.toggle-icon').innerHTML = '▼'; }
+    });
+}
+
+function buildQuickNav() {
+    const nav = document.getElementById('quickNav');
+    setsData.forEach(item => {
+        const btn = document.createElement('button');
+        btn.className = 'nav-pill';
+        btn.textContent = item.title.split('—')[0].trim();
+        btn.onclick = () => {
+            const el = document.getElementById(item.id);
+            el.scrollIntoView({ behavior: 'smooth' });
+            if(!el.classList.contains('open')) el.querySelector('.set-header').click();
+        };
+        nav.appendChild(btn);
+    });
+}
+
+function searchHighlights() {
+    const term = document.getElementById('searchInput').value.trim().toLowerCase();
+    const all = document.querySelectorAll('.markdown-body p, .markdown-body td, .markdown-body li');
+    all.forEach(el => {
+        if(!term) { el.innerHTML = el.innerHTML.replace(/<mark class="highlight">(.*?)<\/mark>/g, '$1'); return; }
+        const regex = new RegExp(`(?![^<]+>)(${term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
+        el.innerHTML = el.innerHTML.replace(/<mark class="highlight">(.*?)<\/mark>/g, '$1').replace(regex, `<mark class="highlight">$1</mark>`);
+    });
+}
+
+document.getElementById('searchInput').addEventListener('input', searchHighlights);
+marked.setOptions({ gfm: true, breaks: true });
+renderSets();
+buildQuickNav();
+</script>
+</body>
+</html>

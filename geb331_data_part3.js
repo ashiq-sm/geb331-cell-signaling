@@ -1,0 +1,304 @@
+const geb331_sets_part3 = [
+    {
+        id: "set5",
+        title: "🔹 SET 5 — TGF-β & SMAD Signaling Pathways",
+        rawMd: `### TGF-β: Definition, Functions, & Canonical Pathway
+
+**[Q040] MARKS: 13**  
+**a) What is TGF-β? Write the Functions of TGF-β [5]**
+
+**Ans:** **TGF-β (Transforming Growth Factor-β)** হলো একটি বহুমুখী (pleiotropic) সাইটোকাইন বা গ্রোথ ফ্যাক্টর। এটি **TGF-β superfamily**-এর প্রধান সদস্য, যার মধ্যে BMPs, Activins, Nodal ইত্যাদিও পড়ে। 
+
+এরা সাধারণত cell cycle arrest, extracellular matrix (ECM) তৈরি, এবং ভ্রূণের বিকাশে ভূমিকা রাখে। সিগন্যালিংয়ের জন্য এরা **Serine/Threonine kinase receptor** ব্যবহার করে [14,37]।
+
+**Biological Functions of TGF-β (বিবিধ কার্যাবলী):**
+
+| Context | Function | Mechanism/Details |
+|---------|----------|-------------------|
+| **Cell Proliferation** | **Anti-proliferative** (কোষ বিভাজন থামায়) | p21 এবং p15 জিন চালু করার মাধ্যমে কোষকে G1 phase-এ আটকে দেয় (Tumor suppressor হিসেবে কাজ করে) |
+| **EMT (Epithelial-Mesenchymal Transition)** | এপিথেলিয়াল কোষকে মেসেনকাইমালে বদলায় | Snail, ZEB নামক জিন চালু করে, ফলে ক্যানসার কোষ চারদিকে ছড়িয়ে পড়তে (Metastasis) পারে |
+| **Immunosuppression** | রোগ প্রতিরোধ ক্ষমতা কমায় | T cells এবং Macrophage-এর কাজকে বাধা দেয়, যা ক্যানসার কোষকে ইমিউন সিস্টেম থেকে বাঁচায় |
+| **Wound Healing** | ক্ষতস্থান সারিয়ে তোলে | ফাইব্রোব্লাস্ট (Fibroblast) অ্যাক্টিভেট করে কোলাজেন ও ECM তৈরি বাড়ায় |
+| **Development** | ভ্রূণের গঠন | Left-right axis, ঠোঁট ও তালুর (palate) সঠিক গঠনে সাহায্য করে |
+
+---
+
+**b) Illustrate the Canonical TGF-β Signaling Pathway [5]**
+
+**Ans:** এই পাথওয়েটি **SMAD** প্রোটিনের মাধ্যমে কাজ করে। 
+
+**Receptors:**
+* **Type II receptor (TβRII):** এটি স্বতঃস্ফূর্তভাবেই সক্রিয় কাইনেজ (constitutively active)।
+* **Type I receptor (TβRI / ALK5):** এটি Type II দ্বারা ফসফোরাইলেটেড হওয়ার পর সক্রিয় হয়।
+
+**Canonical SMAD Pathway (ধাপে ধাপে):**
+
+১. **Ligand Binding:** TGF-β ডাইমার হিসেবে এসে প্রথমে **Type II receptor (TβRII)**-এর সাথে bind করে।
+২. **Receptor Activation:** TβRII তখন **Type I receptor (TβRI)**-কে টেনে আনে এবং এর GS domain-এ ফসফোরাইলেট করে اسے সক্রিয় করে [13,37]।
+৩. **SMAD Phosphorylation:** সক্রিয় TβRI সাইটোসোলে ভাসমান **R-SMADs (SMAD2 বা SMAD3)**-এর C-terminal অংশে ফসফেট যুক্ত করে।
+৪. **Complex Formation:** ফসফোরাইলেটেড SMAD2/3 রিসেপ্টর থেকে আলাদা হয়ে **Co-SMAD (SMAD4)**-এর সাথে যুক্ত হয়ে একটি trimeric complex তৈরি করে [14,20]।
+৫. **Nuclear Translocation:** এই কমপ্লেক্সটি importin-এর সাহায্যে সোজা নিউক্লিয়াসে প্রবেশ করে।
+৬. **Gene Expression:** নিউক্লিয়াসে গিয়ে এরা **SBE (SMAD-Binding Elements)** নামক DNA সিকোয়েন্সে বাইন্ড করে টার্গেট জিনগুলো (p15, p21, PAI-1) চালু বা বন্ধ করে [14,37]।
+
+**মনে রাখার ট্রিক:** "TGF-β binds Type II → activates Type I → phosphorylates SMAD2/3 → binds SMAD4 → enters nucleus → gene active!"
+
+**SMAD Classification (SMAD প্রোটিনের প্রকারভেদ):**
+* **R-SMADs (Receptor-regulated):** SMAD1, 2, 3, 5, 8 (সরাসরি রিসেপ্টর দ্বারা ফসফোরাইলেটেড হয়)।
+* **Co-SMAD (Common-mediator):** SMAD4 (সকল পাথওয়েতে কমন)।
+* **I-SMADs (Inhibitory):** SMAD6, SMAD7 (সিগন্যালিং বন্ধ করতে বাধা দেয়)।
+
+---
+
+**c) How Inhibitory SMAD Inhibits BMP Signaling [3]**
+
+**Ans:** **SMAD6** হলো প্রধান Inhibitory SMAD যা **BMP (Bone Morphogenetic Protein)** সিগন্যালিংকে বাধা দেয়।
+
+**Inhibition Mechanism (কীভাবে বাধা দেয়):**
+১. **Receptor Blockade (রিসেপ্টর ব্লক):** SMAD6 সরাসরি BMP Type I রিসেপ্টরে গিয়ে বসে থাকে। এর ফলে রিয়েল R-SMADs (SMAD1/5/8) রিসেপ্টরের কাছে এসে ফসফোরাইলেটেড হতে পারে না।
+২. **SMAD4 Disruption (কমপ্লেক্স তৈরিতে বাধা):** যদি কোনোভাবে SMAD1 ফসফোরাইলেটেড হয়েও যায়, তবে SMAD6 গিয়ে SMAD1-এর সাথে যুক্ত হয়ে একটি অকার্যকর (inactive) কমপ্লেক্স তৈরি করে (SMAD1-SMAD6)। ফলে SMAD4 আর সুযোগ পায় না [17,38]।
+৩. **Degradation (ধ্বংস):** SMAD6 **SMURF1** নামক E3 ligase-কে টেনে এনে রিসেপ্টরকে ধ্বংস (ubiquitination) করে দেয়।
+
+**ফলাফল:** BMP সিগন্যাল বন্ধ হয়ে যায়, যা কোষকে অতিরিক্ত হাড় বা তরুণাস্থি (bone/cartilage) তৈরি করা থেকে প্রতিরোধ করে।
+
+---
+
+### TGF-β in Cancer Progression
+
+**[Q044 / Q045b] MARKS: 4**  
+**Dual Role of TGF-β in Cancer (ক্যানসারে দ্বৈত ভূমিকা)**
+
+**Ans:** TGF-β ক্যানসারের ক্ষেত্রে একটি অদ্ভুত বা দ্বৈত (Paradoxical) ভূমিকা পালন করে: এটি **প্রথম দিকে রক্ষক (Tumor suppressor)** কিন্তু **পরের দিকে ভক্ষক (Tumor promoter)** হিসেবে কাজ করে [39,41,52]।
+
+| Phase (পর্যায়) | Role (ভূমিকা) | Mechanism (মেকানিজম) |
+|--------------|------------|----------------------|
+| **Early Cancer (প্রাথমিক অবস্থা)** | **Tumor Suppressor (ক্যানসার দমনকারী)** | TGF-β এপিথেলিয়াল কোষের বিভাজন থামায়। এটি **p15 এবং p21** জিন চালু করে cell cycle-কে G1 ফেজে আটকে দেয় এবং c-Myc-কে বন্ধ করে কোষ বিভাজন থামায় [37,53]। |
+| **Late Cancer (চূড়ান্ত অবস্থা)** | **Tumor Promoter (ক্যানসার বৃদ্ধিকারী)** | মিউটেশনের কারণে ক্যানসার কোষ TGF-β-এর বিভাজন-রোধী সিগন্যাল শোনা বন্ধ করে দেয় (যেমন SMAD4 নষ্ট হয়ে যায়)। কিন্তু TGF-β-এর অন্যান্য ক্ষতিকর সিগন্যাল ঠিকই কাজ করে। এটি **EMT (Epithelial-Mesenchymal Transition)** ঘটায়, ফলে ক্যানসার কোষ চারদিকে ছড়িয়ে পড়ে (Metastasis)। এটি ইমিউন সিস্টেমকেও দমিয়ে দেয়, কোষকে বাঁচতে সাহায্য করে [39,41,52]। |
+
+**জাকির স্যারের স্লাইড থেকে:** "In normal cells and early carcinomas, TGF-β acts as a tumor suppressor. However, in advanced cancers, TGF-β loses its growth-inhibitory function and instead promotes tumor invasion, metastasis, and immune evasion."
+
+---
+
+### BMP Signaling in Bone Development
+
+**[Q046] MARKS: 7**  
+**Role of BMP Signaling in Bone Development**
+
+**Ans:** **BMPs (Bone Morphogenetic Proteins)** হলো TGF-β পরিবারের সদস্য যা হাড় (osteogenesis), তরুণাস্থি (chondrogenesis) এবং কঙ্কালতন্ত্র গঠনে মুখ্য ভূমিকা রাখে [27,28]।
+
+**কীভাবে কাজ করে (Pathway):**
+* BMP লিগ্যান্ড (যেমন BMP-2, BMP-4) Type II এবং Type I (ALK3/6) রিসেপ্টরের মাধ্যমে **SMAD1/5/8**-কে ফসফোরাইলেট করে।
+* এটি SMAD4-এর সাথে মিলে নিউক্লিয়াসে যায়।
+
+**Role in Bone Development (হাড় গঠনে ভূমিকা):**
+১. **Osteoblast Differentiation (হাড়ের কোষ তৈরি):** BMP-2 সিগন্যাল **Runx2** নামক মাস্টার ট্রান্সক্রিপশন ফ্যাক্টরকে চালু করে। Runx2 তখন Osteocalcin, Collagen I জিন চালু করে কোষকে পরিণত হাড়ের কোষে (Osteoblast) রূপান্তরিত করে [27,28]।
+২. **Chondrogenesis (তরুণাস্থি তৈরি):** BMP-2/4 মেসেনকাইমাল কোষকে জড়ো করে **SOX9** জিনের মাধ্যমে তরুণাস্থির কোষে (chondrocytes) পরিণত হতে নির্দেশ দেয়।
+৩. **Limb Patterning (হাত-পায়ের আকার গঠন):** হাত-পায়ের আঙুলের মাঝখানের কোষগুলোকে মেরে ফেলে (Apoptosis) সুন্দর আঙুল তৈরি করতে BMP কাজ করে।
+৪. **Fracture Healing (প্লাস্টার/হাড় জোড়া লাগানো):** হাড় ভেঙে গেলে সেখানে নতুন হাড় তৈরি করার জন্য ক্লিনিক্যালি রিকম্বিন্যান্ট BMP-2 এবং BMP-7 ব্যবহার করা হয়।
+
+**Disease (রোগ):** BMP রিসেপ্টরে মিউটেশন হলে **FOP (Fibrodysplasia ossificans progressiva)** নামক ভয়াবহ রোগ হয়, যেখানে মাংসপেশিগুলো নিজে নিজেই শক্ত হাড়ে পরিণত হয়ে যায় [28]।
+`
+    },
+    {
+        id: "set6",
+        title: "🔹 SET 6 — Calcium Memory, UPR & ER Stress",
+        rawMd: `### CaMKII as an Intracellular Memory Device
+
+**[Q048 / Q052] MARKS: 3**  
+**"CaMKII is an intracellular memory device for a prior calcium pulse" — Explain**
+
+**Ans:** **CaMKII (Ca²⁺/Calmodulin-dependent Protein Kinase II)** হলো একটি ১২-টি সাবইউনিট বিশিষ্ট চাকার মতো এনজাইম, যা ব্রেনের স্নায়ুকোষে (neurons) স্মৃতি (memory) ধরে রাখার কাজ করে।
+
+**The Memory Mechanism (স্মৃতি ধরে রাখার মেকানিজম):**
+১. **Activation:** যখন কোষে ক্যালসিয়াম (Ca²⁺) বাড়ে, তখন Ca²⁺/CaM কমপ্লেক্স এসে CaMKII-কে সক্রিয় করে দেয়।
+২. **Autophosphorylation (নিজেকে নিজে ফসফেটযুক্ত করা):** চাকার মধ্যে পাশাপাশি থাকা সক্রিয় সাবইউনিটগুলো একে অপরের **Thr286 (Threonine-286)** পজিশনে একটি ফসফেট বসিয়ে দেয় (trans-autophosphorylation) [155,157]।
+৩. **Autonomous Activity (স্বাধীন সক্রিয়তা):** একবার Thr286-এ ফসফেট বসে গেলে, Ca²⁺ লেভেল কমে যাওয়ার পরও (এমনকি CaM সরে যাওয়ার পরও) CaMKII **একটানা সক্রিয় (active) থেকে যায়**!
+৪. **Memory Formation:** এই ফসফোরাইলেশনটি কয়েক মিনিট থেকে কয়েক ঘণ্টা পর্যন্ত স্থায়ী হতে পারে। এটি স্নায়ুকোষে **LTP (Long-Term Potentiation)** ঘটায়, যা শেখা এবং স্মৃতি সংরক্ষণের (learning and memory) আণবিক ভিত্তি [3,165,168]।
+
+**সিদ্ধান্ত:** যেহেতু CaMKII ক্যালসিয়াম চলে যাওয়ার পরও সিগন্যালটি "মনে রাখে" এবং কাজ চালিয়ে যায়, তাই একে **Intracellular memory device (অন্তঃকোষীয় স্মৃতি যন্ত্র)** বলা হয়।
+
+---
+
+### Calcium-Induced Calcium Release (CICR)
+
+**[Q050] MARKS: 3**  
+**"Calcium can regulate its own release" — Explain**
+
+**Ans:** এই চমৎকার মেকানিজমটিকে **CICR (Calcium-Induced Calcium Release)** বা "ক্যালসিয়াম দ্বারা ক্যালসিয়াম আত্ম-নিঃসরণ" বলা হয় [143,145]। মানে হলো, সামান্য একটু ক্যালসিয়াম কোষকে উদ্দীপিত করে ভেতর থেকে আরও শত শত ক্যালসিয়াম বের করে আনতে পারে।
+
+**Mechanism (মেকানিজম):**
+১. **Initial Trigger:** পরিবেশ থেকে বা IP₃ সিগন্যালের কারণে সামান্য একটু Ca²⁺ সাইটোসোল (cytosol)-এ প্রবেশ করে।
+২. **RyR Activation:** এই সামান্য Ca²⁺ গিয়ে এন্ডোপ্লাজমিক রেটিকুলামের (ER) গায়ে থাকা **Ryanodine Receptors (RyR)** নামক ক্যালসিয়াম চ্যানেলের সাথে বাইন্ড করে চ্যানেলটিকে পুরোপুরি খুলে দেয় [143,145]।
+৩. **Positive Feedback:** চ্যানেল খুলে যাওয়ায় ER-এর ভেতর জমা থাকা বিপুল পরিমাণ Ca²⁺ স্রোতের মতো সাইটোসোলে বেরিয়ে আসে। 
+৪. **Wave Propagation:** এই অতিরিক্ত Ca²⁺ তখন পাশের RyR চ্যানেলগুলোকেও খুলে দেয়, যা কোষের ভেতর একটি **Ca²⁺ Wave (ক্যালসিয়ামের ঢেউ)** তৈরি করে [146,148]।
+
+**উদাহরণ:** আমাদের হৃৎপিণ্ডের পেশি (cardiac muscle) সংকোচন এভাবেই কাজ করে। সামান্য ক্যালসিয়াম ঢুকে পেশির ভেতরের ক্যালসিয়ামের বিশাল ভান্ডার খুলে দেয়, যার একযোগে পেশি সংকুচিত হয় (heartbeat)।
+
+---
+
+### ER Stress, Chaperones, & UPR
+
+**[Q051 / Q053] MARKS: 6+5**  
+**Define ER Stress. Explain ER Stress Signaling Pathway (UPR)**
+
+**Ans:** **ER Stress (Endoplasmic Reticulum Stress)** হলো কোষের এমন একটি বিপদজনক অবস্থা যখন ER-এর মধ্যে প্রচুর পরিমাণে **Misfolded (ভুল কাঠামোর)** প্রোটিন জমা হতে থাকে এবং ER প্রোটিন ভাজ (fold) করার স্বাভাবিক ক্ষমতা হারিয়ে ফেলে [96,109]। 
+
+**The UPR (Unfolded Protein Response) Pathway:**
+ER Stress থেকে কোষকে বাঁচানোর জন্য যে emergency alarm বা সিগন্যালিং পাথওয়ে চালু হয় তাকে UPR বলে। এর মূল সেন্সর হলো **BiP (GRP78)** নামক চ্যাপেরন প্রোটিন। স্বাভাবিক অবস্থায় BiP ৩টি সেন্সরকে (PERK, IRE1, ATF6) নিষ্ক্রিয় করে আটকে রাখে। স্ট্রেস দেখা দিলে BiP তাদের ছেড়ে দেয় এবং ৩টি পাথওয়ে চালু হয়:
+
+**The Three Arms of UPR (৩টি প্রধান শাখা):**
+
+| Arm / Sensor | Mechanism (কীভাবে কাজ করে) | Cellular Result (ফলাফল) |
+|--------------|--------------------------|-----------------------|
+| **1. PERK (Kinase)** | PERK সক্রিয় হয়ে **eIF2α**-কে phosphorylate করে। | এটি কোষে **নতুন প্রোটিন তৈরি হওয়া প্রায় পুরোপুরি বন্ধ করে দেয়** (Global translation attenuation), যাতে ER-এর ওপর চাপ কমে। তবে এটি **ATF4** জিন চালু করে যা চাপ মোকাবিলায় সাহায্য করে [97,110]। |
+| **2. IRE1 (RNase)** | IRE1 একটি এনজাইম হিসেবে **XBP1** mRNA-কে কেটে জোড়া লাগিয়ে (splice) অ্যাক্টিভ করে [97,110]। | XBP1s একটি transcription factor যা ER-এ চ্যাপেরন (BiP) এবং ময়লা পরিষ্কার করার মেকানিজম (ERAD) জিনগুলো বাড়িয়ে দেয়। |
+| **3. ATF6 (TF)** | ATF6 ER থেকে গলজি (Golgi)-তে যায়, সেখানে এটি কাটা পড়ে নিউক্লিয়াসে ঢোকে [98,111]। | এটিও নতুন চ্যাপেরন প্রোটিন (BiP) তৈরি করতে সাহায্য করে, যাতে প্রোটিনগুলো ঠিকমতো ভাঁজ হতে পারে। |
+
+**UPR Outcomes (পরিনতি):**
+* **Adaptive (বাঁচার লড়াই):** যদি স্ট্রেস দ্রুত সামলে নেওয়া যায়, তবে চ্যাপেরন বেড়ে এবং প্রোটিন লোড কমে কোষ বেঁচে যায়।
+* **Apoptotic (মৃত্যু):** যদি স্ট্রেস কোনোভাবেই সামলানো না যায় (Prolonged stress), তবে PERK পাথওয়ের **CHOP জিন** চালু হয়ে যায়, যা কোষকে আত্মহত্যার (Apoptosis) নির্দেশ দেয় [99,112]।
+
+---
+
+### Hypoxia & Metabolism (HIF-1α)
+
+**[Q054 / Q055] MARKS: 3+4**  
+**Illustrate How Hypoxia Inhibits the TCA Cycle & Differences with Normoxia**
+
+**Ans:** **Hypoxia (অক্সিজেন স্বল্পতা)** হলো কোষের এমন একটি অবস্থা যেখানে অক্সিজেন ঠিকমতো পৌঁছায় না। এই অবস্থায় কোষ তার বেঁচে থাকার মেকানিজম (Metabolism) পুরোপুরি পরিবর্তন করে ফেলে **HIF-1α (Hypoxia-Inducible Factor 1α)**-এর মাধ্যমে [101,115]।
+
+**কীভাবে Hypoxia TCA Cycle (ক্রেবস চক্র)-কে বন্ধ করে দেয়:**
+১. অক্সিজেন না থাকায় माइटोकन्ड्रिया (Mitochondria)-র Electron Transport Chain (ETC) বন্ধ হয়ে যায়।
+২. এর ফলে কোষে HIF-1α জমতে থাকে এবং এটি নিউক্লিয়াসে গিয়ে **PDK1 (Pyruvate Dehydrogenase Kinase 1)** নামক একটি এনজাইমের তৈরি বাড়ায় [89,103,116]।
+৩. PDK1 গিয়ে **Pyruvate Dehydrogenase (PDH)** এনজাইমটিকে ফসফোরাইলেট করে নিষ্ক্রিয় করে দেয়।
+৪. PDH বন্ধ মানে Pyruvate আর Acetyl-CoA-তে পরিণত হতে পারে না।
+৫. Acetyl-CoA তৈরি না হওয়ায় **TCA Cycle চলার রসদ পায় না এবং চক্রটি বন্ধ হয়ে যায়** [89,103,116]।
+৬. এর ফলে কোষ Warburg Effect অনুসরণ করে: অক্সিডেটিভ পসফোরিলেশনের বদলে গ্লাইকোলাইসিস (Anaerobic glycolysis)-এর মাধ্যমে পাইরুভেট থেকে **Lactate (ল্যাকটিক এসিড)** তৈরি করতে বাধ্য হয়।
+
+**Differences: Normoxia vs Hypoxia (পার্থক্য):**
+
+| Feature | Normoxia (Normal O₂) | Hypoxia (Low O₂) |
+|---------|---------------------|------------------|
+| **PHD Enzymes** | Active (অক্সিজেন ব্যবহার করে কাজ করে) | Inactive (অক্সিজেন ছাড়া কাজ করতে পারে না) |
+| **HIF-1α status** | Hydroxylated হয়ে যায়, ফলে **VHL** তাকে চিনতে পেরে ধ্বংস করে দেয় (Degraded) [101,114] | Hydroxylated হয় না, ফলে জমা হতে থাকে (Stable) এবং নিউক্লিয়াসে যায় [102,115] |
+| **Gene Expression** | HRE (Hypoxia Response Elements) জিনগুলো বন্ধ থাকে | **VEGF** (নতুন রক্তনালী তৈরি), **GLUT1** (গ্লুকোজ গ্রহণ বৃদ্ধি), **EPO** (রক্তকণিকা বৃদ্ধি) জিনগুলো চালু হয় |
+| **Metabolism** | Oxidative Phosphorylation (TCA Cycle) | Anaerobic Glycolysis (Lactate তৈরি) |
+
+**জাকির স্যারের স্লাইড থেকে:** "Under normoxia, HIF-1α is continually degraded. Under hypoxia, HIF-1α escapes degradation, dimerizes with HIF-1β, and translocates to the nucleus to activate genes promoting survival in low oxygen."
+`
+    },
+    {
+        id: "set7",
+        title: "🔹 SET 7 — Chemotaxis, Cross-talk & Gap Junctions",
+        rawMd: `### Bacterial Chemotaxis
+
+**[Q059 / Q074] MARKS: 6+14**  
+**a) Define Chemotaxis. Illustrate the Bacterial Chemotaxis Mechanism**
+
+**Ans:** **Chemotaxis (কেমোট্যাক্সিস):** রাসায়নিক পদার্থের ঘনত্বের উপর ভিত্তি করে কোনো জীবের নির্দিষ্ট দিকে চলাকে Chemotaxis বলে। ব্যাকটেরিয়া পুষ্টির (attractants) দিকে এগোয় (positive) এবং বিষাক্ত পদার্থ (repellents) থেকে দূরে সরে যায় (negative) [46,49]।
+
+এটি ব্যাকটেরিয়ার **Two-Component Signaling System**-এর একটি চমৎকার উদাহরণ। এখানে কোনো সেকেন্ড মেসেঞ্জার নেই, শুধু ফসফেট ট্রান্সফার হয়।
+
+**The Two-Component Paradigm:**
+1. **Sensor Histidine Kinase (CheA):** সিগন্যাল পেলে নিজের Histidine এমিনো এসিডে ফসফেট যুক্ত করে (autophosphorylation) [46,49]।
+2. **Response Regulator (CheY):** সেন্সর থেকে ফসফেটটি গ্রহণ করে এক্টিভ হয় এবং ফ্ল্যাজেলা মোটরে গিয়ে সিগন্যাল দেয় [46,49]।
+
+**Mechanism (E. coli-তে মেকানিজম):**
+
+**অবস্থা ১: কোনো খাবার (Attractant) নেই (Tumbling / ঘুরপাক খাওয়া):**
+* ব্যাকটেরিয়ার মেমব্রেনে থাকা **MCP (Receptors)** অবিরাম **CheA** কাইনেজকে সক্রিয় রাখে।
+* CheA নিজের গায়ে ফসফেট বসায় (CheA-P) এবং তা **CheY** রেগুলেটরের কাছে পাস করে (CheY-P)।
+* CheY-P গিয়ে সোজা ফ্ল্যাজেলার মোটরে (Flagellar motor)-এ ধাক্কা দেয়, ফলে মোটরটি **Clockwise (CW - ঘড়ির কাঁটার দিকে)** ঘোরে।
+* এর ফলে ব্যাকটেরিয়া এক জায়গায় দাঁড়িয়ে লক্ষ্যহীনভাবে ঘুরপাক খায় (Tumble)।
+
+**অবস্থা ২: খাবার (Attractant) পাওয়া গেলো (Running / সোজা দৌড়ানো):**
+* খাবার এসে **MCP**-এর সাথে বাইন্ড করলে MCP-এর আকার বদলে যায়।
+* এটি **CheA**-কে **নিষ্ক্রিয় (Inhibited)** করে দেয়। ফলে CheA আর নিজেকে ফসফোরাইলেট করতে পারে না [47,48]।
+* যেহেতু CheA-P নেই, তাই **CheY-ও ফসফেট পায় না**।
+* CheY-P মোটরে ধাক্কা দিতে না পারায় মোটরটি তার ডিফল্ট মোডে **Counter-clockwise (CCW)** ঘোরে।
+* ফলে ব্যাকটেরিয়া সোজা খাবারের দিকে মসৃণভাবে দৌড়াতে থাকে (Smooth Run)!
+* একইসাথে **CheZ** নামক ফসফাটেজ পুরোনো CheY-P গুলোকে দ্রুত ফসফেটমুক্ত করে দেয়।
+
+**Adaptation (মানিয়ে নেওয়া):** যদি ব্যাকটেরিয়া অনেকক্ষণ খাবারের মধ্যে থাকে, তখন **CheR** নামের এনজাইম MCP-তে মিথাইল (Methyl) গ্রুপ যুক্ত করে তাকে আবার অবশ করে দেয় (Sensitization reset), ফলে ব্যাকটেরিয়া আবার নতুন করে গ্রেডিয়েন্ট মাপে [47,50]।
+
+---
+
+### Gap Junctions & Paracrine Coordination
+
+**[Q059b / Q062] MARKS: 3+3**  
+**Significance of Gap Junctions & Hepatic Coordination**
+
+**Ans:** **Gap Junction** হলো কোষের মেমব্রেনে থাকা ছোট চ্যানেল, যা **Connexin** প্রোটিন দিয়ে তৈরি। এরা দুটি পাশাপাশি কোষের সাইটোপ্লাজমকে সরাসরি সংযুক্ত করে, ফলে আয়ন এবং ১০০০ ডাল্টনের চেয়ে ছোট অণু (যেমন cAMP, Ca²⁺, IP₃) এক কোষ থেকে অন্য কোষে বিনাবাধায় পার হতে পারে [197,235]।
+
+**Role in Hepatocytes (লিভারে গ্লাইকোজেন ভাঙার উদাহরণ):**
+আমাদের লিভারে sympathetic স্নায়ুর প্রান্ত লিভারের মাত্র ৩-৫% কোষে (periportal hepatocytes) সরাসরি পৌঁছায়। কিন্তু গ্লুকোজ দরকার পড়লে লিভারের ১০০% কোষকেই কাজ করতে হবে। 
+১. স্নায়ু থেকে **Noradrenaline** রিলিজ হয়ে ওই ৩-৫% কোষের GPCR-এ বাইন্ড করে।
+২. কোষে PLC পাথওয়ের মাধ্যমে **IP₃ এবং Ca²⁺** তৈরি হয় [197,330]।
+৩. এই বিপুল পরিমাণ **Ca²⁺ এবং IP₃ Gap Junction দিয়ে সরাসরি পাশের লিভার কোষগুলোতে ঢুকে পড়ে**।
+৪. দেখতে দেখতে پورے লিভারে ক্যালসিয়ামের ঢেউ (Ca²⁺ wave) ছড়িয়ে পড়ে। 
+৫. ক্যালসিয়াম সব কোষের Phoshphorylase kinase-কে সক্রিয় করে, যা গ্লাইকোজেন ভেঙে গ্লুকোজ রক্তে রিলিজ করে [332,339]।
+
+এভাবে Gap junction না থাকলে লিভারের মাত্র ৩% কোষ কাজ করত, কিন্তু এর কারণে ১০০% কোষ একসাথে কাজ করে!
+
+---
+
+### Nitric Oxide (NO) Signaling in Vasodilation
+
+**[Q063] MARKS: 4**  
+**Nitric Oxide Signaling Pathway**
+
+**Ans:** **Nitric Oxide (NO)** হলো একটি গ্যাসীয় সিগন্যালিং অণু যা সহজেই মেমব্রেন ভেদ করে কোষে কোষে সিগন্যাল পাঠাতে পারে [105,107]। এটি মূলত রক্তনালী প্রসারিত করে (Vasodilation) রক্তচাপ কমাতে সাহায্য করে।
+
+**Pathway (ধাপে ধাপে):**
+১. রক্তনালীর ভেতরের আস্তরণের কোষে (Endothelial cell) Acetylcholine বাইন্ড করলে Ca²⁺ বাড়ে।
+২. Ca²⁺ গিয়ে **eNOS (endothelial NO Synthase)** এনজাইমকে সক্রিয় করে। eNOS কার্বন-যৌগ আর্জিনিনকে (L-Arginine) ভেঙে **NO গ্যাস** তৈরি করে [105,107]।
+৩. NO গ্যাস দ্রুত ব্যাপিত (diffuse) হয়ে পাশের মসৃণ পেশিকোষে (Smooth muscle cell) প্রবেশ করে।
+৪. পেশিকোষের ভেতরে NO সরাসরি **sGC (Soluble Guanylyl Cyclase)** এনজাইমের সাথে বাইন্ড করে তাকে সক্রিয় করে দেয় [107,284]।
+৫. সক্রিয় sGC কোষের GTP-কে ভেঙে **cGMP** নামের সেকেন্ড মেসেঞ্জার তৈরি করে।
+৬. cGMP তখন **PKG (Protein Kinase G)**-কে এক্টিভ করে [284,288]।
+৭. PKG পেশির সংকোচন প্রোটিনগুলোকে নিষ্ক্রিয় করে দেয়। ফলে পেশি শিথিল হয়ে যায় (Relaxation) এবং রক্তনালী প্রসারিত (Vasodilation) হয় [107,284]।
+
+**Terminator:** **PDE5 (Phosphodiesterase-5)** এনজাইম cGMP-কে ভেঙে দিলে সিগন্যাল বন্ধ হয়ে যায়। ভায়াগ্রা (Sildenafil) এই PDE5-কে ব্লক করে, ফলে রক্তনালী অনেকক্ষণ প্রসারিত থাকে [284,288]।
+
+---
+
+### Integration: Receptors as Effectors & Signal Classifications
+
+**[Q065 / Q066] MARKS: 3+3**  
+**"Same molecule can be receptor and effector for a particular signal" — Explain**
+
+**Ans:** সাধারণত কোষে সিগন্যাল রিসিভ করার জন্য থাকে "রিসেপ্টর" এবং আসল কাজটা করার জন্য থাকে "ইফেক্টর" (যেমন এনজাইম)। কিন্তু কিছু কিছু অণু একইসাথে সিগন্যাল রিসিভও করে এবং নিজের এনজাইম অ্যাক্টিভিটি দিয়ে কাজও সেরে ফেলে। এদেরকেই **Receptor and Effector dual-function molecule** বলে।
+
+**উদাহরণ:**
+১. **Receptor Tyrosine Kinases (RTKs):** যেমন EGF Receptor। এর বাইরের অংশ সিগন্যাল (EGF) রিসিভ করে (Receptor হিসেবে), আর ভেতরের অংশ নিজেই একটি কাইনেজ এনজাইম (Effector) হিসেবে প্রোটিন ফসফোরাইলেট করে। মাঝখানে কোনো থার্ড-পার্টি G-protein লাগে না।
+২. **Nuclear Receptors:** স্টেরয়েড হরমোন রিসেপ্টরগুলো নিজেই সাইটোসোলে সিগন্যাল ধরে (Receptor) এবং নিজেই সোজা নিউক্লিয়াসে ঢুকে ট্রান্সক্রিপশন ফ্যাক্টর হিসেবে জিন এক্সপ্রেস করে (Effector) [247,248]।
+
+---
+
+**Differentiate Between Endocrine and Synaptic Signaling**
+
+| Feature (তুলনার বিষয়) | Endocrine Signaling (এন্ডোক্রাইন) | Synaptic Signaling (সিন্যাপটিক) |
+|---------------------|-----------------------------------|----------------------------------|
+| **Signal Box (সিগন্যাল অণু)** | **Hormones** (যেমন ইনসুলিন, থাইরক্সিন) | **Neurotransmitters** (যেমন এসিটাইলকোলিন) |
+| **Path & Distance (দূরত্ব)** | রক্তের ভেতর দিয়ে অনেক দূর (কয়েক মিটার) যায় | নিউরনের ফাঁকে (synaptic cleft) মাত্র ২০ ন্যানোমিটার দূরত্ব পার হয় |
+| **Speed (গতি)** | **ধীর (Slow)** — কয়েক মিনিট থেকে কয়েক ঘণ্টা | **খুব দ্রুত (Extremely Fast)** — অতি ভগ্নাংশ মিলিসেকেন্ড |
+| **Target (লক্ষ্য)** | শরীরে যারাই রিসেপ্টর ধারণ করে, সবাই রেসপন্স করে (Broad) | সুনির্দিষ্ট একটি নিউরন বা পেশিতেই কাজ করে (Point-to-point) |
+| **Signal Lifespan** | বহুক্ষণ রক্তে একটিভ থাকতে পারে | কাজ হয়ে গেলেই সাথে সাথে ধ্বংস করা হয় (enzyme দিয়ে বা reuptake-এর মাধ্যমে) |
+`
+    }
+];
+
+// If geb331_sets is already defined (from geb331_data.js and part2), we merge them.
+if (typeof geb331_sets !== 'undefined') {
+    // Inject or update set5, set6, and set7
+    const set5Index = geb331_sets.findIndex(s => s.id === "set5");
+    if (set5Index !== -1) geb331_sets[set5Index] = geb331_sets_part3[0];
+    else geb331_sets.push(geb331_sets_part3[0]);
+
+    const set6Index = geb331_sets.findIndex(s => s.id === "set6");
+    if (set6Index !== -1) geb331_sets[set6Index] = geb331_sets_part3[1];
+    else geb331_sets.push(geb331_sets_part3[1]);
+
+    const set7Index = geb331_sets.findIndex(s => s.id === "set7");
+    if (set7Index !== -1) geb331_sets[set7Index] = geb331_sets_part3[2];
+    else geb331_sets.push(geb331_sets_part3[2]);
+}
