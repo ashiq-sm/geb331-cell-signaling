@@ -30,13 +30,13 @@
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; transition: background 0.3s, color 0.3s; }
+        html { font-size: var(--font-size-base); }
         body {
             background: var(--bg-color);
             font-family: var(--body-font);
             line-height: 1.6;
             color: var(--text-color);
             padding: 1.5rem;
-            font-size: var(--font-size-base);
         }
         .container { max-width: 1300px; margin: 0 auto; transition: max-width 0.4s ease; }
         
@@ -98,44 +98,68 @@
         .live-btn:hover { background: #ffea70 !important; transform: scale(1.05); }
 
         .mission-section {
-            background: linear-gradient(135deg, rgba(6, 78, 59, 0.95), rgba(6, 95, 70, 0.9));
-            border-left: 5px solid #fbbf24;
-            padding: 1.5rem 2rem;
-            margin-bottom: 2rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-left: 8px solid var(--accent-color);
+            padding: 2.5rem 3rem;
+            margin-bottom: 2.5rem;
             border-radius: 1.5rem;
-            color: white;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            color: var(--text-color);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             position: relative;
             overflow: hidden;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.1);
+            backdrop-filter: blur(15px);
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s ease;
         }
+        [data-theme="dark"] .mission-section { background: rgba(255, 255, 255, 0.02); }
+        
         .mission-section::before {
-            content: '';
+            content: '\201C';
             position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(251, 191, 36, 0.05) 0%, transparent 70%);
-            pointer-events: none;
+            top: 5px; left: 20px;
+            font-size: 5rem;
+            color: var(--accent-color);
+            opacity: 0.15;
+            font-family: serif;
+        }
+        .mission-section::after {
+            content: '\201D';
+            position: absolute;
+            bottom: -20px; right: 20px;
+            font-size: 5rem;
+            color: var(--accent-color);
+            opacity: 0.15;
+            font-family: serif;
         }
         .mission-text {
-            font-size: 1.1rem;
-            line-height: 1.8;
+            font-size: 1.2em;
+            line-height: 1.9;
             font-weight: 500;
-            text-align: justify;
+            text-align: center;
+            font-family: 'Outfit', 'Noto Sans Bengali', sans-serif;
+            position: relative;
+            z-index: 1;
         }
         .dua-link {
-            display: block;
-            margin-top: 10px;
-            font-size: 0.85rem;
+            display: inline-block;
+            margin-top: 15px;
+            font-size: 0.8rem;
             color: #fbbf24;
-            text-decoration: underline;
+            text-decoration: none;
             cursor: pointer;
-            opacity: 0.9;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: 1px solid rgba(251, 191, 36, 0.3);
+            padding: 4px 12px;
+            border-radius: 20px;
+            transition: 0.3s;
         }
-        .dua-link:hover { opacity: 1; text-shadow: 0 0 8px rgba(251, 191, 36, 0.5); }
+        .dua-link:hover { 
+            background: #fbbf24; 
+            color: #1a4d1a;
+            box-shadow: 0 0 15px rgba(251, 191, 36, 0.4);
+        }
 
         /* Prayer Modal Styles */
         .modal-overlay {
@@ -288,9 +312,10 @@
 
     <div class="mission-section">
         <div class="mission-text">
-            "দুনিয়ার এ ছোট সফরে, একজন মুমিনের ক্যারিয়ার হলো বাতিল শাসন ও দুর্নীতির বিরুদ্ধে লড়াই করার একটি লিগ্যাল প্লাটফর্ম, আপনি যতই উপরে উঠবেন দ্বীনের কথা ততই বেশি উঁচুতে উঠবে। আলম-এ আরওয়াহ (রূহ এর জগত) থেকে আলম-এ-আখিরাহ(শেষ জগত) পর্যন্ত বিস্তৃত আমাদের ক্যারিয়ার!"
+            দুনিয়ার এ ছোট সফরে, একজন মুমিনের ক্যারিয়ার হলো বাতিল শাসন ও দুর্নীতির বিরুদ্ধে লড়াই করার একটি লিগ্যাল প্লাটফর্ম, আপনি যতই উপরে উঠবেন দ্বীনের কথা ততই বেশি উঁচুতে উঠবে। আলম-এ আরওয়াহ (রূহ এর জগত) থেকে আলম-এ-আখিরাহ(শেষ জগত) পর্যন্ত বিস্তৃত আমাদের ক্যারিয়ার!
+            <br>
+            <span class="dua-link" onclick="openDuaModal()">click for a সুন্দর দোয়া here!</span>
         </div>
-        <span class="dua-link" onclick="openDuaModal()">(click for a সুন্দর দোয়া here!)</span>
     </div>
 
     <!-- Custom Prayer Modal -->
