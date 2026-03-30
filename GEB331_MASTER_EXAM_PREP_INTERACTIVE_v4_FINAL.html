@@ -245,11 +245,25 @@
             background: var(--nav-pill-bg); padding: 0.4rem 1.2rem; border-radius: 20px; display: inline-block;
         }
         .markdown-body table {
-            width: 100%; border-collapse: collapse; margin: 1.2rem 0; font-size: 0.9rem;
-            border-radius: 12px; overflow: hidden;
+            display: block;
+            width: 100%;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            border-collapse: collapse;
+            margin: 1.2rem 0;
+            font-size: 0.95rem;
+            border-radius: 12px;
         }
+        /* Custom scrollbar for tables */
+        .markdown-body table::-webkit-scrollbar { height: 6px; }
+        .markdown-body table::-webkit-scrollbar-thumb { background: var(--accent-color); border-radius: 10px; }
+        .markdown-body table::-webkit-scrollbar-track { background: var(--nav-pill-bg); border-radius: 10px; }
+
         .markdown-body th, .markdown-body td {
-            border: 1px solid var(--border-color); padding: 0.8rem 1rem;
+            border: 1px solid var(--border-color); 
+            padding: 0.8rem 1rem;
+            min-width: 140px; /* Ensures readable columns even after expanding font */
+            text-align: left;
         }
         .markdown-body th { background: var(--nav-pill-bg); }
 
@@ -328,6 +342,7 @@
                 backdrop-filter: none !important;
                 box-shadow: none !important;
                 -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
             }
             .mission-section::before, .mission-section::after { display: none !important; }
             .dua-link { display: none !important; }
