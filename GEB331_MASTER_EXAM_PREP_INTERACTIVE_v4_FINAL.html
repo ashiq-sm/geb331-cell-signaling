@@ -372,8 +372,7 @@
                 <option value="mobile">📱 Mobile</option>
                 <option value="desktop">💻 Desktop</option>
             </select>
-            <button class="control-btn" onclick="toggleAllSets(true)">📂 Expand All</button>
-            <button class="control-btn" onclick="toggleAllSets(false)">📁 Collapse All</button>
+            <button class="control-btn" id="toggleAllBtn" onclick="toggleAllSets()">📂 Expand All</button>
             <button class="control-btn live-btn" onclick="exportToPDF()">🖨️ Export PDF</button>
         </div>
     </div>
@@ -444,22 +443,34 @@ function closeDuaModal() {
     document.getElementById('duaModal').classList.remove('active');
 }
 
-function toggleAllSets(isOpen) {
+let allExpanded = false;
+function toggleAllSets() {
+    allExpanded = !allExpanded;
     const cards = document.querySelectorAll('.set-card');
+    const btn = document.getElementById('toggleAllBtn');
+    
     cards.forEach(card => {
-        if (isOpen) {
+        if (allExpanded) {
             if (!card.classList.contains('open')) card.querySelector('.set-header').click();
         } else {
             if (card.classList.contains('open')) card.querySelector('.set-header').click();
         }
     });
+    
+    btn.innerHTML = allExpanded ? '📁 Collapse All' : '📂 Expand All';
 }
 
 function exportToPDF() {
-    // Force expand all for printing
-    toggleAllSets(true);
+    // Force expand for printing
+    const cards = document.querySelectorAll('.set-card');
+    cards.forEach(card => {
+        if (!card.classList.contains('open')) card.querySelector('.set-header').click();
+    });
     
-    // Tiny delay to ensure sets are rendered if there are transitions
+    // Update button state to reflect expansion
+    allExpanded = true;
+    document.getElementById('toggleAllBtn').innerHTML = '📁 Collapse All';
+    
     setTimeout(() => {
         window.print();
     }, 500);
