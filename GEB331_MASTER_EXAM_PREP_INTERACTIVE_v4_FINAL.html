@@ -309,12 +309,46 @@
         .footer-links a.whatsapp:hover { background: #25d366; box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4); transform: translateY(-5px) scale(1.05); }
 
         .highlight { background-color: #fff2b5; color: black; border-radius: 4px; padding: 0 2px; }
+
+        /* Print Specific Styles */
+        .print-only { display: none; }
+        @media print {
+            .print-only { display: block !important; }
+            .controls, .quick-nav, .search-bar, .modal-overlay, .nav-pill, .live-btn { display: none !important; }
+            .mission-section { border: 1px solid #ddd; background: #f9f9f9 !important; color: #000 !important; page-break-inside: avoid; }
+            .dua-link { display: none !important; }
+            .set-content { display: block !important; }
+            .set-card { border: 1px solid #eee; margin-bottom: 2rem; page-break-inside: avoid; }
+            .toggle-icon { display: none; }
+            body { padding: 0; background: white !important; color: black !important; }
+            .container { max-width: 100% !important; margin: 0 !important; }
+            .footer { background: none !important; color: black !important; border-top: 1px solid #eee; margin-top: 2rem; }
+            .footer-links a { background: none !important; color: #1a4d1a !important; border: none !important; padding: 5px 0; font-size: 0.8rem; }
+            .get-in-touch { color: #1a4d1a !important; }
+            
+            #print-header { 
+                text-align: right; 
+                font-size: 0.8rem; 
+                color: #888; 
+                margin-bottom: 1rem; 
+                text-transform: uppercase;
+                letter-spacing: 1px;
+            }
+            #print-dua {
+                margin-top: 1rem;
+                padding-top: 1rem;
+                border-top: 1px dashed #ccc;
+                font-style: italic;
+                font-size: 0.9rem;
+            }
+        }
     </style>
     <!-- Include Marked.js for rendering beautiful Markdown to HTML -->
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
 <body>
 <div class="container">
+    <div id="print-header" class="print-only">sm study note</div>
     <div class="bismillah">
         <span dir="rtl" lang="ar" style="font-family: 'Times New Roman', serif; font-size: 1.6rem; display: block; direction: rtl; unicode-bidi: isolate;">بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ</span>
         <span style="font-size: 0.9rem; font-weight: normal; display: block; margin-top: 5px;">(পরম করুণাময় ও অসীম দয়ালু আল্লাহর নামে শুরু করছি)</span>
@@ -338,6 +372,9 @@
                 <option value="mobile">📱 Mobile</option>
                 <option value="desktop">💻 Desktop</option>
             </select>
+            <button class="control-btn" onclick="toggleAllSets(true)">📂 Expand All</button>
+            <button class="control-btn" onclick="toggleAllSets(false)">📁 Collapse All</button>
+            <button class="control-btn live-btn" onclick="exportToPDF()">🖨️ Export PDF</button>
         </div>
     </div>
 
@@ -346,6 +383,11 @@
             দুনিয়ার এ ছোট সফরে, একজন মুমিনের ক্যারিয়ার হলো বাতিল শাসন ও দুর্নীতির বিরুদ্ধে লড়াই করার একটি লিগ্যাল প্লাটফর্ম, আপনি যতই উপরে উঠবেন দ্বীনের কথা ততই বেশি উঁচুতে উঠবে। আলম-এ আরওয়াহ (রূহ এর জগত) থেকে আলম-এ-আখিরাহ(শেষ জগত) পর্যন্ত বিস্তৃত আমাদের ক্যারিয়ার!
             <br>
             <span class="dua-link" onclick="openDuaModal()">click for a সুন্দর দোয়া here!</span>
+            <div id="print-dua" class="print-only">
+                <strong>সুন্দর দোয়া (Rabbana Atina):</strong><br>
+                রাব্বানা আতিনা ফিদ দুনিয়া হাসানাতাওঁ ওয়া ফিল আখিরাতি হাসানাতাওঁ ওয়া কিনা আযাবান নার।<br>
+                (হে আমাদের প্রতিপালক! আমাদের দুনিয়াতে কল্যাণ দিন এবং আখিরাতেও কল্যাণ দিন এবং আমাদের দোযখের আগুন থেকে রক্ষা করুন।)
+            </div>
         </div>
     </div>
 
@@ -400,6 +442,27 @@ function openDuaModal() {
 
 function closeDuaModal() {
     document.getElementById('duaModal').classList.remove('active');
+}
+
+function toggleAllSets(isOpen) {
+    const cards = document.querySelectorAll('.set-card');
+    cards.forEach(card => {
+        if (isOpen) {
+            if (!card.classList.contains('open')) card.querySelector('.set-header').click();
+        } else {
+            if (card.classList.contains('open')) card.querySelector('.set-header').click();
+        }
+    });
+}
+
+function exportToPDF() {
+    // Force expand all for printing
+    toggleAllSets(true);
+    
+    // Tiny delay to ensure sets are rendered if there are transitions
+    setTimeout(() => {
+        window.print();
+    }, 500);
 }
 
 function toggleTheme() {
