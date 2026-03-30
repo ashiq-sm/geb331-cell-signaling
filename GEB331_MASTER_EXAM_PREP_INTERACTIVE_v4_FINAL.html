@@ -316,12 +316,18 @@
             .print-only { display: block !important; }
             .controls, .quick-nav, .search-bar, .modal-overlay, .nav-pill, .live-btn { display: none !important; }
             .mission-section { 
-                border: 1px solid #ddd; 
-                background: #fdfdfd !important; 
+                display: block !important;
+                visibility: visible !important;
+                opacity: 1 !important;
+                border: 1.5px solid #000 !important; 
+                background: #fff !important; 
                 color: #000 !important; 
                 page-break-inside: avoid; 
                 overflow: visible !important; 
                 padding: 2rem !important;
+                backdrop-filter: none !important;
+                box-shadow: none !important;
+                -webkit-print-color-adjust: exact;
             }
             .mission-section::before, .mission-section::after { display: none !important; }
             .dua-link { display: none !important; }
