@@ -315,12 +315,20 @@
         @media print {
             .print-only { display: block !important; }
             .controls, .quick-nav, .search-bar, .modal-overlay, .nav-pill, .live-btn { display: none !important; }
-            .mission-section { border: 1px solid #ddd; background: #f9f9f9 !important; color: #000 !important; page-break-inside: avoid; }
+            .mission-section { 
+                border: 1px solid #ddd; 
+                background: #fdfdfd !important; 
+                color: #000 !important; 
+                page-break-inside: avoid; 
+                overflow: visible !important; 
+                padding: 2rem !important;
+            }
+            .mission-section::before, .mission-section::after { display: none !important; }
             .dua-link { display: none !important; }
             .set-content { display: block !important; }
             .set-card { border: 1px solid #eee; margin-bottom: 2rem; page-break-inside: avoid; }
             .toggle-icon { display: none; }
-            body { padding: 0; background: white !important; color: black !important; }
+            body { padding: 0.5in; background: white !important; color: black !important; }
             .container { max-width: 100% !important; margin: 0 !important; }
             .footer { background: none !important; color: black !important; border-top: 1px solid #eee; margin-top: 2rem; }
             .footer-links a { background: none !important; color: #1a4d1a !important; border: none !important; padding: 5px 0; font-size: 0.8rem; }
@@ -330,16 +338,18 @@
                 text-align: right; 
                 font-size: 0.8rem; 
                 color: #888; 
-                margin-bottom: 1rem; 
+                margin-bottom: 2rem; 
                 text-transform: uppercase;
                 letter-spacing: 1px;
             }
             #print-dua {
-                margin-top: 1rem;
-                padding-top: 1rem;
-                border-top: 1px dashed #ccc;
+                margin-top: 2rem;
+                padding-top: 1.5rem;
+                border-top: 2px solid #eee;
                 font-style: italic;
-                font-size: 0.9rem;
+                font-size: 1rem;
+                text-align: left;
+                width: 100%;
             }
         }
     </style>
@@ -382,11 +392,11 @@
             দুনিয়ার এ ছোট সফরে, একজন মুমিনের ক্যারিয়ার হলো বাতিল শাসন ও দুর্নীতির বিরুদ্ধে লড়াই করার একটি লিগ্যাল প্লাটফর্ম, আপনি যতই উপরে উঠবেন দ্বীনের কথা ততই বেশি উঁচুতে উঠবে। আলম-এ আরওয়াহ (রূহ এর জগত) থেকে আলম-এ-আখিরাহ(শেষ জগত) পর্যন্ত বিস্তৃত আমাদের ক্যারিয়ার!
             <br>
             <span class="dua-link" onclick="openDuaModal()">click for a সুন্দর দোয়া here!</span>
-            <div id="print-dua" class="print-only">
-                <strong>সুন্দর দোয়া (Rabbana Atina):</strong><br>
-                রাব্বানা আতিনা ফিদ দুনিয়া হাসানাতাওঁ ওয়া ফিল আখিরাতি হাসানাতাওঁ ওয়া কিনা আযাবান নার।<br>
-                (হে আমাদের প্রতিপালক! আমাদের দুনিয়াতে কল্যাণ দিন এবং আখিরাতেও কল্যাণ দিন এবং আমাদের দোযখের আগুন থেকে রক্ষা করুন।)
-            </div>
+        </div>
+        <div id="print-dua" class="print-only">
+            <strong>সুন্দর দোয়া (Rabbana Atina):</strong><br>
+            রাব্বানা আতিনা ফিদ দুনিয়া হাসানাতাওঁ ওয়া ফিল আখিরাতি হাসানাতাওঁ ওয়া কিনা আযাবান নার।<br>
+            (হে আমাদের প্রতিপালক! আমাদের দুনিয়াতে কল্যাণ দিন এবং আখিরাতেও কল্যাণ দিন এবং আমাদের দোযখের আগুন থেকে রক্ষা করুন।)
         </div>
     </div>
 
