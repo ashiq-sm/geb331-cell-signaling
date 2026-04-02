@@ -270,9 +270,10 @@
         .footer {
             margin-top: 5rem;
             padding: 4rem 2rem;
-            background: rgba(255, 255, 255, 0.03);
+            background: #080c08; /* Fixed dark background */
             border-top: 1px solid rgba(255, 255, 255, 0.05);
             text-align: center;
+            color: #ffffff; /* Fixed text color */
         }
 
         .author-card {
@@ -362,7 +363,7 @@
 
         .author-title {
             font-size: 0.9rem;
-            opacity: 0.7;
+            color: rgba(255, 255, 255, 0.7); /* Fixed light opacity */
             margin-bottom: 1.5rem;
         }
         
@@ -389,13 +390,13 @@
             display: flex;
             align-items: center;
             gap: 8px;
-            color: white;
+            color: #ffffff !important; /* Force light text */
             text-decoration: none;
             font-size: 0.9rem;
             font-weight: 600;
             padding: 10px 20px;
             border-radius: 50px;
-            background: rgba(255,255,255,0.1);
+            background: rgba(255,255,255,0.08); /* Darker link bg */
             border: 1px solid rgba(255,255,255,0.1);
             transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
