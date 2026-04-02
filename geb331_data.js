@@ -2,7 +2,7 @@ const geb331_sets = [
 {
 id: "set1",
 title: "🔹 SET 1 — PRINCIPLES OF CELL SIGNALING",
-rawMd: `### Intracellular Signaling Pathway
+rawMd_bn: `### Intracellular Signaling Pathway
 **[Q001] MARKS: 14**
 a) Illustrate a simple intracellular signaling pathway activated by an extracellular signaling molecule. [3]
 Ans: এই pathway-টির কাজ হলো extracellular signal (বহিঃকোষীয় সংকেত)-কে কোষের ভিতরে নিয়ে গিয়ে response (সাড়া) তৈরি করা।
@@ -130,12 +130,110 @@ Why preferred: Diffuse fast, energy efficient, specific spatial range.
 **[Q078] (ADDITION)**
 Ans:
 Heterotrimeric: 3 subunits (α, β, γ). Coupled to GPCR.
-Monomeric: 1 subunit (Ras, Rho). Modulated by GEF/GAPs directly.`
+Monomeric: 1 subunit (Ras, Rho). Modulated by GEF/GAPs directly.`,
+rawMd_en: `### Intracellular Signaling Pathway
+**[Q001] MARKS: 14**
+a) Illustrate a simple intracellular signaling pathway activated by an extracellular signaling molecule. [3]
+Ans: This pathway serves to take an extracellular signal and convert it into a specific cellular response within the target cell.
+
+| Step | Action | Detail |
+|---|---|---|
+| 1 | Ligand binding | An extracellular signaling molecule (ligand — from Latin ligare = "to bind") binds to the receptor protein of a target cell [29, 59]. |
+| 2 | Receptor activation | Binding causes a conformational change (conformare = "to shape") in the receptor, which activates it [29, 148]. |
+| 3 | Signal relay | The activated receptor then triggers one or more intracellular signaling proteins. These relay (from French relayer = "to pass on") the signal deeper into the cell [29, 148]. |
+| 4 | Effector activation | At the end of the pathway is an effector protein (efficere = "to accomplish") — such as a metabolic enzyme or gene regulator — which carries out the final task [29, 60]. |
+| 5 | Cellular response | The effector protein acts to change the cell's behavior, such as activating an enzyme or changing gene expression [29, 148]. |
+
+Memory Trick: "Ligand binds → Receptor changes → Relay proteins pass → Effector acts → Cell responds"
+
+**b) Compare synaptic and endocrine signaling. [3]**
+Ans: These are two distinct methods of distance signaling: one is fast and localized (synaptic), while the other is slower and widespread (endocrine).
+
+| Feature | Synaptic Signaling | Endocrine Signaling |
+|---|---|---|
+| Signal molecule | Neurotransmitter (e.g. acetylcholine, GABA, glutamate) | Hormone (e.g. insulin, adrenaline, thyroid hormone) |
+| Delivery medium | Synaptic cleft — the tiny gap between neurons | Bloodstream — hormones distribute throughout the entire body |
+| Distance traveled | Very short — ~20-50 nanometers across the cleft | Long distances — reaches distant target cells anywhere in the body |
+| Speed of response | Fast — milliseconds — rapid electrical-to-chemical switch | Slow — minutes to hours — takes time for transport and distribution |
+| Specificity | Highly precise — only the post-synaptic neuron is targeted | Broad — any cell with a matching receptor can respond |
+| Signal removal | Fast — rapid reuptake or enzymatic breakdown (like AChE) | Slow — metabolized in the liver or excreted by the kidneys |
+
+**c) Why are the speeds of responses to a variety of extracellular signals different? [3]**
+Ans: The speed depends on three primary factors:
+1. **Response Mechanism Type**: Protein modification (fast) vs. Gene expression (slow).
+2. **Signal Delivery Method**: Electrical pulses (very fast) vs. Blood circulation (slower).
+3. **Pathway Complexity**: Short cascades are faster than long, highly amplified ones.
+
+**d) How does a typical cell respond to specific combinations? [5]**
+Ans: A cell receives hundreds of signals simultaneously and integrates them via:
+1. **AND gate logic**: Requiring multiple signals at once for activation.
+2. **OR gate logic**: Different signals trigger the same vital response.
+3. **Scaffold proteins**: Organizing protein complexes to ensure correct signal flow.
+4. **Survival vs Death logic**: In the absence of specific survival signals, a cell programmedly undergoes apoptosis.
+
+### Components of Cell Signaling
+**[Q002] MARKS: 3**
+What are components of cell signaling? Define signal transduction and write down its general features.
+Ans:
+**7 Components:** 1. Signaling cell, 2. Ligand, 3. Target cell, 4. Receptor, 5. Intracellular signaling proteins, 6. Second messengers, 7. Effector proteins.
+**Signal Transduction**: The process of converting an extracellular signal into an intracellular chemical signal.
+**5 General Features**:
+- **Specificity**: High affinity binding between ligand and receptor.
+- **Amplification**: A small signal triggers a massive enzyme cascade.
+- **Integration**: Merging multiple inputs into a single output.
+- **Desensitization**: Reducing sensitivity when signal persists (adaptation).
+- **Modularity**: Using shared protein domains (like SH2) to form different complexes.
+
+### Ligand–Receptor Interactions
+**[Q003] MARKS: 3**
+"Binding on same receptor a ligand may elicit different pattern of responses in different types of cells" — explain.
+Ans: This happens because different cell types contain different intracellular machinery (downstream proteins and gene expression).
+Example: **Acetylcholine (ACh)**
+- **Heart pacemaker**: Binds M2 receptor → G-protein (Gi) → slows heart rate.
+- **Salivary gland**: Binds M3 receptor → G-protein (Gq) → increases saliva secretion.
+
+### Dual‑Function Molecules
+**[Q004] MARKS: 3**
+"Same signaling molecule can be receptor and effector for a particular ligand" — explain.
+Ans: **Nuclear Receptors** are the perfect example. They bind the ligand directly and then function as transcription factors (effectors) to regulate DNA, combining both roles into one protein.
+
+### Cell Signaling Molecules
+**[Q006] MARKS: 14**
+**a) What are the cell signaling molecules? [5]**
+Ans: Chemical substances (ligands) secreted by one cell to transfer information to another (e.g., hormones, neurotransmitters).
+
+**b) Mention different types of signal methods. [5]**
+Ans: Endocrine (via blood), Paracrine (local), Synaptic (neurons), and Contact-dependent (direct touch).
+
+**c) Write examples of hydrophilic and hydrophobic signaling molecules. [4]**
+Ans:
+- **Hydrophilic**: Insulin, Epinephrine (cannot cross membrane).
+- **Hydrophobic**: Steroid hormones, Nitric Oxide (diffuse directly through membrane).
+
+### Orphan and Nuclear Receptors
+**[Q007] MARKS: 14**
+**a) What are orphan receptors? [4]**
+Ans: Receptors whose natural biological ligand is yet to be discovered.
+
+**b) Nuclear receptors are receptors and effectors... Explain. [5]**
+(Refer to Q004).
+
+**c) Classification and functions of nuclear receptors. [5]**
+Ans: 
+- **Type I**: Homodimers in cytoplasm (e.g., Estrogen Receptor).
+- **Type II**: Heterodimers already in the nucleus (e.g., Thyroid Receptor).
+- **Functions**: Regulate growth, metabolism, and reproduction.
+
+### Molecular Switches in Cell Signaling
+**[Q076] (ADDITION)**
+Ans: Proteins that flip between ON (active) and OFF (inactive) states.
+1. **Phosphorylation switch**: Added by kinases (ON), removed by phosphatases (OFF).
+2. **GTP-binding switch**: Active when bound to GTP, inactive when bound to GDP.`
 },
 {
 id: "set2",
 title: "🔹 SET 2 — GPCR & G-PROTEIN SIGNALING (Expanded & Detailed)",
-rawMd: `### G-Protein & PKA Signaling
+rawMd_bn: `### G-Protein & PKA Signaling
 
 **[Q013] MARKS: 14**
 
@@ -234,124 +332,106 @@ rawMd: `### G-Protein & PKA Signaling
 **c) What is CaM kinase? How does CaM kinase frequency-decode calcium oscillations? [4]**
 
 **Ans:** **CaM kinase II** হলো ক্যালসিয়াম- Calmodulin নির্ভর প্রোটিন কাইনেজ যা কোষের **Memory Device** হিসেবে কাজ করে।
-* **Frequency Decoding:** ক্যালসিয়ামের ঘনঘন স্পন্দনে (High frequency cycles) এনজাইমটি পুরোপুরি বন্ধ হওয়ার আগেই পরবর্তী সংকেত পায়। এর ফলে এটি **Autophosphorylation**-এর মাধ্যমে নিজের সক্রিয়তা বজায় রাখে এবং সিগন্যাল শেষ হওয়ার পরেও সক্রিয় থাকতে পারে [১৫৫, ১৬০, ২৪৫]। এভাবে এটি ক্যালসিয়ামের কম্পাঙ্ক বিশ্লেষণ করে ভিন্ন ভিন্ন সাড়া তৈরি করে।`
-},
-{
-id: "set3",
-title: "🔹 SET 3 — ENZYME-LINKED RECEPTORS (RTK, MAPK, PI3K)",
-rawMd: `### RTKs
-**[Q023] Enzyme-linked receptors properties [6]**
-Ans: Single trans-membrane, homodimerization, autophosphorylation. Cancer connection: EGF receptor mutant ErbB lacks ligand-binding part, constantly dimerized/active (Constitutive activation).
+* **Frequency Decoding:** ক্যালসিয়ামের ঘনঘন স্পন্দনে (High frequency cycles) এনজাইমটি পুরোপুরি বন্ধ হওয়ার আগেই পরবর্তী সংকেত পায়। এর ফলে এটি **Autophosphorylation**-এর মাধ্যমে নিজের সক্রিয়তা বজায় রাখে এবং সিগন্যাল শেষ হওয়ার পরেও সক্রিয় থাকতে পারে [১৫৫, ১৬০, ২৪৫]। এভাবে এটি ক্যালসিয়ামের কম্পাঙ্ক বিশ্লেষণ করে ভিন্ন ভিন্ন সাড়া তৈরি করে।`,
+rawMd_en: `### G-Protein & PKA Signaling
 
-### Ras
-**[Q024] a) Ras protein and cancer [5]**
-Ans: Small monomeric GTPase. Oncogenic mutations (G12V, Q61L) destroy GTPase activity, perpetually signaling MAPK pathway (30% humans cancers).
-**b) PI-3 kinase and anti-apoptotic [5]**
-Ans: RTK → PI3K → PIP3 → Akt → phosphorylates Bad → disables Bad from inhibiting Bcl2 → Bcl2 keeps mitochondria intact → blocks apoptosis.
+**[Q013] MARKS: 14**
 
-### MAPK
-**[Q025] a) MAP kinase pathway [5]**
-Ans: Three tiers: MAPKKK (Raf) → MAPKK (MEK) → MAPK (ERK).
-**b) Role of p38 [5]**
-Ans: Stress-activated. Arrests cell cycle via p53-p21 or promotes proliferation in special cases (immune cells).
+**a) Show the activation of Protein Kinase A by G-protein signaling. [5]**
 
-### JNK, ERK, Calcium
-**[Q026] a) JNK [4]**
-Ans: Stress kinase, promotes apoptosis via Bim/Bad, c-Jun.
-**b) ERK [5]**
-Ans: Growth factor signaling. Sustained ERK = differentiation (e.g. PC12 to neuron). Transient = proliferation.
-**c) "Ca2+ as messenger" [5]**
-Ans: Steep concentration gradient. Opens channels quickly. Binds troponin C, Calmodulin, PKC, synaptotagmin.
+**Ans:** This process primarily occurs via the **\u03b2-adrenergic pathway**, converting extracellular signals into massive intracellular enzyme activity.
 
-### Cascades & Adaptors
-**[Q029] Serine/threonine cascade by Ras [7]**
-Ans: Ras(GTP) hooks Raf to membrane. Raf activates MEK, MEK activates ERK (Thr/Tyr). Massive amplification.
-**[Q030/075] SH2 domain in glycogen [8]**
-Ans: SH2 binds phospho-tyrosine. Insulin binds RTK → recruits IRS-1 (PTB) → PI3K (SH2) → Akt → inactivates GSK3 → glycogen synthase turns ON.
-**[Q084] Rac GTPase:** Lamellipodia formation (actin edge).
-**[Q085] SH2 vs SH3:** SH2 binds P-Tyr; SH3 binds PxxP (proline). Grb2 has both.`
-},
-{
-id: "set4",
-title: "🔹 SET 4 — NOTCH-DELTA, NF-κB, Wnt/β-CATENIN",
-rawMd: `### Notch Signaling
-**[Q032] a) Notch activation by proteolytic cleavage [3]**
-Ans:
-1st cleavage: Furin in Golgi (creates dual subunit).
-2nd cleavage: ADAM metalloprotease after Delta binds (removes extracellular piece).
-3rd cleavage: γ-secretase complex (liberates NICD to nucleus).
-**[Q034] a) Lateral inhibition [6]**
-Ans: Future neuron upregulates Delta → binds Notch on neighbor → neighbor expresses Hes/Hey → represses pro-neural genes. Single cell forms neuron while neighbors become epidermis.
+| Step | Event | Detailed Mechanism |
+|:---:|:---|:---|
+| 1 | **Ligand Binding** | Ligands like **Epinephrine** or **Glucagon** bind to their specific **GPCR** on the cell surface [11, 427]. |
+| 2 | **G-Protein Activation** | The receptor undergoes a shape change, allowing the **Gs\u03b1** subunit to exchange its GDP for **GTP**, activating it [8, 11]. |
+| 3 | **Adenylyl Cyclase** | The active Gs\u03b1 subunit detaches and activates the membrane-bound enzyme **Adenylyl Cyclase** [8, 11]. |
+| 4 | **cAMP Creation** | This enzyme converts ATP into the second messenger **cAMP**. This is a major amplification step [8, 11]. |
+| 5 | **PKA Activation** | **cAMP** molecules bind to PKA's regulatory subunits, freeing the catalytic subunits to go and phosphorylate target proteins [10, 12, 15]. |
 
-### Wnt / β-Catenin
-**[Q032] b) β-catenin degradation complex [4]**
-Ans: Axin + APC scaffold. CK1 primes, GSK3 phosphorylates β-catenin → ubiquitinated by β-TrCP → proteasome degradation. Keeps nuclear Wnt genes Off.
-**[Q034] b) APC mutation in cancer [6]**
-Ans: APC mutant cannot scaffold β-catenin. Accumulates everywhere → goes to nucleus → excessive transcription of c-Myc, cyclin D1 → colon cancer (FAP disorder).
-**[Q039] Wnt regulation [7]**
-Ans: Wnt binds Frizzled/LRP → activates Dishevelled (Dvl) → pulls Axin away → frees β-catenin from degradation → runs to nucleus with TCF/LEF to drive transcription.
+**b) Describe the signaling occurred by calmodulin. [5]**
 
-### NF-κB
-**[Q032] c) NF-κB by TNFα [7]**
-Ans: TNFα binds TNFR1 → trimerization → IKK complex activated → phosphorylates IκBα → IκBα degraded → NF-κB free to enter nucleus → drives immunity/inflammation genes.`
-},
-{
-id: "set5",
-title: "🔹 SET 5 — TGF-β & BMP/SMAD SIGNALING",
-rawMd: `### Canonical TGF-β
-**[Q040] Canonical pathway [5]**
-Ans: TGF-β dimer → Type II receptor → phosphorylates Type I receptor → phosphorylates R-Smad (2/3) → binds co-Smad (4) → nucleus for gene targets (p15, p21).
-**[Q044] Dual role in cancer [4]**
-Ans: Early: tumor suppressor (apoptosis/arrest). Late: tumor promoter (EMT, metastasis, immunosuppression). Lost Smad4 often causes the switch.
+**Ans:** **Calmodulin** is a vital **Calcium-responsive adapter protein** that translates calcium signals into cellular action.
+* **Ca\u00b2\u207a Binding:** When cytosolic Ca\u00b2\u207a rises to ~**10\u207b\u2076 M**, 4 calcium ions bind to Calmodulin's 'EF hand' domains [43, 151].
+* **Conformational Change:** Calmodulin changes into a 'Dumbbell' shape, allowing it to "wrap around" and activate various target proteins.
+* **Target Interaction:** Active Calmodulin triggers **CaM-kinases**, **MLCK** (for muscle contraction), or calcium pumps to reset the cell [43, 46, 152].
 
-### BMP
-**[Q046] BMP signaling in bone [7]**
-Ans: BMPs (2/4/7) bind BMPRII/BMPRI → Smad1/5/8 → Smad4 → nucleus → osteoblast genes (Runx2, Osterix).
+**c) Schematically represent the desensitization of G-protein coupled receptors. [4]**
 
-### TGF-β Basics
-**[Q088] Superfamily [ADDITION]**
-Ans: 42 genes. Subfamilies: TGF-βs (fibrosis), BMPs (bone), Activins/Inhibins (reproduction). Form active homo/heterodimers.
-**[Q089] Maturation [ADDITION]**
-Ans: Secreted as Large Latent Complex (with LAP and LTBP) to extracellular matrix. Activated by mechanical pulling by integrins, extreme pH, or proteases releasing mature TGF-β dimer.`
-},
-{
-id: "set6",
-title: "🔹 SET 6 — ER STRESS, HYPOXIA, DNA DAMAGE",
-rawMd: `### Memory and Calcium
-**[Q048] CaMKII [3]**
-Ans: Autophosphorylation at Thr286 sustains activity. Retains memory of past Ca2+ fluxes.
-**[Q050] CICR [3]**
-Ans: Calcium Induced Calcium Release (RyR receptors amplify IP3 signals on ER).
+**Ans:** **Desensitization** is how a cell "stops listening" to a signal that persists for too long.
+1. **Phosphorylation**: The active receptor is tagged by **GRK** (GPCR Kinase) enzymes [30, 170].
+2. **Arrestin Binding**: A protein called **Arrestin** binds to the phosphorylated receptor, physically blocking its contact with G-proteins [32, 34, 170].
+3. **Endocytosis**: The entire Arrestin-receptor complex is "swallowed" into the cell (internalized), making it invisible to outside ligands [34, 169].
 
-### ER Stress / UPR
-**[Q053] UPR signaling [5]**
-Ans: Unfolded Protein Response. Sensors: IRE1, PERK, ATF6. Halts translation, induces chaperones (BiP). If unresolved, triggers apoptosis via CHOP.
+---
 
-### Hypoxia
-**[Q055] Hypoxia vs Normoxia [4]**
-Ans:
-Normoxia: HIF-1α is hydroxylated by PHD (using O2) → recognized by VHL → Proteasome degradation.
-Hypoxia: PHD inactive. HIF-1α stabilizes → moves to nucleus → dimer with HIF-1β → activates VEGF (angiogenesis), glycolytic enzymes.
+### G-Protein Function & Specificity
 
-### DNA Damage
-**[Q097] DNA Damage Response [ADDITION]**
-Ans: ATM/ATR kinases detect breaks → p53 stabilized. Promotes p21 for G1/S arrest or activates BAX/PUMA for apoptosis if repair fails. Keeps genome integrity.`
-},
-{
-id: "set7",
-title: "🔹 SET 7 — CROSS-TALK, NO, INTEGRATION",
-rawMd: `### Chemotaxis
-**[Q059] Bacterial chemotaxis [6]**
-Ans: Two-component system (Histidine Kinase CheA + Response Regulator CheY). Tumbles (CW) or Runs (CCW). Adapt via methylation of receptors by CheR/CheB.
+**[Q014] MARKS: 3**
 
-### NO Signaling
-**[Q062/063] Vasodilation [9]**
-Ans: ACh on endothelial cells → Ca2+ → eNOS makes NO from Arginine → NO diffuses to smooth muscle → binds soluble Guanylyl Cyclase (sGC) → makes cGMP → PKG → muscle relaxation. Viagra inhibits cGMP PDE.
+**a) What is G-protein? Why can't ATP activate G-protein?**
 
-### Gap Junctions & Comparisons
-**Gap junctions [3]**
-Ans: Connexin hexamers. Allow electrical coupling and small metabolic molecules (< 1 kDa) like cAMP/Ca2+ to pass for coordinated responses.
-**[Q099] Taste vs Olfaction [ADDITION]**
-Ans: Olfaction relies purely on cAMP/cNg channels. Taste uses IP3/Ca2+ (Sweet/Bitter/Umami) and TRPM5 channels. Both create action potentials to the brain.`
+**Ans:** **G-protein** functions as a **Molecular Switch** that uses Guanine nucleotides (GTP/GDP) to control signal flow [189, 223].
+* **The ATP Issue**: Specificity is key! The **Alanine-146** residue in the G-protein forms a perfect hydrogen bond with the Oxygen atom of Guanine. ATP (Adenine) lacks this Oxygen atom, making it a "bad fit" that cannot activate the switch [18, 20, 192, 388].
+
+**b) "Cholera toxicity is manifested by the loss of self-inactivating property of G-protein" \u2014 explain.**
+
+**Ans:** The cholera toxin (*Vibrio cholerae*) chemically modifies the Gs\u03b1 subunit via **ADP-ribosylation** [24, 203, 316].
+* **The Result**: The G-protein loses its **intrinsic GTPase activity** (its "off timer").
+* It gets stuck in the **PERMANENT ON** position, creating endless cAMP. This forces water and salt out of the cells, causing severe diarrhea [24, 25, 316].
+
+---
+
+### Phototransduction & Olfaction
+
+**[Q015] MARKS: 4**
+
+**"Phototransduction is an electrical transmission mediated by GPCRs" \u2014 explain.**
+
+**Ans:** Vision in rod cells is a rapid signaling cascade:
+1. **Light Detection**: A photon hits **Rhodopsin (GPCR)**; its retinal part flips shape.
+2. **Transducin Activation**: This triggers the G-protein **Transducin (Gt)** [73, 163].
+3. **PDE Action**: Active Transducin turns on a **Phosphodiesterase (PDE)** enzyme which rapidly destroys cGMP [76, 248].
+4. **Hyperpolarization**: Lower cGMP causes sodium channels to close, generating an electrical pulse sent to the brain [76, 248, 341].
+
+**[Q018] MARKS: 14**
+
+**a) Describe the olfactory signal transduction pathway. [5]**
+
+**Ans:** Smelling involves specific GPCR signaling:
+* **Binding**: Odor molecules bind to Olfactory Receptors (OR) in the nose [82, 162].
+* **G-olf Activation**: This triggers **Golf**, a specialized G-protein [82, 162].
+* **cAMP Burst**: Active Golf drives Adenylyl Cyclase to produce massive **cAMP** [82, 162].
+* **Ion Flux**: cAMP opens **Cyclic-nucleotide gated (CNG)** channels; the flow of Na\u207a and Ca\u00b2\u207a creates the neural signal of smell [82, 89, 162].
+
+**b) How does combinatorial coding work in olfactory signaling? [5]**
+
+**Ans:** Humans have ~400 receptor types but can detect 10,000+ smells. This "magic" is called **Combinatorial Coding**.
+* Each odor molecule activates a specific **pattern** of multiple receptors, not just one.
+* One receptor can also detect multiple different molecules.
+* The brain interprets these "neural fingerprints" (combinations) to identify specific complex scents [107, 162].
+
+---
+
+### Phospholipase C & CaM Kinase
+
+**[Q017] MARKS: 14**
+
+**a) What is phospholipase C? Discuss the role of phospholipase C in cell signaling. [5]**
+
+**Ans:** **Phospholipase C (PLC)** is an enzyme activated by **Gq proteins**. It acts as a major "signal splitter" [37, 38, 137].
+* **Cleavage**: It breaks down the membrane lipid **PIP\u2082** into TWO powerful messengers: **IP\u2083** (releases calcium) and **DAG** (activates kinase PKC) [38, 137, 239].
+
+**b) Describe the signaling pathway activated by diacylglycerol (DAG) and protein kinase C (PKC). [5]**
+
+**Ans:** **DAG** works with **PKC** to control cell growth and metabolism:
+1. **IP\u2083** (from PLC) releases calcium into the cytosol.
+2. The combination of membrane-bound **DAG** and high **Calcium** recruits and activates **Protein Kinase C (PKC)** on the membrane [41, 138, 141].
+3. PKC then phosphorylates targets that drive cell growth and proliferation [41, 53, 141].
+
+**c) What is CaM kinase? How does CaM kinase frequency-decode calcium oscillations? [4]**
+
+**Ans:** **CaM kinase II** acts as a molecular "Memory Device."
+* **Frequency Decoding**: In high-frequency calcium pulses, the enzyme doesn't have time to fully deactivate between pulses. It uses **Autophosphorylation** to stay active longer, essentially "counting" the signal frequency to choose different cellular outcomes [155, 160, 245].`
 }
 ];

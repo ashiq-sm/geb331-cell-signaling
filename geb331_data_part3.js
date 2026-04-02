@@ -2,7 +2,7 @@ const geb331_sets_part3 = [
     {
         id: "set5",
         title: "🔹 SET 5 — TGF-β & SMAD Signaling Pathways",
-        rawMd: `### TGF-β: Definition, Functions, & Canonical Pathway
+        rawMd_bn: `### TGF-β: Definition, Functions, & Canonical Pathway
 
 **[Q040] MARKS: 13**  
 **a) What is TGF-β? Write the Functions of TGF-β [5]**
@@ -34,7 +34,7 @@ const geb331_sets_part3 = [
 **Canonical SMAD Pathway (ধাপে ধাপে):**
 
 ১. **Ligand Binding:** TGF-β ডাইমার হিসেবে এসে প্রথমে **Type II receptor (TβRII)**-এর সাথে bind করে।
-২. **Receptor Activation:** TβRII তখন **Type I receptor (TβRI)**-কে টেনে আনে এবং এর GS domain-এ ফসফোরাইলেট করে اسے সক্রিয় করে [13,37]।
+২. **Receptor Activation:** TβRII তখন **Type I receptor (TβRI)**-কে টেনে আনে এবং এর GS domain-এ ফসফোরাইলেট করে সচল করে তুলে [13,37]।
 ৩. **SMAD Phosphorylation:** সক্রিয় TβRI সাইটোসোলে ভাসমান **R-SMADs (SMAD2 বা SMAD3)**-এর C-terminal অংশে ফসফেট যুক্ত করে।
 ৪. **Complex Formation:** ফসফোরাইলেটেড SMAD2/3 রিসেপ্টর থেকে আলাদা হয়ে **Co-SMAD (SMAD4)**-এর সাথে যুক্ত হয়ে একটি trimeric complex তৈরি করে [14,20]।
 ৫. **Nuclear Translocation:** এই কমপ্লেক্সটি importin-এর সাহায্যে সোজা নিউক্লিয়াসে প্রবেশ করে।
@@ -74,7 +74,7 @@ const geb331_sets_part3 = [
 | **Early Cancer (প্রাথমিক অবস্থা)** | **Tumor Suppressor (ক্যানসার দমনকারী)** | TGF-β এপিথেলিয়াল কোষের বিভাজন থামায়। এটি **p15 এবং p21** জিন চালু করে cell cycle-কে G1 ফেজে আটকে দেয় এবং c-Myc-কে বন্ধ করে কোষ বিভাজন থামায় [37,53]। |
 | **Late Cancer (চূড়ান্ত অবস্থা)** | **Tumor Promoter (ক্যানসার বৃদ্ধিকারী)** | মিউটেশনের কারণে ক্যানসার কোষ TGF-β-এর বিভাজন-রোধী সিগন্যাল শোনা বন্ধ করে দেয় (যেমন SMAD4 নষ্ট হয়ে যায়)। কিন্তু TGF-β-এর অন্যান্য ক্ষতিকর সিগন্যাল ঠিকই কাজ করে। এটি **EMT (Epithelial-Mesenchymal Transition)** ঘটায়, ফলে ক্যানসার কোষ চারদিকে ছড়িয়ে পড়ে (Metastasis)। এটি ইমিউন সিস্টেমকেও দমিয়ে দেয়, কোষকে বাঁচতে সাহায্য করে [39,41,52]। |
 
-**জাকির স্যারের স্লাইড থেকে:** "In normal cells and early carcinomas, TGF-β acts as a tumor suppressor. However, in advanced cancers, TGF-β loses its growth-inhibitory function and instead promotes tumor invasion, metastasis, and immune evasion."
+**স্যারের স্লাইড থেকে:** "In normal cells and early carcinomas, TGF-β acts as a tumor suppressor. However, in advanced cancers, TGF-β loses its growth-inhibitory function and instead promotes tumor invasion, metastasis, and immune evasion."
 
 ---
 
@@ -95,13 +95,100 @@ const geb331_sets_part3 = [
 ৩. **Limb Patterning (হাত-পায়ের আকার গঠন):** হাত-পায়ের আঙুলের মাঝখানের কোষগুলোকে মেরে ফেলে (Apoptosis) সুন্দর আঙুল তৈরি করতে BMP কাজ করে।
 ৪. **Fracture Healing (প্লাস্টার/হাড় জোড়া লাগানো):** হাড় ভেঙে গেলে সেখানে নতুন হাড় তৈরি করার জন্য ক্লিনিক্যালি রিকম্বিন্যান্ট BMP-2 এবং BMP-7 ব্যবহার করা হয়।
 
-**Disease (রোগ):** BMP রিসেপ্টরে মিউটেশন হলে **FOP (Fibrodysplasia ossificans progressiva)** নামক ভয়াবহ রোগ হয়, যেখানে মাংসপেশিগুলো নিজে নিজেই শক্ত হাড়ে পরিণত হয়ে যায় [28]।
-`
+**Disease (রোগ):** BMP রিসেপ্টরে মিউটেশন হলে **FOP (Fibrodysplasia ossificans progressiva)** নামক ভয়াবহ রোগ হয়, যেখানে মাংসপেশিগুলো নিজে নিজেই শক্ত হাড়ে পরিণত হয়ে যায় [28]।`,
+        rawMd_en: `### TGF-β: Definition, Functions, & Canonical Pathway
+
+**[Q040] MARKS: 13**  
+**a) What is TGF-β? Write the Functions of TGF-β [5]**
+
+**Ans:** **TGF-β (Transforming Growth Factor-β)** is a multifunctional (pleiotropic) cytokine or growth factor. It is the primary member of the **TGF-β superfamily**, which also includes BMPs, Activins, and Nodal.
+
+These molecules typically control cell cycle arrest, the creation of the extracellular matrix (ECM), and embryonic development. They signal through specialized **Serine/Threonine kinase receptors** [14,37].
+
+**Biological Functions of TGF-β:**
+
+| Context | Function | Mechanism/Details |
+|---------|----------|-------------------|
+| **Cell Proliferation** | **Anti-proliferative** (Stops growth) | It locks cells in the G1 phase by activating **p21 and p15** genes (acting as a tumor suppressor). |
+| **EMT** | **Transition into Metastasis** | It changes epithelial cells into mesenchymal cells (via Snail/ZEB genes), helping cancer spread. |
+| **Immunosuppression** | **Dampens Immunity** | It inhibits T cells and Macrophages, allowing cancer to hide from the immune system. |
+| **Wound Healing** | **Repairs Tissue** | It activates fibroblasts to increase collagen and ECM production. |
+| **Development** | **Body Patterning** | Crucial for forming the left-right axis and the proper shape of the palate (lips/mouth). |
+
+---
+
+**b) Illustrate the Canonical TGF-β Signaling Pathway [5]**
+
+**Ans:** This pathway is essentially the journey of **SMAD** proteins from the cell surface to the nucleus.
+
+**Receptors:**
+* **Type II Receptor (TβRII):** Always active (constitutively on).
+* **Type I Receptor (TβRI):** Becomes active ONLY after Type II phosphorylates it.
+
+**The Canonical SMAD Journey:**
+1. **Binding**: The TGF-β dimer binds to the **Type II receptor**.
+2. **Activation**: Type II pulls in the **Type I receptor** and phosphorylates it to turn it on [13,37].
+3. **SMAD Tagging**: The active Type I receptor adds a phosphate group to floating **R-SMADs** (SMAD2 or SMAD3).
+4. **Partnering up**: Phosphorylated SMAD2/3 detach from the receptor and bind with **Co-SMAD (SMAD4)** to form a powerful trio complex [14,20].
+5. **Moving In**: This complex enters the nucleus (via the protein **importin**).
+6. **Action**: In the nucleus, they bind to **SBE (SMAD-Binding Elements)** on DNA and switch on genes like **p21** to stop cell division [14,37].
+
+**Memory Trick:** *"TGF-β grabs II → II ignites I → I tags SMAD2/3 → they grab SMAD4 → they enter the 'VIP Nucleus' → Gene ON!"*
+
+---
+
+**c) How Inhibitory SMAD Inhibits BMP Signaling [3]**
+
+**Ans:** **SMAD6** is the primary "Bouncer" or **Inhibitory SMAD** that stops BMP (Bone Morphogenetic Protein) signals.
+
+**How it works (Inhibition Mechanism):**
+1. **The Block**: SMAD6 literally sits on the BMP Type I receptor. This prevents the real "workers" (SMAD1/5) from getting phosphorylated.
+2. **The Fake Out**: Even if SMAD1 gets a phosphate, SMAD6 can bind to it and form a "useless complex" (SMAD1-SMAD6), blocking it from partnering with SMAD4 [17,38].
+3. **The Eraser**: SMAD6 recruits the enzyme **SMURF1** to destroy the receptor (via ubiquitination).
+
+**Result**: BMP signaling stops, preventing the body from making too much bone or cartilage in the wrong places.
+
+---
+
+### TGF-β in Cancer Progression
+
+**[Q044 / Q045b] MARKS: 4**  
+**Dual Role of TGF-β in Cancer**
+
+**Ans:** TGF-β plays a "Double Agent" (Paradoxical) role in cancer: it is a **Protector (Suppressor)** in early stages but an **Attacker (Promoter)** in late stages [39,41,52].
+
+| Phase | Role | Mechanism |
+|-------|------|-----------|
+| **Early Cancer** | **Tumor Suppressor** | It stops healthy cells from turning cancerous by freezing the cell cycle in G1 (via p15/p21 genes) [37,53]. |
+| **Late Cancer** | **Tumor Promoter** | Cancer cells mutate and "stop listening" to the "Stop Growth" signal (e.g., SMAD4 is lost). However, they still use TGF-β to spread (**EMT**) and to hide from the immune system [39,41,52]. |
+
+**From Sir's Slide:** *"In normal cells and early carcinomas, TGF-β acts as a tumor suppressor. However, in advanced cancers, TGF-β loses its growth-inhibitory function and instead promotes tumor invasion, metastasis, and immune evasion."*
+
+---
+
+### BMP Signaling in Bone Development
+
+**[Q046] MARKS: 7**  
+**Role of BMP Signaling in Bone Development**
+
+**Ans:** **BMPs (Bone Morphogenetic Proteins)** are members of the TGF-β family that are the "Master Architects" of bone, cartilage, and our entire skeleton [27,28].
+
+**How it Builds Bone (Pathway):**
+* BMPs trigger a SMAD cascade (**SMAD1/5/8**) that goes into the nucleus.
+* **Master Switch**: In the nucleus, they switch on the gene **Runx2**.
+
+**Functions in Development:**
+1. **Osteogenesis**: Runx2 tells the cell to become a mature **Osteoblast** (bone-building cell).
+2. **Chondrogenesis**: BMPs tell mesenchymal cells to form cartilage via the **SOX9** gene.
+3. **Limb Shaping**: BMPs are responsible for "sculpting" our fingers and toes by clearing out the webbing between them.
+4. **Repairing Breaks**: Clinically, Doctors use synthetic BMP-2 and BMP-7 to help heal severe bone fractures.
+
+**Disease Fact**: A mutation in the BMP pathway causes **FOP**, a horrific condition where muscles and tissues spontaneously turn into solid bone [28].`
     },
     {
         id: "set6",
         title: "🔹 SET 6 — Calcium Memory, UPR & ER Stress",
-        rawMd: `### CaMKII as an Intracellular Memory Device
+        rawMd_bn: `### CaMKII as an Intracellular Memory Device
 
 **[Q048 / Q052] MARKS: 3**  
 **"CaMKII is an intracellular memory device for a prior calcium pulse" — Explain**
@@ -183,13 +270,85 @@ ER Stress থেকে কোষকে বাঁচানোর জন্য য
 | **Gene Expression** | HRE (Hypoxia Response Elements) জিনগুলো বন্ধ থাকে | **VEGF** (নতুন রক্তনালী তৈরি), **GLUT1** (গ্লুকোজ গ্রহণ বৃদ্ধি), **EPO** (রক্তকণিকা বৃদ্ধি) জিনগুলো চালু হয় |
 | **Metabolism** | Oxidative Phosphorylation (TCA Cycle) | Anaerobic Glycolysis (Lactate তৈরি) |
 
-**জাকির স্যারের স্লাইড থেকে:** "Under normoxia, HIF-1α is continually degraded. Under hypoxia, HIF-1α escapes degradation, dimerizes with HIF-1β, and translocates to the nucleus to activate genes promoting survival in low oxygen."
-`
+**স্যারের স্লাইড থেকে:** "Under normoxia, HIF-1α is continually degraded. Under hypoxia, HIF-1α escapes degradation, dimerizes with HIF-1β, and translocates to the nucleus to activate genes promoting survival in low oxygen."`,
+        rawMd_en: `### CaMKII as an Intracellular Memory Device
+
+**[Q048 / Q052] MARKS: 3**  
+**"CaMKII is an intracellular memory device for a prior calcium pulse" — Explain**
+
+**Ans:** **CaMKII** is a wheel-shaped enzyme in our neurons that acts as a physical store for "memories" of calcium signals.
+
+**The Memory Mechanism:**
+1. **Activation**: When calcium (Ca²⁺) floods the cell, it activates the CaMKII wheel.
+2. **Self-Tagging (Autophosphorylation)**: The active parts of the wheel add a phosphate tag to their neighbors (at the **Thr286** position) [155,157].
+3. **The "Memory" State**: Once tagged, the enzyme **STAYS ACTIVE** even after the calcium has disappeared!
+4. **Learning**: This prolonged activity strengthens the connection between neurons (**LTP**), which is how we learn and store memories [3,165,168].
+
+**Conclusion**: Because the enzyme "remembers" the signal long after the signal is gone, it is called an **Intracellular Memory Device**.
+
+---
+
+### Calcium-Induced Calcium Release (CICR)
+
+**[Q050] MARKS: 3**  
+**"Calcium can regulate its own release" — Explain**
+
+**Ans:** This is a "Chain Reaction" mechanism where a small amount of calcium triggers the release of a massive flood of calcium from within the cell [143,145].
+
+**How it works:**
+1. **The Spark**: A tiny bit of Ca²⁺ enters the cell from the outside.
+2. **The Sensor**: This Ca²⁺ binds to **Ryanodine Receptors (RyR)** on the ER (the cell's calcium warehouse).
+3. **The Flood**: The RyR channels snap open, and the massive store of Ca²⁺ within the ER floods into the cell [143,145].
+
+**Real-world Example**: This is exactly how your **Heart** beats! A small electrical trigger lets in a tiny bit of calcium, which then releases the flood needed to make the heart muscle contract [146,148].
+
+---
+
+### ER Stress, Chaperones, & UPR
+
+**[Q051 / Q053] MARKS: 6+5**  
+**Define ER Stress. Explain ER Stress Signaling Pathway (UPR)**
+
+**Ans:** **ER Stress** is an emergency state where the cell's "factory" (the ER) gets clogged with **Misfolded Proteins** and cannot process them properly [96,109].
+
+**The UPR (Unfolded Protein Response) - The Rescue Plan:**
+To save the cell, the ER launches an alarm system called UPR. It has 3 main arms to solve the problem:
+
+| Arm | Action | Goal |
+|-----|--------|------|
+| **PERK** | Stops worldwide protein production. | **Reduces the load** on the ER factory so it can catch up [97,110]. |
+| **IRE1** | Switches on genes for "cleaners" (ERAD). | **Destroys the broken proteins** to clear the clog [97,110]. |
+| **ATF6** | Produces more "Helpers" (Chaperones). | **Helps fold** the remaining proteins correctly [98,111]. |
+
+**Final Decision**: If the factory is sorted out, the cell lives. If the stress is too high for too long, the cell activates the **CHOP gene** and commits suicide (Apoptosis) to protect the surrounding tissue [99,112].
+
+---
+
+### Hypoxia & Metabolism (HIF-1α)
+
+**[Q054 / Q055] MARKS: 3+4**  
+**Illustrate How Hypoxia Inhibits the TCA Cycle & Differences with Normoxia**
+
+**Ans:** **Hypoxia (Low Oxygen)** forces cells to completely change how they produce energy. Instead of burning fuel efficiently with oxygen, they switch to a survive-at-all-costs mode using **HIF-1α** [101,115].
+
+**How Hypoxia Shuts Down the TCA Cycle (The Warburg Effect):**
+1. Without oxygen, the cell stabilizes the protein **HIF-1α**.
+2. HIF-1α switches ON the gene **PDK1** [89,103,116].
+3. PDK1 "kills" (inhibits) the enzyme needed to enter the TCA cycle (PDH).
+4. **Result**: The cell stops burning fuels in the mitochondria and instead turns everything into **Lactate**. This is less efficient but doesn't require oxygen.
+
+**Normoxia vs. Hypoxia:**
+
+| Feature | Normoxia (Normal O₂) | Hypoxia (Low O₂) |
+|---------|---------------------|------------------|
+| **HIF-1α** | **Destroyed** instantly by the cell's "shredder" (VHL). | **Stays Active** and builds up in the nucleus [101,114]. |
+| **Genes** | Normal housekeeping genes. | **Emergency Genes** ON: VEGF (New blood vessels), GLUT1 (More sugar) [102,115]. |
+| **Energy** | Efficient energy from Oxygen. | Inefficient speed-mode (Anaerobic Glycolysis). |`
     },
     {
         id: "set7",
         title: "🔹 SET 7 — Chemotaxis, Cross-talk & Gap Junctions",
-        rawMd: `### Bacterial Chemotaxis
+        rawMd_bn: `### Bacterial Chemotaxis
 
 **[Q059 / Q074] MARKS: 6+14**  
 **a) Define Chemotaxis. Illustrate the Bacterial Chemotaxis Mechanism**
@@ -237,8 +396,6 @@ ER Stress থেকে কোষকে বাঁচানোর জন্য য
 ৪. দেখতে দেখতে پورے লিভারে ক্যালসিয়ামের ঢেউ (Ca²⁺ wave) ছড়িয়ে পড়ে। 
 ৫. ক্যালসিয়াম সব কোষের Phoshphorylase kinase-কে সক্রিয় করে, যা গ্লাইকোজেন ভেঙে গ্লুকোজ রক্তে রিলিজ করে [332,339]।
 
-এভাবে Gap junction না থাকলে লিভারের মাত্র ৩% কোষ কাজ করত, কিন্তু এর কারণে ১০০% কোষ একসাথে কাজ করে!
-
 ---
 
 ### Nitric Oxide (NO) Signaling in Vasodilation
@@ -257,8 +414,6 @@ ER Stress থেকে কোষকে বাঁচানোর জন্য য
 ৬. cGMP তখন **PKG (Protein Kinase G)**-কে এক্টিভ করে [284,288]।
 ৭. PKG পেশির সংকোচন প্রোটিনগুলোকে নিষ্ক্রিয় করে দেয়। ফলে পেশি শিথিল হয়ে যায় (Relaxation) এবং রক্তনালী প্রসারিত (Vasodilation) হয় [107,284]।
 
-**Terminator:** **PDE5 (Phosphodiesterase-5)** এনজাইম cGMP-কে ভেঙে দিলে সিগন্যাল বন্ধ হয়ে যায়। ভায়াগ্রা (Sildenafil) এই PDE5-কে ব্লক করে, ফলে রক্তনালী অনেকক্ষণ প্রসারিত থাকে [284,288]।
-
 ---
 
 ### Integration: Receptors as Effectors & Signal Classifications
@@ -269,36 +424,117 @@ ER Stress থেকে কোষকে বাঁচানোর জন্য য
 **Ans:** সাধারণত কোষে সিগন্যাল রিসিভ করার জন্য থাকে "রিসেপ্টর" এবং আসল কাজটা করার জন্য থাকে "ইফেক্টর" (যেমন এনজাইম)। কিন্তু কিছু কিছু অণু একইসাথে সিগন্যাল রিসিভও করে এবং নিজের এনজাইম অ্যাক্টিভিটি দিয়ে কাজও সেরে ফেলে। এদেরকেই **Receptor and Effector dual-function molecule** বলে।
 
 **উদাহরণ:**
-১. **Receptor Tyrosine Kinases (RTKs):** যেমন EGF Receptor। এর বাইরের অংশ সিগন্যাল (EGF) রিসিভ করে (Receptor হিসেবে), আর ভেতরের অংশ নিজেই একটি কাইনেজ এনজাইম (Effector) হিসেবে প্রোটিন ফসফোরাইলেট করে। মাঝখানে কোনো থার্ড-পার্টি G-protein লাগে না।
+১. **Receptor Tyrosine Kinases (RTKs):** যেমন EGF Receptor। এর বাইরের অংশ সিগন্যাল (EGF) রিসিভ করে (Receptor হিসেবে), আর ভেতরের অংশ নিজেই একটি কাইনেজ এনজাইম (Effector) হিসেবে প্রোটিন ফসফোরাইলেট করে। 
 ২. **Nuclear Receptors:** স্টেরয়েড হরমোন রিসেপ্টরগুলো নিজেই সাইটোসোলে সিগন্যাল ধরে (Receptor) এবং নিজেই সোজা নিউক্লিয়াসে ঢুকে ট্রান্সক্রিপশন ফ্যাক্টর হিসেবে জিন এক্সপ্রেস করে (Effector) [247,248]।
 
 ---
 
 **Differentiate Between Endocrine and Synaptic Signaling**
 
-| Feature (তুলনার বিষয়) | Endocrine Signaling (এন্ডোক্রাইন) | Synaptic Signaling (সিন্যাপটিক) |
+| Feature | Endocrine Signaling | Synaptic Signaling |
 |---------------------|-----------------------------------|----------------------------------|
-| **Signal Box (সিগন্যাল অণু)** | **Hormones** (যেমন ইনসুলিন, থাইরক্সিন) | **Neurotransmitters** (যেমন এসিটাইলকোলিন) |
-| **Path & Distance (দূরত্ব)** | রক্তের ভেতর দিয়ে অনেক দূর (কয়েক মিটার) যায় | নিউরনের ফাঁকে (synaptic cleft) মাত্র ২০ ন্যানোমিটার দূরত্ব পার হয় |
-| **Speed (গতি)** | **ধীর (Slow)** — কয়েক মিনিট থেকে কয়েক ঘণ্টা | **খুব দ্রুত (Extremely Fast)** — অতি ভগ্নাংশ মিলিসেকেন্ড |
-| **Target (লক্ষ্য)** | শরীরে যারাই রিসেপ্টর ধারণ করে, সবাই রেসপন্স করে (Broad) | সুনির্দিষ্ট একটি নিউরন বা পেশিতেই কাজ করে (Point-to-point) |
-| **Signal Lifespan** | বহুক্ষণ রক্তে একটিভ থাকতে পারে | কাজ হয়ে গেলেই সাথে সাথে ধ্বংস করা হয় (enzyme দিয়ে বা reuptake-এর মাধ্যমে) |
-`
+| **Signal molecule** | **Hormones** | **Neurotransmitters** |
+| **Path & Distance** | Via bloodstream (many meters) | Via the tiny gap (20 nm) |
+| **Speed** | **Slow** (minutes to hours) | **Extremely Fast** (milliseconds) |
+| **Target** | Broad (any cell with receptor) | Precise (one neuron or muscle) |`,
+        rawMd_en: `### Bacterial Chemotaxis
+
+**[Q059 / Q074] MARKS: 6+14**  
+**a) Define Chemotaxis. Illustrate the Bacterial Chemotaxis Mechanism**
+
+**Ans:** **Chemotaxis** is defined as the movement of an organism (like bacteria) in response to a chemical gradient. Bacteria move TOWARDS food (**Positive Chemotaxis**) and AWAY from toxins (**Negative Chemotaxis**) [46,49].
+
+**The Two-Component System (The Brain of the Bacteria):**
+Bacteria don't use second messengers; they use a simple "Relay" system involving two main proteins:
+1. **CheA (The Sensor)**: It adds a phosphate to itself when triggered (Autophosphorylation).
+2. **CheY (The Motor-Switcher)**: It takes the phosphate from CheA and acts on the motor.
+
+**How it works (The Tumble vs. Run):**
+
+**Scenario 1: NO Food (Tumbling / Random Search)**
+* Receptors on the membrane keep **CheA ACTIVE**.
+* Active CheA passes a phosphate to **CheY**.
+* **CheY-P** hits the flagellar motor, forcing it to spin **Clockwise (CW)**.
+* **Result**: The bacteria tumbles in place, looking around randomly.
+
+**Scenario 2: Food FOUND (Smooth Running)**
+* Food binds to the receptor, which **STOPS (Inhibits) CheA**.
+* Since CheA is off, there is no phosphate for CheY.
+* Without CheY-P, the flagellar motor spins in its default **Counter-Clockwise (CCW)** mode.
+* **Result**: The bacteria "runs" in a straight, smooth line toward the food!
+
+---
+
+### Gap Junctions & Paracrine Coordination
+
+**[Q059b / Q062] MARKS: 3+3**  
+**Significance of Gap Junctions & Hepatic Coordination**
+
+**Ans:** **Gap Junctions** are tiny "bridges" (channels) made of **Connexin** proteins that directly connect the interiors of neighboring cells [197,235].
+
+**The Liver Coordination Power (Why Gap Junctions matter):**
+In the liver, nerves only touch about 3-5% of the cells directly. However, when we need sugar, the **WHOLE liver** responds instantly.
+1. Nerves trigger only those 3-5% of cells to produce **Calcium and IP₃**.
+2. **The Wave**: These small signaling molecules flood into the neighboring 95% of cells directly through **Gap Junctions**.
+3. **Coordinated Action**: This causes a "Calcium Wave" to sweep across the entire liver, triggering all cells to break down glycogen and release glucose simultaneously [197,330,332].
+
+---
+
+### Nitric Oxide (NO) Signaling in Vasodilation
+
+**[Q063] MARKS: 4**  
+**Nitric Oxide Signaling Pathway**
+
+**Ans:** **Nitric Oxide (NO)** is a gaseous signal that relaxes blood vessels to lower blood pressure. Since it's a gas, it diffuses effortlessly through cell membranes [105,107].
+
+**The Vasodilation Sequence:**
+1. Acetylcholine on blood vessel walls triggers a rise in **Calcium**.
+2. Calcium activates the enzyme **eNOS**, which creates NO gas from the amino acid Arginine [105,107].
+3. NO gas diffuses into the nearby muscle cells.
+4. Inside the muscle, NO activates the enzyme **sGC**, which creates the second messenger **cGMP**.
+5. **cGMP** turns on **PKG**, which tells the muscle to **RELAX**.
+6. **Result**: The blood vessel widens (Vasodilation), allowing more blood flow and lower pressure.
+
+**The "Blue Pill" Fact**: Medicines like Viagra work by blocking the enzyme (**PDE5**) that breaks down cGMP, keeping the muscle in a relaxed, open state for longer [284,288].
+
+---
+
+### Integration: Receptors as Effectors & Signal Classifications
+
+**[Q065 / Q066] MARKS: 3+3**  
+**"Same molecule can be receptor and effector for a particular signal" — Explain**
+
+**Ans:** Normally, you have a "Receptor" to hear the signal and an "Effector" (like an enzyme) to do the work. However, some molecules are "Self-Sufficient" and do both jobs themselves.
+
+**Examples:**
+1. **RTKs (e.g., Insulin Receptor)**: The top part is the receptor (hears insulin), and the bottom part is the enzyme (performs the work of phosphorylation). No middle-man needed.
+2. **Nuclear Receptors**: They bind to the steroid hormone (Receptor) and then travel to the DNA to directly switch on genes (Effector) [247,248].
+
+---
+
+**Differentiate Between Endocrine and Synaptic Signaling**
+
+| Feature | Endocrine Signaling | Synaptic Signaling |
+|---------------------|-----------------------------------|----------------------------------|
+| **Signal Source** | **Hormones** (Global) | **Neurotransmitters** (Local) |
+| **Speed** | **Slow** (Minutes to Hours) | **Instant** (Fraction of a millisecond) |
+| **Precision** | Broad (Targets the whole body) | Pinpoint (Targets one specific cell) |
+| **Removal** | Slow (Liver/Kidneys) | Fast (Instant destruction) |`
     }
 ];
 
 // If geb331_sets is already defined (from geb331_data.js and part2), we merge them.
 if (typeof geb331_sets !== 'undefined') {
     // Inject or update set5, set6, and set7
-    const set5Index = geb331_sets.findIndex(s => s.id === "set5");
+    const set5Index = geb331_sets.findIndex(s => s.id === s.id && s.id === "set5");
     if (set5Index !== -1) geb331_sets[set5Index] = geb331_sets_part3[0];
     else geb331_sets.push(geb331_sets_part3[0]);
 
-    const set6Index = geb331_sets.findIndex(s => s.id === "set6");
+    const set6Index = geb331_sets.findIndex(s => s.id === s.id && s.id === "set6");
     if (set6Index !== -1) geb331_sets[set6Index] = geb331_sets_part3[1];
     else geb331_sets.push(geb331_sets_part3[1]);
 
-    const set7Index = geb331_sets.findIndex(s => s.id === "set7");
+    const set7Index = geb331_sets.findIndex(s => s.id === s.id && s.id === "set7");
     if (set7Index !== -1) geb331_sets[set7Index] = geb331_sets_part3[2];
     else geb331_sets.push(geb331_sets_part3[2]);
 }

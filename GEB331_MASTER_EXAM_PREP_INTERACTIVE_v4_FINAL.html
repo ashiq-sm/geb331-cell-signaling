@@ -269,14 +269,88 @@
 
         .footer {
             margin-top: 5rem;
-            padding: 3rem 2rem;
-            background: var(--header-grad);
-            color: white;
-            border-radius: 3rem 3rem 0 0;
+            padding: 4rem 2rem;
+            background: rgba(255, 255, 255, 0.03);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
             text-align: center;
-            position: relative;
-            box-shadow: 0 -10px 40px rgba(0,0,0,0.1);
         }
+
+        .author-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .profile-img-wrapper {
+            position: relative;
+            width: 100px;
+            height: 100px;
+            margin-bottom: 1.5rem;
+        }
+
+        .profile-img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--accent);
+            box-shadow: 0 0 20px rgba(16, 185, 129, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .profile-img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(16, 185, 129, 0.5);
+        }
+
+        .profile-fallback {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            display: none; /* Hidden by default, shown on error */
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--accent), #065f46);
+            color: white;
+            font-size: 2rem;
+            font-weight: 800;
+            border-radius: 50%;
+            border: 3px solid var(--accent);
+            box-shadow: 0 0 20px rgba(16, 185, 129, 0.3);
+            font-family: 'Outfit', sans-serif;
+            letter-spacing: 2px;
+        }
+
+        .profile-img-wrapper::after {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--accent), #10b981);
+            z-index: -1;
+            opacity: 0.3;
+        }
+
+        .author-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(to right, #fff, #10b981);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .author-title {
+            font-size: 0.9rem;
+            opacity: 0.7;
+            margin-bottom: 1.5rem;
+        }
+        
         .get-in-touch {
             font-size: 1.4rem;
             font-weight: 800;
@@ -403,6 +477,10 @@
                 <option value="mobile">📱 Mobile</option>
                 <option value="desktop">💻 Desktop</option>
             </select>
+            <select class="control-btn" id="languageSelect" onchange="changeLanguage()">
+                <option value="bn">🌐 Smart Mix (Bilingual)</option>
+                <option value="en">🌐 Full English (Academic)</option>
+            </select>
             <button class="control-btn" id="toggleAllBtn" onclick="toggleAllSets()">📂 Expand All</button>
             <button class="control-btn live-btn" onclick="exportToPDF()">🖨️ Export PDF</button>
         </div>
@@ -439,11 +517,27 @@
     <div id="setsContainer"></div>
     
     <div class="footer">
-        <h3>Developed with 💚 for GEB 331</h3>
-        <p style="margin-bottom: 2rem; opacity: 0.8;">Created by: <b>SM Ashikur Rahman</b></p>
-        <div class="get-in-touch">
-            <span>🤝 Follow him & share your ideas through :</span>
+        <div class="author-card">
+            <div class="profile-img-wrapper">
+                <!-- 
+                    USER STEP: Update the src below with your direct Facebook photo link.
+                    To get it: Go to your FB photo, right-click it, and select "Copy image address".
+                -->
+                <img src="https://ui-avatars.com/api/?name=SM+Ashikur+Rahman&background=10b981&color=fff&size=256" 
+                     id="authorPhoto" 
+                     class="profile-img" 
+                     alt="SM Ashikur Rahman"
+                     onerror="this.style.display='none'; document.getElementById('profileFallback').style.display='flex';">
+                <div id="profileFallback" class="profile-fallback">AR</div>
+            </div>
+            <div class="author-name">SM Ashikur Rahman</div>
+            <div class="author-title">Developed with 💚 for GEB 331 | Cell Signaling</div>
         </div>
+
+        <div class="get-in-touch" style="margin-bottom: 1.5rem;">
+            <p style="opacity: 0.7; font-size: 0.95rem;">🤝 Follow him & share your ideas through :</p>
+        </div>
+
         <div class="footer-links">
             <a href="https://www.linkedin.com/in/sm-ashikur-rahman/" target="_blank" class="linkedin"><i class="fab fa-linkedin-in"></i> LinkedIn</a>
             <a href="https://github.com/ashiq-sm" target="_blank" class="github"><i class="fab fa-github"></i> GitHub</a>
@@ -464,7 +558,14 @@
 <script src="geb331_data_part4.js"></script>
 <script>
 let currentFontSize = 16;
+let currentLang = 'bn';
 const setsData = geb331_sets;
+
+function changeLanguage() {
+    currentLang = document.getElementById('languageSelect').value;
+    localStorage.setItem('language', currentLang);
+    renderSets();
+}
 
 function openDuaModal() {
     document.getElementById('duaModal').classList.add('active');
@@ -545,7 +646,10 @@ function renderSets() {
         const card = document.createElement('div');
         card.className = 'set-card';
         card.id = item.id;
-        const parsedHTML = marked.parse(item.rawMd);
+        
+        // Select content based on language
+        const mdContent = item['rawMd_' + currentLang] || item.rawMd_bn || item.rawMd;
+        const parsedHTML = marked.parse(mdContent);
         card.innerHTML = `
             <div class="set-header"><h2>${item.title}</h2><span class="toggle-icon">▶</span></div>
             <div class="set-content"><div class="markdown-body">${parsedHTML}</div></div>
@@ -603,6 +707,12 @@ window.onload = () => {
     if (savedFont) {
         document.documentElement.style.setProperty('--body-font', savedFont);
         document.getElementById('fontFamily').value = savedFont;
+    }
+
+    const savedLang = localStorage.getItem('language');
+    if (savedLang) {
+        currentLang = savedLang;
+        document.getElementById('languageSelect').value = currentLang;
     }
 
     renderSets();
