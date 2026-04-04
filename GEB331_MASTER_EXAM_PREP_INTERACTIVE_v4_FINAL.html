@@ -3,6 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta name="description" content="GEB 331 Cell Signaling — Bilingual interactive study notebook by SM Ashikur Rahman. Smart Mix Bengali/English, search, PDF export.">
+    <meta property="og:title" content="GEB 331 · Cell Signaling | SM NextGen BioNotes">
+    <meta property="og:description" content="Bilingual interactive exam prep for GEB 331 Cell Signaling.">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📘</text></svg>">
     <title>GEB 331 · Complete Cell Signaling Study (Ben+Eng)</title>
     <!-- Google Fonts for Eye-Saving Typography -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Noto+Sans+Bengali:wght@400;700&family=Outfit:wght@400;700&family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet">
@@ -220,7 +224,8 @@
             background: var(--nav-pill-bg); color: var(--text-color); border: none; padding: 0.4rem 1.2rem;
             border-radius: 2rem; font-weight: 600; font-size: 0.85rem; cursor: pointer; transition: 0.2s;
         }
-        .nav-pill:hover { background: #bdd8bd; transform: translateY(-2px); }
+        .nav-pill:hover { background: var(--accent-color); color: white; transform: translateY(-2px); }
+        .nav-pill.active { background: var(--accent-color); color: white; transform: translateY(-2px); }
         .search-bar { margin-bottom: 1.6rem; display: flex; gap: 0.5rem; }
         #searchInput {
             flex: 1; padding: 0.7rem 1rem; border-radius: 3rem; border: 1px solid var(--border-color); 
@@ -310,7 +315,7 @@
             height: 100%;
             border-radius: 50%;
             object-fit: cover;
-            border: 3px solid var(--accent);
+            border: 3px solid var(--accent-color);
             box-shadow: 0 0 20px rgba(16, 185, 129, 0.3);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
@@ -327,12 +332,12 @@
             display: none; /* Hidden by default, shown on error */
             align-items: center;
             justify-content: center;
-            background: linear-gradient(135deg, var(--accent), #065f46);
+            background: linear-gradient(135deg, var(--accent-color), #065f46);
             color: white;
             font-size: 2rem;
             font-weight: 800;
             border-radius: 50%;
-            border: 3px solid var(--accent);
+            border: 3px solid var(--accent-color);
             box-shadow: 0 0 20px rgba(16, 185, 129, 0.3);
             font-family: 'Outfit', sans-serif;
             letter-spacing: 2px;
@@ -463,6 +468,32 @@
                 width: 100%;
             }
         }
+
+        /* ═══ ENHANCEMENTS ══════════════════════════════════ */
+        /* Sticky Quick Nav */
+        .quick-nav { position: sticky; top: 0.5rem; z-index: 50; }
+
+        /* Progress Bar */
+        .progress-wrap { margin-top: 0.8rem; height: 5px; border-radius: 20px; background: rgba(255,255,255,0.18); overflow: hidden; }
+        .progress-fill { height: 100%; width: 0%; border-radius: 20px; background: #ffd966; transition: width 0.6s ease; }
+        .progress-label { font-size: 0.72rem; color: rgba(255,255,255,0.6); margin-top: 4px; }
+
+        /* Keyboard shortcuts */
+        .shortcuts-bar { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 6px; font-size: 0.68rem; color: rgba(255,255,255,0.45); align-items: center; }
+        .shortcuts-bar kbd { background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2); border-radius: 4px; padding: 1px 6px; font-size: 0.65rem; font-family: monospace; }
+
+        /* Reading time badge */
+        .read-time { font-size: 0.7rem; color: var(--accent-color); font-weight: 700; opacity: 0.85; }
+        .done-badge { font-size: 0.65rem; color: #34d399; font-weight: 700; }
+
+        /* Copy button */
+        .markdown-body pre { position: relative; }
+        .copy-btn { position: absolute; top: 8px; right: 8px; background: rgba(255,255,255,0.12); border: none; color: rgba(255,255,255,0.75); padding: 3px 10px; border-radius: 6px; font-size: 0.7rem; cursor: pointer; font-family: inherit; transition: 0.2s; }
+        .copy-btn:hover { background: rgba(255,255,255,0.28); }
+
+        /* Footer social inside card */
+        .footer-social-header { font-size: 1rem; font-weight: 700; color: rgba(255,255,255,0.72); letter-spacing: 0.5px; margin-bottom: 1.4rem; }
+        .footer-divider { width: 72px; height: 2px; margin: 2rem auto; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.22), transparent); border-radius: 2px; }
     </style>
     <!-- Include Marked.js for rendering beautiful Markdown to HTML -->
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
@@ -478,7 +509,7 @@
     <div class="header">
         <h1>📘 GEB 331 — Cell Signaling <span>Bilingual Interactive Note</span></h1>
         <div class="controls">
-            <button class="control-btn" onclick="window.location.href='index.html'" style="font-weight: bold;">🏠 Home Hub</button>
+            <button class="control-btn" onclick="window.location.href='/'" style="font-weight: bold;">🏠 Home Hub</button>
             <select class="control-btn live-btn" id="courseSelect" onchange="if(this.value !== '#') window.open(this.value, '_self')" style="background: #e4f0e4 !important; color: #1a4d1a !important;">
                 <option value="#" selected>📘 GEB 331: Cell Signaling (Current)</option>
                 <option value="GEB335_FERMENTATION_TECH_INTERACTIVE.html">🔬 GEB 335: Fermentation Tech (New!)</option>
@@ -509,6 +540,14 @@
             </select>
             <button class="control-btn" id="toggleAllBtn" onclick="toggleAllSets()">📂 Expand All</button>
             <button class="control-btn live-btn" onclick="exportToPDF()">🖨️ Export PDF</button>
+        </div>
+        <div class="progress-wrap"><div class="progress-fill" id="progressFill"></div></div>
+        <div class="progress-label" id="progressLabel">0 topics explored</div>
+        <div class="shortcuts-bar">
+            <span><kbd>F</kbd> Search</span>
+            <span><kbd>T</kbd> Theme</span>
+            <span><kbd>E</kbd> Expand All</span>
+            <span><kbd>Esc</kbd> Close modal</span>
         </div>
     </div>
 
@@ -544,35 +583,26 @@
     
     <div class="footer">
         <div class="author-card">
+            <div class="footer-social-header">🤝 Follow & Connect</div>
+            <div class="footer-links">
+                <a href="https://www.linkedin.com/in/sm-ashikur-rahman/" target="_blank" class="linkedin"><i class="fab fa-linkedin-in"></i> LinkedIn</a>
+                <a href="https://github.com/ashiq-sm" target="_blank" class="github"><i class="fab fa-github"></i> GitHub</a>
+                <a href="https://www.youtube.com/@smashiqurrahman8150" target="_blank" class="youtube"><i class="fab fa-youtube"></i> YouTube</a>
+                <a href="https://x.com/smar1ashiq" target="_blank" class="twitter"><i class="fab fa-x-twitter"></i> Twitter</a>
+                <a href="http://smashiq.blogspot.com/" target="_blank" class="blog"><i class="fas fa-rss"></i> Blog</a>
+                <a href="https://facebook.com/sm1ar" target="_blank" class="facebook"><i class="fab fa-facebook-f"></i> Facebook</a>
+                <a href="https://t.me/sm_ash1q" target="_blank" class="telegram"><i class="fab fa-telegram-plane"></i> Telegram</a>
+                <a href="https://wa.me/+8801773971905" target="_blank" class="whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+            </div>
+            <div class="footer-divider"></div>
             <div class="profile-img-wrapper">
-                <!-- 
-                    USER STEP: Update the src below with your direct Facebook photo link.
-                    To get it: Go to your FB photo, right-click it, and select "Copy image address".
-                -->
-                <img src="https://ui-avatars.com/api/?name=SM+Ashikur+Rahman&background=10b981&color=fff&size=256" 
-                     id="authorPhoto" 
-                     class="profile-img" 
-                     alt="SM Ashikur Rahman"
+                <img src="https://ui-avatars.com/api/?name=SM+Ashikur+Rahman&background=10b981&color=fff&size=256"
+                     id="authorPhoto" class="profile-img" alt="SM Ashikur Rahman"
                      onerror="this.style.display='none'; document.getElementById('profileFallback').style.display='flex';">
                 <div id="profileFallback" class="profile-fallback">AR</div>
             </div>
             <div class="author-name">SM Ashikur Rahman</div>
             <div class="author-title">Developed with 💚 for GEB 331 | Cell Signaling</div>
-        </div>
-
-        <div class="get-in-touch" style="margin-bottom: 1.5rem;">
-            <p style="opacity: 0.7; font-size: 0.95rem;">🤝 Follow him & share your ideas through :</p>
-        </div>
-
-        <div class="footer-links">
-            <a href="https://www.linkedin.com/in/sm-ashikur-rahman/" target="_blank" class="linkedin"><i class="fab fa-linkedin-in"></i> LinkedIn</a>
-            <a href="https://github.com/ashiq-sm" target="_blank" class="github"><i class="fab fa-github"></i> GitHub</a>
-            <a href="https://www.youtube.com/@smashiqurrahman8150" target="_blank" class="youtube"><i class="fab fa-youtube"></i> YouTube</a>
-            <a href="https://x.com/smar1ashiq" target="_blank" class="twitter"><i class="fab fa-x-twitter"></i> Twitter</a>
-            <a href="http://smashiq.blogspot.com/" target="_blank" class="blog"><i class="fas fa-rss"></i> Blog</a>
-            <a href="https://facebook.com/sm1ar" target="_blank" class="facebook"><i class="fab fa-facebook-f"></i> Facebook</a>
-            <a href="https://t.me/sm_ash1q" target="_blank" class="telegram"><i class="fab fa-telegram-plane"></i> Telegram</a>
-            <a href="https://wa.me/+8801773971905" target="_blank" class="whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
         </div>
     </div>
 </div>
@@ -587,10 +617,61 @@ let currentFontSize = 16;
 let currentLang = 'bn';
 const setsData = geb331_sets;
 
+// Progress tracking
+const PROGRESS_KEY = 'sm-progress-geb331';
+let visitedSets = new Set(JSON.parse(localStorage.getItem(PROGRESS_KEY) || '[]'));
+
+function updateProgressBar() {
+    const total = setsData.length;
+    const visited = visitedSets.size;
+    const pct = total > 0 ? Math.round((visited / total) * 100) : 0;
+    const fill = document.getElementById('progressFill');
+    const label = document.getElementById('progressLabel');
+    if (fill) fill.style.width = pct + '%';
+    if (label) label.textContent = visited + ' of ' + total + ' topics explored · ' + pct + '%';
+}
+
+function getReadingTime(md) {
+    const words = md.replace(/<[^>]+>/g, '').split(/\s+/).filter(Boolean).length;
+    const mins = Math.ceil(words / 180);
+    return mins <= 1 ? '~1 min' : '~' + mins + ' min';
+}
+
 function changeLanguage() {
     currentLang = document.getElementById('languageSelect').value;
     localStorage.setItem('language', currentLang);
     renderSets();
+}
+
+function addCopyButtons() {
+    document.querySelectorAll('.markdown-body pre').forEach(pre => {
+        if (pre.querySelector('.copy-btn')) return;
+        const btn = document.createElement('button');
+        btn.className = 'copy-btn';
+        btn.textContent = '📋 Copy';
+        btn.onclick = () => {
+            const code = pre.querySelector('code')?.textContent || pre.textContent;
+            navigator.clipboard.writeText(code).then(() => {
+                btn.textContent = '✅ Copied!';
+                setTimeout(() => btn.textContent = '📋 Copy', 2000);
+            }).catch(() => { btn.textContent = '⚠️ Failed'; setTimeout(() => btn.textContent = '📋 Copy', 2000); });
+        };
+        pre.appendChild(btn);
+    });
+}
+
+function setupNavObserver() {
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const id = entry.target.id;
+                document.querySelectorAll('.nav-pill').forEach(p => p.classList.remove('active'));
+                const activeBtn = document.querySelector('.nav-pill[data-id="' + id + '"]');
+                if (activeBtn) activeBtn.classList.add('active');
+            }
+        });
+    }, { rootMargin: '-10% 0px -60% 0px' });
+    document.querySelectorAll('.set-card').forEach(card => observer.observe(card));
 }
 
 function openDuaModal() {
@@ -638,7 +719,7 @@ function toggleTheme() {
     const root = document.documentElement;
     const theme = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
     root.setAttribute('data-theme', theme);
-    localStorage.setItem('theme', theme);
+    localStorage.setItem('sm-theme', theme);
 }
 
 function changeFont(delta) {
@@ -672,21 +753,31 @@ function renderSets() {
         const card = document.createElement('div');
         card.className = 'set-card';
         card.id = item.id;
-        
-        // Select content based on language
         const mdContent = item['rawMd_' + currentLang] || item.rawMd_bn || item.rawMd;
         const parsedHTML = marked.parse(mdContent);
-        card.innerHTML = `
-            <div class="set-header"><h2>${item.title}</h2><span class="toggle-icon">▶</span></div>
-            <div class="set-content"><div class="markdown-body">${parsedHTML}</div></div>
-        `;
+        const readTime = getReadingTime(mdContent);
+        const isDone = visitedSets.has(item.id);
+        card.innerHTML =
+            '<div class="set-header"><h2>' + item.title + '</h2>' +
+            '<span style="display:flex;align-items:center;gap:8px;"><span class="read-time">' + readTime + '</span>' +
+            (isDone ? '<span class="done-badge">✔ Done</span>' : '') +
+            '<span class="toggle-icon">▶</span></span></div>' +
+            '<div class="set-content"><div class="markdown-body">' + parsedHTML + '</div></div>';
         container.appendChild(card);
         card.querySelector('.set-header').addEventListener('click', () => {
             card.classList.toggle('open');
             card.querySelector('.toggle-icon').innerHTML = card.classList.contains('open') ? '▼' : '▶';
+            if (card.classList.contains('open')) {
+                visitedSets.add(item.id);
+                localStorage.setItem(PROGRESS_KEY, JSON.stringify([...visitedSets]));
+                updateProgressBar();
+                setTimeout(addCopyButtons, 120);
+            }
         });
-        if(idx === 0) { card.classList.add('open'); card.querySelector('.toggle-icon').innerHTML = '▼'; }
+        if (idx === 0) { card.classList.add('open'); card.querySelector('.toggle-icon').innerHTML = '▼'; visitedSets.add(item.id); }
     });
+    setupNavObserver();
+    setTimeout(addCopyButtons, 300);
 }
 
 function buildQuickNav() {
@@ -694,15 +785,26 @@ function buildQuickNav() {
     setsData.forEach(item => {
         const btn = document.createElement('button');
         btn.className = 'nav-pill';
+        btn.dataset.id = item.id;
         btn.textContent = item.title.split('—')[0].trim();
         btn.onclick = () => {
             const el = document.getElementById(item.id);
             el.scrollIntoView({ behavior: 'smooth' });
-            if(!el.classList.contains('open')) el.querySelector('.set-header').click();
+            if (!el.classList.contains('open')) el.querySelector('.set-header').click();
         };
         nav.appendChild(btn);
     });
 }
+
+// Keyboard shortcuts
+document.addEventListener('keydown', (e) => {
+    const tag = document.activeElement.tagName;
+    if (tag === 'INPUT' || tag === 'SELECT' || tag === 'TEXTAREA') return;
+    if (e.key === 'f' || e.key === 'F') { document.getElementById('searchInput').focus(); e.preventDefault(); }
+    if (e.key === 't' || e.key === 'T') toggleTheme();
+    if (e.key === 'e' || e.key === 'E') toggleAllSets();
+    if (e.key === 'Escape') closeDuaModal();
+});
 
 function searchHighlights() {
     const term = document.getElementById('searchInput').value.trim().toLowerCase();
@@ -720,29 +822,31 @@ marked.setOptions({ gfm: true, breaks: true });
 
 // Load saved settings
 window.onload = () => {
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme) document.documentElement.setAttribute('data-theme', savedTheme);
-    
+    localStorage.setItem('sm-last-visited', 'geb331');
+    const savedTheme = localStorage.getItem('sm-theme');
+    if (savedTheme) {
+        document.documentElement.setAttribute('data-theme', savedTheme);
+    } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+        document.documentElement.setAttribute('data-theme', 'light');
+    }
     const savedSize = localStorage.getItem('fontSize');
     if (savedSize) {
         currentFontSize = parseInt(savedSize);
         document.documentElement.style.setProperty('--font-size-base', currentFontSize + 'px');
     }
-    
     const savedFont = localStorage.getItem('bodyFont');
     if (savedFont) {
         document.documentElement.style.setProperty('--body-font', savedFont);
         document.getElementById('fontFamily').value = savedFont;
     }
-
     const savedLang = localStorage.getItem('language');
     if (savedLang) {
         currentLang = savedLang;
         document.getElementById('languageSelect').value = currentLang;
     }
-
     renderSets();
     buildQuickNav();
+    updateProgressBar();
 };
 </script>
 </body>

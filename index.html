@@ -3,6 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta name="description" content="SM NextGen BioNotes — The ultimate bilingual interactive academic archive for GEB students. Cell Signaling, Fermentation Tech & more.">
+    <meta property="og:title" content="SM NextGen BioNotes">
+    <meta property="og:description" content="Bilingual interactive study hub for GEB 331, GEB 335 & more.">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧬</text></svg>">
     <title>SM NextGen BioNotes</title>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -117,11 +121,26 @@
             overflow: hidden;
             border-left: 6px solid var(--accent-color);
         }
-        
-        .course-card:hover { 
-            transform: translateY(-8px); 
-            box-shadow: 0 15px 30px rgba(16, 185, 129, 0.15); 
+        .course-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(16, 185, 129, 0.15);
             border-color: var(--accent-color);
+        }
+        .course-card.last-visited {
+            border-left-color: #ffd966;
+            box-shadow: 0 5px 20px rgba(255, 217, 102, 0.15);
+        }
+        .last-visited-badge {
+            position: absolute;
+            top: 12px; right: 12px;
+            background: #ffd966;
+            color: #1b4d1b;
+            font-size: 0.65rem;
+            font-weight: 800;
+            padding: 3px 9px;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .course-icon {
@@ -162,13 +181,69 @@
         [data-theme="dark"] .card-disabled { border-left-color: #475569; }
 
         .footer {
-            margin-top: auto;
+            margin-top: 3rem;
             text-align: center;
-            padding: 2rem;
-            opacity: 0.6;
+            padding: 0 1rem 2rem;
+        }
+
+        .author-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2.5rem;
+            border-radius: 2.5rem;
+            background: linear-gradient(145deg, #064e3b, #022c22);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .author-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(circle at 20% 20%, rgba(16, 185, 129, 0.08), transparent);
+            pointer-events: none;
+        }
+        .footer-social-header { font-size: 1rem; font-weight: 700; color: rgba(255,255,255,0.72); letter-spacing: 0.5px; margin-bottom: 1.4rem; }
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            max-width: 900px;
+        }
+        .footer-links a {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #ffffff !important;
+            text-decoration: none;
             font-size: 0.9rem;
             font-weight: 600;
+            padding: 10px 18px;
+            border-radius: 50px;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
+        .footer-links a i { font-size: 1.1rem; }
+        .footer-links a.linkedin:hover { background: #0077b5; box-shadow: 0 5px 15px rgba(0,119,181,0.4); transform: translateY(-5px) scale(1.05); }
+        .footer-links a.github:hover { background: #333; box-shadow: 0 5px 15px rgba(0,0,0,0.4); transform: translateY(-5px) scale(1.05); }
+        .footer-links a.youtube:hover { background: #ff0000; box-shadow: 0 5px 15px rgba(255,0,0,0.4); transform: translateY(-5px) scale(1.05); }
+        .footer-links a.twitter:hover { background: #000; box-shadow: 0 5px 15px rgba(0,0,0,0.4); transform: translateY(-5px) scale(1.05); }
+        .footer-links a.blog:hover { background: #f57d00; box-shadow: 0 5px 15px rgba(245,125,0,0.4); transform: translateY(-5px) scale(1.05); }
+        .footer-links a.facebook:hover { background: #1877f2; box-shadow: 0 5px 15px rgba(24,119,242,0.4); transform: translateY(-5px) scale(1.05); }
+        .footer-links a.telegram:hover { background: #0088cc; box-shadow: 0 5px 15px rgba(0,136,204,0.4); transform: translateY(-5px) scale(1.05); }
+        .footer-links a.whatsapp:hover { background: #25d366; box-shadow: 0 5px 15px rgba(37,211,102,0.4); transform: translateY(-5px) scale(1.05); }
+        .footer-divider { width: 72px; height: 2px; margin: 2rem auto; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.22), transparent); border-radius: 2px; }
+        .profile-img-wrapper { position: relative; width: 90px; height: 90px; margin-bottom: 1.2rem; }
+        .profile-img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: 3px solid #10b981; box-shadow: 0 0 20px rgba(16,185,129,0.3); }
+        .profile-fallback { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: none; align-items: center; justify-content: center; background: linear-gradient(135deg, #10b981, #065f46); color: white; font-size: 1.8rem; font-weight: 800; border-radius: 50%; letter-spacing: 2px; }
+        .author-name { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.3rem; background: linear-gradient(to right, #fff, #10b981); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+        .author-title { font-size: 0.85rem; color: rgba(255,255,255,0.7); margin-bottom: 0; }
     </style>
 </head>
 <body>
@@ -258,10 +333,28 @@
     </div>
 
     <div class="footer">
-        Developed with 💚 by 
-        <a href="https://www.linkedin.com/in/sm-ashikur-rahman/" target="_blank" style="color: inherit; text-decoration: none; font-weight: 800; transition: color 0.3s ease;">
-            SM Ashikur Rahman <i class="fab fa-linkedin" style="color: #0077b5; margin-left: 4px; font-size: 1.1em; vertical-align: middle;"></i>
-        </a>
+        <div class="author-card">
+            <div class="footer-social-header">🤝 Follow & Connect</div>
+            <div class="footer-links">
+                <a href="https://www.linkedin.com/in/sm-ashikur-rahman/" target="_blank" class="linkedin"><i class="fab fa-linkedin-in"></i> LinkedIn</a>
+                <a href="https://github.com/ashiq-sm" target="_blank" class="github"><i class="fab fa-github"></i> GitHub</a>
+                <a href="https://www.youtube.com/@smashiqurrahman8150" target="_blank" class="youtube"><i class="fab fa-youtube"></i> YouTube</a>
+                <a href="https://x.com/smar1ashiq" target="_blank" class="twitter"><i class="fab fa-x-twitter"></i> Twitter</a>
+                <a href="http://smashiq.blogspot.com/" target="_blank" class="blog"><i class="fas fa-rss"></i> Blog</a>
+                <a href="https://facebook.com/sm1ar" target="_blank" class="facebook"><i class="fab fa-facebook-f"></i> Facebook</a>
+                <a href="https://t.me/sm_ash1q" target="_blank" class="telegram"><i class="fab fa-telegram-plane"></i> Telegram</a>
+                <a href="https://wa.me/+8801773971905" target="_blank" class="whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+            </div>
+            <div class="footer-divider"></div>
+            <div class="profile-img-wrapper">
+                <img src="https://ui-avatars.com/api/?name=SM+Ashikur+Rahman&background=10b981&color=fff&size=256"
+                     id="authorPhoto" class="profile-img" alt="SM Ashikur Rahman"
+                     onerror="this.style.display='none'; document.getElementById('profileFallbackHub').style.display='flex';">
+                <div id="profileFallbackHub" class="profile-fallback">AR</div>
+            </div>
+            <div class="author-name">SM Ashikur Rahman</div>
+            <div class="author-title">Developed with 💚 | SM NextGen BioNotes</div>
+        </div>
     </div>
 
     <script>
@@ -269,17 +362,36 @@
             const root = document.documentElement;
             const theme = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
             root.setAttribute('data-theme', theme);
-            localStorage.setItem('hub-theme', theme);
+            localStorage.setItem('sm-theme', theme);
         }
 
         window.onload = () => {
-            const savedTheme = localStorage.getItem('hub-theme');
+            const savedTheme = localStorage.getItem('sm-theme');
             if (savedTheme) {
                 document.documentElement.setAttribute('data-theme', savedTheme);
-            } else {
-                // Check system preference
-                if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
-                    document.documentElement.setAttribute('data-theme', 'light');
+            } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+                document.documentElement.setAttribute('data-theme', 'light');
+            }
+
+            // Recently visited badge
+            const lastVisited = localStorage.getItem('sm-last-visited');
+            if (lastVisited === 'geb331') {
+                const card = document.querySelector('a[href="GEB331_MASTER_EXAM_PREP_INTERACTIVE_v4_FINAL.html"]');
+                if (card) {
+                    card.classList.add('last-visited');
+                    const badge = document.createElement('div');
+                    badge.className = 'last-visited-badge';
+                    badge.textContent = '⏰ Last Visited';
+                    card.appendChild(badge);
+                }
+            } else if (lastVisited === 'geb335') {
+                const card = document.querySelector('a[href="GEB335_FERMENTATION_TECH_INTERACTIVE.html"]');
+                if (card) {
+                    card.classList.add('last-visited');
+                    const badge = document.createElement('div');
+                    badge.className = 'last-visited-badge';
+                    badge.textContent = '⏰ Last Visited';
+                    card.appendChild(badge);
                 }
             }
         }
