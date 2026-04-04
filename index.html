@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>SM NextGen BioNotes</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-color: #f4f9f4;
+            --text-color: #1a2e1a;
+            --card-bg: #ffffff;
+            --header-grad: linear-gradient(135deg, #0f3611, #0a210b);
+            --accent-color: #10b981;
+            --border-color: #ddebe0;
+        }
+
+        [data-theme="dark"] {
+            --bg-color: #0f1711;
+            --text-color: #e2e8f0;
+            --card-bg: #1a241c;
+            --header-grad: linear-gradient(135deg, #0a1f0a, #000000);
+            --accent-color: #34d399;
+            --border-color: #273e2d;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; transition: background 0.3s, color 0.3s, transform 0.2s; }
+        body {
+            background: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Outfit', sans-serif;
+            min-height: 100vh;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .hub-header {
+            text-align: center;
+            background: var(--header-grad);
+            color: white;
+            padding: 3.5rem 2rem;
+            border-radius: 2rem;
+            width: 100%;
+            max-width: 1200px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 3rem;
+        }
+
+        .hub-header::after {
+            content: '';
+            position: absolute;
+            top: -50%; left: -50%; width: 200%; height: 200%;
+            background: radial-gradient(circle, rgba(16, 185, 129, 0.1) 0%, transparent 60%);
+            animation: pulse 10s infinite;
+        }
+        
+        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
+
+        .title { font-size: 3.5rem; font-weight: 800; margin-bottom: 0.8rem; position: relative; z-index: 2; }
+        .subtitle { font-size: 1.3rem; opacity: 0.8; font-weight: 400; position: relative; z-index: 2; }
+
+        .controls {
+            position: absolute;
+            top: 20px; right: 20px;
+            z-index: 10;
+        }
+        .theme-btn {
+            background: rgba(255,255,255,0.2);
+            border: 1px solid rgba(255,255,255,0.3);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 50px;
+            cursor: pointer;
+            backdrop-filter: blur(5px);
+            font-family: inherit;
+            font-weight: 600;
+        }
+        .theme-btn:hover { background: rgba(255,255,255,0.3); transform: scale(1.05); }
+
+        .semester-section {
+            width: 100%;
+            max-width: 1200px;
+            margin-bottom: 4rem;
+        }
+
+        .semester-title {
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+            border-bottom: 4px solid var(--accent-color);
+            padding-bottom: 5px;
+        }
+
+        .course-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .course-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 1.5rem;
+            padding: 2rem;
+            text-decoration: none;
+            color: var(--text-color);
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            position: relative;
+            overflow: hidden;
+            border-left: 6px solid var(--accent-color);
+        }
+        
+        .course-card:hover { 
+            transform: translateY(-8px); 
+            box-shadow: 0 15px 30px rgba(16, 185, 129, 0.15); 
+            border-color: var(--accent-color);
+        }
+
+        .course-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .course-code {
+            font-size: 0.9rem;
+            font-weight: 800;
+            color: var(--accent-color);
+            margin-bottom: 0.2rem;
+            letter-spacing: 1px;
+        }
+
+        .course-name {
+            font-size: 1.4rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 1.5rem; flex-grow: 1;
+        }
+
+        .status-badge {
+            align-self: flex-start;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+        
+        .status-active { background: #10b981; color: white; box-shadow: 0 4px 10px rgba(16, 185, 129, 0.3); }
+        .status-upcoming { background: rgba(16, 185, 129, 0.1); color: var(--accent-color); font-weight: 600; border: 1px solid rgba(16,185,129,0.3);}
+        
+        [data-theme="light"] .status-upcoming { background: #f0fdf4; }
+        
+        .card-disabled { cursor: not-allowed; opacity: 0.8; border-left-color: #cbd5e1; filter: grayscale(50%); }
+        [data-theme="dark"] .card-disabled { border-left-color: #475569; }
+
+        .footer {
+            margin-top: auto;
+            text-align: center;
+            padding: 2rem;
+            opacity: 0.6;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body data-theme="dark">
+
+    <div class="hub-header">
+        <div class="controls">
+            <button class="theme-btn" onclick="toggleTheme()">🌓 Theme Mode</button>
+        </div>
+        <h1 class="title">SM NextGen BioNotes</h1>
+        <div class="subtitle">The Ultimate Interactive Academic Archive for GEB Students</div>
+    </div>
+
+    <!-- Year 3 Semester 2 -->
+    <div class="semester-section">
+        <h2 class="semester-title">Year 3, Semester 2</h2>
+        <div class="course-grid">
+            
+            <a href="GEB331_MASTER_EXAM_PREP_INTERACTIVE_v4_FINAL.html" class="course-card">
+                <div class="course-icon">📘</div>
+                <div class="course-code">GEB 331</div>
+                <div class="course-name">Cell Signaling</div>
+                <div class="status-badge status-active">▶ Access Notebook</div>
+            </a>
+            
+            <a href="GEB335_FERMENTATION_TECH_INTERACTIVE.html" class="course-card">
+                <div class="course-icon">🔬</div>
+                <div class="course-code">GEB 335</div>
+                <div class="course-name">Fermentation Technology</div>
+                <div class="status-badge status-active">▶ Access Notebook</div>
+            </a>
+
+            <div class="course-card card-disabled">
+                <div class="course-icon">🧬</div>
+                <div class="course-code">GEB 333</div>
+                <div class="course-name">rDNA Technology</div>
+                <div class="status-badge status-upcoming">⏳ Coming Soon</div>
+            </div>
+
+            <div class="course-card card-disabled">
+                <div class="course-icon">🦠</div>
+                <div class="course-code">GEB 334</div>
+                <div class="course-name">Onco Virology</div>
+                <div class="status-badge status-upcoming">⏳ Coming Soon</div>
+            </div>
+
+            <div class="course-card card-disabled">
+                <div class="course-icon">🐟</div>
+                <div class="course-code">GEB 335</div>
+                <div class="course-name">Aqua & Fish Pathology</div>
+                <div class="status-badge status-upcoming">⏳ Coming Soon</div>
+            </div>
+
+            <div class="course-card card-disabled">
+                <div class="course-icon">⚡</div>
+                <div class="course-code">GEB 336</div>
+                <div class="course-name">Bioenergetics</div>
+                <div class="status-badge status-upcoming">⏳ Coming Soon</div>
+            </div>
+
+            <div class="course-card card-disabled">
+                <div class="course-icon">⚙️</div>
+                <div class="course-code">GEB 337</div>
+                <div class="course-name">Bioprocess Engineering</div>
+                <div class="status-badge status-upcoming">⏳ Coming Soon</div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Future Semesters -->
+    <div class="semester-section" style="opacity: 0.6;">
+        <h2 class="semester-title">Future Expansion (Year 4)</h2>
+        <div class="course-grid">
+            <div class="course-card card-disabled">
+                <div class="course-icon">🔮</div>
+                <div class="course-code">Year 4, Sem 1</div>
+                <div class="course-name">Advanced Courses...</div>
+                <div class="status-badge status-upcoming">🔒 Locked</div>
+            </div>
+            <div class="course-card card-disabled">
+                <div class="course-icon">🎓</div>
+                <div class="course-code">Year 4, Sem 2</div>
+                <div class="course-name">Final Term Courses...</div>
+                <div class="status-badge status-upcoming">🔒 Locked</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        Developed with 💚 by SM Ashikur Rahman
+    </div>
+
+    <script>
+        function toggleTheme() {
+            const root = document.documentElement;
+            const theme = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+            root.setAttribute('data-theme', theme);
+            localStorage.setItem('hub-theme', theme);
+        }
+
+        window.onload = () => {
+            const savedTheme = localStorage.getItem('hub-theme');
+            if (savedTheme) {
+                document.documentElement.setAttribute('data-theme', savedTheme);
+            } else {
+                // Check system preference
+                if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+                    document.documentElement.setAttribute('data-theme', 'light');
+                }
+            }
+        }
+    </script>
+</body>
+</html>

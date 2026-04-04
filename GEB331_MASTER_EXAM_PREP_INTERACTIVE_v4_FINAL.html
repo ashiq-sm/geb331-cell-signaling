@@ -270,10 +270,10 @@
         .footer {
             margin-top: 5rem;
             padding: 4rem 2rem;
-            background: #080c08; /* Fixed dark background */
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            background: var(--nav-pill-bg); /* Adaptive background */
+            border-top: 1px solid var(--border-color);
             text-align: center;
-            color: #ffffff; /* Fixed text color */
+            color: var(--text-color); /* Adaptive text color */
         }
 
         .author-card {
@@ -363,7 +363,7 @@
 
         .author-title {
             font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.7); /* Fixed light opacity */
+            color: rgba(255, 255, 255, 0.8);
             margin-bottom: 1.5rem;
         }
         
@@ -478,6 +478,16 @@
     <div class="header">
         <h1>📘 GEB 331 — Cell Signaling <span>Bilingual Interactive Note</span></h1>
         <div class="controls">
+            <button class="control-btn" onclick="window.location.href='index.html'" style="font-weight: bold;">🏠 Home Hub</button>
+            <select class="control-btn live-btn" id="courseSelect" onchange="if(this.value !== '#') window.open(this.value, '_self')" style="background: #e4f0e4 !important; color: #1a4d1a !important;">
+                <option value="#" selected>📘 GEB 331: Cell Signaling (Current)</option>
+                <option value="GEB335_FERMENTATION_TECH_INTERACTIVE.html">🔬 GEB 335: Fermentation Tech (New!)</option>
+                <option value="#">🧬 rDNA Technology (Coming Soon)</option>
+                <option value="#">🦠 Onco Virology (Coming Soon)</option>
+                <option value="#">🐟 Aqua & Fish Pathology (Coming Soon)</option>
+                <option value="#">⚡ Bioenergetics (Coming Soon)</option>
+                <option value="#">⚙️ Bioprocess (Coming Soon)</option>
+            </select>
             <button class="control-btn live-btn" onclick="window.open('https://geb331-cell-signaling.vercel.app', '_blank')">🌐 View Live</button>
             <button class="control-btn" onclick="toggleTheme()">🌓 Theme</button>
             <button class="control-btn" onclick="changeFont(-1)">A-</button>
@@ -568,10 +578,10 @@
 </div>
 
 <!-- Load external data -->
-<script src="geb331_data.js"></script>
-<script src="geb331_data_part2.js"></script>
-<script src="geb331_data_part3.js"></script>
-<script src="geb331_data_part4.js"></script>
+<script src="data/geb331_data.js"></script>
+<script src="data/geb331_data_part2.js"></script>
+<script src="data/geb331_data_part3.js"></script>
+<script src="data/geb331_data_part4.js"></script>
 <script>
 let currentFontSize = 16;
 let currentLang = 'bn';

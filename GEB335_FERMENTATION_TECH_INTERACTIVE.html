@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>GEB 335 · Fermentation Tech Study (Ben+Eng)</title>
+    <!-- Google Fonts for Eye-Saving Typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Noto+Sans+Bengali:wght@400;700&family=Outfit:wght@400;700&family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-color: #f0f7f0;
+            --text-color: #1a2e1a;
+            --card-bg: #ffffff;
+            --header-grad: linear-gradient(135deg, #1b4d1b, #0e2c0e);
+            --border-color: #ddebe0;
+            --accent-color: #1a4d1a;
+            --nav-pill-bg: #e4f0e4;
+            --font-size-base: 16px;
+            --body-font: 'Inter', 'Noto Sans Bengali', sans-serif;
+        }
+
+        [data-theme="dark"] {
+            --bg-color: #121212;
+            --text-color: #e0e0e0;
+            --card-bg: #1e1e1e;
+            --header-grad: linear-gradient(135deg, #0a1f0a, #000000);
+            --border-color: #333;
+            --accent-color: #4caf50;
+            --nav-pill-bg: #2a2a2a;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; transition: background 0.3s, color 0.3s; }
+        html { font-size: var(--font-size-base); }
+        body {
+            background: var(--bg-color);
+            font-family: var(--body-font);
+            line-height: 1.6;
+            color: var(--text-color);
+            padding: 1.5rem;
+        }
+        .container { max-width: 1300px; margin: 0 auto; transition: max-width 0.4s ease; }
+        
+        .bismillah {
+            text-align: center;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+
+        .header {
+            background: var(--header-grad);
+            color: white;
+            padding: 1.8rem 2rem;
+            border-radius: 2rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            position: relative;
+        }
+        .header h1 {
+            font-size: 1.9rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .header h1 span {
+            background: #ffd966;
+            color: #1e3a1e;
+            font-size: 0.9rem;
+            padding: 0.2rem 0.8rem;
+            border-radius: 40px;
+        }
+        
+        .controls {
+            display: flex;
+            gap: 10px;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+        .control-btn {
+            background: rgba(255,255,255,0.2);
+            border: 1px solid rgba(255,255,255,0.3);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 0.8rem;
+        }
+        .control-btn:hover { background: rgba(255,255,255,0.3); }
+        .live-btn {
+            background: #ffd966 !important;
+            color: #1b4d1b !important;
+            font-weight: bold;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            font-family: inherit;
+        }
+        .live-btn:hover { background: #ffea70 !important; transform: scale(1.05); }
+
+        .mission-section {
+            background: rgba(255, 255, 255, 0.05);
+            border-left: 8px solid var(--accent-color);
+            padding: 2.5rem 3rem;
+            margin-bottom: 2.5rem;
+            border-radius: 1.5rem;
+            color: var(--text-color);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(15px);
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s ease;
+        }
+        [data-theme="dark"] .mission-section { background: rgba(255, 255, 255, 0.02); }
+        
+        .mission-section::before {
+            content: '\201C';
+            position: absolute;
+            top: 5px; left: 20px;
+            font-size: 5rem;
+            color: var(--accent-color);
+            opacity: 0.15;
+            font-family: serif;
+        }
+        .mission-section::after {
+            content: '\201D';
+            position: absolute;
+            bottom: -20px; right: 20px;
+            font-size: 5rem;
+            color: var(--accent-color);
+            opacity: 0.15;
+            font-family: serif;
+        }
+        .mission-text {
+            font-size: 1.2em;
+            line-height: 1.9;
+            font-weight: 500;
+            text-align: center;
+            font-family: 'Outfit', 'Noto Sans Bengali', sans-serif;
+            position: relative;
+            z-index: 1;
+        }
+        .dua-link {
+            display: inline-block;
+            margin-top: 15px;
+            font-size: 0.8rem;
+            color: #fbbf24;
+            text-decoration: none;
+            cursor: pointer;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: 1px solid rgba(251, 191, 36, 0.3);
+            padding: 4px 12px;
+            border-radius: 20px;
+            transition: 0.3s;
+        }
+        .dua-link:hover { 
+            background: #fbbf24; 
+            color: #1a4d1a;
+            box-shadow: 0 0 15px rgba(251, 191, 36, 0.4);
+        }
+
+        /* Prayer Modal Styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.7);
+            backdrop-filter: blur(8px);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            padding: 20px;
+        }
+        .modal-content {
+            background: var(--card-bg);
+            padding: 2.5rem;
+            border-radius: 2rem;
+            max-width: 600px;
+            width: 100%;
+            position: relative;
+            text-align: center;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            border: 1px solid var(--border-color);
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+        .modal-overlay.active { display: flex; }
+        .modal-overlay.active .modal-content { transform: scale(1); }
+        .modal-close {
+            position: absolute;
+            top: 15px; right: 20px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-color);
+            opacity: 0.5;
+        }
+        .dua-arabic {
+            font-family: 'Times New Roman', serif;
+            font-size: 1.8rem;
+            color: var(--accent-color);
+            margin-bottom: 1.5rem;
+            direction: rtl;
+        }
+        .dua-meaning {
+            font-style: italic;
+            color: var(--text-color);
+            margin-top: 1rem;
+            font-size: 1rem;
+        }
+
+        .quick-nav {
+            display: flex; flex-wrap: wrap; gap: 0.6rem; margin-bottom: 2rem;
+            background: var(--card-bg); padding: 1rem 1.2rem; border-radius: 3rem;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+        }
+        .nav-pill {
+            background: var(--nav-pill-bg); color: var(--text-color); border: none; padding: 0.4rem 1.2rem;
+            border-radius: 2rem; font-weight: 600; font-size: 0.85rem; cursor: pointer; transition: 0.2s;
+        }
+        .nav-pill:hover { background: #bdd8bd; transform: translateY(-2px); }
+        .search-bar { margin-bottom: 1.6rem; display: flex; gap: 0.5rem; }
+        #searchInput {
+            flex: 1; padding: 0.7rem 1rem; border-radius: 3rem; border: 1px solid var(--border-color); 
+            background: var(--card-bg); color: var(--text-color); font-size: 0.9rem;
+        }
+        .set-card {
+            background: var(--card-bg); border-radius: 1.8rem; margin-bottom: 2.5rem;
+            box-shadow: 0 6px 14px rgba(0,20,0,0.08); overflow: hidden; border: 1px solid var(--border-color);
+        }
+        .set-header {
+            padding: 1rem 1.8rem; border-bottom: 1px solid var(--border-color);
+            cursor: pointer; display: flex; justify-content: space-between; align-items: center;
+            font-weight: 700; font-size: 1.2rem; color: var(--accent-color);
+        }
+        .toggle-icon { font-size: 1.5rem; transition: transform 0.2s; }
+        .set-content { padding: 1.2rem 1.8rem 1.8rem; display: none; }
+        .set-card.open .set-content { display: block; }
+        .set-card.open .toggle-icon { transform: rotate(90deg); }
+        
+        .markdown-body h3 {
+            font-weight: 800; font-size: 1.1rem; color: var(--accent-color); margin-top: 1.5rem; margin-bottom: 0.8rem;
+            background: var(--nav-pill-bg); padding: 0.4rem 1.2rem; border-radius: 20px; display: inline-block;
+        }
+        .markdown-body table {
+            display: block;
+            width: 100%;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            border-collapse: collapse;
+            margin: 1.2rem 0;
+            font-size: 0.95rem;
+            border-radius: 12px;
+        }
+        /* Custom scrollbar for tables */
+        .markdown-body table::-webkit-scrollbar { height: 6px; }
+        .markdown-body table::-webkit-scrollbar-thumb { background: var(--accent-color); border-radius: 10px; }
+        .markdown-body table::-webkit-scrollbar-track { background: var(--nav-pill-bg); border-radius: 10px; }
+
+        .markdown-body th, .markdown-body td {
+            border: 1px solid var(--border-color); 
+            padding: 0.8rem 1rem;
+            min-width: 140px; /* Ensures readable columns even after expanding font */
+            text-align: left;
+        }
+        .markdown-body th { background: var(--nav-pill-bg); }
+
+        .footer {
+            margin-top: 5rem;
+            padding: 4rem 2rem;
+            background: var(--nav-pill-bg); /* Adaptive background */
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+            color: var(--text-color); /* Adaptive text color */
+        }
+
+        .author-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 2.5rem;
+            padding: 2.5rem;
+            border-radius: 2.5rem;
+            background: linear-gradient(145deg, #064e3b, #022c22);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .author-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(circle at 20% 20%, rgba(16, 185, 129, 0.1), transparent);
+            pointer-events: none;
+        }
+
+        .profile-img-wrapper {
+            position: relative;
+            width: 100px;
+            height: 100px;
+            margin-bottom: 1.5rem;
+        }
+
+        .profile-img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--accent);
+            box-shadow: 0 0 20px rgba(16, 185, 129, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .profile-img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(16, 185, 129, 0.5);
+        }
+
+        .profile-fallback {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            display: none; /* Hidden by default, shown on error */
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--accent), #065f46);
+            color: white;
+            font-size: 2rem;
+            font-weight: 800;
+            border-radius: 50%;
+            border: 3px solid var(--accent);
+            box-shadow: 0 0 20px rgba(16, 185, 129, 0.3);
+            font-family: 'Outfit', sans-serif;
+            letter-spacing: 2px;
+        }
+
+        .profile-img-wrapper::after {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--accent), #10b981);
+            z-index: -1;
+            opacity: 0.3;
+        }
+
+        .author-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(to right, #fff, #10b981);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .author-title {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 1.5rem;
+        }
+        
+        .get-in-touch {
+            font-size: 1.4rem;
+            font-weight: 800;
+            margin-bottom: 2rem;
+            color: #ffd966;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .footer-links a {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #ffffff !important; /* Force light text */
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            padding: 10px 20px;
+            border-radius: 50px;
+            background: rgba(255,255,255,0.08); /* Darker link bg */
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .footer-links a i { font-size: 1.2rem; }
+        
+        /* Individual Social Brand Colors on Hover */
+        .footer-links a.linkedin:hover { background: #0077b5; box-shadow: 0 5px 15px rgba(0, 119, 181, 0.4); transform: translateY(-5px) scale(1.05); }
+        .footer-links a.github:hover { background: #333; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4); transform: translateY(-5px) scale(1.05); }
+        .footer-links a.youtube:hover { background: #ff0000; box-shadow: 0 5px 15px rgba(255, 0, 0, 0.4); transform: translateY(-5px) scale(1.05); }
+        .footer-links a.twitter:hover { background: #000; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4); transform: translateY(-5px) scale(1.05); }
+        .footer-links a.blog:hover { background: #f57d00; box-shadow: 0 5px 15px rgba(245, 125, 0, 0.4); transform: translateY(-5px) scale(1.05); }
+        .footer-links a.facebook:hover { background: #1877f2; box-shadow: 0 5px 15px rgba(24, 119, 242, 0.4); transform: translateY(-5px) scale(1.05); }
+        .footer-links a.telegram:hover { background: #0088cc; box-shadow: 0 5px 15px rgba(0, 136, 204, 0.4); transform: translateY(-5px) scale(1.05); }
+        .footer-links a.whatsapp:hover { background: #25d366; box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4); transform: translateY(-5px) scale(1.05); }
+
+        .highlight { background-color: #fff2b5; color: black; border-radius: 4px; padding: 0 2px; }
+
+        /* Print Specific Styles */
+        .print-only { display: none; }
+        @media print {
+            .print-only { display: block !important; }
+            .controls, .quick-nav, .search-bar, .modal-overlay, .nav-pill, .live-btn { display: none !important; }
+            .mission-section { 
+                display: block !important;
+                visibility: visible !important;
+                opacity: 1 !important;
+                border: 1.5px solid #000 !important; 
+                background: #fff !important; 
+                color: #000 !important; 
+                page-break-inside: avoid; 
+                overflow: visible !important; 
+                padding: 2rem !important;
+                backdrop-filter: none !important;
+                box-shadow: none !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            .mission-section::before, .mission-section::after { display: none !important; }
+            .dua-link { display: none !important; }
+            .set-content { display: block !important; }
+            .set-card { border: 1px solid #eee; margin-bottom: 2rem; page-break-inside: avoid; }
+            .toggle-icon { display: none; }
+            body { padding: 0.5in; background: white !important; color: black !important; }
+            .container { max-width: 100% !important; margin: 0 !important; }
+            .footer { background: none !important; color: black !important; border-top: 1px solid #eee; margin-top: 2rem; }
+            .footer-links a { background: none !important; color: #1a4d1a !important; border: none !important; padding: 5px 0; font-size: 0.8rem; }
+            .get-in-touch { color: #1a4d1a !important; }
+            
+            #print-header { 
+                text-align: right; 
+                font-size: 0.8rem; 
+                color: #888; 
+                margin-bottom: 2rem; 
+                text-transform: uppercase;
+                letter-spacing: 1px;
+            }
+            #print-dua {
+                margin-top: 2rem;
+                padding-top: 1.5rem;
+                border-top: 2px solid #eee;
+                font-style: italic;
+                font-size: 1rem;
+                text-align: left;
+                width: 100%;
+            }
+        }
+    </style>
+    <!-- Include Marked.js for rendering beautiful Markdown to HTML -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <div id="print-header" class="print-only">sm study note</div>
+    <div class="bismillah">
+        <span dir="rtl" lang="ar" style="font-family: 'Times New Roman', serif; font-size: 1.6rem; display: block; direction: rtl; unicode-bidi: isolate;">بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ</span>
+        <span style="font-size: 0.9rem; font-weight: normal; display: block; margin-top: 5px;">(পরম করুণাময় ও অসীম দয়ালু আল্লাহর নামে শুরু করছি)</span>
+    </div>
+
+    <div class="header">
+        <h1>📘 GEB 335 — Fermentation Technology <span>Bilingual Interactive Note</span></h1>
+        <div class="controls">
+            <button class="control-btn" onclick="window.location.href='index.html'" style="font-weight: bold;">🏠 Home Hub</button>
+            <select class="control-btn live-btn" id="courseSelect" onchange="if(this.value !== '#') window.open(this.value, '_self')" style="background: #e4f0e4 !important; color: #1a4d1a !important;">
+                <option value="GEB331_MASTER_EXAM_PREP_INTERACTIVE_v4_FINAL.html">📘 GEB 331: Cell Signaling</option>
+                <option value="#" selected>🔬 GEB 335: Fermentation Tech (Current)</option>
+                <option value="#">🧬 rDNA Technology (Coming Soon)</option>
+                <option value="#">🦠 Onco Virology (Coming Soon)</option>
+                <option value="#">🐟 Aqua & Fish Pathology (Coming Soon)</option>
+                <option value="#">⚡ Bioenergetics (Coming Soon)</option>
+                <option value="#">⚙️ Bioprocess (Coming Soon)</option>
+            </select>
+            <button class="control-btn live-btn" onclick="window.open('https://geb331-cell-signaling.vercel.app', '_blank')">🌐 View Live</button>
+            <button class="control-btn" onclick="toggleTheme()">🌓 Theme</button>
+            <button class="control-btn" onclick="changeFont(-1)">A-</button>
+            <button class="control-btn" onclick="changeFont(1)">A+</button>
+            <select class="control-btn" id="fontFamily" onchange="applyFontFamily()">
+                <option value="'Inter', 'Noto Sans Bengali'">👁️ Eye Saver (Inter)</option>
+                <option value="'Outfit', 'Noto Sans Bengali'">✨ Premium (Outfit)</option>
+                <option value="'Roboto Slab', 'Noto Sans Bengali'">📖 Academic (Slab)</option>
+                <option value="system-ui">💻 System Default</option>
+            </select>
+            <select class="control-btn" id="viewMode" onchange="applyViewMode()">
+                <option value="auto">🖥️ Auto View</option>
+                <option value="mobile">📱 Mobile</option>
+                <option value="desktop">💻 Desktop</option>
+            </select>
+            <select class="control-btn" id="languageSelect" onchange="changeLanguage()">
+                <option value="bn">🌐 Smart Mix (Bilingual)</option>
+                <option value="en">🌐 Full English (Academic)</option>
+            </select>
+            <button class="control-btn" id="toggleAllBtn" onclick="toggleAllSets()">📂 Expand All</button>
+            <button class="control-btn live-btn" onclick="exportToPDF()">🖨️ Export PDF</button>
+        </div>
+    </div>
+
+    <div class="mission-section">
+        <div class="mission-text">
+            দুনিয়ার এ ছোট সফরে, একজন মুমিনের ক্যারিয়ার হলো বাতিল শাসন ও দুর্নীতির বিরুদ্ধে লড়াই করার একটি লিগ্যাল প্লাটফর্ম, আপনি যতই উপরে উঠবেন দ্বীনের কথা ততই বেশি উঁচুতে উঠবে। আলম-এ আরওয়াহ (রূহ এর জগত) থেকে আলম-এ-আখিরাহ(শেষ জগত) পর্যন্ত বিস্তৃত আমাদের ক্যারিয়ার!
+            <br>
+            <span class="dua-link" onclick="openDuaModal()">click for a সুন্দর দোয়া here!</span>
+        </div>
+        <div id="print-dua" class="print-only">
+            <strong>সুন্দর দোয়া (Rabbana Atina):</strong><br>
+            রাব্বানা আতিনা ফিদ দুনিয়া হাসানাতাওঁ ওয়া ফিল আখিরাতি হাসানাতাওঁ ওয়া কিনা আযাবান নার।<br>
+            (হে আমাদের প্রতিপালক! আমাদের দুনিয়াতে কল্যাণ দিন এবং আখিরাতেও কল্যাণ দিন এবং আমাদের দোযখের আগুন থেকে রক্ষা করুন।)
+        </div>
+    </div>
+
+    <!-- Custom Prayer Modal -->
+    <div class="modal-overlay" id="duaModal" onclick="closeDuaModal()">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <span class="modal-close" onclick="closeDuaModal()">&times;</span>
+            <div class="dua-arabic">رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً وَفِي الْآخِرَةِ حَسَنَةً وَقِنَا عَذَابَ النَّارِ</div>
+            <div class="dua-meaning">
+                <strong>উচ্চারণ:</strong> রাব্বানা আতিনা ফিদ দুনিয়া হাসানাতাওঁ ওয়া ফিল আখিরাতি হাসানাতাওঁ ওয়া কিনা আযাবান নার।<br><br>
+                <strong>অর্থ:</strong> হে আমাদের প্রতিপালক! আমাদের দুনিয়াতে কল্যাণ দিন এবং আখিরাতেও কল্যাণ দিন এবং আমাদের দোযখের আগুন থেকে রক্ষা করুন।
+            </div>
+            <button class="control-btn live-btn" style="margin-top: 2rem; width: 100%;" onclick="closeDuaModal()">আমীন (Ameen)</button>
+        </div>
+    </div>
+
+    <div class="search-bar"><input type="text" id="searchInput" placeholder="🔎 Search anything (GPCR, PI3K, Notch...)" autocomplete="off"></div>
+    <div class="quick-nav" id="quickNav"></div>
+    <div id="setsContainer"></div>
+    
+    <div class="footer">
+        <div class="author-card">
+            <div class="profile-img-wrapper">
+                <!-- 
+                    USER STEP: Update the src below with your direct Facebook photo link.
+                    To get it: Go to your FB photo, right-click it, and select "Copy image address".
+                -->
+                <img src="https://ui-avatars.com/api/?name=SM+Ashikur+Rahman&background=10b981&color=fff&size=256" 
+                     id="authorPhoto" 
+                     class="profile-img" 
+                     alt="SM Ashikur Rahman"
+                     onerror="this.style.display='none'; document.getElementById('profileFallback').style.display='flex';">
+                <div id="profileFallback" class="profile-fallback">AR</div>
+            </div>
+            <div class="author-name">SM Ashikur Rahman</div>
+            <div class="author-title">Developed with 💚 for GEB 331 | Cell Signaling</div>
+        </div>
+
+        <div class="get-in-touch" style="margin-bottom: 1.5rem;">
+            <p style="opacity: 0.7; font-size: 0.95rem;">🤝 Follow him & share your ideas through :</p>
+        </div>
+
+        <div class="footer-links">
+            <a href="https://www.linkedin.com/in/sm-ashikur-rahman/" target="_blank" class="linkedin"><i class="fab fa-linkedin-in"></i> LinkedIn</a>
+            <a href="https://github.com/ashiq-sm" target="_blank" class="github"><i class="fab fa-github"></i> GitHub</a>
+            <a href="https://www.youtube.com/@smashiqurrahman8150" target="_blank" class="youtube"><i class="fab fa-youtube"></i> YouTube</a>
+            <a href="https://x.com/smar1ashiq" target="_blank" class="twitter"><i class="fab fa-x-twitter"></i> Twitter</a>
+            <a href="http://smashiq.blogspot.com/" target="_blank" class="blog"><i class="fas fa-rss"></i> Blog</a>
+            <a href="https://facebook.com/sm1ar" target="_blank" class="facebook"><i class="fab fa-facebook-f"></i> Facebook</a>
+            <a href="https://t.me/sm_ash1q" target="_blank" class="telegram"><i class="fab fa-telegram-plane"></i> Telegram</a>
+            <a href="https://wa.me/+8801773971905" target="_blank" class="whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+        </div>
+    </div>
+</div>
+
+<!-- Load external data -->
+<script src="data/geb335_data.js"></script>
+<script>
+let currentFontSize = 16;
+let currentLang = 'bn';
+const setsData = geb335_sets;
+
+function changeLanguage() {
+    currentLang = document.getElementById('languageSelect').value;
+    localStorage.setItem('language', currentLang);
+    renderSets();
+}
+
+function openDuaModal() {
+    document.getElementById('duaModal').classList.add('active');
+}
+
+function closeDuaModal() {
+    document.getElementById('duaModal').classList.remove('active');
+}
+
+let allExpanded = false;
+function toggleAllSets() {
+    allExpanded = !allExpanded;
+    const cards = document.querySelectorAll('.set-card');
+    const btn = document.getElementById('toggleAllBtn');
+    
+    cards.forEach(card => {
+        if (allExpanded) {
+            if (!card.classList.contains('open')) card.querySelector('.set-header').click();
+        } else {
+            if (card.classList.contains('open')) card.querySelector('.set-header').click();
+        }
+    });
+    
+    btn.innerHTML = allExpanded ? '📁 Collapse All' : '📂 Expand All';
+}
+
+function exportToPDF() {
+    // Force expand for printing
+    const cards = document.querySelectorAll('.set-card');
+    cards.forEach(card => {
+        if (!card.classList.contains('open')) card.querySelector('.set-header').click();
+    });
+    
+    // Update button state to reflect expansion
+    allExpanded = true;
+    document.getElementById('toggleAllBtn').innerHTML = '📁 Collapse All';
+    
+    setTimeout(() => {
+        window.print();
+    }, 500);
+}
+
+function toggleTheme() {
+    const root = document.documentElement;
+    const theme = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+}
+
+function changeFont(delta) {
+    currentFontSize = Math.max(12, Math.min(24, currentFontSize + delta));
+    document.documentElement.style.setProperty('--font-size-base', currentFontSize + 'px');
+    localStorage.setItem('fontSize', currentFontSize);
+}
+
+function applyFontFamily() {
+    const font = document.getElementById('fontFamily').value;
+    document.documentElement.style.setProperty('--body-font', font);
+    localStorage.setItem('bodyFont', font);
+}
+
+function applyViewMode() {
+    const mode = document.getElementById('viewMode').value;
+    const container = document.querySelector('.container');
+    if(mode === 'mobile') {
+        container.style.maxWidth = '450px';
+    } else if(mode === 'desktop') {
+        container.style.maxWidth = '1300px';
+    } else {
+        container.style.maxWidth = '100%';
+    }
+}
+
+function renderSets() {
+    const container = document.getElementById('setsContainer');
+    container.innerHTML = '';
+    setsData.forEach((item, idx) => {
+        const card = document.createElement('div');
+        card.className = 'set-card';
+        card.id = item.id;
+        
+        // Select content based on language
+        const mdContent = item['rawMd_' + currentLang] || item.rawMd_bn || item.rawMd;
+        const parsedHTML = marked.parse(mdContent);
+        card.innerHTML = `
+            <div class="set-header"><h2>${item.title}</h2><span class="toggle-icon">▶</span></div>
+            <div class="set-content"><div class="markdown-body">${parsedHTML}</div></div>
+        `;
+        container.appendChild(card);
+        card.querySelector('.set-header').addEventListener('click', () => {
+            card.classList.toggle('open');
+            card.querySelector('.toggle-icon').innerHTML = card.classList.contains('open') ? '▼' : '▶';
+        });
+        if(idx === 0) { card.classList.add('open'); card.querySelector('.toggle-icon').innerHTML = '▼'; }
+    });
+}
+
+function buildQuickNav() {
+    const nav = document.getElementById('quickNav');
+    setsData.forEach(item => {
+        const btn = document.createElement('button');
+        btn.className = 'nav-pill';
+        btn.textContent = item.title.split('—')[0].trim();
+        btn.onclick = () => {
+            const el = document.getElementById(item.id);
+            el.scrollIntoView({ behavior: 'smooth' });
+            if(!el.classList.contains('open')) el.querySelector('.set-header').click();
+        };
+        nav.appendChild(btn);
+    });
+}
+
+function searchHighlights() {
+    const term = document.getElementById('searchInput').value.trim().toLowerCase();
+    const all = document.querySelectorAll('.markdown-body p, .markdown-body td, .markdown-body li');
+    all.forEach(el => {
+        if(!term) { el.innerHTML = el.innerHTML.replace(/<mark class="highlight">(.*?)<\/mark>/g, '$1'); return; }
+        const regex = new RegExp(`(?![^<]+>)(${term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
+        el.innerHTML = el.innerHTML.replace(/<mark class="highlight">(.*?)<\/mark>/g, '$1').replace(regex, `<mark class="highlight">$1</mark>`);
+    });
+}
+
+// Initial configuration
+document.getElementById('searchInput').addEventListener('input', searchHighlights);
+marked.setOptions({ gfm: true, breaks: true });
+
+// Load saved settings
+window.onload = () => {
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) document.documentElement.setAttribute('data-theme', savedTheme);
+    
+    const savedSize = localStorage.getItem('fontSize');
+    if (savedSize) {
+        currentFontSize = parseInt(savedSize);
+        document.documentElement.style.setProperty('--font-size-base', currentFontSize + 'px');
+    }
+    
+    const savedFont = localStorage.getItem('bodyFont');
+    if (savedFont) {
+        document.documentElement.style.setProperty('--body-font', savedFont);
+        document.getElementById('fontFamily').value = savedFont;
+    }
+
+    const savedLang = localStorage.getItem('language');
+    if (savedLang) {
+        currentLang = savedLang;
+        document.getElementById('languageSelect').value = currentLang;
+    }
+
+    renderSets();
+    buildQuickNav();
+};
+</script>
+</body>
+</html>

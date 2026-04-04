@@ -2,7 +2,7 @@
   "version": 2,
   "rewrites": [
     {
-      "source": "/(.*)",
+      "source": "/cell-signaling",
       "destination": "/GEB331_MASTER_EXAM_PREP_INTERACTIVE_v4_FINAL.html"
     }
   ]
