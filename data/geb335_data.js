@@ -47,7 +47,20 @@ A fermentation "set up" is a sequential industrial line divided into **three cor
 ---
 
 ### **Q6. Write the scope of fermentation.**
-The scope of fermentation is vast as it provides the **biological machinery** for mass production across multiple sectors. It is essential for **biotransformation** of waste into high-value products and provides tools for **GMO construction**. Its scope includes generating **biomass energy**, lifesaving **medicine**, **agriculture** enhancements, and **industrial chemicals**.
+The scope of fermentation is vast. Approximately **99% of all commercial biotech products** are produced via fermentation. It spans:
+*   **Pharmaceutical/Medical:** Antibiotics (Penicillin, Cephalosporin, Neomycin), recombinant vaccines (Hepatitis B), monoclonal antibodies, hormones (Insulin, HGH), and diagnostic enzymes.
+*   **Industrial/Chemical:** Bulk enzymes (cellulase, protease, amylase, lipase) for textiles and leather; organic acids; acetone; alcohols.
+*   **Energy:** Ethanol, methane (biogas), and Solid State Fermentation of agricultural residue/municipal solid waste.
+*   **Food:** Fermented dairy (cheese, yogurt), beverages (alcohol, tea, coffee), Single Cell Protein (SCP) for animal feed, amino acids, vitamins.
+*   **Agriculture:** Bio-fertilizers (*Rhizobium* for N-fixation), bio-pesticides (*B. thuringiensis*), veterinary vaccines, and SCP.
+
+**Types of Fermentation:**
+1. **Batch Fermentation**
+2. **Fed-Batch Fermentation**
+3. **Continuous Fermentation**
+4. **Solid State Fermentation (SSF)**
+5. **Anaerobic Fermentation**
+6. **Aerobic Fermentation**
 
 ---
 
@@ -221,13 +234,17 @@ The total fermentation technology can be outlined as a sequential flow:
         rawMd_en: `
 ### **Q1. What do you mean by an industrially important microorganism? / What are the criteria of an industrially important microorganism?**
 An industrially important microorganism is a strain that can produce a specific high-value product at a commercially viable scale.
-**Salient Features (Criteria):**
-*   **Genetic Stability:** Must maintain productivity over many generations.
-*   **High Productivity:** Must give a high yield of product per unit of time.
-*   **Low Nutritional Cost:** Ability to grow on cheap, readily available carbon and nitrogen sources.
-*   **Optimal Temperature:** Growth near or above **40°C** is preferred to reduce **cooling costs**.
-*   **Safety:** Non-pathogenic and should not produce toxic by-products.
-*   **Ease of Recovery:** Must be easy to separate from the broth; if the product is intracellular, the cells should have **ready breakage**.
+**10 Salient Features (Criteria) of an Industrially Important Microorganism:**
+1.  **Genetic Stability:** Must maintain high productivity over many generations without spontaneous mutation.
+2.  **Efficient Production:** Must produce the target product at high yield; the **biosynthetic route must be well-characterized** for engineering.
+3.  **Limited Nutritional Requirements:** Should need **no or minimal vitamins** and additional growth factors — avoids complex medium costs.
+4.  **Utilization of Cheap Carbon Sources:** Ability to grow on a **wide range of low-cost, readily available** carbon sources.
+5.  **Optimal Temperature:** Growth at or above **40°C** significantly reduces **cooling costs** at large scale.
+6.  **No Equipment Reaction:** The organism should not corrode or react with **standard fermenter materials** (stainless steel).
+7.  **Amenability to Genetic Manipulation:** Should be easily engineered using rDNA technology to boost yields or enable heterologous expression.
+8.  **Safety:** Must be **non-pathogenic** and must not produce toxic agents (unless that is the target product).
+9.  **Easy Product Recovery:** Must be easy to separate from the broth (extracellular product = simpler recovery).
+10. **Ready Breakage:** If the target product is **intracellular**, the cell wall must be easy to disrupt mechanically.
 
 ---
 
@@ -449,18 +466,27 @@ Producing plant proteins (e.g., **leghemoglobin** for meat alternatives) in a mi
         id: "set5",
         title: "SET 5: MEDIA FORMULATION, CARBON/NITROGEN SOURCES, AND ANTIFOAMS",
         rawMd_en: `
-### **Q1. Define media/fermentation media/medium formulation. Criteria for an ideal medium? Which types are chosen for industrial microorganisms?**
-*   **Media/Fermentation Media:** These are nutrient-rich mixtures designed to support the **growth and propagation** of microorganisms during industrial processes. They provide essential elements required for the synthesis of cellular components and products.
-*   **Medium Formulation:** This is an essential design stage for laboratory, pilot-scale, and manufacturing processes where the specific concentrations of nutrients are calculated to satisfy the **elemental requirements** for cell biomass and product formation.
-*   **Criteria of an Ideal Medium:**
+### **Q1. Define media/fermentation media/medium formulation. Criteria for an ideal medium? Objectives? Types chosen?**
+*   **Media/Fermentation Media:** Nutrient-rich mixtures supporting **growth and propagation** of microorganisms. All microorganisms require water, an energy source, **C, N, minerals, vitamins**, and O₂ (for aerobes). Easy to maintain at small scale; very difficult on large scale.
+*   **Medium Formulation:** An essential stage in laboratory, pilot-scale, and manufacturing process design. Constituents must satisfy elemental requirements for biomass and metabolite production with adequate energy for biosynthesis: **C + N + O₂ + other req. → Biomass + Product + CO₂ + H₂O + Heat**.
+*   **7 Criteria of an Ideal Medium (Large-Scale):**
     1.  Produces the **maximum yield** of product or biomass per gram of substrate used.
-    2.  Permits the **maximum rate** of product formation.
-    3.  Maintains **consistent quality** and is readily available throughout the year.
-    4.  Causes minimal problems during **aeration, agitation, and sterilization**.
-    5.  Results in **minimum yield of undesired products**.
+    2.  Produces the **maximum concentration** of product or biomass.
+    3.  Permits the **maximum rate** of product formation.
+    4.  Results in **minimum yield of undesired products**.
+    5.  Maintains **consistent quality** and is readily available throughout the year.
+    6.  Causes minimal problems during **media preparation and sterilization**.
+    7.  Causes minimal problems in **aeration, agitation, extraction, purification, and waste treatment**.
+*   **Objectives of Medium Formulation:**
+    *   Provide essential nutrients for microbial growth.
+    *   Optimize product formation (biomass, enzymes, metabolites, recombinant proteins).
+    *   Minimize cost while maximizing productivity.
+    *   Maintain physiological conditions suitable for the target microorganism.
+    *   Ensure reproducibility and scalability from lab to industrial level.
 *   **Types Chosen for Industry:**
-    *   **Crude Media:** Made of unrefined agricultural products (e.g., molasses, cereal grains) which are **cheap** but variable in composition.
-    *   **Defined Media:** Pure substrates with known chemical compositions, used for high-value products like **recombinant proteins** where complex purification is needed.
+    *   **Crude Media:** Made of unrefined agricultural products (e.g., molasses, cereal grains). Cheap but variable in composition. Residual components interfere with recovery and increase BOD of effluent. Used for large-volume, low-value products (e.g., biofuel, ethanol).
+    *   **Defined Media:** Pure substrates with known chemical compositions. Expensive but gives predictable yields and simpler purification. Used for expensive, low-volume products (e.g., recombinant proteins, anticancer drugs).
+    *   **Collins' Example:** For recombinant protein from *S. cerevisiae*, molasses was rejected due to purification cost. A **defined medium** with glucose, sucrose, mineral salts, trace elements, pure vitamins, and NH₄⁺ as N source was used, with an antifoaming agent for pH and foam control.
 
 ---
 
@@ -475,15 +501,21 @@ Producing plant proteins (e.g., **leghemoglobin** for meat alternatives) in a mi
 
 ---
 
-### **Q3. Write the factors influencing the choice of carbon sources. Dual role of carbon substrate?**
-*   **Factors Influencing Choice:**
-    1.  **Metabolism Rate:** High concentrations of rapidly metabolized sugars (like glucose) can lead to fast growth but **low productivity** of secondary metabolites.
-    2.  **Cost:** Raw materials can account for **60-77%** of production costs for low-value products like ethanol.
-    3.  **Purity:** Impurities can complicate **downstream extraction** and purification.
-    4.  **Sterilization:** Some sugars react with nutrients during heating to form inhibitory compounds (Maillard browning).
-*   **Dual Role in Metabolism:**
-    1.  **Biosynthesis:** Provides the **carbon skeletons** needed to build cellular components like DNA, proteins, and cell walls.
-    2.  **Energy Generation:** Carbon substrates are oxidized to generate **ATP** (energy) through pathways like glycolysis and the TCA cycle.
+### **Q3. Write the factors influencing the choice of carbon sources. Dual role of carbon? Examples of commonly used C sources?**
+*   **Dual Role of Carbon:**
+    1.  **Biosynthesis:** Provides **carbon skeletons** for cell wall, membrane, proteins, DNA/RNA, and storage molecules (glycogen, PHB).
+    2.  **Energy Generation:** Oxidized to generate **ATP** via glycolysis, TCA cycle, and oxidative phosphorylation. More reduced C sources result in a higher O₂ demand. The **Cellular Yield Coefficient ($Y$)** = cell dry matter produced ÷ C substrate utilized, quantifies this efficiency.
+*   **7 Factors Influencing Choice of C Source:**
+    1.  **Metabolism Rate:** Rapidly metabolized sugars (glucose) cause fast growth but **repress secondary metabolite production** — e.g., glucose inhibits penicillin, griseofulvin, cephalosporin, streptomycin, and kanamycin synthesis.
+    2.  **Organism Specificity:** Yeast grows well on glucose/sucrose; *E. coli* prefers glucose but produces unwanted acetate at high concentration; *A. niger* can use starch hydrolysates.
+    3.  **Cost:** Raw materials are **60-77%** of production cost for high-volume products (ethanol, SCP).
+    4.  **Purity:** Colored substrates like molasses require extra clarification steps; high oil content complicates extraction.
+    5.  **Sterilization:** Sugars react with NH₄⁺ and amino acids during heating to form black N-containing compounds (**Maillard reaction**) inhibiting growth. Best practice: sterilize sugars **separately** from N sources.
+    6.  **Government Legislation:** Within EEC, use of beet sugar and molasses is encouraged; local laws may dictate substrates for beverages.
+    7.  **Type of Product:** Biomass → rapid-growth C source (glucose); primary metabolites → high sugar concentrations; secondary metabolites (penicillin) → slow, steady C release (lactose).
+*   **Commonly Used C Sources:**
+    *   **Carbohydrates:** Starch (maize, cereals, potatoes, cassava); sucrose/molasses (sugar cane/beet). Hydrolyzed cassava starch → glutamic acid. Molasses → ethanol, SCP, organic acids, amino acids, gums. Also used for antibiotics, but requires expensive purification.
+    *   **Oils and Fats:** Vegetable oils (olive, maize, cotton, linseed, soybean) — originally used as antifoam carriers in antibiotic processes; now competitive C substrates.
 
 ---
 
@@ -497,12 +529,16 @@ Producing plant proteins (e.g., **leghemoglobin** for meat alternatives) in a mi
 
 ---
 
-### **Q5. Factors influencing choice of nitrogen source. Composition of media for a product?**
-*   **Factors Influencing Choice:**
-    1.  **Metabolic Regulation:** Ammonia often represses the uptake of other nitrogen sources like nitrates or amino acids.
-    2.  **Productivity:** Antibiotic production is often inhibited by rapidly utilized nitrogen sources (e.g., $NH_4^+$); production only starts after these are consumed.
-    3.  **Process Impacts:** Unutilized complex nitrogen sources can interfere with recovery and increase the **BOD** (Biochemical Oxygen Demand) of effluent.
-*   **Composition for a Product:** Typical media include an **energy source, carbon source, nitrogen source, minerals, growth factors, chelators, and buffers**.
+### **Q5. Factors influencing choice of nitrogen source. Inorganic vs organic N sources?**
+*   **Inorganic N Sources:** NH₃ gas, NH₄ salts (e.g., (NH₄)₂SO₄), or nitrates.
+    *   **(NH₄)₂SO₄** produces **acidic** conditions during metabolism.
+    *   **NH₄NO₃** typically causes an **alkaline drift**; when NH₄⁺ is exhausted, drift continues as nitrate is used as an alternative N source.
+    *   **NH₃ gas** has been used for both **pH control** and as the major N source in the defined medium for commercial human serum albumin production by yeast.
+*   **Organic N Sources:** Amino acids, proteins, or urea. Complex sources include **corn-steep liquor, soya meal, peanut meal, cottonseed**. These may be affected by moisture, temperature, and ageing during storage.
+*   **3 Factors Influencing the Choice of N Source:**
+    1.  **Metabolic Repression:** NH₄⁺ is the preferred N source because it **represses NO₃⁻ reductase** (blocking alternative N assimilation). In *A. nidulans*, NH₃ also regulates production of alkaline and neutral proteases. NH₄⁺ represses amino acid permeases in fungi.
+    2.  **Effect on Secondary Metabolite Production:** Rapidly utilized N sources (NH₄⁺, NO₃⁻) **inhibit** antibiotic production; synthesis begins only *after* most N is exhausted. Therefore, complex or slow-release N sources enhance antibiotic yields.
+    3.  **Downstream Processing Impact:** Complex N materials that cannot be fully metabolized create serious problems in product recovery and greatly increase the **BOD** of the effluent.
 
 ---
 
@@ -511,22 +547,40 @@ Producing plant proteins (e.g., **leghemoglobin** for meat alternatives) in a mi
 
 ---
 
-### **Q7. Reasons for $O_2$ limitation? How to overcome it?**
-*   **Reasons for $O_2$ Limitation:**
-    1.  **Fast Metabolism:** Rapidly metabolized sugars lead to high $O_2$ demand that exceeds the fermenter's supply capacity.
-    2.  **Rheology:** High **viscosity** of the broth hinders the movement of $O_2$ bubbles and reduces transfer efficiency.
-    3.  **Antifoams:** Some antifoams reduce the **oxygen transfer rate** as surface-active agents.
-*   **How to Overcome:**
-    *   Reducing the initial concentration of key substrates and using **fed-batch feeding**.
-    *   Changing medium composition to include slower metabolized carbohydrates like **lactose or starch**.
-    *   Increasing **agitation, surface area**, or using aeration systems like spargers.
+### **Q7. Reasons for $O_2$ limitation? Rheology and its impact? How to overcome?**
+*   **3 Primary Reasons for $O_2$ Limitation:**
+    1.  **Fast Metabolism:** Rapidly metabolized sugars generate a peak O₂ demand exceeding the bioreactor's supply capacity. Example: *P. chrysogenum* utilizes glucose faster than lactose, giving a higher specific O₂ uptake rate with glucose as C source.
+    2.  **Rheology (Viscosity):** Highly concentrated or filamentous broths exhibit **non-Newtonian, pseudoplastic (shear-thinning)** behavior with high apparent viscosity — driven by high biomass concentrations, filamentous cell morphology, and extracellular polymers.
+        *   **Reduced O₂ Transfer Rate (kLa):** High viscosity hinders O₂ bubble movement and reduces gas-liquid interfacial area for mass transfer.
+        *   **Poor Mixing:** Viscous broths require significantly more power; creates localized O₂-limited dead zones even at high aeration rates.
+        *   **Excessive Foam:** High aeration needed to compensate leads to excessive stable foam, further reducing productivity.
+    3.  **Antifoams:** Surface-active antifoaming agents reduce the **oxygen transfer rate (OTR)** as a side effect.
+*   **How to Overcome $O_2$ Limitation:**
+    *   **Strategy 1 (Fed-Batch):** Reduce initial substrate concentration; add C sources as a **continuous or semi-continuous feed** during fermentation to prevent O₂ demand spikes.
+    *   **Strategy 2 (Medium Composition):** Substitute slowly metabolized substrates — **lactose, starch, proteins** — that do not support a large specific O₂ uptake rate.
+    *   **Strategy 3 (Engineering):** Improve agitation and aeration design; use bioreactors with high O₂ transfer capacity. ICI resolved the high O₂ demand of hydrocarbon oxidation by designing a special **air-lift fermenter**.
 
 ---
 
-### **Q8. Define antifoam. Ideal properties? List of compounds?**
-*   **Antifoam:** Surface-active agents used to **reduce surface tension** in foams to destabilize them. Since many have low solubility, they are often added with a carrier like lard oil.
-*   **Properties of an Ideal Antifoam:** Should be **fast-acting**, effective at low concentrations, long-acting, non-toxic, cheap, and must not severely interfere with oxygen transfer or product purification.
-*   **Compounds Used:** Alcohols (stearyl), esters, fatty acids/vegetable oils (soybean, olive oil), **silicones**, and sulphonates.
+### **Q8. Define antifoam. Ideal properties (11)? Compounds? 3 approaches to deal with excessive foaming?**
+*   **Antifoam:** Surface-active chemical agents that reduce surface tension in foams and destabilize protein films at the air-broth interface by: **(a)** hydrophobic bridges between two surfaces, **(b)** displacement of the absorbed protein, and **(c)** rapid spreading on the surface of the film (Van't Riet & Van Sonsbeck, 1992).
+*   **11 Properties of an Ideal Antifoam:**
+    1.  Disperses readily and has **fast action** on existing foam.
+    2.  Active at **low concentrations**.
+    3.  **Long-acting** — prevents new foam formation.
+    4.  **Not metabolized** by the microorganism.
+    5.  **Non-toxic** to the microorganism.
+    6.  **Non-toxic** to humans and animals.
+    7.  Causes **no problems** in product extraction and purification.
+    8.  Presents **no handling hazards**.
+    9.  **Cheap**.
+    10. Has **no effect on oxygen transfer**.
+    11. Is **heat sterilizable**.
+*   **Compounds Used:** Alcohols (stearyl, octyl decanol); esters; fatty acids/glycerides (cottonseed, linseed, soybean, olive, castor, sunflower, rapeseed, cod liver oil); **silicones**; sulphonates; miscellaneous (Alkaterge C, oxazaline, poly-propylene glycol).
+*   **3 Approaches to Manage Excessive Foaming:**
+    1.  **Avoid foam formation** — use defined media and modify physical parameters (pH, temperature, aeration, agitation). Assumes foam is due to a medium component, not a microbial metabolite.
+    2.  **Use antifoam agents** — the most standard industrial approach.
+    3.  **Use a mechanical foam breaker.**
 `,
         rawMd_bn: `
 ### **Q1. Define media/fermentation media/medium formulation. Criteria for an ideal medium? Which types are chosen for industrial microorganisms?**
@@ -577,12 +631,16 @@ Producing plant proteins (e.g., **leghemoglobin** for meat alternatives) in a mi
 
 ---
 
-### **Q5. Factors influencing choice of nitrogen source. Composition of media for a product?**
-*   **Factors Influencing Choice:**
-    1.  **Metabolic Regulation:** Ammonia often represses the uptake of other nitrogen sources like nitrates or amino acids.
-    2.  **Productivity:** Antibiotic production is often inhibited by rapidly utilized nitrogen sources (e.g., $NH_4^+$); production only starts after these are consumed.
-    3.  **Process Impacts:** Unutilized complex nitrogen sources can interfere with recovery and increase the **BOD** (Biochemical Oxygen Demand) of effluent.
-*   **Composition for a Product:** Typical media include an **energy source, carbon source, nitrogen source, minerals, growth factors, chelators, and buffers**.
+### **Q5. Factors influencing choice of nitrogen source. Inorganic vs organic N sources? [নাইট্রোজেন উৎস নির্বাচন]**
+*   **Inorganic N Sources [অজৈব নাইট্রোজেন উৎস]:** NH₃ gas, NH₄ salts (e.g., (NH₄)₂SO₄), or nitrates.
+    *   **(NH₄)₂SO₄** produces **acidic conditions [অম্লীয় অবস্থা]** during metabolism.
+    *   **NH₄NO₃** typically causes an **alkaline drift [ক্ষারীয় প্রবাহ]**; when NH₄⁺ is exhausted, drift continues as nitrate is used.
+    *   **NH₃ gas** — used for **pH control [pH নিয়ন্ত্রণ]** and as major N source for human serum albumin production by yeast.
+*   **Organic N Sources [জৈব নাইট্রোজেন উৎস]:** Amino acids, proteins, urea. Complex sources: **corn-steep liquor, soya meal, peanut meal, cottonseed**. Affected by moisture, temperature, and ageing.
+*   **3 Key Factors Influencing N Source Choice:**
+    1.  **Metabolic Repression [বিপাকীয় দমন]:** NH₄⁺ represses NO₃⁻ reductase; in *A. nidulans* regulates alkaline/neutral protease production; NH₄⁺ represses amino acid permeases in fungi.
+    2.  **Effect on Secondary Metabolites [গৌণ বিপাক উৎপাদন]:** Rapidly utilized N sources inhibit antibiotic production; synthesis starts only *after* most N is exhausted.
+    3.  **Downstream Processing [নিম্নধারা প্রক্রিয়াকরণ]:** Unutilized complex N sources increase effluent **BOD** and complicate product recovery.
 
 ---
 
@@ -591,22 +649,40 @@ Producing plant proteins (e.g., **leghemoglobin** for meat alternatives) in a mi
 
 ---
 
-### **Q7. Reasons for $O_2$ limitation? How to overcome it?**
-*   **Reasons for $O_2$ Limitation:**
-    1.  **Fast Metabolism:** Rapidly metabolized sugars lead to high $O_2$ demand that exceeds the fermenter's supply capacity.
-    2.  **Rheology:** High **viscosity** [সান্দ্রতা] of the broth hinders the movement of $O_2$ bubbles and reduces transfer efficiency.
-    3.  **Antifoams:** Some antifoams reduce the **oxygen transfer rate** [অক্সিজেন স্থানান্তর হার] as surface-active agents.
-*   **How to Overcome:**
-    *   Reducing the initial concentration of key substrates and using **fed-batch feeding** [৫১, ৪৩৪, ৪৫০].
-    *   Changing medium composition to include slower metabolized carbohydrates like **lactose or starch**.
-    *   Increasing **agitation, surface area**, or using aeration systems like spargers.
+### **Q7. Reasons for $O_2$ limitation? Rheology and its impact? How to overcome? [O₂ সীমাবদ্ধতা]**
+*   **3 Primary Reasons [৩টি প্রধান কারণ]:**
+    1.  **Fast Metabolism [দ্রুত বিপাক]:** Rapidly metabolized sugars generate a peak O₂ demand exceeding supply capacity. Example: *P. chrysogenum* uses glucose faster than lactose → higher specific O₂ uptake rate.
+    2.  **Rheology [রিওলজি] (Viscosity):** Concentrated or filamentous broths show **non-Newtonian, pseudoplastic (shear-thinning)** [শিয়ার-থিনিং] behavior with high viscosity.
+        *   **Reduced kLa [কমে যাওয়া kLa]:** High viscosity hinders O₂ bubble movement and reduces gas-liquid interfacial area.
+        *   **Poor Mixing [অপর্যাপ্ত মিশ্রণ]:** Creates localized O₂-limited dead zones even at high aeration rates.
+        *   **Excessive Foam [অতিরিক্ত ফেনা]:** High aeration needed to compensate leads to stable foam.
+    3.  **Antifoams [অ্যান্টিফোম]:** Reduce the oxygen transfer rate (OTR) as a side effect.
+*   **How to Overcome [কীভাবে কাটিয়ে ওঠা যায়]:**
+    *   **Strategy 1:** Reduce initial substrate concentration; use **fed-batch feeding** [ফেড-ব্যাচ খাওয়ানো].
+    *   **Strategy 2:** Use slowly metabolized C sources — **lactose, starch, proteins**.
+    *   **Strategy 3:** Use **air-lift fermenters** [এয়ার-লিফট ফার্মেন্টার] with high O₂ transfer capacity (ICI's solution for hydrocarbon oxidation).
 
 ---
 
-### **Q8. Define antifoam. Ideal properties? List of compounds?**
-*   **Antifoam:** Surface-active agents used to **reduce surface tension** [পৃষ্ঠটান কমানো] in foams to destabilize them. Since many have low solubility, they are often added with a carrier like lard oil.
-*   **Properties of an Ideal Antifoam:** Should be **fast-acting** [দ্রুত কার্যকর], effective at low concentrations, long-acting, non-toxic, cheap, and must not severely interfere with oxygen transfer or product purification.
-*   **Compounds Used:** Alcohols (stearyl), esters, fatty acids/vegetable oils (soybean, olive oil), **silicones**, and sulphonates.
+### **Q8. Define antifoam. Ideal properties (11)? Compounds? 3 approaches? [অ্যান্টিফোম]**
+*   **Antifoam [অ্যান্টিফোম/ফেনা নিবারক]:** Surface-active chemical agents that reduce surface tension in foams and destabilize protein films at the air-broth interface by: **(a)** hydrophobic bridges between two surfaces, **(b)** displacement of the absorbed protein, and **(c)** rapid spreading on the surface of the film.
+*   **11 Properties of an Ideal Antifoam [আদর্শ অ্যান্টিফোমের ১১টি বৈশিষ্ট্য]:**
+    1.  Disperses readily and has **fast action** [দ্রুত কার্যকর] on existing foam.
+    2.  Active at **low concentrations** [কম ঘনত্বে কার্যকর].
+    3.  **Long-acting** [দীর্ঘমেয়াদী] — prevents new foam formation.
+    4.  **Not metabolized** [বিপাকিত হয় না] by the microorganism.
+    5.  **Non-toxic** [অ-বিষাক্ত] to the microorganism.
+    6.  **Non-toxic to humans and animals** [মানুষ ও প্রাণীর জন্য নিরাপদ].
+    7.  Causes **no problems** in product extraction and purification.
+    8.  Presents **no handling hazards** [ব্যবহারে ঝুঁকিমুক্ত].
+    9.  **Cheap** [সাশ্রয়ী].
+    10. Has **no effect on oxygen transfer** [অক্সিজেন স্থানান্তরে প্রভাব নেই].
+    11. Is **heat sterilizable** [তাপ-নির্বীজনযোগ্য].
+*   **Compounds Used:** Alcohols (stearyl, octyl decanol); esters; fatty acids/glycerides (cottonseed, linseed, soybean, olive, castor, sunflower, rapeseed oil); **silicones**; sulphonates; miscellaneous (Alkaterge C, oxazaline, poly-propylene glycol).
+*   **3 Approaches [৩টি পদ্ধতি]:**
+    1.  **Avoid foam formation** — use defined media and modify physical parameters.
+    2.  **Use antifoam agents** — the most standard industrial approach.
+    3.  **Use a mechanical foam breaker** [যান্ত্রিক ফেনা ভাঙার যন্ত্র].
 
 ---
 
@@ -632,24 +708,53 @@ Producing plant proteins (e.g., **leghemoglobin** for meat alternatives) in a mi
 
 ---
 
-### **Q2. Differentiate Batch vs. Continuous sterilization? Advantages/disadvantages? Separate vessel in batch?**
-*   **Batch Sterilization:** The entire volume of medium is heated in one vessel.
-    *   **Advantages (Separate Vessel):** Saves time as medium can be sterilized while fermenters are being cleaned; allows for easier use with high-solid media.
-    *   **Disadvantages (Separate Vessel):** Risk of contamination during **aseptic transfer**.
-*   **Continuous Sterilization:** Medium is sterilized in a continuous stream, usually at **high temperatures for short periods (HTST - High Temperature Short Time)**.
-    *   **Advantages:** Minimum nutrient degradation (less Maillard browning), **higher steam efficiency**, and easy automatic/manual control.
-    *   **Disadvantages:** May cause foaming during heating and is less ideal for high solid suspensions.
+### **Q2. Differentiate Batch vs. Continuous sterilization? Advantages/disadvantages of each? Separate vessel merits?**
+*   **Batch Sterilization:** The entire medium volume is heated (typically to **121°C**), held, then cooled — all in one vessel (or separate cooker).
+*   **Continuous Sterilization (HTST):** Medium flows continuously through a heat exchanger, heated to very high temperatures (**130–150°C**) for a very short time, then rapidly cooled. This is the **method of choice** for modern large-scale fermentation.
+*   **Advantages of Continuous over Batch:**
+    1.  Superior maintenance of **medium quality** (far less nutrient degradation).
+    2.  Ease of **scale-up**.
+    3.  Easier **automatic control**.
+    4.  Reduction of surge capacity for steam.
+    5.  Reduction of **sterilization cycle time** (less downtime).
+    6.  Under certain circumstances, reduction of fermenter corrosion.
+*   **Advantages of Batch over Continuous:**
+    1.  Lower **capital equipment costs**.
+    2.  Lower risk of contamination (continuous processes require aseptic transfer of sterile broth to the sterile vessel).
+    3.  Easier **manual control**.
+    4.  Better for media containing high proportions of **solid matter**.
+*   **Advantages of Using a Separate Sterilization Vessel (Mash Cooker):**
+    1.  One cooker can serve **several fermenters** simultaneously; medium sterilized while fermenters are cleaned → saves time.
+    2.  Medium can be sterilized in **concentrated form** and diluted in the fermenter → smaller cookers possible.
+    3.  Fermenter can use a **less powerful motor** (no agitation of viscous media during sterilization).
+    4.  Fermenter is **spared corrosion** from medium at high temperature.
+*   **Disadvantages of Separate Vessel:**
+    1.  Capital cost nearly **equal** to the fermenter itself.
+    2.  Complex pipework required for **sterile transfer** → contamination risk.
+    3.  Mechanical failure in one cooker renders **all connected fermenters** temporarily redundant.
 
 ---
 
-### **Q3. Briefly describe the kinetics of sterilization. Del factor? Define D-value, TDP, and TDT.**
-*   **Kinetics:** Microbial death by heat follows a **first-order reaction**. The equation is $ln(N_0/N) = kt$, where $N$ is the number of survivors. Temperature dependency is defined by the Arrhenius equation ($k = A \\cdot e^{-E/RT}$).
-*   **Del Factor ($\\nabla$ / Nabla factor):** A measurement of the **size of the sterilization task**, helping quantify the holding time needed to achieve sterility cleanly. 
-    *   It is defined as the natural logarithm of the ratio of initial to final number of viable organisms: $$\\nabla = \\ln(N_0/N)$$.
-    *   The total cycle Del factor is mathematically the sum of all thermal impacts: $$\\nabla_{total} = \\nabla_{heating} + \\nabla_{holding} + \\nabla_{cooling}$$.
-*   **D-value:** The time required at a specific temperature to reduce the microbial population by **90%** (1 log reduction).
-*   **TDP (Thermal Death Point):** The lowest temperature required to kill all microbes in a standard suspension in 10 minutes.
-*   **TDT (Thermal Death Time):** The shortest time required to kill all microbes in a standard suspension at a specific temperature.
+### **Q3. Kinetics of sterilization. Proof of $\\ln(N_0/N_t) = A \\cdot t \\cdot e^{-E/RT}$. Del factor? D-value, TDP, TDT?**
+*   **Kinetics — First-Order Model:**
+    Microbial death by moist heat follows a **first-order reaction**: $-dN/dt = kN$.
+    Integration gives: $N_t = N_0 \\cdot e^{-kt}$, or equivalently: $$\\ln\\left(\\frac{N_0}{N_t}\\right) = k \\cdot t$$
+    Where $N_0$ = initial viable count, $N_t$ = count after time $t$, $k$ = specific death rate constant (species-dependent; *Bacillus* endospores are far more resistant than vegetative cells).
+*   **Mathematical Proof (Arrhenius Integration):**
+    Temperature dependence of $k$ is given by the **Arrhenius equation**: $k = A \\cdot e^{-E/RT}$.
+    Substituting into the kinetic equation:
+    $$\\boxed{\\ln\\left(\\frac{N_0}{N_t}\\right) = A \\cdot t \\cdot e^{-E/RT}}$$
+    For *B. stearothermophilus* spores (Deindoerfer & Humphrey, 1959): $E$ = **67.7 kcal/mol**; $A$ = $1 \\times 10^{36.2}$ s⁻¹.
+*   **Del Factor ($\\nabla$ — Del/Nabla Factor):**
+    A design criterion defined as the **natural logarithm of the fractional reduction in viable organism count**:
+    $$\\nabla = \\ln\\left(\\frac{N_0}{N_t}\\right) = A \\cdot t \\cdot e^{-E/RT}$$
+    *   Total batch cycle: $\\nabla_{total} = \\nabla_{heating} + \\nabla_{holding} + \\nabla_{cooling}$.
+    *   Industry standard risk: **1 in 1000** contamination → $N_t$ = 10⁻³ viable cells.
+    *   **Worked Example:** 1000 dm³ vessel with 10⁶ organisms/cm³: $\\nabla = \\ln[(10^6 \\times 10^3 \\times 10^3)/10^{-3}] = \\ln(10^{15}) = 34.5$. Scaled to 10,000 dm³: $\\nabla = \\ln(10^{16}) = 36.8$ — Del factor **increases with fermenter volume**.
+    *   If heating $\\nabla$ = 9.8 and cooling $\\nabla$ = 10.1, then holding $\\nabla$ = 32.2 − 9.8 − 10.1 = **12.3**. Holding time = 12.3 ÷ 2.54 min⁻¹ = **4.84 min** (vs 12.68 min if contributions of heating/cooling were ignored).
+*   **D-value:** Time at a specific temperature to reduce the population by **90%** (1 log reduction).
+*   **TDP (Thermal Death Point):** Lowest temperature killing all microbes in a standard suspension in **10 minutes**.
+*   **TDT (Thermal Death Time):** Shortest time to kill all microbes at a specific temperature.
 
 ---
 
@@ -658,9 +763,15 @@ Producing plant proteins (e.g., **leghemoglobin** for meat alternatives) in a mi
 
 ---
 
-### **Q5. Types of reactions contributing to loss of nutrient quality during sterilization.**
-1.  **Maillard-type browning:** A complex reaction between the carbonyl groups of **reducing sugars** and the amino groups of **amino acids/proteins**, resulting in discoloration, caramelization, and severe irreversible loss of essential nutrition.
-2.  **Degradation of heat-labile components:** Destruction of sensitive vitamins, proteins, and specific amino acids by prolonged excessive heat exposure.
+### **Q5. Types of reactions contributing to loss of nutrient quality during sterilization. The HTST Principle.**
+*   **Initial Benefit ('Cooking Effect'):** A brief, mild sterilization may actually *improve* product yield slightly by making certain medium components more bioavailable to the production organism (Richards, 1966). Prolonged sterilization then reduces yield progressively.
+*   **Two Types of Nutrient-Degrading Reactions:**
+    1.  **Maillard-Type Browning (Interactions between nutrients):** Reaction between **carbonyl groups of reducing sugars** and **amino groups of amino acids/proteins** → visible discoloration + loss of both C and N sources from biological availability. Example (Corbett, 1985): sterilizing at 121°C for 60 min left only **35%** of added glucose remaining (vs 64% at 30 min), with proportional fall in product yield. **Solution:** Sterilize sugars **separately** from N sources and recombine after cooling.
+    2.  **Degradation of Heat-Labile Components:** Direct thermal destruction of vitamins, proteins, and specific amino acids. For animal-cell media (all heat-labile) → use **membrane filtration** instead of steam.
+*   **The HTST Principle (Why Continuous Sterilization is Superior):**
+    *   Activation energy for **spore destruction** ($E$ ≈ 67.7 kcal/mol) is **much higher** than for **nutrient degradation** ($E$ ≈ 10–30 kcal/mol).
+    *   Therefore, raising temperature accelerates spore killing **faster** than nutrient destruction → same Del factor achieved at high temperature for short time with **far less nutrient damage**.
+    *   Example (Del factor = 45.7): 130°C for 2.44 min; 135°C for 51.9 sec; 140°C for 18.9 sec; 150°C for only 2.7 sec.
 
 ---
 
