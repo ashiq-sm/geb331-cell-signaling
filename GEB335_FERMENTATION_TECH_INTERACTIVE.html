@@ -216,13 +216,17 @@
         }
 
         .quick-nav {
-            display: flex; flex-wrap: wrap; gap: 0.6rem; margin-bottom: 2rem;
-            background: var(--card-bg); padding: 1rem 1.2rem; border-radius: 3rem;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+            display: flex; overflow-x: auto; flex-wrap: nowrap; gap: 0.8rem; margin-bottom: 2rem;
+            background: var(--card-bg); padding: 1.2rem; border-radius: 50px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1); -webkit-overflow-scrolling: touch;
+            scrollbar-width: none; -ms-overflow-style: none; position: sticky; top: 0.5rem; z-index: 50;
+            border: 1px solid var(--border-color);
         }
+        .quick-nav::-webkit-scrollbar { display: none; }
         .nav-pill {
-            background: var(--nav-pill-bg); color: var(--text-color); border: none; padding: 0.4rem 1.2rem;
+            background: var(--nav-pill-bg); color: var(--text-color); border: none; padding: 0.5rem 1.4rem;
             border-radius: 2rem; font-weight: 600; font-size: 0.85rem; cursor: pointer; transition: 0.2s;
+            white-space: nowrap; flex-shrink: 0;
         }
         .nav-pill:hover { background: var(--accent-color); color: white; transform: translateY(-2px); }
         .nav-pill.active { background: var(--accent-color); color: white; transform: translateY(-2px); }
@@ -470,7 +474,37 @@
         }
 
         /* ═══ ENHANCEMENTS ══════════════════════════════════ */
-        .quick-nav { position: sticky; top: 0.5rem; z-index: 50; }
+        /* Flashcard / QS Card Styles */
+        .qs-card {
+            background: var(--bg-color); border: 1px solid var(--border-color);
+            border-radius: 1.2rem; margin-bottom: 1.2rem; overflow: hidden; transition: all 0.3s ease;
+        }
+        .qs-card.open { box-shadow: 0 4px 15px rgba(0,0,0,0.05); border-color: var(--accent-color); }
+        .qs-header {
+            padding: 1rem 1.5rem; cursor: pointer; display: flex; justify-content: space-between;
+            align-items: center; gap: 15px; background: rgba(16, 185, 129, 0.03);
+        }
+        .qs-header:hover { background: rgba(16, 185, 129, 0.08); }
+        .qs-title { font-size: 1rem; font-weight: 700; color: var(--text-color); line-height: 1.4; }
+        .qs-controls { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+        .qs-copy-btn {
+            background: var(--nav-pill-bg); color: var(--text-color); border: 1px solid var(--border-color);
+            padding: 4px 10px; border-radius: 8px; font-size: 0.75rem; font-weight: 600; cursor: pointer; transition: all 0.2s;
+        }
+        .qs-copy-btn:hover { background: var(--accent-color); color: white; }
+        .qs-toggle-icon { font-size: 0.9rem; transition: transform 0.3s; color: var(--accent-color); }
+        .qs-card.open .qs-toggle-icon { transform: rotate(90deg); }
+        .qs-content { padding: 0; max-height: 0; overflow: hidden; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+        .qs-card.open .qs-content { padding: 1.5rem; max-height: 5000px; border-top: 1px solid var(--border-color); }
+
+        /* Local Toggle in Set Header */
+        .local-toggle-btn {
+            background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.2);
+            color: white; padding: 4px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 700;
+            cursor: pointer; transition: all 0.2s; display: flex; align-items: center; gap: 5px;
+        }
+        .local-toggle-btn:hover { background: rgba(255,255,255,0.3); transform: scale(1.05); }
+
         .progress-wrap { margin-top: 0.8rem; height: 5px; border-radius: 20px; background: rgba(255,255,255,0.18); overflow: hidden; }
         .progress-fill { height: 100%; width: 0%; border-radius: 20px; background: #ffd966; transition: width 0.6s ease; }
         .progress-label { font-size: 0.72rem; color: rgba(255,255,255,0.6); margin-top: 4px; }
@@ -667,21 +701,75 @@ function closeDuaModal() {
     document.getElementById('duaModal').classList.remove('active');
 }
 
-let allExpanded = false;
 function toggleAllSets() {
     allExpanded = !allExpanded;
     const cards = document.querySelectorAll('.set-card');
+    const qsCards = document.querySelectorAll('.qs-card');
     const btn = document.getElementById('toggleAllBtn');
     
     cards.forEach(card => {
         if (allExpanded) {
-            if (!card.classList.contains('open')) card.querySelector('.set-header').click();
+            if (!card.classList.contains('open')) {
+                card.classList.add('open');
+                card.querySelector('.toggle-icon').innerHTML = '▼';
+            }
         } else {
-            if (card.classList.contains('open')) card.querySelector('.set-header').click();
+            if (card.classList.contains('open')) {
+                card.classList.remove('open');
+                card.querySelector('.toggle-icon').innerHTML = '▶';
+            }
         }
+    });
+
+    qsCards.forEach(qs => {
+        if (allExpanded) qs.classList.add('open');
+        else qs.classList.remove('open');
     });
     
     btn.innerHTML = allExpanded ? '📁 Collapse All' : '📂 Expand All';
+    
+    // Sync local toggle buttons
+    document.querySelectorAll('.local-toggle-btn').forEach(lbtn => {
+        lbtn.innerHTML = allExpanded ? '👁️ Hide All' : '👁️ Show All';
+    });
+}
+
+function toggleQS(header) {
+    const card = header.parentElement;
+    card.classList.toggle('open');
+}
+
+function copyQS(btn, event) {
+    event.stopPropagation();
+    const content = btn.closest('.qs-card').querySelector('.qs-content').innerText;
+    navigator.clipboard.writeText(content).then(() => {
+        const original = btn.innerHTML;
+        btn.innerHTML = '✅ Copied!';
+        setTimeout(() => btn.innerHTML = original, 2000);
+    });
+}
+
+function toggleLocalQS(setId, event) {
+    event.stopPropagation();
+    const setCard = document.getElementById(setId);
+    const qsCards = setCard.querySelectorAll('.qs-card');
+    const btn = event.currentTarget;
+    
+    // Determine state from the first card if available
+    const isExpanding = qsCards.length > 0 ? !qsCards[0].classList.contains('open') : true;
+    
+    // Ensure set is expanded first
+    if (!setCard.classList.contains('open')) {
+        setCard.classList.add('open');
+        setCard.querySelector('.toggle-icon').innerHTML = '▼';
+    }
+    
+    qsCards.forEach(qs => {
+        if (isExpanding) qs.classList.add('open');
+        else qs.classList.remove('open');
+    });
+    
+    btn.innerHTML = isExpanding ? '👁️ Hide All' : '👁️ Show All';
 }
 
 function exportToPDF() {
@@ -738,31 +826,76 @@ function renderSets() {
         const card = document.createElement('div');
         card.className = 'set-card';
         card.id = item.id;
+        
         const mdContent = item['rawMd_' + currentLang] || item.rawMd_bn || item.rawMd;
-        const parsedHTML = marked.parse(mdContent);
         const readTime = getReadingTime(mdContent);
         const isDone = visitedSets.has(item.id);
+
+        // Split by ### headers (identifying questions)
+        const parts = mdContent.split(/(?=###\s+)/g);
+        let flashcardsHTML = '';
+        
+        parts.forEach(part => {
+            const trimmed = part.trim();
+            if (!trimmed) return;
+            
+            if (trimmed.startsWith('###')) {
+                // It's a question block
+                const lines = trimmed.split('\n');
+                const headerLine = lines[0].replace(/^###\s+/, '').replace(/\*\*/g, '').trim();
+                const contentLines = lines.slice(1).join('\n').trim();
+                const parsedContent = marked.parse(contentLines);
+
+                flashcardsHTML += `
+                    <div class="qs-card">
+                        <div class="qs-header" onclick="toggleQS(this)">
+                            <div class="qs-title">${headerLine}</div>
+                            <div class="qs-controls">
+                                <button class="qs-copy-btn" onclick="copyQS(this, event)">📋 Copy</button>
+                                <span class="qs-toggle-icon">▶</span>
+                            </div>
+                        </div>
+                        <div class="qs-content">
+                            <div class="markdown-body">${parsedContent}</div>
+                        </div>
+                    </div>
+                `;
+            } else {
+                // Intro text or separators
+                flashcardsHTML += `<div class="markdown-body" style="margin-bottom:1.5rem; opacity:0.8;">${marked.parse(trimmed)}</div>`;
+            }
+        });
+
         card.innerHTML =
-            '<div class="set-header"><h2>' + item.title + '</h2>' +
-            '<span style="display:flex;align-items:center;gap:8px;"><span class="read-time">' + readTime + '</span>' +
-            (isDone ? '<span class="done-badge">✔ Done</span>' : '') +
-            '<span class="toggle-icon">▶</span></span></div>' +
-            '<div class="set-content"><div class="markdown-body">' + parsedHTML + '</div></div>';
+            `<div class="set-header">
+                <h2 style="display:flex;align-items:center;gap:15px;flex-wrap:wrap;">
+                    ${item.title}
+                    <button class="local-toggle-btn" onclick="toggleLocalQS('${item.id}', event)">👁️ Show All</button>
+                </h2>
+                <span style="display:flex;align-items:center;gap:8px;">
+                    <span class="read-time">${readTime}</span>
+                    ${isDone ? '<span class="done-badge">✔ Done</span>' : ''}
+                    <span class="toggle-icon">▶</span>
+                </span>
+            </div>
+            <div class="set-content">${flashcardsHTML}</div>`;
+        
         container.appendChild(card);
-        card.querySelector('.set-header').addEventListener('click', () => {
+        
+        card.querySelector('.set-header').addEventListener('click', (e) => {
+            if (e.target.closest('.local-toggle-btn')) return;
             card.classList.toggle('open');
             card.querySelector('.toggle-icon').innerHTML = card.classList.contains('open') ? '▼' : '▶';
             if (card.classList.contains('open')) {
                 visitedSets.add(item.id);
                 localStorage.setItem(PROGRESS_KEY, JSON.stringify([...visitedSets]));
                 updateProgressBar();
-                setTimeout(addCopyButtons, 120);
             }
         });
+        
         if (idx === 0) { card.classList.add('open'); card.querySelector('.toggle-icon').innerHTML = '▼'; visitedSets.add(item.id); }
     });
     setupNavObserver();
-    setTimeout(addCopyButtons, 300);
 }
 
 function buildQuickNav() {
