@@ -218,15 +218,32 @@
         .quick-nav {
             display: flex; overflow-x: auto; flex-wrap: nowrap; gap: 0.8rem; margin-bottom: 2rem;
             background: var(--card-bg); padding: 1.2rem; border-radius: 50px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1); -webkit-overflow-scrolling: touch;
-            scrollbar-width: none; -ms-overflow-style: none; position: sticky; top: 0.5rem; z-index: 50;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1); -webkit-overflow-scrolling: touch;
+            scrollbar-width: none; -ms-overflow-style: none; position: sticky; top: 0.5rem; z-index: 100;
             border: 1px solid var(--border-color);
+            position: relative; overflow: hidden;
         }
         .quick-nav::-webkit-scrollbar { display: none; }
+        .nav-progress-bg {
+            position: absolute; top: 0; left: 0; height: 100%;
+            background: rgba(16, 185, 129, 0.12); width: 0%;
+            transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1); z-index: -1;
+        }
+        .active-set-label {
+            position: sticky; right: 0; margin-left: auto; background: var(--card-bg);
+            padding: 0.2rem 1rem; border-radius: 20px; font-size: 0.7rem; font-weight: 800;
+            color: var(--accent-color); white-space: nowrap; box-shadow: -10px 0 20px var(--card-bg);
+            display: none; animation: slideInRight 0.5s ease forwards; z-index: 10;
+        }
+        .active-set-label.visible { display: block; }
+        @keyframes slideInRight {
+            from { transform: translateX(20px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
         .nav-pill {
             background: var(--nav-pill-bg); color: var(--text-color); border: none; padding: 0.5rem 1.4rem;
             border-radius: 2rem; font-weight: 600; font-size: 0.85rem; cursor: pointer; transition: 0.2s;
-            white-space: nowrap; flex-shrink: 0;
+            white-space: nowrap; flex-shrink: 0; position: relative; z-index: 2;
         }
         .nav-pill:hover { background: var(--accent-color); color: white; transform: translateY(-2px); }
         .nav-pill.active { background: var(--accent-color); color: white; transform: translateY(-2px); }
@@ -601,7 +618,10 @@
     </div>
 
     <div class="search-bar"><input type="text" id="searchInput" placeholder="🔎 Search anything (ethanol, yeast, bioreactor, fermentation...)" autocomplete="off"></div>
-    <div class="quick-nav" id="quickNav"></div>
+    <div class="quick-nav" id="quickNav">
+        <div class="nav-progress-bg" id="navProgressBg"></div>
+        <div class="active-set-label" id="activeSetLabel"></div>
+    </div>
     <div id="setsContainer"></div>
     
     <div class="footer">
@@ -639,6 +659,25 @@ const setsData = geb335_sets;
 
 const PROGRESS_KEY = 'sm-progress-geb335';
 let visitedSets = new Set(JSON.parse(localStorage.getItem(PROGRESS_KEY) || '[]'));
+let activeSetId = null;
+
+function updateActiveSetProgress() {
+    if (!activeSetId) return;
+    const setCard = document.getElementById(activeSetId);
+    if (!setCard) return;
+    
+    const qsCards = setCard.querySelectorAll('.qs-card');
+    const total = qsCards.length;
+    if (total === 0) {
+        document.getElementById('navProgressBg').style.width = '0%';
+        return;
+    }
+    
+    const opened = setCard.querySelectorAll('.qs-card.open').length;
+    const pct = Math.round((opened / total) * 100);
+    
+    document.getElementById('navProgressBg').style.width = pct + '%';
+}
 
 function updateProgressBar() {
     const total = setsData.length;
@@ -684,9 +723,24 @@ function setupNavObserver() {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 const id = entry.target.id;
+                if (id === activeSetId) return;
+                
+                activeSetId = id;
                 document.querySelectorAll('.nav-pill').forEach(p => p.classList.remove('active'));
                 const activeBtn = document.querySelector('.nav-pill[data-id="' + id + '"]');
-                if (activeBtn) activeBtn.classList.add('active');
+                if (activeBtn) {
+                    activeBtn.classList.add('active');
+                    activeBtn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+                }
+                
+                const label = document.getElementById('activeSetLabel');
+                const title = activeBtn ? activeBtn.textContent : '';
+                label.textContent = title;
+                label.classList.remove('visible');
+                void label.offsetWidth;
+                label.classList.add('visible');
+                
+                updateActiveSetProgress();
             }
         });
     }, { rootMargin: '-10% 0px -60% 0px' });
@@ -737,6 +791,7 @@ function toggleAllSets() {
 function toggleQS(header) {
     const card = header.parentElement;
     card.classList.toggle('open');
+    updateActiveSetProgress();
 }
 
 function copyQS(btn, event) {
@@ -770,6 +825,7 @@ function toggleLocalQS(setId, event) {
     });
     
     btn.innerHTML = isExpanding ? '👁️ Hide All' : '👁️ Show All';
+    updateActiveSetProgress();
 }
 
 function exportToPDF() {
