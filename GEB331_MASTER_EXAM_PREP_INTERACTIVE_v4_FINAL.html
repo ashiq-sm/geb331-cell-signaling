@@ -41,7 +41,8 @@
             font-family: var(--body-font);
             line-height: 1.6;
             color: var(--text-color);
-            padding: 1.5rem 1.5rem 70px 1.5rem;
+            padding: 100px 1.5rem 70px 1.5rem;
+            scroll-behavior: smooth;
         }
         .container { max-width: 1300px; margin: 0 auto; transition: max-width 0.4s ease; padding-bottom: 0; }
         
@@ -219,7 +220,11 @@
         .top-controls {
             display: flex; gap: 0.8rem; align-items: center; padding: 0.8rem 1rem;
             background: var(--nav-pill-bg); border-bottom: 1px solid var(--border-color);
-            border-radius: 0; margin-bottom: 1.6rem; flex-wrap: wrap;
+            border-radius: 0; margin-bottom: 0; flex-wrap: wrap;
+            position: fixed; top: 0; left: 0; right: 0; z-index: 98;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            width: 100%;
+            overflow-x: auto;
         }
 
         .top-controls button, .top-controls select {
@@ -566,7 +571,32 @@
             color: white; padding: 4px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 700;
             cursor: pointer; transition: all 0.2s; display: flex; align-items: center; gap: 5px;
         }
-        .local-toggle-btn:hover { background: rgba(255,255,255,0.3); transform: scale(1.05); }
+        .local-toggle-btn:hover { background: var(--accent-color); opacity: 0.8; transform: scale(1.05); }
+        
+        /* Context menu for highlights */
+        .highlight-menu {
+            position: fixed; background: var(--card-bg); border: 1px solid var(--accent-color);
+            border-radius: 8px; z-index: 1000; box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            min-width: 150px; display: none;
+            overflow: hidden;
+        }
+        .highlight-menu.show { display: flex; flex-direction: column; }
+        .highlight-menu button {
+            background: none; border: none; padding: 0.7rem 1rem;
+            cursor: pointer; font-family: inherit; font-size: 0.85rem;
+            color: var(--text-color); text-align: left; transition: background 0.2s;
+        }
+        .highlight-menu button:hover { background: var(--nav-pill-bg); }
+        .highlight-menu button.delete { color: #dc2626; }
+        .highlight-menu-divider { height: 1px; background: var(--border-color); margin: 0; }
+        
+        /* Expand all button */
+        .expand-all-btn {
+            background: var(--accent-color); color: white; border: none; padding: 0.6rem 1.2rem;
+            border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 0.85rem;
+            display: flex; align-items: center; gap: 5px; transition: 0.2s; margin-left: auto;
+        }
+        .expand-all-btn:hover { background: var(--accent-color); opacity: 0.8; transform: scale(1.05); }
 
 
 
@@ -674,7 +704,7 @@
         </div>
     </div>
 
-    <!-- Top Control Bar -->
+    <!-- Top Control Bar (Fixed) -->
     <div class="top-controls" id="topControls">
         <span style="font-weight: 600; color: var(--accent-color); font-size: 0.85rem;">Highlight:</span>
         <button class="highlight-btn red" onclick="highlightSelected('red')" title="Highlight in Red (Press 1)">🔴</button>
@@ -685,6 +715,18 @@
         <span style="font-weight: 600; color: var(--accent-color); font-size: 0.85rem;">Text:</span>
         <button onclick="changeFont(-1)" title="Decrease Font Size">A−</button>
         <button onclick="changeFont(1)" title="Increase Font Size">A+</button>
+        <button class="expand-all-btn" onclick="expandAllRecursive()" title="Expand all sets and questions">📂 Expand All</button>
+    </div>
+    
+    <!-- Highlight Context Menu -->
+    <div class="highlight-menu" id="highlightMenu">
+        <button onclick="changeHighlightColor('red')">🔴 Red</button>
+        <button onclick="changeHighlightColor('green')">🟢 Green</button>
+        <button onclick="changeHighlightColor('indigo')">🔵 Indigo</button>
+        <div class="highlight-menu-divider"></div>
+        <button onclick="toggleHighlightStyle()">🔄 Toggle Style</button>
+        <div class="highlight-menu-divider"></div>
+        <button class="delete" onclick="deleteHighlight()">🗑️ Delete</button>
     </div>
 
     <div class="search-bar"><input type="text" id="searchInput" placeholder="🔎 Search anything (GPCR, PI3K, Notch...)" autocomplete="off"></div>
@@ -862,7 +904,7 @@ function toggleAllSets() {
     
     // Sync local toggle buttons
     document.querySelectorAll('.local-toggle-btn').forEach(lbtn => {
-        lbtn.innerHTML = allExpanded ? '👁️ Hide All' : '👁️ Show All';
+        lbtn.innerHTML = allExpanded ? '� Hide All' : '💡 Show All';
     });
 }
 
@@ -901,7 +943,7 @@ function toggleLocalQS(setId, event) {
         else qs.classList.remove('open');
     });
     
-    btn.innerHTML = isExpanding ? '👁️ Hide All' : '👁️ Show All';
+    btn.innerHTML = isExpanding ? '� Hide All' : '💡 Show All';
 }
 
 function exportToPDF() {
@@ -1002,7 +1044,7 @@ function renderSets() {
             `<div class="set-header">
                 <h2 style="display:flex;align-items:center;gap:15px;flex-wrap:wrap;">
                     ${item.title}
-                    <button class="local-toggle-btn" onclick="toggleLocalQS('${item.id}', event)">👁️ Show All</button>
+                    <button class="local-toggle-btn" onclick="toggleLocalQS('${item.id}', event)">� Show All</button>
                 </h2>
                 <span style="display:flex;align-items:center;gap:8px;">
                     <span class="read-time">${readTime}</span>
@@ -1163,7 +1205,138 @@ window.addEventListener('load', () => {
     if (savedMode === 'underline') {
         toggleUnderlineMode();
     }
+    setupHighlightContextMenu();
 }, { once: true });
+
+/* ═══════════════════════════════════════════════════════════ */
+/* HIGHLIGHT CONTEXT MENU FUNCTIONALITY */
+/* ═══════════════════════════════════════════════════════════ */
+
+let currentHighlightElement = null;
+
+function setupHighlightContextMenu() {
+    document.addEventListener('mouseup', () => {
+        const selection = window.getSelection();
+        const highlighted = document.querySelector('[class*="highlight-"]:hover');
+        if (highlighted && highlighted.className.includes('highlight-')) {
+            showHighlightMenu(highlighted);
+        }
+    });
+    
+    document.addEventListener('contextmenu', (e) => {
+        if (e.target.closest('[class*="highlight-"]')) {
+            e.preventDefault();
+            showHighlightMenu(e.target.closest('[class*="highlight-"]'));
+        }
+    });
+    
+    // Long press support for mobile
+    let longPressTimer;
+    document.addEventListener('touchstart', (e) => {
+        const highlighted = e.target.closest('[class*="highlight-"]');
+        if (highlighted && highlighted.className.includes('highlight-')) {
+            longPressTimer = setTimeout(() => {
+                showHighlightMenu(highlighted);
+            }, 500);
+        }
+    });
+    
+    document.addEventListener('touchend', () => {
+        clearTimeout(longPressTimer);
+    });
+    
+    // Click outside to close menu
+    document.addEventListener('click', (e) => {
+        if (!e.target.closest('.highlight-menu')) {
+            document.getElementById('highlightMenu').classList.remove('show');
+        }
+    });
+}
+
+function showHighlightMenu(element) {
+    currentHighlightElement = element;
+    const menu = document.getElementById('highlightMenu');
+    const rect = element.getBoundingClientRect();
+    menu.style.left = rect.left + 'px';
+    menu.style.top = (rect.bottom + 5) + 'px';
+    menu.classList.add('show');
+}
+
+function changeHighlightColor(newColor) {
+    if (!currentHighlightElement) return;
+    const oldClass = currentHighlightElement.className;
+    // Remove old color class
+    const classList = oldClass.split(' ').filter(c => !c.includes('highlight-') || c.includes('underline'));
+    const isUnderline = oldClass.includes('highlight-underline');
+    
+    if (isUnderline) {
+        currentHighlightElement.className = `highlight-underline underline-${newColor}`;
+    } else {
+        classList.push(`highlight-${newColor}`);
+        currentHighlightElement.className = classList.join(' ');
+    }
+    localStorage.setItem('lastHighlightColor', newColor);
+    document.getElementById('highlightMenu').classList.remove('show');
+}
+
+function toggleHighlightStyle() {
+    if (!currentHighlightElement) return;
+    const oldClass = currentHighlightElement.className;
+    const isUnderline = oldClass.includes('highlight-underline');
+    const colorMatch = oldClass.match(/(?:underline-)?(red|green|indigo)/);
+    const color = colorMatch ? colorMatch[1] : 'red';
+    
+    if (isUnderline) {
+        // Switch to background
+        currentHighlightElement.className = `highlight-${color}`;
+    } else {
+        // Switch to underline
+        currentHighlightElement.className = `highlight-underline underline-${color}`;
+    }
+    document.getElementById('highlightMenu').classList.remove('show');
+}
+
+function deleteHighlight() {
+    if (!currentHighlightElement) return;
+    const parent = currentHighlightElement.parentNode;
+    while (currentHighlightElement.firstChild) {
+        parent.insertBefore(currentHighlightElement.firstChild, currentHighlightElement);
+    }
+    parent.removeChild(currentHighlightElement);
+    document.getElementById('highlightMenu').classList.remove('show');
+}
+
+/* ═══════════════════════════════════════════════════════════ */
+/* EXPAND ALL FUNCTIONALITY */
+/* ═══════════════════════════════════════════════════════════ */
+
+function expandAllRecursive() {
+    // Expand all set cards
+    document.querySelectorAll('.set-card').forEach(card => {
+        if (!card.classList.contains('open')) {
+            card.classList.add('open');
+            card.querySelector('.toggle-icon').innerHTML = '▼';
+        }
+    });
+    
+    // Expand all question cards within sets
+    document.querySelectorAll('.qs-card').forEach(card => {
+        const content = card.querySelector('.qs-content');
+        if (content && !card.classList.contains('open')) {
+            card.classList.add('open');
+            content.style.display = 'block';
+            const icon = card.querySelector('.qs-toggle-icon');
+            if (icon) icon.innerHTML = '▼';
+        }
+    });
+    
+    // Update visited sets for progress tracking
+    setsData.forEach(item => {
+        visitedSets.add(item.id);
+    });
+    localStorage.setItem(PROGRESS_KEY, JSON.stringify([...visitedSets]));
+    updateProgressBar();
+}
 
 // Initial configuration
 document.getElementById('searchInput').addEventListener('input', searchHighlights);
