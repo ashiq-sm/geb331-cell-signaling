@@ -21,7 +21,8 @@
             --accent-color: #1a4d1a;
             --nav-pill-bg: #e4f0e4;
             --font-size-base: 16px;
-            --body-font: 'Inter', 'Noto Sans Bengali', sans-serif;
+            --body-font: 'Inter', 'Noto Sans Bengali', 'STIX Two Text', 'Cambria Math', serif;
+            --math-font: 'STIX Two Math', 'Cambria Math', 'Noto Sans Math', serif;
         }
 
         [data-theme="dark"] {
@@ -360,6 +361,10 @@
             text-align: left;
         }
         .markdown-body th { background: var(--nav-pill-bg); }
+        .markdown-body mjx-container,
+        .markdown-body mjx-container * {
+            font-family: var(--math-font) !important;
+        }
 
         .footer {
             margin-top: 5rem;
@@ -1014,6 +1019,17 @@ function applyViewMode() {
     }
 }
 
+function normalizeMarkdownMath(markdownText) {
+    if (!markdownText) return markdownText;
+    let normalized = markdownText.replace(/\$\$([\s\S]*?)\$\$/g, (_, expression) => `\\[${expression.trim()}\\]`);
+    normalized = normalized.replace(/\$(?!\d)([^$\n]*?[A-Za-z\\][^$\n]*?)\$/g, (_, expression) => `\\(${expression.trim()}\\)`);
+    return normalized;
+}
+
+function renderMarkdown(markdownText) {
+    return marked.parse(normalizeMarkdownMath(markdownText));
+}
+
 function renderSets() {
     const container = document.getElementById('setsContainer');
     container.innerHTML = '';
@@ -1039,7 +1055,7 @@ function renderSets() {
                 const lines = trimmed.split('\n');
                 const headerLine = lines[0].replace(/^###\s+/, '').replace(/\*\*/g, '').trim();
                 const contentLines = lines.slice(1).join('\n').trim();
-                const parsedContent = marked.parse(contentLines);
+                const parsedContent = renderMarkdown(contentLines);
 
                 flashcardsHTML += `
                     <div class="qs-card">
@@ -1057,7 +1073,7 @@ function renderSets() {
                 `;
             } else {
                 // Intro text or separators
-                flashcardsHTML += `<div class="markdown-body" style="margin-bottom:1.5rem; opacity:0.8;">${marked.parse(trimmed)}</div>`;
+                flashcardsHTML += `<div class="markdown-body" style="margin-bottom:1.5rem; opacity:0.8;">${renderMarkdown(trimmed)}</div>`;
             }
         });
 
@@ -1091,6 +1107,9 @@ function renderSets() {
         if (idx === 0) { card.classList.add('open'); card.querySelector('.toggle-icon').innerHTML = '▼'; visitedSets.add(item.id); activeSetId = item.id; }
     });
     setupNavObserver();
+    if (window.MathJax && MathJax.typesetPromise) {
+        MathJax.typesetPromise();
+    }
 }
 
 function buildQuickNav() {
@@ -1443,10 +1462,12 @@ document.addEventListener('keydown', (e) => {
     const tag = document.activeElement.tagName;
     if (tag === 'INPUT' || tag === 'SELECT' || tag === 'TEXTAREA') return;
     
-    // Highlight shortcuts (1=red, 2=green, 3=indigo)
-    if (e.key === '1') { highlightSelected('red'); e.preventDefault(); return; }
-    if (e.key === '2') { highlightSelected('green'); e.preventDefault(); return; }
-    if (e.key === '3') { highlightSelected('indigo'); e.preventDefault(); return; }
+    // Auto-highlight mode shortcuts
+    if (e.key === '1') { setHighlightMode('red'); e.preventDefault(); return; }
+    if (e.key === '2') { setHighlightMode('green'); e.preventDefault(); return; }
+    if (e.key === '3') { setHighlightMode('indigo'); e.preventDefault(); return; }
+    if (e.key === '4') { setHighlightMode('yellow'); e.preventDefault(); return; }
+    if (e.key === '0') { setHighlightMode('off'); e.preventDefault(); return; }
     
     // Existing shortcuts
     if (e.key === 'f' || e.key === 'F') { document.getElementById('searchInput').focus(); e.preventDefault(); }
@@ -1499,5 +1520,16 @@ window.onload = () => {
     updateProgressBar();
 };
 </script>
+    <script src="data/universal_controls.js"></script>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['\\(', '\\)']],
+                displayMath: [['\\[', '\\]']]
+            },
+            chtml: { matchFontHeight: false }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" defer></script>
 </body>
 </html>

@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <meta name="description" content="GEB 331 Cell Signaling — Bilingual interactive study notebook by SM Ashikur Rahman. Smart Mix Bengali/English, search, PDF export.">
-    <meta property="og:title" content="GEB 331 · Cell Signaling | SM NextGen BioNotes">
-    <meta property="og:description" content="Bilingual interactive exam prep for GEB 331 Cell Signaling.">
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📘</text></svg>">
-    <title>GEB 331 · Complete Cell Signaling Study (Ben+Eng)</title>
+    <meta name="description" content="GEB 343 Bioprocess Engineering — Bilingual interactive study notebook by SM Ashikur Rahman. Smart Mix Bengali/English, search, PDF export.">
+    <meta property="og:title" content="GEB 343 · Bioprocess Engineering | SM NextGen BioNotes">
+    <meta property="og:description" content="Bilingual interactive exam prep for GEB 343 Bioprocess Engineering.">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔬</text></svg>">
+    <title>GEB 343 · Bioprocess Study (Ben+Eng)</title>
     <!-- Google Fonts for Eye-Saving Typography -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Noto+Sans+Bengali:wght@400;700&family=Outfit:wght@400;700&family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -45,7 +45,7 @@
             padding: 100px 1.5rem 70px 1.5rem;
             scroll-behavior: smooth;
         }
-        .container { max-width: 1300px; margin: 0 auto; transition: max-width 0.4s ease; padding-bottom: 0; }
+        .container { max-width: 1300px; margin: 0 auto; transition: max-width 0.4s ease; }
         
         .bismillah {
             text-align: center;
@@ -259,21 +259,70 @@
         .highlight-btn.indigo { background: rgba(99,102,241,0.2); color: #6366f1; border-color: #6366f1; }
         .highlight-btn.indigo:hover { background: #6366f1; color: white; }
         .highlight-btn.indigo.active { background: #6366f1; color: white; }
+        .highlight-btn.yellow { background: rgba(250,204,21,0.24); color: #a16207; border-color: #a16207; }
+        .highlight-btn.yellow:hover { background: #ca8a04; color: white; }
+        .highlight-btn.yellow.active { background: #ca8a04; color: white; }
         .highlight-btn.off { background: rgba(100,100,100,0.2); color: #666; border-color: #666; }
         .highlight-btn.off:hover { background: #666; color: white; }
         .highlight-btn.off.active { background: #666; color: white; }
         
         .toggle-floatbar-btn { position: sticky; top: 0; z-index: 97; background: var(--card-bg); border: 2px solid var(--accent-color); padding: 0.6rem 1rem; border-radius: 8px; margin-bottom: 1rem; cursor: pointer; font-weight: 600; color: var(--accent-color); transition: all 0.3s; }
         .toggle-floatbar-btn:hover { background: var(--accent-color); color: white; }
+        .toggle-floatbar-btn .floatbar-icon { display: inline-flex; align-items: center; }
+        .toggle-floatbar-btn .floatbar-label {
+            display: inline-block;
+            max-width: 260px;
+            margin-left: 6px;
+            white-space: nowrap;
+            overflow: hidden;
+            transition: max-width 0.35s ease, opacity 0.25s ease, margin-left 0.35s ease;
+            opacity: 1;
+            vertical-align: middle;
+        }
+        .toggle-floatbar-btn.compact .floatbar-label {
+            max-width: 0;
+            opacity: 0;
+            margin-left: 0;
+        }
+
+        .floatbar-tip {
+            position: fixed;
+            top: 52px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 120;
+            background: rgba(20, 60, 36, 0.95);
+            color: #fff;
+            border: 1px solid rgba(255,255,255,0.24);
+            border-radius: 999px;
+            padding: 0.45rem 0.95rem;
+            font-size: 0.78rem;
+            letter-spacing: 0.1px;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.55s ease, visibility 0.55s ease;
+            pointer-events: none;
+        }
+        .floatbar-tip.show {
+            opacity: 1;
+            visibility: visible;
+        }
 
         /* Highlight styles for selected text */
         .highlight-red { background: rgba(239,68,68,0.3) !important; }
         .highlight-green { background: rgba(34,197,94,0.3) !important; }
         .highlight-indigo { background: rgba(99,102,241,0.3) !important; }
+        .highlight-yellow { background: rgba(250,204,21,0.36) !important; }
 
         .highlight-underline.underline-red { text-decoration: underline wavy #dc2626; background: none !important; }
         .highlight-underline.underline-green { text-decoration: underline wavy #16a34a; background: none !important; }
         .highlight-underline.underline-indigo { text-decoration: underline wavy #6366f1; background: none !important; }
+        .highlight-underline.underline-yellow { text-decoration: underline wavy #ca8a04; background: none !important; }
+
+        body.highlights-hidden [data-user-highlight="1"] {
+            background: transparent !important;
+            text-decoration: none !important;
+        }
 
         .underline-mode-active { background: var(--accent-color) !important; color: white !important; }
 
@@ -316,7 +365,7 @@
         }
         .nav-pill:hover { background: var(--accent-color); color: white; transform: translateY(-2px); }
         .nav-pill.active { background: var(--accent-color); color: white; transform: translateY(-2px); }
-        .search-bar { margin-bottom: 1rem; display: flex; gap: 0.5rem; }
+        .search-bar { margin-bottom: 1.6rem; display: flex; gap: 0.5rem; }
         #searchInput {
             flex: 1; padding: 0.7rem 1rem; border-radius: 3rem; border: 1px solid var(--border-color); 
             background: var(--card-bg); color: var(--text-color); font-size: 0.9rem;
@@ -361,6 +410,48 @@
             text-align: left;
         }
         .markdown-body th { background: var(--nav-pill-bg); }
+
+        @media (max-width: 760px) {
+            .markdown-body table.compact-ready {
+                display: block;
+                overflow: visible;
+                border: none;
+                margin: 1rem 0;
+            }
+            .markdown-body table.compact-ready thead {
+                display: none;
+            }
+            .markdown-body table.compact-ready tbody {
+                display: block;
+            }
+            .markdown-body table.compact-ready tr {
+                display: block;
+                margin: 0 0 0.9rem;
+                padding: 0.2rem 0.65rem;
+                background: var(--card-bg);
+                border: 1px solid var(--border-color);
+                border-radius: 12px;
+            }
+            .markdown-body table.compact-ready td {
+                display: grid;
+                grid-template-columns: minmax(105px, 42%) 1fr;
+                gap: 0.65rem;
+                border: none;
+                border-bottom: 1px dashed var(--border-color);
+                padding: 0.55rem 0.2rem;
+                min-width: 0;
+                line-height: 1.45;
+            }
+            .markdown-body table.compact-ready tr td:last-child {
+                border-bottom: none;
+            }
+            .markdown-body table.compact-ready td::before {
+                content: attr(data-label);
+                font-weight: 700;
+                color: var(--accent-color);
+            }
+        }
+
         .markdown-body mjx-container,
         .markdown-body mjx-container * {
             font-family: var(--math-font) !important;
@@ -423,7 +514,7 @@
             position: absolute;
             top: 0; left: 0;
             width: 100%; height: 100%;
-            display: none; /* Hidden by default, shown on error */
+            display: none;
             align-items: center;
             justify-content: center;
             background: linear-gradient(135deg, var(--accent-color), #065f46);
@@ -598,19 +689,21 @@
         /* Context menu for highlights */
         .highlight-menu {
             position: fixed; background: var(--card-bg); border: 1px solid var(--accent-color);
-            border-radius: 8px; z-index: 1000; box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-            min-width: 150px; display: none;
+            border-radius: 12px; z-index: 1000; box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            min-width: 0; display: none;
             overflow: hidden;
+            padding: 0.35rem;
+            gap: 0.3rem;
         }
-        .highlight-menu.show { display: flex; flex-direction: column; }
+        .highlight-menu.show { display: flex; flex-direction: row; align-items: center; }
         .highlight-menu button {
-            background: none; border: none; padding: 0.7rem 1rem;
+            background: var(--nav-pill-bg); border: 1px solid var(--border-color); padding: 0.45rem;
             cursor: pointer; font-family: inherit; font-size: 0.85rem;
-            color: var(--text-color); text-align: left; transition: background 0.2s;
+            color: var(--text-color); text-align: center; transition: background 0.2s;
+            width: 34px; height: 34px; border-radius: 8px; display: inline-flex; align-items: center; justify-content: center;
         }
         .highlight-menu button:hover { background: var(--nav-pill-bg); }
         .highlight-menu button.delete { color: #dc2626; }
-        .highlight-menu-divider { height: 1px; background: var(--border-color); margin: 0; }
         
         /* Expand all button */
         .expand-all-btn {
@@ -620,27 +713,16 @@
         }
         .expand-all-btn:hover { background: var(--accent-color); opacity: 0.8; transform: scale(1.05); }
 
-
-
-        /* Progress Bar */
         .progress-wrap { margin-top: 0.8rem; height: 5px; border-radius: 20px; background: rgba(255,255,255,0.18); overflow: hidden; }
         .progress-fill { height: 100%; width: 0%; border-radius: 20px; background: #ffd966; transition: width 0.6s ease; }
         .progress-label { font-size: 0.72rem; color: rgba(255,255,255,0.6); margin-top: 4px; }
-
-        /* Keyboard shortcuts */
         .shortcuts-bar { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 6px; font-size: 0.68rem; color: rgba(255,255,255,0.45); align-items: center; }
         .shortcuts-bar kbd { background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2); border-radius: 4px; padding: 1px 6px; font-size: 0.65rem; font-family: monospace; }
-
-        /* Reading time badge */
         .read-time { font-size: 0.7rem; color: var(--accent-color); font-weight: 700; opacity: 0.85; }
         .done-badge { font-size: 0.65rem; color: #34d399; font-weight: 700; }
-
-        /* Copy button */
         .markdown-body pre { position: relative; }
         .copy-btn { position: absolute; top: 8px; right: 8px; background: rgba(255,255,255,0.12); border: none; color: rgba(255,255,255,0.75); padding: 3px 10px; border-radius: 6px; font-size: 0.7rem; cursor: pointer; font-family: inherit; transition: 0.2s; }
         .copy-btn:hover { background: rgba(255,255,255,0.28); }
-
-        /* Footer social inside card */
         .footer-social-header { font-size: 1rem; font-weight: 700; color: rgba(255,255,255,0.72); letter-spacing: 0.5px; margin-bottom: 1.4rem; }
         .footer-divider { width: 72px; height: 2px; margin: 2rem auto; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.22), transparent); border-radius: 2px; }
     </style>
@@ -656,39 +738,40 @@
     </div>
 
     <div class="header">
-        <h1>📘 GEB 331 — Cell Signaling <span>Bilingual Interactive Note</span></h1>
+        <h1>📘 GEB 343 — Bioprocess Engineering <span>Bilingual Interactive Note</span></h1>
         <div class="controls">
-            <button class="control-btn" onclick="window.location.href='/'" style="font-weight: bold;">🏠 Home Hub</button>
-            <select class="control-btn live-btn" id="courseSelect" onchange="if(this.value !== '#') window.open(this.value, '_self')" style="background: #e4f0e4 !important; color: #1a4d1a !important;">
-                <option value="#" selected>📘 GEB 331: Cell Signaling (Current)</option>
-                <option value="GEB335_FERMENTATION_TECH_INTERACTIVE.html">🔬 GEB 335: Fermentation Tech (New!)</option>
+            <button class="control-btn" onclick="window.location.href='/'" style="font-weight: bold;" title="Go to Home Hub">🏠 Home Hub</button>
+            <select class="control-btn live-btn" id="courseSelect" onchange="if(this.value !== '#') window.open(this.value, '_self')" style="background: #e4f0e4 !important; color: #1a4d1a !important;" title="Switch Course">
+                <option value="GEB331_MASTER_EXAM_PREP_INTERACTIVE_v4_FINAL.html">📘 GEB 331: Cell Signaling</option>
+                <option value="GEB335_FERMENTATION_TECH_INTERACTIVE.html">🧪 GEB 335: Fermentation Technology</option>
+                <option value="#" selected>⚙️ GEB 343: Bioprocess Engineering (Current)</option>
                 <option value="#">🧬 rDNA Technology (Coming Soon)</option>
                 <option value="#">🦠 Onco Virology (Coming Soon)</option>
                 <option value="#">🐟 Aqua & Fish Pathology (Coming Soon)</option>
                 <option value="#">⚡ Bioenergetics (Coming Soon)</option>
                 <option value="#">⚙️ Bioprocess (Coming Soon)</option>
             </select>
-            <button class="control-btn live-btn" onclick="window.open('https://sm-nextgen-bionotes.vercel.app', '_blank')">🌐 View Live</button>
-            <button class="control-btn" onclick="toggleTheme()">🌓 Theme</button>
-            <button class="control-btn" onclick="changeFont(-1)">A-</button>
-            <button class="control-btn" onclick="changeFont(1)">A+</button>
-            <select class="control-btn" id="fontFamily" onchange="applyFontFamily()">
+            <button class="control-btn live-btn" onclick="window.open('https://sm-nextgen-bionotes.vercel.app', '_blank')" title="Open Live Site">🌐 View Live</button>
+            <button class="control-btn" onclick="toggleTheme()" title="Toggle Theme [T]">🌓 Theme</button>
+            <button class="control-btn" onclick="changeFont(-1)" title="Decrease Font Size">A-</button>
+            <button class="control-btn" onclick="changeFont(1)" title="Increase Font Size">A+</button>
+            <select class="control-btn" id="fontFamily" onchange="applyFontFamily()" title="Change Font Family">
                 <option value="'Inter', 'Noto Sans Bengali'">👁️ Eye Saver (Inter)</option>
                 <option value="'Outfit', 'Noto Sans Bengali'">✨ Premium (Outfit)</option>
                 <option value="'Roboto Slab', 'Noto Sans Bengali'">📖 Academic (Slab)</option>
                 <option value="system-ui">💻 System Default</option>
             </select>
-            <select class="control-btn" id="viewMode" onchange="applyViewMode()">
+            <select class="control-btn" id="viewMode" onchange="applyViewMode()" title="Change View Mode">
                 <option value="auto">🖥️ Auto View</option>
                 <option value="mobile">📱 Mobile</option>
                 <option value="desktop">💻 Desktop</option>
             </select>
-            <select class="control-btn" id="languageSelect" onchange="changeLanguage()">
+            <select class="control-btn" id="languageSelect" onchange="changeLanguage()" title="Change Language Mode">
                 <option value="bn">🌐 Smart Mix (Bilingual)</option>
                 <option value="en">🌐 Full English (Academic)</option>
             </select>
-            <button class="control-btn" id="toggleAllBtn" onclick="toggleAllSets()">📂 Expand All</button>
-            <button class="control-btn live-btn" onclick="exportToPDF()">🖨️ Export PDF</button>
+            <button class="control-btn" id="toggleAllBtn" onclick="toggleAllSets()" title="Expand or Collapse All Sets [E]">📂 Expand All</button>
+            <button class="control-btn live-btn" onclick="exportToPDF()" title="Export as PDF">🖨️ Export PDF</button>
         </div>
         <div class="progress-wrap"><div class="progress-fill" id="progressFill"></div></div>
         <div class="progress-label" id="progressLabel">0 topics explored</div>
@@ -729,34 +812,44 @@
     <!-- Top Control Bar (Fixed) -->
     <div class="top-controls" id="topControls">
         <span style="font-weight: 600; color: var(--accent-color); font-size: 0.85rem;">Highlight:</span>
-        <button class="highlight-btn red" id="highlightRed" onclick="setHighlightMode('red')" title="Red Mode">🔴</button>
-        <button class="highlight-btn green" id="highlightGreen" onclick="setHighlightMode('green')" title="Green Mode">🟢</button>
-        <button class="highlight-btn indigo" id="highlightIndigo" onclick="setHighlightMode('indigo')" title="Indigo Mode">🔵</button>
-        <button class="highlight-btn off" id="highlightOff" onclick="setHighlightMode('off')" title="Highlighting Off">⊙ Off</button>
-        <button id="underlineModeBtn" onclick="toggleUnderlineMode()" title="Switch to Underline/Background Mode">📋 Style</button>
-        <button id="floatbarCloseBtn" onclick="toggleFloatingBar()" title="Close Floating Bar">✕ Close</button>
+        <button class="highlight-btn red" id="highlightRed" onclick="setHighlightMode('red')" title="Auto Red Highlight Mode [1]">🔴</button>
+        <button class="highlight-btn green" id="highlightGreen" onclick="setHighlightMode('green')" title="Auto Green Highlight Mode [2]">🟢</button>
+        <button class="highlight-btn indigo" id="highlightIndigo" onclick="setHighlightMode('indigo')" title="Auto Indigo Highlight Mode [3]">🔵</button>
+        <button class="highlight-btn yellow" id="highlightYellow" onclick="setHighlightMode('yellow')" title="Auto Yellow Highlight Mode [4]">🟡</button>
+        <button class="highlight-btn off" id="highlightOff" onclick="setHighlightMode('off')" title="Highlighting Off [0]">⊙ Off</button>
+        <button id="toggleHighlightsBtn" onclick="toggleHighlightsVisibility()" title="Hide or Show Highlights">👁️</button>
+        <button id="clearHighlightsBtn" onclick="clearAllHighlights()" title="Erase All Highlights">🧹</button>
+        <button id="underlineModeBtn" onclick="toggleUnderlineMode()" title="Switch Underline/Background [U]">📋 Style</button>
+        <button id="floatbarCloseBtn" onclick="toggleFloatingBar()" title="Show or Hide Floating Bar [B]">✕ Close</button>
         <div class="separator"></div>
         <span style="font-weight: 600; color: var(--accent-color); font-size: 0.85rem;">Text:</span>
+        <button onclick="toggleTheme()" title="Toggle Theme [T]">🌓</button>
         <button onclick="changeFont(-1)" title="Decrease Font Size">A−</button>
         <button onclick="changeFont(1)" title="Increase Font Size">A+</button>
-        <button class="expand-all-btn" onclick="expandAllRecursive()" title="Expand all sets and questions">📂 Expand All</button>
+        <button class="expand-all-btn" onclick="toggleAllSets()" title="Expand or Collapse All Sets [E]">📂 Expand All</button>
     </div>
     
     <!-- Toggle Floating Bar Button -->
-    <button class="toggle-floatbar-btn" id="toggleFloatbarBtn" onclick="toggleFloatingBar()" title="Toggle floating control bar">⚙️ Floating Control Bar Mode</button>
+    <button class="toggle-floatbar-btn" id="toggleFloatbarBtn" onclick="toggleFloatingBar()" title="Toggle Floating Control Bar [B]"><span class="floatbar-icon">⚙️</span><span class="floatbar-label">Floating Control Bar Mode (ON)</span></button>
+    <div class="floatbar-tip" id="floatbarTip">Longpress/hover on buttons/icons to know tooltips and shortcuts</div>
     
     <!-- Highlight Context Menu -->
     <div class="highlight-menu" id="highlightMenu">
-        <button onclick="changeHighlightColor('red')">🔴 Red</button>
-        <button onclick="changeHighlightColor('green')">🟢 Green</button>
-        <button onclick="changeHighlightColor('indigo')">🔵 Indigo</button>
-        <div class="highlight-menu-divider"></div>
-        <button onclick="toggleHighlightStyle()">🔄 Toggle Style</button>
-        <div class="highlight-menu-divider"></div>
-        <button class="delete" onclick="deleteHighlight()">🗑️ Delete</button>
+        <button onclick="changeHighlightColor('red')" title="Change Highlight to Red">🔴</button>
+        <button onclick="changeHighlightColor('green')" title="Change Highlight to Green">🟢</button>
+        <button onclick="changeHighlightColor('indigo')" title="Change Highlight to Indigo">🔵</button>
+        <button onclick="changeHighlightColor('yellow')" title="Change Highlight to Yellow">🟡</button>
+        <button onclick="toggleHighlightStyle()" title="Toggle Underline or Background">🔄</button>
+        <button class="delete" onclick="deleteHighlight()" title="Delete This Highlight">🗑️</button>
     </div>
 
-    <div class="search-bar" style="margin-top: 1rem;"><input type="text" id="searchInput" placeholder="🔎 Search anything (GPCR, PI3K, Notch...)" autocomplete="off"></div>
+    <div class="search-bar" style="margin-top: 1rem;"><input type="text" id="searchInput" placeholder="🔎 Search anything (ethanol, yeast, bioreactor, fermentation...)" autocomplete="off"></div>
+    <div class="quick-nav" id="quickNav" style="position: fixed; bottom: 0; left: 0; right: 0; z-index: 99;">
+        <div id="progressBanner" class="progress-banner">
+            <div id="progressBannerFill" class="progress-banner-fill"></div>
+            <div id="progressBannerTitle" class="progress-banner-title"></div>
+        </div>
+    </div>
     <div id="setsContainer"></div>
     
     <div class="footer">
@@ -780,33 +873,23 @@
                 <div id="profileFallback" class="profile-fallback">SM</div>
             </div>
             <div class="author-name">SM Ashikur Rahman</div>
-            <div class="author-title">Developed with 💚 for GEB 331 | Cell Signaling</div>
+            <div class="author-title">Developed with 💚 for GEB 343 | Bioprocess Engineering</div>
         </div>
     </div>
 </div>
 
 <!-- Load external data -->
-<script src="data/geb331_data.js"></script>
-<script src="data/geb331_data_part2.js"></script>
-<script src="data/geb331_data_part3.js"></script>
-<script src="data/geb331_data_part4.js"></script>
-<script>
-    window.MathJax = {
-        tex: {
-            inlineMath: [['\\(', '\\)']],
-            displayMath: [['\\[', '\\]']]
-        },
-        chtml: { matchFontHeight: false }
-    };
-</script>
-<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" defer></script>
+<script src="data/geb343_data.js"></script>
 <script>
 let currentFontSize = 16;
 let currentLang = 'bn';
-const setsData = geb331_sets;
+let allExpanded = false;
+const HIGHLIGHT_STORE_KEY = 'sm-geb343-highlights-v1';
+const HIGHLIGHT_VISIBILITY_KEY = 'sm-geb343-highlights-visible';
+let floatbarTipTimer = null;
+const setsData = geb343_sets;
 
-// Progress tracking
-const PROGRESS_KEY = 'sm-progress-geb331';
+const PROGRESS_KEY = 'sm-progress-geb343';
 let visitedSets = new Set(JSON.parse(localStorage.getItem(PROGRESS_KEY) || '[]'));
 
 function updateProgressBar() {
@@ -870,10 +953,6 @@ function openDuaModal() {
     document.getElementById('duaModal').classList.add('active');
 }
 
-function closeDuaModal() {
-    document.getElementById('duaModal').classList.remove('active');
-}
-
 let activeSetId = null;
 
 function updateBannerTitle(id) {
@@ -894,8 +973,16 @@ window.addEventListener('scroll', () => {
     const controlBar = document.getElementById('topControls');
     if (window.scrollY > 300 && isFloatingBarVisible) {
         controlBar.classList.add('visible');
-    } else if (window.scrollY <= 300 && !isFloatingBarVisible) {
+    } else {
         controlBar.classList.remove('visible');
+    }
+
+    // Collapse floating toggle label only when user is deep into answer region
+    const toggleBtn = document.getElementById('toggleFloatbarBtn');
+    const setsContainer = document.getElementById('setsContainer');
+    if (toggleBtn && setsContainer) {
+        const compactStartY = setsContainer.offsetTop + 220;
+        toggleBtn.classList.toggle('compact', window.scrollY > compactStartY);
     }
     
     if (!activeSetId) return;
@@ -920,11 +1007,16 @@ window.addEventListener('scroll', () => {
     }
 });
 
+function closeDuaModal() {
+    document.getElementById('duaModal').classList.remove('active');
+}
+
 function toggleAllSets() {
     allExpanded = !allExpanded;
     const cards = document.querySelectorAll('.set-card');
     const qsCards = document.querySelectorAll('.qs-card');
     const btn = document.getElementById('toggleAllBtn');
+    const floatingExpandBtn = document.querySelector('.expand-all-btn');
     
     cards.forEach(card => {
         if (allExpanded) {
@@ -945,11 +1037,13 @@ function toggleAllSets() {
         else qs.classList.remove('open');
     });
     
-    btn.innerHTML = allExpanded ? '📁 Collapse All' : '📂 Expand All';
+    const label = allExpanded ? '📁 Collapse All' : '📂 Expand All';
+    btn.innerHTML = label;
+    if (floatingExpandBtn) floatingExpandBtn.innerHTML = label;
     
     // Sync local toggle buttons
     document.querySelectorAll('.local-toggle-btn').forEach(lbtn => {
-        lbtn.innerHTML = allExpanded ? '� Hide All' : '💡 Show All';
+        lbtn.innerHTML = allExpanded ? '💡 Hide All' : '💡 Show All';
     });
 }
 
@@ -988,7 +1082,7 @@ function toggleLocalQS(setId, event) {
         else qs.classList.remove('open');
     });
     
-    btn.innerHTML = isExpanding ? '� Hide All' : '💡 Show All';
+    btn.innerHTML = isExpanding ? '💡 Hide All' : '💡 Show All';
 }
 
 function exportToPDF() {
@@ -1045,8 +1139,66 @@ function normalizeMarkdownMath(markdownText) {
     return normalized;
 }
 
+function toBnSmartMix(englishText) {
+    if (!englishText) return englishText;
+    let mixed = englishText;
+    const replacements = [
+        [/\bDefinition\b/gi, 'Definition (সংজ্ঞা)'],
+        [/\bAdvantages\b/gi, 'Advantages (সুবিধা)'],
+        [/\bLimitations\b/gi, 'Limitations (সীমাবদ্ধতা)'],
+        [/\bProcess\b/gi, 'Process (প্রক্রিয়া)'],
+        [/\bScale-up\b/gi, 'Scale-up (স্কেল-আপ)'],
+        [/\bDownstream Processing\b/gi, 'Downstream Processing (ডাউনস্ট্রিম প্রসেসিং)'],
+        [/\bUpstream Processing\b/gi, 'Upstream Processing (আপস্ট্রিম প্রসেসিং)'],
+        [/\bLogical Reasoning\b/gi, 'Logical Reasoning (যুক্তিগত ব্যাখ্যা)'],
+        [/\bKey distinction\b/gi, 'Key distinction (মূল পার্থক্য)'],
+        [/\bDesign consequence\b/gi, 'Design consequence (ডিজাইন ফলাফল)']
+    ];
+    replacements.forEach(([pattern, replacement]) => {
+        mixed = mixed.replace(pattern, replacement);
+    });
+    return mixed;
+}
+
+function getLocalizedSetMarkdown(item) {
+    const en = item.rawMd_en || item.rawMd || '';
+    const bn = item.rawMd_bn || '';
+    const bnMissing = !bn || /Bengali version not yet implemented/i.test(bn);
+    if (currentLang === 'bn') {
+        return bnMissing ? toBnSmartMix(en) : bn;
+    }
+    return en;
+}
+
+function cleanSetIntroHeading(markdownText, item) {
+    if (!markdownText) return markdownText;
+    const match = item.id && item.id.match(/set(\d+)/i);
+    const setNo = match ? match[1] : '';
+    const headPattern = new RegExp(`^\\s*###\\s*\\*\\*SET\\s*${setNo}\\s*[:\\-–].*?\\*\\*\\s*\\n+`, 'i');
+    let cleaned = markdownText.replace(headPattern, '');
+    cleaned = cleaned.replace(/^\s*---\s*\n/, '');
+    return cleaned;
+}
+
 function renderMarkdown(markdownText) {
     return marked.parse(normalizeMarkdownMath(markdownText));
+}
+
+function enhanceResponsiveTables(scope = document) {
+    scope.querySelectorAll('.markdown-body table').forEach((table) => {
+        const headerCells = Array.from(table.querySelectorAll('thead th')).map((th) => th.textContent.trim());
+        const rows = table.querySelectorAll('tbody tr');
+
+        rows.forEach((row) => {
+            Array.from(row.children).forEach((cell, idx) => {
+                if (cell.tagName.toLowerCase() !== 'td') return;
+                const fallback = `Column ${idx + 1}`;
+                cell.setAttribute('data-label', headerCells[idx] || fallback);
+            });
+        });
+
+        table.classList.add('compact-ready');
+    });
 }
 
 function renderSets() {
@@ -1057,7 +1209,7 @@ function renderSets() {
         card.className = 'set-card';
         card.id = item.id;
         
-        const mdContent = item['rawMd_' + currentLang] || item.rawMd_bn || item.rawMd;
+        const mdContent = cleanSetIntroHeading(getLocalizedSetMarkdown(item), item);
         const readTime = getReadingTime(mdContent);
         const isDone = visitedSets.has(item.id);
 
@@ -1073,6 +1225,7 @@ function renderSets() {
                 // It's a question block
                 const lines = trimmed.split('\n');
                 const headerLine = lines[0].replace(/^###\s+/, '').replace(/\*\*/g, '').trim();
+                if (/^SET\s*\d+\s*[:\-–]/i.test(headerLine)) return;
                 const contentLines = lines.slice(1).join('\n').trim();
                 const parsedContent = renderMarkdown(contentLines);
 
@@ -1100,7 +1253,7 @@ function renderSets() {
             `<div class="set-header">
                 <h2 style="display:flex;align-items:center;gap:15px;flex-wrap:wrap;">
                     ${item.title}
-                    <button class="local-toggle-btn" onclick="toggleLocalQS('${item.id}', event)">� Show All</button>
+                    <button class="local-toggle-btn" onclick="toggleLocalQS('${item.id}', event)">💡 Show All</button>
                 </h2>
                 <span style="display:flex;align-items:center;gap:8px;">
                     <span class="read-time">${readTime}</span>
@@ -1125,6 +1278,8 @@ function renderSets() {
         
         if (idx === 0) { card.classList.add('open'); card.querySelector('.toggle-icon').innerHTML = '▼'; visitedSets.add(item.id); activeSetId = item.id; }
     });
+    restoreHighlightsFromStorage();
+    enhanceResponsiveTables(container);
     setupNavObserver();
     if (window.MathJax && MathJax.typesetPromise) {
         MathJax.typesetPromise();
@@ -1147,42 +1302,12 @@ function buildQuickNav() {
     });
 }
 
-// Keyboard shortcuts
-document.addEventListener('keydown', (e) => {
-    const tag = document.activeElement.tagName;
-    if (tag === 'INPUT' || tag === 'SELECT' || tag === 'TEXTAREA') return;
-    
-    // Auto-highlight mode shortcuts
-    if (e.key === '1') { setHighlightMode('red'); e.preventDefault(); return; }
-    if (e.key === '2') { setHighlightMode('green'); e.preventDefault(); return; }
-    if (e.key === '3') { setHighlightMode('indigo'); e.preventDefault(); return; }
-    if (e.key === '4') { setHighlightMode('yellow'); e.preventDefault(); return; }
-    if (e.key === '0') { setHighlightMode('off'); e.preventDefault(); return; }
-    
-    // Existing shortcuts
-    if (e.key === 'f' || e.key === 'F') { document.getElementById('searchInput').focus(); e.preventDefault(); }
-    if (e.key === 't' || e.key === 'T') toggleTheme();
-    if (e.key === 'e' || e.key === 'E') toggleAllSets();
-    if (e.key === 'u' || e.key === 'U') toggleUnderlineMode();
-    if (e.key === 'Escape') closeDuaModal();
-});
-
-function searchHighlights() {
-    const term = document.getElementById('searchInput').value.trim().toLowerCase();
-    const all = document.querySelectorAll('.markdown-body p, .markdown-body td, .markdown-body li');
-    all.forEach(el => {
-        if(!term) { el.innerHTML = el.innerHTML.replace(/<mark class="highlight">(.*?)<\/mark>/g, '$1'); return; }
-        const regex = new RegExp(`(?![^<]+>)(${term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
-        el.innerHTML = el.innerHTML.replace(/<mark class="highlight">(.*?)<\/mark>/g, '$1').replace(regex, `<mark class="highlight">$1</mark>`);
-    });
-}
-
 /* ═══════════════════════════════════════════════════════════ */
 /* TEXT HIGHLIGHTING & UNDERLINING FUNCTIONALITY */
 /* ═══════════════════════════════════════════════════════════ */
 
 let highlightMode = 'background'; // 'background' or 'underline'
-let currentHighlightColor = null; // 'red', 'green', 'indigo'
+let currentHighlightColor = null; // 'red', 'green', 'indigo', 'yellow'
 
 function toggleUnderlineMode() {
     highlightMode = highlightMode === 'background' ? 'underline' : 'background';
@@ -1213,6 +1338,7 @@ function highlightSelected(color) {
     } else {
         span.className = 'highlight-underline underline-' + color;
     }
+    span.dataset.userHighlight = '1';
     
     // Remove previous highlight class on overlapping selections
     removeHighlightsInRange(range);
@@ -1222,6 +1348,7 @@ function highlightSelected(color) {
     selection.removeAllRanges();
     
     localStorage.setItem('lastHighlightColor', color);
+    saveHighlightsToStorage();
 }
 
 // Set highlight mode and enable/disable highlighting
@@ -1244,6 +1371,7 @@ function updateHighlightButtons() {
     document.getElementById('highlightRed').classList.remove('active');
     document.getElementById('highlightGreen').classList.remove('active');
     document.getElementById('highlightIndigo').classList.remove('active');
+    document.getElementById('highlightYellow').classList.remove('active');
     document.getElementById('highlightOff').classList.remove('active');
     
     if (currentHighlightColor === 'red') {
@@ -1252,6 +1380,8 @@ function updateHighlightButtons() {
         document.getElementById('highlightGreen').classList.add('active');
     } else if (currentHighlightColor === 'indigo') {
         document.getElementById('highlightIndigo').classList.add('active');
+    } else if (currentHighlightColor === 'yellow') {
+        document.getElementById('highlightYellow').classList.add('active');
     } else {
         document.getElementById('highlightOff').classList.add('active');
     }
@@ -1264,15 +1394,26 @@ function toggleFloatingBar() {
     isFloatingBarVisible = !isFloatingBarVisible;
     const controlBar = document.getElementById('topControls');
     const toggleBtn = document.getElementById('toggleFloatbarBtn');
+    const toggleLabel = toggleBtn ? toggleBtn.querySelector('.floatbar-label') : null;
     
     if (isFloatingBarVisible) {
         controlBar.classList.add('visible');
-        toggleBtn.textContent = '⚙️ Floating Control Bar Mode (ON)';
+        if (toggleLabel) toggleLabel.textContent = 'Floating Control Bar Mode (ON)';
     } else {
         controlBar.classList.remove('visible');
-        toggleBtn.textContent = '⚙️ Floating Control Bar Mode (OFF)';
+        if (toggleLabel) toggleLabel.textContent = 'Floating Control Bar Mode (OFF)';
     }
     localStorage.setItem('floatingBarVisible', isFloatingBarVisible);
+}
+
+function showFloatbarTip() {
+    const tip = document.getElementById('floatbarTip');
+    if (!tip) return;
+    tip.classList.add('show');
+    if (floatbarTipTimer) clearTimeout(floatbarTipTimer);
+    floatbarTipTimer = setTimeout(() => {
+        tip.classList.remove('show');
+    }, 3500);
 }
 
 // Auto-highlight selected text when a color is active
@@ -1284,6 +1425,7 @@ document.addEventListener('mouseup', () => {
         // Auto-highlight the selected text with the current color
         const range = selection.getRangeAt(0);
         const span = document.createElement('span');
+        span.dataset.userHighlight = '1';
         
         if (highlightMode === 'background') {
             span.className = 'highlight-' + currentHighlightColor;
@@ -1295,6 +1437,7 @@ document.addEventListener('mouseup', () => {
         span.appendChild(range.extractContents());
         range.insertNode(span);
         selection.removeAllRanges();
+        saveHighlightsToStorage();
     }
 });
 
@@ -1302,7 +1445,7 @@ function removeHighlightsInRange(range) {
     const container = range.commonAncestorContainer;
     if (container.nodeType === Node.TEXT_NODE) return;
     
-    const highlightedElements = container.querySelectorAll('[class*="highlight"]');
+    const highlightedElements = container.querySelectorAll('[data-user-highlight="1"]');
     highlightedElements.forEach(el => {
         if (isNodeInRange(el, range)) {
             // Unwrap the element
@@ -1323,7 +1466,11 @@ function isNodeInRange(node, range) {
 }
 
 function clearAllHighlights() {
-    const highlighted = document.querySelectorAll('[class*="highlight-"]');
+    const highlighted = document.querySelectorAll('[data-user-highlight="1"]');
+    if (!highlighted.length) return;
+    const proceed = window.confirm('Erase all saved highlights? This action cannot be undone.');
+    if (!proceed) return;
+
     highlighted.forEach(el => {
         const parent = el.parentNode;
         while (el.firstChild) {
@@ -1331,6 +1478,53 @@ function clearAllHighlights() {
         }
         parent.removeChild(el);
     });
+    saveHighlightsToStorage();
+}
+
+function saveHighlightsToStorage() {
+    const payload = {};
+    document.querySelectorAll('.set-card').forEach((setCard) => {
+        const setId = setCard.id;
+        const entries = [];
+        setCard.querySelectorAll('.qs-card .markdown-body').forEach((body, idx) => {
+            if (body.querySelector('[data-user-highlight="1"]')) {
+                entries.push({ idx, html: body.innerHTML });
+            }
+        });
+        if (entries.length) payload[setId] = entries;
+    });
+    try {
+        localStorage.setItem(HIGHLIGHT_STORE_KEY, JSON.stringify(payload));
+    } catch (err) {
+        console.warn('Could not save highlights:', err);
+    }
+}
+
+function restoreHighlightsFromStorage() {
+    let saved = null;
+    try {
+        saved = JSON.parse(localStorage.getItem(HIGHLIGHT_STORE_KEY) || '{}');
+    } catch {
+        saved = {};
+    }
+    Object.entries(saved).forEach(([setId, entries]) => {
+        const setCard = document.getElementById(setId);
+        if (!setCard || !Array.isArray(entries)) return;
+        const bodies = setCard.querySelectorAll('.qs-card .markdown-body');
+        entries.forEach((entry) => {
+            if (!entry || typeof entry.idx !== 'number' || typeof entry.html !== 'string') return;
+            const target = bodies[entry.idx];
+            if (target) target.innerHTML = entry.html;
+        });
+    });
+}
+
+function toggleHighlightsVisibility() {
+    const isHidden = document.body.classList.toggle('highlights-hidden');
+    const btn = document.getElementById('toggleHighlightsBtn');
+    if (btn) btn.textContent = isHidden ? '🙈' : '👁️';
+    if (btn) btn.title = isHidden ? 'Show Highlights' : 'Hide Highlights';
+    localStorage.setItem(HIGHLIGHT_VISIBILITY_KEY, String(!isHidden));
 }
 
 // Load highlight settings on page load
@@ -1344,7 +1538,7 @@ window.addEventListener('load', () => {
     }
     
     // Restore highlight color/off state
-    if (savedColor === 'red' || savedColor === 'green' || savedColor === 'indigo') {
+    if (savedColor === 'red' || savedColor === 'green' || savedColor === 'indigo' || savedColor === 'yellow') {
         setHighlightMode(savedColor);
     } else {
         setHighlightMode('off');
@@ -1354,9 +1548,21 @@ window.addEventListener('load', () => {
     isFloatingBarVisible = localStorage.getItem('floatingBarVisible') !== 'false';
     if (!isFloatingBarVisible) {
         document.getElementById('topControls').classList.remove('visible');
-        document.getElementById('toggleFloatbarBtn').textContent = '⚙️ Floating Control Bar Mode (OFF)';
+        const label = document.querySelector('#toggleFloatbarBtn .floatbar-label');
+        if (label) label.textContent = 'Floating Control Bar Mode (OFF)';
     } else {
-        document.getElementById('toggleFloatbarBtn').textContent = '⚙️ Floating Control Bar Mode (ON)';
+        const label = document.querySelector('#toggleFloatbarBtn .floatbar-label');
+        if (label) label.textContent = 'Floating Control Bar Mode (ON)';
+    }
+
+    const highlightsVisible = localStorage.getItem(HIGHLIGHT_VISIBILITY_KEY) !== 'false';
+    if (!highlightsVisible) {
+        document.body.classList.add('highlights-hidden');
+        const toggleBtn = document.getElementById('toggleHighlightsBtn');
+        if (toggleBtn) {
+            toggleBtn.textContent = '🙈';
+            toggleBtn.title = 'Show Highlights';
+        }
     }
     
     setupHighlightContextMenu();
@@ -1368,31 +1574,53 @@ window.addEventListener('load', () => {
 
 let currentHighlightElement = null;
 
+function findHighlightTarget(node) {
+    if (!node || !node.closest) return null;
+    const target = node.closest('[data-user-highlight="1"], .highlight-red, .highlight-green, .highlight-indigo, .highlight-yellow, .highlight-underline');
+    if (target && !target.dataset.userHighlight) {
+        target.dataset.userHighlight = '1';
+    }
+    return target;
+}
+
 function setupHighlightContextMenu() {
-    document.addEventListener('mouseup', () => {
-        const selection = window.getSelection();
-        const highlighted = document.querySelector('[class*="highlight-"]:hover');
-        if (highlighted && highlighted.className.includes('highlight-')) {
-            showHighlightMenu(highlighted);
-        }
+    let hoverTimer;
+
+    document.addEventListener('mouseover', (e) => {
+        const highlightNode = findHighlightTarget(e.target);
+        if (!highlightNode) return;
+        clearTimeout(hoverTimer);
+        hoverTimer = setTimeout(() => {
+            showHighlightMenu(highlightNode);
+        }, 420);
     });
-    
+
+    document.addEventListener('mouseout', () => {
+        clearTimeout(hoverTimer);
+    });
+
     document.addEventListener('contextmenu', (e) => {
-        if (e.target.closest('[class*="highlight-"]')) {
+        const highlightNode = findHighlightTarget(e.target);
+        if (highlightNode) {
             e.preventDefault();
-            showHighlightMenu(e.target.closest('[class*="highlight-"]'));
+            showHighlightMenu(highlightNode, e.clientX, e.clientY);
         }
     });
     
     // Long press support for mobile
     let longPressTimer;
     document.addEventListener('touchstart', (e) => {
-        const highlighted = e.target.closest('[class*="highlight-"]');
-        if (highlighted && highlighted.className.includes('highlight-')) {
+        const highlighted = findHighlightTarget(e.target);
+        if (highlighted) {
             longPressTimer = setTimeout(() => {
-                showHighlightMenu(highlighted);
+                const touch = e.touches[0];
+                showHighlightMenu(highlighted, touch ? touch.clientX : null, touch ? touch.clientY : null);
             }, 500);
         }
+    });
+
+    document.addEventListener('touchmove', () => {
+        clearTimeout(longPressTimer);
     });
     
     document.addEventListener('touchend', () => {
@@ -1407,12 +1635,14 @@ function setupHighlightContextMenu() {
     });
 }
 
-function showHighlightMenu(element) {
+function showHighlightMenu(element, clientX = null, clientY = null) {
     currentHighlightElement = element;
     const menu = document.getElementById('highlightMenu');
     const rect = element.getBoundingClientRect();
-    menu.style.left = rect.left + 'px';
-    menu.style.top = (rect.bottom + 5) + 'px';
+    const menuX = clientX !== null ? clientX : rect.left;
+    const menuY = clientY !== null ? clientY : (rect.bottom + 5);
+    menu.style.left = Math.max(8, Math.min(menuX, window.innerWidth - 265)) + 'px';
+    menu.style.top = Math.max(8, Math.min(menuY + 5, window.innerHeight - 220)) + 'px';
     menu.classList.add('show');
 }
 
@@ -1429,15 +1659,17 @@ function changeHighlightColor(newColor) {
         classList.push(`highlight-${newColor}`);
         currentHighlightElement.className = classList.join(' ');
     }
+    currentHighlightElement.dataset.userHighlight = '1';
     localStorage.setItem('lastHighlightColor', newColor);
     document.getElementById('highlightMenu').classList.remove('show');
+    saveHighlightsToStorage();
 }
 
 function toggleHighlightStyle() {
     if (!currentHighlightElement) return;
     const oldClass = currentHighlightElement.className;
     const isUnderline = oldClass.includes('highlight-underline');
-    const colorMatch = oldClass.match(/(?:underline-)?(red|green|indigo)/);
+    const colorMatch = oldClass.match(/(?:underline-)?(red|green|indigo|yellow)/);
     const color = colorMatch ? colorMatch[1] : 'red';
     
     if (isUnderline) {
@@ -1447,7 +1679,9 @@ function toggleHighlightStyle() {
         // Switch to underline
         currentHighlightElement.className = `highlight-underline underline-${color}`;
     }
+    currentHighlightElement.dataset.userHighlight = '1';
     document.getElementById('highlightMenu').classList.remove('show');
+    saveHighlightsToStorage();
 }
 
 function deleteHighlight() {
@@ -1458,6 +1692,7 @@ function deleteHighlight() {
     }
     parent.removeChild(currentHighlightElement);
     document.getElementById('highlightMenu').classList.remove('show');
+    saveHighlightsToStorage();
 }
 
 /* ═══════════════════════════════════════════════════════════ */
@@ -1498,13 +1733,52 @@ function expandAllRecursive() {
     updateProgressBar();
 }
 
+// Restore font size on page load
+window.addEventListener('load', () => {
+    const savedFontSize = localStorage.getItem('fontSize');
+    if (savedFontSize) {
+        currentFontSize = parseInt(savedFontSize);
+        document.documentElement.style.setProperty('--font-size-base', currentFontSize + 'px');
+    }
+}, { once: true });
+
+document.addEventListener('keydown', (e) => {
+    const tag = document.activeElement.tagName;
+    if (tag === 'INPUT' || tag === 'SELECT' || tag === 'TEXTAREA') return;
+    
+    // Auto-highlight mode shortcuts
+    if (e.key === '1') { setHighlightMode('red'); e.preventDefault(); return; }
+    if (e.key === '2') { setHighlightMode('green'); e.preventDefault(); return; }
+    if (e.key === '3') { setHighlightMode('indigo'); e.preventDefault(); return; }
+    if (e.key === '4') { setHighlightMode('yellow'); e.preventDefault(); return; }
+    if (e.key === '0') { setHighlightMode('off'); e.preventDefault(); return; }
+    
+    // Existing shortcuts
+    if (e.key === 'f' || e.key === 'F') { document.getElementById('searchInput').focus(); e.preventDefault(); }
+    if (e.key === 't' || e.key === 'T') toggleTheme();
+    if (e.key === 'e' || e.key === 'E') toggleAllSets();
+    if (e.key === 'b' || e.key === 'B') toggleFloatingBar();
+    if (e.key === 'u' || e.key === 'U') toggleUnderlineMode();
+    if (e.key === 'Escape') closeDuaModal();
+});
+
+function searchHighlights() {
+    const term = document.getElementById('searchInput').value.trim().toLowerCase();
+    const all = document.querySelectorAll('.markdown-body p, .markdown-body td, .markdown-body li');
+    all.forEach(el => {
+        if(!term) { el.innerHTML = el.innerHTML.replace(/<mark class="highlight">(.*?)<\/mark>/g, '$1'); return; }
+        const regex = new RegExp(`(?![^<]+>)(${term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
+        el.innerHTML = el.innerHTML.replace(/<mark class="highlight">(.*?)<\/mark>/g, '$1').replace(regex, `<mark class="highlight">$1</mark>`);
+    });
+}
+
 // Initial configuration
 document.getElementById('searchInput').addEventListener('input', searchHighlights);
 marked.setOptions({ gfm: true, breaks: true });
 
 // Load saved settings
 window.onload = () => {
-    localStorage.setItem('sm-last-visited', 'geb331');
+    localStorage.setItem('sm-last-visited', 'geb343');
     const savedTheme = localStorage.getItem('sm-theme');
     if (savedTheme) {
         document.documentElement.setAttribute('data-theme', savedTheme);
@@ -1529,24 +1803,19 @@ window.onload = () => {
     renderSets();
     buildQuickNav();
     updateProgressBar();
-    
-    // Add bottom nav to page
-    const bottomNav = document.getElementById('quickNav');
-    if (bottomNav && !bottomNav.parentElement) {
-        document.body.appendChild(bottomNav);
-    }
+    setTimeout(() => showFloatbarTip(), 250);
 };
 </script>
-
-<!-- Bottom Navigation Bar (Fixed at bottom) -->
-<div class="quick-nav" id="quickNav" style="position: fixed; bottom: 0; left: 0; right: 0; z-index: 99;">
-    <div id="progressBanner" class="progress-banner" style="display: none;">
-        <div id="progressBannerFill" class="progress-banner-fill"></div>
-        <div id="progressBannerTitle" class="progress-banner-title"></div>
-    </div>
-</div>
-
-<script src="data/universal_controls.js"></script>
-
+    <script src="data/universal_controls.js"></script>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['\\(', '\\)']],
+                displayMath: [['\\[', '\\]']]
+            },
+            chtml: { matchFontHeight: false }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" defer></script>
 </body>
 </html>
