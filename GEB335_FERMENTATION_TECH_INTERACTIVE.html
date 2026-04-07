@@ -41,7 +41,7 @@
             font-family: var(--body-font);
             line-height: 1.6;
             color: var(--text-color);
-            padding: 1.5rem;
+            padding: 1.5rem 1.5rem 70px 1.5rem;
         }
         .container { max-width: 1300px; margin: 0 auto; transition: max-width 0.4s ease; }
         
@@ -215,12 +215,52 @@
             font-size: 1rem;
         }
 
+        /* Top Control Bar */
+        .top-controls {
+            display: flex; gap: 0.8rem; align-items: center; padding: 0.8rem 1rem;
+            background: var(--nav-pill-bg); border-bottom: 1px solid var(--border-color);
+            border-radius: 0; margin-bottom: 1.6rem; flex-wrap: wrap;
+        }
+
+        .top-controls button, .top-controls select {
+            background: var(--card-bg); border: 1px solid var(--border-color);
+            color: var(--text-color); padding: 0.5rem 0.8rem; border-radius: 8px;
+            cursor: pointer; font-size: 0.85rem; font-weight: 600; transition: all 0.2s;
+            font-family: inherit; display: flex; align-items: center; gap: 5px;
+        }
+
+        .top-controls button:hover, .top-controls select:hover {
+            background: var(--accent-color); color: white; border-color: var(--accent-color);
+        }
+
+        .top-controls .separator { width: 1px; height: 20px; background: var(--border-color); margin: 0 0.5rem; }
+
+        .highlight-btn { font-size: 1rem; padding: 0.5rem 0.7rem; }
+        .highlight-btn.red { background: rgba(239,68,68,0.2); color: #dc2626; border-color: #dc2626; }
+        .highlight-btn.red:hover { background: #dc2626; color: white; }
+        .highlight-btn.green { background: rgba(34,197,94,0.2); color: #16a34a; border-color: #16a34a; }
+        .highlight-btn.green:hover { background: #16a34a; color: white; }
+        .highlight-btn.indigo { background: rgba(99,102,241,0.2); color: #6366f1; border-color: #6366f1; }
+        .highlight-btn.indigo:hover { background: #6366f1; color: white; }
+
+        /* Highlight styles for selected text */
+        .highlight-red { background: rgba(239,68,68,0.3) !important; }
+        .highlight-green { background: rgba(34,197,94,0.3) !important; }
+        .highlight-indigo { background: rgba(99,102,241,0.3) !important; }
+
+        .highlight-underline.underline-red { text-decoration: underline wavy #dc2626; background: none !important; }
+        .highlight-underline.underline-green { text-decoration: underline wavy #16a34a; background: none !important; }
+        .highlight-underline.underline-indigo { text-decoration: underline wavy #6366f1; background: none !important; }
+
+        .underline-mode-active { background: var(--accent-color) !important; color: white !important; }
+
         .quick-nav {
-            display: flex; overflow-x: auto; flex-wrap: nowrap; gap: 0.8rem; margin-bottom: 2rem;
-            background: var(--card-bg); padding: 1.2rem; border-radius: 50px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1); -webkit-overflow-scrolling: touch;
-            scrollbar-width: none; -ms-overflow-style: none; position: sticky; top: 0.5rem; z-index: 100;
-            border: 1px solid var(--border-color);
+            display: flex; overflow-x: auto; flex-wrap: nowrap; gap: 0.6rem; 
+            background: var(--card-bg); padding: 0.6rem 1rem; border-radius: 0;
+            box-shadow: 0 -3px 12px rgba(0,0,0,0.1); -webkit-overflow-scrolling: touch;
+            scrollbar-width: none; -ms-overflow-style: none; 
+            position: fixed; bottom: 0; left: 0; right: 0; z-index: 99;
+            border-top: 1px solid var(--border-color); margin-bottom: 0;
         }
         .quick-nav::-webkit-scrollbar { display: none; }
         .nav-pill {
@@ -623,8 +663,21 @@
         </div>
     </div>
 
+    <!-- Top Control Bar -->
+    <div class="top-controls" id="topControls">
+        <span style="font-weight: 600; color: var(--accent-color); font-size: 0.85rem;">Highlight:</span>
+        <button class="highlight-btn red" onclick="highlightSelected('red')" title="Highlight in Red (Press 1)">🔴</button>
+        <button class="highlight-btn green" onclick="highlightSelected('green')" title="Highlight in Green (Press 2)">🟢</button>
+        <button class="highlight-btn indigo" onclick="highlightSelected('indigo')" title="Highlight in Indigo (Press 3)">🔵</button>
+        <button id="underlineModeBtn" onclick="toggleUnderlineMode()" title="Switch to Underline Mode">📋 Highlight</button>
+        <div class="separator"></div>
+        <span style="font-weight: 600; color: var(--accent-color); font-size: 0.85rem;">Text:</span>
+        <button onclick="changeFont(-1)" title="Decrease Font Size">A−</button>
+        <button onclick="changeFont(1)" title="Increase Font Size">A+</button>
+    </div>
+
     <div class="search-bar"><input type="text" id="searchInput" placeholder="🔎 Search anything (ethanol, yeast, bioreactor, fermentation...)" autocomplete="off"></div>
-    <div class="quick-nav" id="quickNav">
+    <div class="quick-nav" id="quickNav" style="position: fixed; bottom: 0; left: 0; right: 0; z-index: 99;">
         <div id="progressBanner" class="progress-banner">
             <div id="progressBannerFill" class="progress-banner-fill"></div>
             <div id="progressBannerTitle" class="progress-banner-title"></div>
@@ -984,12 +1037,120 @@ function buildQuickNav() {
     });
 }
 
+/* ═══════════════════════════════════════════════════════════ */
+/* TEXT HIGHLIGHTING & UNDERLINING FUNCTIONALITY */
+/* ═══════════════════════════════════════════════════════════ */
+
+let highlightMode = 'background'; // 'background' or 'underline'
+let currentHighlightColor = null; // 'red', 'green', 'indigo'
+
+function toggleUnderlineMode() {
+    highlightMode = highlightMode === 'background' ? 'underline' : 'background';
+    localStorage.setItem('highlightMode', highlightMode);
+    const btn = document.getElementById('underlineModeBtn');
+    if (highlightMode === 'underline') {
+        btn.textContent = '📏 Underline';
+        btn.classList.add('underline-mode-active');
+    } else {
+        btn.textContent = '📋 Highlight';
+        btn.classList.remove('underline-mode-active');
+    }
+}
+
+function highlightSelected(color) {
+    const selection = window.getSelection();
+    if (!selection.toString().length) {
+        alert('Please select text first to highlight');
+        return;
+    }
+    
+    currentHighlightColor = color;
+    const range = selection.getRangeAt(0);
+    const span = document.createElement('span');
+    
+    if (highlightMode === 'background') {
+        span.className = 'highlight-' + color;
+    } else {
+        span.className = 'highlight-underline underline-' + color;
+    }
+    
+    // Remove previous highlight class on overlapping selections
+    removeHighlightsInRange(range);
+    
+    span.appendChild(range.extractContents());
+    range.insertNode(span);
+    selection.removeAllRanges();
+    
+    localStorage.setItem('lastHighlightColor', color);
+}
+
+function removeHighlightsInRange(range) {
+    const container = range.commonAncestorContainer;
+    if (container.nodeType === Node.TEXT_NODE) return;
+    
+    const highlightedElements = container.querySelectorAll('[class*="highlight"]');
+    highlightedElements.forEach(el => {
+        if (isNodeInRange(el, range)) {
+            // Unwrap the element
+            while (el.firstChild) {
+                el.parentNode.insertBefore(el.firstChild, el);
+            }
+            el.parentNode.removeChild(el);
+        }
+    });
+}
+
+function isNodeInRange(node, range) {
+    try {
+        return range.containsNode(node, true);
+    } catch (e) {
+        return range.getBoundingClientRect().intersects(node.getBoundingClientRect());
+    }
+}
+
+function clearAllHighlights() {
+    const highlighted = document.querySelectorAll('[class*="highlight-"]');
+    highlighted.forEach(el => {
+        const parent = el.parentNode;
+        while (el.firstChild) {
+            parent.insertBefore(el.firstChild, el);
+        }
+        parent.removeChild(el);
+    });
+}
+
+// Load highlight settings on page load
+window.addEventListener('load', () => {
+    const savedMode = localStorage.getItem('highlightMode');
+    const savedColor = localStorage.getItem('lastHighlightColor');
+    if (savedMode === 'underline') {
+        toggleUnderlineMode();
+    }
+}, { once: true });
+
+// Restore font size on page load
+window.addEventListener('load', () => {
+    const savedFontSize = localStorage.getItem('fontSize');
+    if (savedFontSize) {
+        currentFontSize = parseInt(savedFontSize);
+        document.documentElement.style.setProperty('--font-size-base', currentFontSize + 'px');
+    }
+}, { once: true });
+
 document.addEventListener('keydown', (e) => {
     const tag = document.activeElement.tagName;
     if (tag === 'INPUT' || tag === 'SELECT' || tag === 'TEXTAREA') return;
+    
+    // Highlight shortcuts (1=red, 2=green, 3=indigo)
+    if (e.key === '1') { highlightSelected('red'); e.preventDefault(); return; }
+    if (e.key === '2') { highlightSelected('green'); e.preventDefault(); return; }
+    if (e.key === '3') { highlightSelected('indigo'); e.preventDefault(); return; }
+    
+    // Existing shortcuts
     if (e.key === 'f' || e.key === 'F') { document.getElementById('searchInput').focus(); e.preventDefault(); }
     if (e.key === 't' || e.key === 'T') toggleTheme();
     if (e.key === 'e' || e.key === 'E') toggleAllSets();
+    if (e.key === 'u' || e.key === 'U') toggleUnderlineMode();
     if (e.key === 'Escape') closeDuaModal();
 });
 
