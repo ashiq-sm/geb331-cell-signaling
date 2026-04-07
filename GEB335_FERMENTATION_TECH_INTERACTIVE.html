@@ -225,6 +225,14 @@
             box-shadow: 0 4px 12px rgba(0,0,0,0.1);
             width: 100%;
             overflow-x: auto;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+        
+        .top-controls.visible {
+            opacity: 1;
+            visibility: visible;
         }
 
         .top-controls button, .top-controls select {
@@ -243,10 +251,19 @@
         .highlight-btn { font-size: 1rem; padding: 0.5rem 0.7rem; }
         .highlight-btn.red { background: rgba(239,68,68,0.2); color: #dc2626; border-color: #dc2626; }
         .highlight-btn.red:hover { background: #dc2626; color: white; }
+        .highlight-btn.red.active { background: #dc2626; color: white; }
         .highlight-btn.green { background: rgba(34,197,94,0.2); color: #16a34a; border-color: #16a34a; }
         .highlight-btn.green:hover { background: #16a34a; color: white; }
+        .highlight-btn.green.active { background: #16a34a; color: white; }
         .highlight-btn.indigo { background: rgba(99,102,241,0.2); color: #6366f1; border-color: #6366f1; }
         .highlight-btn.indigo:hover { background: #6366f1; color: white; }
+        .highlight-btn.indigo.active { background: #6366f1; color: white; }
+        .highlight-btn.off { background: rgba(100,100,100,0.2); color: #666; border-color: #666; }
+        .highlight-btn.off:hover { background: #666; color: white; }
+        .highlight-btn.off.active { background: #666; color: white; }
+        
+        .toggle-floatbar-btn { position: sticky; top: 0; z-index: 97; background: var(--card-bg); border: 2px solid var(--accent-color); padding: 0.6rem 1rem; border-radius: 8px; margin-bottom: 1rem; cursor: pointer; font-weight: 600; color: var(--accent-color); transition: all 0.3s; }
+        .toggle-floatbar-btn:hover { background: var(--accent-color); color: white; }
 
         /* Highlight styles for selected text */
         .highlight-red { background: rgba(239,68,68,0.3) !important; }
@@ -696,16 +713,21 @@
     <!-- Top Control Bar (Fixed) -->
     <div class="top-controls" id="topControls">
         <span style="font-weight: 600; color: var(--accent-color); font-size: 0.85rem;">Highlight:</span>
-        <button class="highlight-btn red" onclick="highlightSelected('red')" title="Highlight in Red (Press 1)">🔴</button>
-        <button class="highlight-btn green" onclick="highlightSelected('green')" title="Highlight in Green (Press 2)">🟢</button>
-        <button class="highlight-btn indigo" onclick="highlightSelected('indigo')" title="Highlight in Indigo (Press 3)">🔵</button>
-        <button id="underlineModeBtn" onclick="toggleUnderlineMode()" title="Switch to Underline Mode">📋 Highlight</button>
+        <button class="highlight-btn red" id="highlightRed" onclick="setHighlightMode('red')" title="Red Mode">🔴</button>
+        <button class="highlight-btn green" id="highlightGreen" onclick="setHighlightMode('green')" title="Green Mode">🟢</button>
+        <button class="highlight-btn indigo" id="highlightIndigo" onclick="setHighlightMode('indigo')" title="Indigo Mode">🔵</button>
+        <button class="highlight-btn off" id="highlightOff" onclick="setHighlightMode('off')" title="Highlighting Off">⊙ Off</button>
+        <button id="underlineModeBtn" onclick="toggleUnderlineMode()" title="Switch to Underline/Background Mode">📋 Style</button>
+        <button id="floatbarCloseBtn" onclick="toggleFloatingBar()" title="Close Floating Bar">✕ Close</button>
         <div class="separator"></div>
         <span style="font-weight: 600; color: var(--accent-color); font-size: 0.85rem;">Text:</span>
         <button onclick="changeFont(-1)" title="Decrease Font Size">A−</button>
         <button onclick="changeFont(1)" title="Increase Font Size">A+</button>
         <button class="expand-all-btn" onclick="expandAllRecursive()" title="Expand all sets and questions">📂 Expand All</button>
     </div>
+    
+    <!-- Toggle Floating Bar Button -->
+    <button class="toggle-floatbar-btn" id="toggleFloatbarBtn" onclick="toggleFloatingBar()" title="Toggle floating control bar">⚙️ Floating Control Bar Mode</button>
     
     <!-- Highlight Context Menu -->
     <div class="highlight-menu" id="highlightMenu">
@@ -718,7 +740,7 @@
         <button class="delete" onclick="deleteHighlight()">🗑️ Delete</button>
     </div>
 
-    <div class="search-bar"><input type="text" id="searchInput" placeholder="🔎 Search anything (ethanol, yeast, bioreactor, fermentation...)" autocomplete="off"></div>
+    <div class="search-bar" style="margin-top: 1rem;"><input type="text" id="searchInput" placeholder="🔎 Search anything (ethanol, yeast, bioreactor, fermentation...)" autocomplete="off"></div>
     <div class="quick-nav" id="quickNav" style="position: fixed; bottom: 0; left: 0; right: 0; z-index: 99;">
         <div id="progressBanner" class="progress-banner">
             <div id="progressBannerFill" class="progress-banner-fill"></div>
@@ -840,6 +862,14 @@ function updateBannerTitle(id) {
 }
 
 window.addEventListener('scroll', () => {
+    // Show/hide floating control bar on scroll
+    const controlBar = document.getElementById('topControls');
+    if (window.scrollY > 300 && isFloatingBarVisible) {
+        controlBar.classList.add('visible');
+    } else if (window.scrollY <= 300 && !isFloatingBarVisible) {
+        controlBar.classList.remove('visible');
+    }
+    
     if (!activeSetId) return;
     const banner = document.getElementById('progressBanner');
     const fill = document.getElementById('progressBannerFill');
@@ -1126,6 +1156,80 @@ function highlightSelected(color) {
     localStorage.setItem('lastHighlightColor', color);
 }
 
+// Set highlight mode and enable/disable highlighting
+let isHighlightingEnabled = true; // Track if highlighting is on or off
+
+function setHighlightMode(mode) {
+    if (mode === 'off') {
+        isHighlightingEnabled = false;
+        currentHighlightColor = null;
+    } else {
+        isHighlightingEnabled = true;
+        currentHighlightColor = mode;
+    }
+    localStorage.setItem('highlightMode', mode);
+    localStorage.setItem('lastHighlightColor', mode);
+    updateHighlightButtons();
+}
+
+function updateHighlightButtons() {
+    document.getElementById('highlightRed').classList.remove('active');
+    document.getElementById('highlightGreen').classList.remove('active');
+    document.getElementById('highlightIndigo').classList.remove('active');
+    document.getElementById('highlightOff').classList.remove('active');
+    
+    if (currentHighlightColor === 'red') {
+        document.getElementById('highlightRed').classList.add('active');
+    } else if (currentHighlightColor === 'green') {
+        document.getElementById('highlightGreen').classList.add('active');
+    } else if (currentHighlightColor === 'indigo') {
+        document.getElementById('highlightIndigo').classList.add('active');
+    } else {
+        document.getElementById('highlightOff').classList.add('active');
+    }
+}
+
+// Toggle floating control bar visibility
+let isFloatingBarVisible = localStorage.getItem('floatingBarVisible') !== 'false';
+
+function toggleFloatingBar() {
+    isFloatingBarVisible = !isFloatingBarVisible;
+    const controlBar = document.getElementById('topControls');
+    const toggleBtn = document.getElementById('toggleFloatbarBtn');
+    
+    if (isFloatingBarVisible) {
+        controlBar.classList.add('visible');
+        toggleBtn.textContent = '⚙️ Floating Control Bar Mode (ON)';
+    } else {
+        controlBar.classList.remove('visible');
+        toggleBtn.textContent = '⚙️ Floating Control Bar Mode (OFF)';
+    }
+    localStorage.setItem('floatingBarVisible', isFloatingBarVisible);
+}
+
+// Auto-highlight selected text when a color is active
+document.addEventListener('mouseup', () => {
+    if (!isHighlightingEnabled || !currentHighlightColor) return;
+    
+    const selection = window.getSelection();
+    if (selection.toString().length > 0) {
+        // Auto-highlight the selected text with the current color
+        const range = selection.getRangeAt(0);
+        const span = document.createElement('span');
+        
+        if (highlightMode === 'background') {
+            span.className = 'highlight-' + currentHighlightColor;
+        } else {
+            span.className = 'highlight-underline underline-' + currentHighlightColor;
+        }
+        
+        removeHighlightsInRange(range);
+        span.appendChild(range.extractContents());
+        range.insertNode(span);
+        selection.removeAllRanges();
+    }
+});
+
 function removeHighlightsInRange(range) {
     const container = range.commonAncestorContainer;
     if (container.nodeType === Node.TEXT_NODE) return;
@@ -1165,9 +1269,28 @@ function clearAllHighlights() {
 window.addEventListener('load', () => {
     const savedMode = localStorage.getItem('highlightMode');
     const savedColor = localStorage.getItem('lastHighlightColor');
+    
+    // Restore highlight mode
     if (savedMode === 'underline') {
         toggleUnderlineMode();
     }
+    
+    // Restore highlight color/off state
+    if (savedColor === 'red' || savedColor === 'green' || savedColor === 'indigo') {
+        setHighlightMode(savedColor);
+    } else {
+        setHighlightMode('off');
+    }
+    
+    // Restore floating bar state
+    isFloatingBarVisible = localStorage.getItem('floatingBarVisible') !== 'false';
+    if (!isFloatingBarVisible) {
+        document.getElementById('topControls').classList.remove('visible');
+        document.getElementById('toggleFloatbarBtn').textContent = '⚙️ Floating Control Bar Mode (OFF)';
+    } else {
+        document.getElementById('toggleFloatbarBtn').textContent = '⚙️ Floating Control Bar Mode (ON)';
+    }
+    
     setupHighlightContextMenu();
 }, { once: true });
 
