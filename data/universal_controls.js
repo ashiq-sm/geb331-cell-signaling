@@ -34,26 +34,6 @@
                 top.appendChild(yellowBtn);
             }
         }
-
-        var menu = document.getElementById('highlightMenu');
-        if (menu && !menu.querySelector('[data-highlight-color="yellow"]')) {
-            var yellowMenuBtn = document.createElement('button');
-            yellowMenuBtn.setAttribute('data-highlight-color', 'yellow');
-            yellowMenuBtn.textContent = '🟡';
-            yellowMenuBtn.title = 'Change Highlight to Yellow';
-            yellowMenuBtn.onclick = function () {
-                if (typeof window.changeHighlightColor === 'function') {
-                    window.changeHighlightColor('yellow');
-                }
-            };
-
-            var insertBeforeNode = menu.querySelector('.delete') || menu.firstChild;
-            if (insertBeforeNode) {
-                menu.insertBefore(yellowMenuBtn, insertBeforeNode);
-            } else {
-                menu.appendChild(yellowMenuBtn);
-            }
-        }
     }
 
     function patchHighlightStateUpdater() {
