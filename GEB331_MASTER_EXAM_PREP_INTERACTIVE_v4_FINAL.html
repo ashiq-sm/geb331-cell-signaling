@@ -1311,23 +1311,29 @@ function deleteHighlight() {
 /* ═══════════════════════════════════════════════════════════ */
 
 function expandAllRecursive() {
-    // Expand all set cards
+    // Expand all set cards - FORCE all to open
     document.querySelectorAll('.set-card').forEach(card => {
-        if (!card.classList.contains('open')) {
-            card.classList.add('open');
-            card.querySelector('.toggle-icon').innerHTML = '▼';
-        }
+        card.classList.add('open');
+        const toggleIcon = card.querySelector('.toggle-icon');
+        if (toggleIcon) toggleIcon.innerHTML = '▼';
     });
     
-    // Expand all question cards within sets
+    // Expand all question cards and their content - FORCE all to open
     document.querySelectorAll('.qs-card').forEach(card => {
+        card.classList.add('open');
         const content = card.querySelector('.qs-content');
-        if (content && !card.classList.contains('open')) {
-            card.classList.add('open');
+        if (content) {
             content.style.display = 'block';
-            const icon = card.querySelector('.qs-toggle-icon');
-            if (icon) icon.innerHTML = '▼';
+            content.style.maxHeight = 'none';
         }
+        const icon = card.querySelector('.qs-toggle-icon');
+        if (icon) icon.innerHTML = '▼';
+    });
+    
+    // Also ensure all answer content (.answer divs) is visible
+    document.querySelectorAll('.answer').forEach(answer => {
+        answer.style.display = 'block';
+        answer.style.visibility = 'visible';
     });
     
     // Update visited sets for progress tracking
