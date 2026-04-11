@@ -244,6 +244,45 @@
         .profile-fallback { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: none; align-items: center; justify-content: center; background: linear-gradient(135deg, #10b981, #065f46); color: white; font-size: 1.8rem; font-weight: 800; border-radius: 50%; letter-spacing: 2px; }
         .author-name { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.3rem; background: linear-gradient(to right, #fff, #10b981); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
         .author-title { font-size: 0.85rem; color: rgba(255,255,255,0.7); margin-bottom: 0; }
+
+        /* Donation Widget Styles */
+        .donation-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 2rem;
+            padding: 2rem;
+            margin-top: 3rem;
+            width: 100%;
+            max-width: 1200px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+        .donation-head { font-size: 1.5rem; font-weight: 800; color: var(--accent-color); margin-bottom: 0.5rem; }
+        .donation-sub { font-size: 0.95rem; opacity: 0.8; margin-bottom: 1.5rem; }
+        .donation-methods { display: flex; justify-content: center; gap: 10px; margin-bottom: 1.5rem; flex-wrap: wrap; }
+        .donate-method-btn {
+            background: var(--bg-color); border: 1px solid var(--border-color); color: var(--text-color);
+            padding: 8px 18px; border-radius: 50px; cursor: pointer; font-weight: 600; font-family: inherit;
+        }
+        .donate-method-btn.active { background: var(--accent-color); color: white; border-color: var(--accent-color); }
+        .amount-scroll {
+            display: flex; gap: 10px; overflow-x: auto; padding: 10px 5px; margin-bottom: 2rem;
+            scrollbar-width: thin; scrollbar-color: var(--accent-color) transparent;
+            -webkit-overflow-scrolling: touch;
+        }
+        .amount-scroll::-webkit-scrollbar { height: 6px; }
+        .amount-scroll::-webkit-scrollbar-thumb { background: var(--accent-color); border-radius: 10px; }
+        .amount-chip {
+            flex: 0 0 auto; background: var(--bg-color); border: 1px solid var(--border-color);
+            color: var(--text-color); padding: 8px 16px; border-radius: 50px; cursor: pointer;
+            font-weight: 600; font-family: inherit; transition: 0.2s;
+        }
+        .amount-chip.active { background: var(--accent-color); color: white; border-color: var(--accent-color); }
+        .donate-now-btn {
+            background: linear-gradient(135deg, #f59e0b, #f97316); color: white;
+            border: none; padding: 12px 30px; border-radius: 50px; font-weight: 800; cursor: pointer;
+            font-size: 1rem; box-shadow: 0 10px 20px rgba(245, 158, 11, 0.3); font-family: inherit;
+        }
     </style>
 </head>
 <body>
@@ -254,6 +293,10 @@
         </div>
         <h1 class="title">SM NextGen BioNotes</h1>
         <div class="subtitle">The Ultimate Interactive Academic Archive for GEB Students</div>
+        <div style="margin-top:1.2rem; position:relative; z-index:2; display:flex; gap:8px; justify-content:center; flex-wrap:wrap;">
+            <a href="https://scholar.google.com/scholar?q=aquaculture+fish+genetics+bioprocess+engineering" target="_blank" rel="noopener" style="background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.3);color:#fff;padding:8px 16px;border-radius:50px;text-decoration:none;font-weight:700;font-size:0.85rem;backdrop-filter:blur(5px);display:inline-flex;align-items:center;gap:6px;">🔬 Research with Resources</a>
+            <button type="button" style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.6);padding:8px 16px;border-radius:50px;font-weight:700;font-size:0.85rem;cursor:not-allowed;font-family:inherit;">📚 Study Materials <small style="font-size:0.7rem;">(Coming Soon)</small></button>
+        </div>
     </div>
 
     <!-- Year 3 Semester 2 -->
@@ -303,6 +346,13 @@
                 <div class="status-badge status-upcoming">⏳ Coming Soon</div>
             </div>
 
+            <a href="GEB341_AQUACULTURE_INTERACTIVE.html" class="course-card">
+                <div class="course-icon">🐟</div>
+                <div class="course-code">GEB 341</div>
+                <div class="course-name">Aquaculture & Fish Genetics</div>
+                <div class="status-badge status-active">▶ Access Notebook</div>
+            </a>
+
             <a href="GEB343_BIOPROCESS_INTERACTIVE_v1.html" class="course-card">
                 <div class="course-icon">⚙️</div>
                 <div class="course-code">GEB 343</div>
@@ -332,7 +382,33 @@
         </div>
     </div>
 
-    <div class="footer">
+    
+    <div class="donation-card" id="donationCard">
+            <div class="donation-head">💚 Support This Study Project</div>
+            <div class="donation-sub">Select payment method, drag the slider to choose amount, then tap the button to donate.</div>
+
+            <div class="donation-methods" id="donationMethods">
+                <button class="donate-method-btn active" type="button" data-method="bkash">bKash</button>
+                <button class="donate-method-btn" type="button" data-method="nagad">Nagad</button>
+                <button class="donate-method-btn" type="button" data-method="rocket">Rocket</button>
+            </div>
+
+            <div style="margin: 1.2rem 0 0.4rem; display:flex; align-items:center; gap:12px; flex-wrap:wrap;">
+                <span style="font-size:0.9rem; font-weight:700; color:var(--accent-color);">Amount:</span>
+                <span id="donationAmountDisplay" style="font-size:1.5rem; font-weight:800; color:var(--accent-color);">৳50</span>
+            </div>
+            <input type="range" id="donationSlider" min="0" max="32" value="1"
+                style="width:100%; accent-color:var(--accent-color,#10b981); cursor:pointer; margin-bottom:1rem; height:8px;">
+            <div style="display:flex; justify-content:space-between; font-size:0.72rem; opacity:0.65; margin-top:-0.6rem; margin-bottom:1rem;">
+                <span>৳30</span><span>৳530</span><span>৳1971</span><span>৳3558</span>
+            </div>
+
+            <div class="donation-cta-wrap">
+                <button class="donate-now-btn" id="donateNowBtn" type="button">Go to Donate ৳50 via bKash</button>
+            </div>
+        </div>
+
+        <div class="footer">
         <div class="author-card">
             <div class="footer-social-header">🤝 Follow & Connect</div>
             <div class="footer-links">
@@ -366,6 +442,7 @@
         }
 
         window.onload = () => {
+            if(typeof initDonationWidget === "function") initDonationWidget();
             const savedTheme = localStorage.getItem('sm-theme');
             if (savedTheme) {
                 document.documentElement.setAttribute('data-theme', savedTheme);
@@ -393,8 +470,85 @@
                     badge.textContent = '⏰ Last Visited';
                     card.appendChild(badge);
                 }
+            } else if (lastVisited === 'geb341') {
+                const card = document.querySelector('a[href="GEB341_AQUACULTURE_INTERACTIVE.html"]');
+                if (card) {
+                    card.classList.add('last-visited');
+                    const badge = document.createElement('div');
+                    badge.className = 'last-visited-badge';
+                    badge.textContent = '⏰ Last Visited';
+                    card.appendChild(badge);
+                }
+            } else if (lastVisited === 'geb343') {
+                const card = document.querySelector('a[href="GEB343_BIOPROCESS_INTERACTIVE_v1.html"]');
+                if (card) {
+                    card.classList.add('last-visited');
+                    const badge = document.createElement('div');
+                    badge.className = 'last-visited-badge';
+                    badge.textContent = '⏰ Last Visited';
+                    card.appendChild(badge);
+                }
             }
         }
     </script>
+
+    <script>
+let selectedDonationMethod = "bkash"; 
+let selectedDonationAmount = 50; 
+const DONATION_NUMBER = "01773971905";
+const DONATION_AMOUNTS = [30,50,80,130,350,530,850,1030,1111,1300,1905,1911,1926,1937,1947,1952,1954,1966,1969,1971,1975,1991,1996,2001,2008,2013,2019,2024,2035,2558,2885,2999,3558];
+
+function selectDonationMethod(method) {
+    selectedDonationMethod = method;
+    document.querySelectorAll('#donationMethods .donate-method-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.method === method);
+    });
+    updateDonateNowButtonText();
+}
+
+function selectDonationAmount(amount) {
+    selectedDonationAmount = Number(amount) || 50;
+    const disp = document.getElementById('donationAmountDisplay');
+    if (disp) disp.textContent = '৳' + selectedDonationAmount;
+    updateDonateNowButtonText();
+}
+
+function updateDonateNowButtonText() {
+    const btn = document.getElementById('donateNowBtn');
+    if (!btn) return;
+    const mt = { 'bkash': 'bKash', 'nagad': 'Nagad', 'rocket': 'Rocket' };
+    btn.textContent = `Go to Donate ৳${selectedDonationAmount} via ${mt[selectedDonationMethod] || selectedDonationMethod}`;
+}
+
+function getDonationUrl(m, a) {
+    const amt = encodeURIComponent(String(a));
+    const num = encodeURIComponent(DONATION_NUMBER);
+    if (m === 'bkash') return `bkash://send-money?number=${num}&amount=${amt}`;
+    if (m === 'nagad') return `nagad://send-money?number=${num}&amount=${amt}`;
+    return `rocket://send-money?number=${num}&amount=${amt}`;
+}
+
+function donateNow() {
+    const url = getDonationUrl(selectedDonationMethod, selectedDonationAmount);
+    const info = `${selectedDonationMethod.toUpperCase()} | ${DONATION_NUMBER} | ৳${selectedDonationAmount}`;
+    if (navigator.clipboard) navigator.clipboard.writeText(info).catch(() => {});
+    window.location.href = url;
+    setTimeout(() => { alert("Manual Transfer Info:\n" + info); }, 900);
+}
+
+function initDonationWidget() {
+    document.querySelectorAll('#donationMethods .donate-method-btn').forEach(btn => btn.addEventListener('click', () => selectDonationMethod(btn.dataset.method)));
+    const slider = document.getElementById('donationSlider');
+    if (slider) {
+        slider.addEventListener('input', () => {
+            const idx = parseInt(slider.value, 10);
+            selectDonationAmount(DONATION_AMOUNTS[idx] || 50);
+        });
+    }
+    const btn = document.getElementById('donateNowBtn');
+    if (btn) btn.addEventListener('click', donateNow);
+    updateDonateNowButtonText();
+}</script>
+
 </body>
 </html>

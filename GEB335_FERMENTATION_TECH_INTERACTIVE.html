@@ -12,6 +12,27 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Noto+Sans+Bengali:wght@400;700&family=Outfit:wght@400;700&family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        .header-dropdown-options {
+            display: none;
+            gap: 0.8rem;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-top: 0.5rem;
+            width: 100%;
+            background: rgba(0,0,0,0.03);
+            padding: 0.8rem;
+            border-radius: 12px;
+            border: 1px dashed var(--border-color);
+            animation: fadeInDown 0.3s ease;
+        }
+        .header-dropdown-options.show {
+            display: flex;
+        }
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
         :root {
             --bg-color: #f0f7f0;
             --text-color: #1a2e1a;
@@ -265,6 +286,18 @@
         
         .toggle-floatbar-btn { position: sticky; top: 0; z-index: 97; background: var(--card-bg); border: 2px solid var(--accent-color); padding: 0.6rem 1rem; border-radius: 8px; margin-bottom: 1rem; cursor: pointer; font-weight: 600; color: var(--accent-color); transition: all 0.3s; }
         .toggle-floatbar-btn:hover { background: var(--accent-color); color: white; }
+        .toggle-bookmark-panel-btn { position: fixed; top: 110px; right: 16px; z-index: 97; background: var(--card-bg); border: 2px solid var(--accent-color); padding: 0.6rem 0.9rem; border-radius: 8px; cursor: pointer; font-weight: 700; color: var(--accent-color); transition: all 0.3s; }
+        .toggle-bookmark-panel-btn:hover, .toggle-bookmark-panel-btn.active { background: var(--accent-color); color: #fff; }
+        .bookmark-panel { position: fixed; top: 156px; right: 16px; width: 320px; max-height: 62vh; overflow-y: auto; background: var(--card-bg); border: 1px solid var(--border-color); box-shadow: 0 8px 24px rgba(0,0,0,0.2); border-radius: 12px; z-index: 97; display: none; }
+        .bookmark-panel.open { display: block; }
+        .bookmark-header { position: sticky; top: 0; display: flex; justify-content: space-between; align-items: center; padding: 10px 12px; font-size: 0.9rem; font-weight: 700; border-bottom: 1px solid var(--border-color); background: var(--nav-pill-bg); }
+        .bookmark-clear-btn { background: transparent; border: 1px solid var(--border-color); border-radius: 6px; padding: 2px 8px; cursor: pointer; color: #dc2626; font-size: 0.82rem; }
+        .bookmark-list { padding: 10px; display: flex; flex-direction: column; gap: 8px; }
+        .bookmark-item { border: 1px solid var(--border-color); border-radius: 8px; padding: 8px; background: var(--bg-color); display: grid; gap: 6px; }
+        .bookmark-item-title { font-size: 0.82rem; font-weight: 700; }
+        .bookmark-item-meta { font-size: 0.74rem; opacity: 0.8; }
+        .bookmark-item button { justify-self: start; border: 1px solid var(--border-color); border-radius: 6px; background: var(--card-bg); color: var(--text-color); padding: 4px 8px; cursor: pointer; font-size: 0.75rem; }
+        .bookmark-empty { padding: 12px; font-size: 0.8rem; opacity: 0.7; }
 
         /* Highlight styles for selected text */
         .highlight-red { background: rgba(239,68,68,0.3) !important; }
@@ -369,10 +402,11 @@
         .footer {
             margin-top: 5rem;
             padding: 4rem 2rem;
-            background: var(--nav-pill-bg); /* Adaptive background */
+            background: var(--card-bg);
             border-top: 1px solid var(--border-color);
+            box-shadow: 0 -6px 18px rgba(0, 20, 0, 0.04);
             text-align: center;
-            color: var(--text-color); /* Adaptive text color */
+            color: var(--text-color);
         }
 
         .author-card {
@@ -632,6 +666,68 @@
         .copy-btn:hover { background: rgba(255,255,255,0.28); }
         .footer-social-header { font-size: 1rem; font-weight: 700; color: rgba(255,255,255,0.72); letter-spacing: 0.5px; margin-bottom: 1.4rem; }
         .footer-divider { width: 72px; height: 2px; margin: 2rem auto; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.22), transparent); border-radius: 2px; }
+
+        .donation-card {
+            margin: 2.5rem auto 0;
+            max-width: 760px;
+            background: linear-gradient(145deg, #052e24, #083f32);
+            border: 1px solid rgba(16, 185, 129, 0.25);
+            border-radius: 1.4rem;
+            padding: 1.2rem;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+            text-align: left;
+            color: #ecfdf5;
+        }
+        .donation-head { font-size: 1.08rem; font-weight: 800; color: #fde68a; }
+        .donation-sub { margin-top: 0.35rem; font-size: 0.88rem; opacity: 0.9; }
+        .donation-methods { margin-top: 0.9rem; display: flex; gap: 0.55rem; flex-wrap: wrap; }
+        .donate-method-btn {
+            border: 1px solid rgba(255, 255, 255, 0.24);
+            background: rgba(255, 255, 255, 0.08);
+            color: #fff;
+            padding: 0.45rem 0.8rem;
+            border-radius: 999px;
+            cursor: pointer;
+            font-size: 0.82rem;
+            font-weight: 700;
+        }
+        .donate-method-btn.active { background: #facc15; color: #1b4332; border-color: #facc15; }
+        .amount-scroll {
+            margin-top: 0.9rem;
+            display: flex;
+            gap: 0.55rem;
+            overflow-x: auto;
+            padding-bottom: 0.4rem;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+        }
+        .amount-chip {
+            scroll-snap-align: start;
+            min-width: 72px;
+            text-align: center;
+            border-radius: 999px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.06);
+            color: #fff;
+            padding: 0.45rem 0.65rem;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 0.85rem;
+        }
+        .amount-chip.active { background: #34d399; color: #042f2e; border-color: #34d399; }
+        .donation-cta-wrap { margin-top: 0.95rem; display: flex; flex-wrap: wrap; gap: 0.6rem; align-items: center; justify-content: space-between; }
+        .donation-number { font-size: 0.85rem; opacity: 0.92; letter-spacing: 0.2px; }
+        .donate-now-btn {
+            border: none;
+            background: linear-gradient(135deg, #f59e0b, #f97316);
+            color: #fff;
+            padding: 0.6rem 1rem;
+            border-radius: 10px;
+            font-weight: 800;
+            cursor: pointer;
+            font-size: 0.9rem;
+            box-shadow: 0 8px 18px rgba(249, 115, 22, 0.35);
+        }
     </style>
     <!-- Include Marked.js for rendering beautiful Markdown to HTML -->
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
@@ -648,6 +744,11 @@
         <h1>📘 GEB 335 — Fermentation Technology <span>Bilingual Interactive Note</span></h1>
         <div class="controls">
             <button class="control-btn" onclick="window.location.href='/'" style="font-weight: bold;">🏠 Home Hub</button>
+            <select class="control-btn" style="background: #fff3cd !important; color: #856404 !important; font-weight: bold; border-color: #ffeeba;">
+                <option value="3/2" selected>🎓 Semester 3/2</option>
+                <option value="4/1">🎓 Semester 4/1 (Coming Soon)</option>
+                <option value="4/2">🎓 Semester 4/2 (Coming Soon)</option>
+            </select>
             <select class="control-btn live-btn" id="courseSelect" onchange="if(this.value !== '#') window.open(this.value, '_self')" style="background: #e4f0e4 !important; color: #1a4d1a !important;">
                 <option value="GEB331_MASTER_EXAM_PREP_INTERACTIVE_v4_FINAL.html">📘 GEB 331: Cell Signaling</option>
                 <option value="#" selected>🔬 GEB 335: Fermentation Tech (Current)</option>
@@ -657,8 +758,9 @@
                 <option value="#">🐟 Aqua & Fish Pathology (Coming Soon)</option>
                 <option value="#">⚡ Bioenergetics (Coming Soon)</option>
             </select>
-            <button class="control-btn live-btn" onclick="window.open('https://sm-nextgen-bionotes.vercel.app', '_blank')">🌐 View Live</button>
-            <button class="control-btn" onclick="toggleTheme()">🌓 Theme</button>
+            <button class="control-btn" id="toggleMoreHeaderControls" onclick="document.getElementById('moreHeaderControls').classList.toggle('show'); this.classList.toggle('active')" style="background: var(--accent-color); color: white; border-color: var(--accent-color);">⚙️ Options</button>
+            <div id="moreHeaderControls" class="header-dropdown-options">
+                <button class="control-btn" onclick="toggleTheme()">🌓 Theme</button>
             <button class="control-btn" onclick="changeFont(-1)">A-</button>
             <button class="control-btn" onclick="changeFont(1)">A+</button>
             <select class="control-btn" id="fontFamily" onchange="applyFontFamily()">
@@ -678,6 +780,7 @@
             </select>
             <button class="control-btn" id="toggleAllBtn" onclick="toggleAllSets()">📂 Expand All</button>
             <button class="control-btn live-btn" onclick="exportToPDF()">🖨️ Export PDF</button>
+            </div>
         </div>
         <div class="progress-wrap"><div class="progress-fill" id="progressFill"></div></div>
         <div class="progress-label" id="progressLabel">0 topics explored</div>
@@ -685,6 +788,10 @@
             <span><kbd>F</kbd> Search</span>
             <span><kbd>T</kbd> Theme</span>
             <span><kbd>E</kbd> Expand All</span>
+            <span><kbd>G</kbd> Control Bar</span>
+            <span><kbd>B</kbd> Bookmark</span>
+            <span><kbd>V/N</kbd> Prev/Next Mark</span>
+            <span><kbd>P</kbd> Bookmark Panel</span>
             <span><kbd>Esc</kbd> Close modal</span>
         </div>
     </div>
@@ -723,7 +830,7 @@
         <button class="highlight-btn indigo" id="highlightIndigo" onclick="setHighlightMode('indigo')" title="Indigo Mode">🔵</button>
         <button class="highlight-btn off" id="highlightOff" onclick="setHighlightMode('off')" title="Highlighting Off">⊙ Off</button>
         <button id="underlineModeBtn" onclick="toggleUnderlineMode()" title="Switch to Underline/Background Mode">📋 Style</button>
-        <button id="floatbarCloseBtn" onclick="toggleFloatingBar()" title="Close Floating Bar">✕ Close</button>
+        <button id="floatbarCloseBtn" onclick="toggleFloatingBar()" title="Close Floating Bar [G]">✕ Close</button>
         <div class="separator"></div>
         <span style="font-weight: 600; color: var(--accent-color); font-size: 0.85rem;">Text:</span>
         <button onclick="changeFont(-1)" title="Decrease Font Size">A−</button>
@@ -731,8 +838,14 @@
         <button class="expand-all-btn" onclick="expandAllRecursive()" title="Expand all sets and questions">📂 Expand All</button>
     </div>
     
-    <!-- Toggle Floating Bar Button -->
-    <button class="toggle-floatbar-btn" id="toggleFloatbarBtn" onclick="toggleFloatingBar()" title="Toggle floating control bar">⚙️ Floating Control Bar Mode</button>
+    <!-- Bookmark Panel -->
+    <aside class="bookmark-panel" id="bookmarkPanel" aria-label="Bookmark positions panel">
+        <div class="bookmark-header">
+            <span>📍 Bookmark Positions</span>
+            <button class="bookmark-clear-btn" onclick="eraseAllBookmarks()" title="Erase all bookmark positions">🗑️</button>
+        </div>
+        <div class="bookmark-list" id="bookmarkList"></div>
+    </aside>
     
     <!-- Highlight Context Menu -->
     <div class="highlight-menu" id="highlightMenu">
@@ -745,7 +858,21 @@
         <button class="delete" onclick="deleteHighlight()">🗑️ Delete</button>
     </div>
 
-    <div class="search-bar" style="margin-top: 1rem;"><input type="text" id="searchInput" placeholder="🔎 Search anything (ethanol, yeast, bioreactor, fermentation...)" autocomplete="off"></div>
+    <div class="inline-toggles-container" style="display: none;">
+        <button class="toggle-floatbar-btn" id="toggleFloatbarBtn" onclick="toggleFloatingBar()" title="Toggle floating control bar [G]">⚙️ Floating Control Bar Mode</button>
+        <button class="toggle-bookmark-panel-btn" id="toggleBookmarkPanelBtn" onclick="toggleBookmarkPanel()" title="Bookmark Panel [P]">🔖</button>
+    </div>
+    
+        <div class="search-bar" style="margin-top: 0; position: relative;">
+        <input type="text" id="searchInput" placeholder="🔎 Search anything..." autocomplete="off">
+        <div id="searchNav" style="display: none; position: absolute; right: 10px; top: 50%; transform: translateY(-50%); gap: 5px; background: var(--card-bg); padding: 2px 8px; border-radius: 8px; border: 1px solid var(--border-color); box-shadow: 0 2px 8px rgba(0,0,0,0.1); z-index: 10; align-items: center;">
+            <span id="searchCount" style="font-size: 0.75rem; font-weight: 700; color: var(--accent-color); margin-right: 5px;">0/0</span>
+            <button onclick="prevSearchMatch()" class="control-btn" style="padding: 2px 6px; font-size: 0.8rem;" title="Previous Match [↑]">↑</button>
+            <button onclick="nextSearchMatch()" class="control-btn" style="padding: 2px 6px; font-size: 0.8rem;" title="Next Match [↓]">↓</button>
+        </div>
+    </div>
+    </div>
+
     <div class="quick-nav" id="quickNav" style="position: fixed; bottom: 0; left: 0; right: 0; z-index: 99;">
         <div id="progressBanner" class="progress-banner">
             <div id="progressBannerFill" class="progress-banner-fill"></div>
@@ -777,6 +904,30 @@
             <div class="author-name">SM Ashikur Rahman</div>
             <div class="author-title">Developed with 💚 for GEB 335 | Fermentation Technology</div>
         </div>
+
+        <div class="donation-card" id="donationCard">
+            <div class="donation-head">💚 Support This Study Project</div>
+            <div class="donation-sub">Select method, drag the slider to choose amount, then tap the button to donate.</div>
+            <div class="donation-methods" id="donationMethods">
+                <button class="donate-method-btn active" type="button" data-method="bkash">bKash</button>
+                <button class="donate-method-btn" type="button" data-method="nagad">Nagad</button>
+                <button class="donate-method-btn" type="button" data-method="rocket">Rocket</button>
+            </div>
+            
+            <div style="margin: 1.2rem 0 0.4rem; display:flex; align-items:center; gap:12px; flex-wrap:wrap;">
+                <span style="font-size:0.9rem; font-weight:700; color:var(--accent-color);">Amount:</span>
+                <span id="donationAmountDisplay" style="font-size:1.5rem; font-weight:800; color:var(--accent-color);">৳50</span>
+            </div>
+            <input type="range" id="donationSlider" min="0" max="32" value="1"
+                style="width:100%; accent-color:var(--accent-color,#10b981); cursor:pointer; margin-bottom:1rem; height:8px;">
+            <div style="display:flex; justify-content:space-between; font-size:0.72rem; opacity:0.65; margin-top:-0.6rem; margin-bottom:1rem;">
+                <span>৳30</span><span>৳530</span><span>৳1971</span><span>৳3558</span>
+            </div>
+            <div class="donation-cta-wrap">
+                
+                <button class="donate-now-btn" id="donateNowBtn" type="button">Go to Donate (bKash)</button>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -789,6 +940,8 @@ const setsData = geb335_sets;
 
 const PROGRESS_KEY = 'sm-progress-geb335';
 let visitedSets = new Set(JSON.parse(localStorage.getItem(PROGRESS_KEY) || '[]'));
+const BOOKMARK_STORE_KEY = 'sm-bookmarks-geb335-v1';
+let bookmarkPositions = JSON.parse(localStorage.getItem(BOOKMARK_STORE_KEY) || '[]');
 
 function updateProgressBar() {
     const total = setsData.length;
@@ -867,13 +1020,7 @@ function updateBannerTitle(id) {
 }
 
 window.addEventListener('scroll', () => {
-    // Show/hide floating control bar on scroll
-    const controlBar = document.getElementById('topControls');
-    if (window.scrollY > 300 && isFloatingBarVisible) {
-        controlBar.classList.add('visible');
-    } else if (window.scrollY <= 300 && !isFloatingBarVisible) {
-        controlBar.classList.remove('visible');
-    }
+    // Show/hide floating control bar on scroll logic moved to universal_controls.js
     
     if (!activeSetId) return;
     const banner = document.getElementById('progressBanner');
@@ -1019,16 +1166,39 @@ function applyViewMode() {
     }
 }
 
-function normalizeMarkdownMath(markdownText) {
-    if (!markdownText) return markdownText;
-    let normalized = markdownText.replace(/\$\$([\s\S]*?)\$\$/g, (_, expression) => `\\[${expression.trim()}\\]`);
-    normalized = normalized.replace(/\$(?!\d)([^$\n]*?[A-Za-z\\][^$\n]*?)\$/g, (_, expression) => `\\(${expression.trim()}\\)`);
-    return normalized;
+
+
+
+
+\\]`;
+        }
+        return full;
+    });
 }
 
 function renderMarkdown(markdownText) {
-    return marked.parse(normalizeMarkdownMath(markdownText));
+    return marked.parse(promoteComplexInlineMath(normalizeMarkdownMath(markdownText)));
 }
+
+let selectedDonationMethod = 'bkash';
+let selectedDonationAmount = 100;
+const DONATION_NUMBER = '01773971905';
+const DONATION_AMOUNTS = [30,50,80,130,350,530,850,1030,1111,1300,1905,1911,1926,1937,1947,1952,1954,1966,1969,1971,1975,1991,1996,2001,2008,2013,2019,2024,2035,2558,2885,2999,3558];
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 function renderSets() {
     const container = document.getElementById('setsContainer');
@@ -1449,6 +1619,76 @@ function expandAllRecursive() {
     updateProgressBar();
 }
 
+function saveBookmarks() { localStorage.setItem(BOOKMARK_STORE_KEY, JSON.stringify(bookmarkPositions)); }
+function getBookmarkLabel() {
+    const cards = [...document.querySelectorAll('.set-card')];
+    const active = cards.find(card => {
+        const rect = card.getBoundingClientRect();
+        return rect.top <= 160 && rect.bottom > 160;
+    });
+    const title = active?.querySelector('.set-header-title')?.textContent?.trim();
+    return title || `Scroll Y: ${Math.round(window.scrollY)}px`;
+}
+function renderBookmarkPanel() {
+    const list = document.getElementById('bookmarkList');
+    if (!list) return;
+    list.innerHTML = '';
+    if (!bookmarkPositions.length) {
+        list.innerHTML = '<div class="bookmark-empty">No bookmark saved yet. Press <b>B</b> to save current page position.</div>';
+        return;
+    }
+    bookmarkPositions.forEach((bm, idx) => {
+        const item = document.createElement('div');
+        item.className = 'bookmark-item';
+        item.innerHTML = `<div class="bookmark-item-title">${idx + 1}. ${bm.label}</div><div class="bookmark-item-meta">Y: ${Math.round(bm.y)} • ${bm.time || ''}</div><button type="button">Go</button>`;
+        item.querySelector('button').addEventListener('click', () => goToBookmarkIndex(idx));
+        list.appendChild(item);
+    });
+}
+function addBookmarkPosition() {
+    const y = window.scrollY;
+    const duplicate = bookmarkPositions.some(bm => Math.abs(bm.y - y) < 24);
+    if (duplicate) { alert('A bookmark already exists very close to this position.'); return; }
+    bookmarkPositions.push({ y, label: getBookmarkLabel(), time: new Date().toLocaleTimeString() });
+    bookmarkPositions.sort((a, b) => a.y - b.y);
+    saveBookmarks();
+    renderBookmarkPanel();
+    alert('Bookmark saved for current page position.');
+}
+function goToBookmarkIndex(idx) { if (idx < 0 || idx >= bookmarkPositions.length) return; window.scrollTo({ top: bookmarkPositions[idx].y, behavior: 'smooth' }); }
+function goToPreviousBookmark() {
+    if (!bookmarkPositions.length) { alert('No bookmarks saved yet. Press B to add one.'); return; }
+    const y = window.scrollY;
+    let idx = -1;
+    for (let i = bookmarkPositions.length - 1; i >= 0; i--) { if (bookmarkPositions[i].y < y - 8) { idx = i; break; } }
+    if (idx === -1) idx = bookmarkPositions.length - 1;
+    goToBookmarkIndex(idx);
+}
+function goToNextBookmark() {
+    if (!bookmarkPositions.length) { alert('No bookmarks saved yet. Press B to add one.'); return; }
+    const y = window.scrollY;
+    let idx = bookmarkPositions.findIndex(bm => bm.y > y + 8);
+    if (idx === -1) idx = 0;
+    goToBookmarkIndex(idx);
+}
+function toggleBookmarkPanel(forceOpen) {
+    const panel = document.getElementById('bookmarkPanel');
+    const btn = document.getElementById('toggleBookmarkPanelBtn');
+    if (!panel || !btn) return;
+    const willOpen = typeof forceOpen === 'boolean' ? forceOpen : !panel.classList.contains('open');
+    panel.classList.toggle('open', willOpen);
+    btn.classList.toggle('active', willOpen);
+    if (willOpen) renderBookmarkPanel();
+}
+function eraseAllBookmarks() {
+    if (!bookmarkPositions.length) { alert('No bookmark positions to erase.'); return; }
+    if (!confirm('Erase all saved bookmark positions?')) return;
+    bookmarkPositions = [];
+    saveBookmarks();
+    renderBookmarkPanel();
+    alert('All bookmark positions erased.');
+}
+
 // Restore font size on page load
 window.addEventListener('load', () => {
     const savedFontSize = localStorage.getItem('fontSize');
@@ -1473,25 +1713,149 @@ document.addEventListener('keydown', (e) => {
     if (e.key === 'f' || e.key === 'F') { document.getElementById('searchInput').focus(); e.preventDefault(); }
     if (e.key === 't' || e.key === 'T') toggleTheme();
     if (e.key === 'e' || e.key === 'E') toggleAllSets();
+    if (e.key === 'g' || e.key === 'G') { toggleFloatingBar(); e.preventDefault(); return; }
+    if (e.key === 'b' || e.key === 'B') { addBookmarkPosition(); e.preventDefault(); return; }
+    if (e.key === 'v' || e.key === 'V') { goToPreviousBookmark(); e.preventDefault(); return; }
+    if (e.key === 'n' || e.key === 'N') { goToNextBookmark(); e.preventDefault(); return; }
+    if (e.key === 'p' || e.key === 'P') { toggleBookmarkPanel(); e.preventDefault(); return; }
     if (e.key === 'u' || e.key === 'U') toggleUnderlineMode();
     if (e.key === 'Escape') closeDuaModal();
 });
 
-function searchHighlights() {
-    const term = document.getElementById('searchInput').value.trim().toLowerCase();
-    const all = document.querySelectorAll('.markdown-body p, .markdown-body td, .markdown-body li');
-    all.forEach(el => {
-        if(!term) { el.innerHTML = el.innerHTML.replace(/<mark class="highlight">(.*?)<\/mark>/g, '$1'); return; }
-        const regex = new RegExp(`(?![^<]+>)(${term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
-        el.innerHTML = el.innerHTML.replace(/<mark class="highlight">(.*?)<\/mark>/g, '$1').replace(regex, `<mark class="highlight">$1</mark>`);
-    });
-}
+
+let searchMatches = [];
+let currentSearchMatchIndex = -1;
+
+
+
+
+
+
+
+
+
+
+
+
 
 // Initial configuration
 document.getElementById('searchInput').addEventListener('input', searchHighlights);
 marked.setOptions({ gfm: true, breaks: true });
 
 // Load saved settings
+
+function selectDonationMethod(method) {
+    selectedDonationMethod = method;
+    document.querySelectorAll('#donationMethods .donate-method-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.method === method);
+    });
+    updateDonateNowButtonText();
+}
+
+function selectDonationAmount(amount) {
+    selectedDonationAmount = Number(amount) || 50;
+    const disp = document.getElementById('donationAmountDisplay');
+    if (disp) disp.textContent = '৳' + selectedDonationAmount;
+    updateDonateNowButtonText();
+}
+
+function updateDonateNowButtonText() {
+    const btn = document.getElementById('donateNowBtn');
+    if (!btn) return;
+    const methodNames = { 'bkash': 'bKash', 'nagad': 'Nagad', 'rocket': 'Rocket' };
+    btn.textContent = `Go to Donate ৳${selectedDonationAmount} via ${methodNames[selectedDonationMethod] || selectedDonationMethod}`;
+}
+
+function getDonationUrl(method, amount) {
+    const amt = encodeURIComponent(String(amount));
+    const num = encodeURIComponent(DONATION_NUMBER);
+    if (method === 'bkash') return `bkash://send-money?number=${num}&amount=${amt}`;
+    if (method === 'nagad') return `nagad://send-money?number=${num}&amount=${amt}`;
+    return `rocket://send-money?number=${num}&amount=${amt}`;
+}
+
+function donateNow() {
+    const url = getDonationUrl(selectedDonationMethod, selectedDonationAmount);
+    const info = `${selectedDonationMethod.toUpperCase()} | ${DONATION_NUMBER} | ৳${selectedDonationAmount}`;
+    if (navigator.clipboard) navigator.clipboard.writeText(info).catch(() => {});
+    window.location.href = url;
+    setTimeout(() => { alert(`If app redirect did not open, use this info:\n${info}`); }, 900);
+}
+
+function initDonationWidget() {
+    const methods = document.querySelectorAll('#donationMethods .donate-method-btn');
+    methods.forEach(btn => { btn.addEventListener('click', () => selectDonationMethod(btn.dataset.method)); });
+    const slider = document.getElementById('donationSlider');
+    if (slider) {
+        slider.addEventListener('input', () => {
+            const idx = parseInt(slider.value, 10);
+            selectDonationAmount(DONATION_AMOUNTS[idx] || 50);
+        });
+    }
+    const btn = document.getElementById('donateNowBtn');
+    if (btn) btn.addEventListener('click', donateNow);
+    updateDonateNowButtonText();
+}
+
+let searchMatches = [];
+let currentSearchMatchIndex = -1;
+
+function performSearch() {
+    const term = document.getElementById('searchInput').value.trim().toLowerCase();
+    const sets = document.querySelectorAll('.set-card');
+    const nav = document.getElementById('searchNav');
+    searchMatches = []; currentSearchMatchIndex = -1;
+    if (!term) {
+        sets.forEach(s => { s.style.display = 'block'; s.querySelectorAll('.qs-card').forEach(q => q.style.display = 'block'); });
+        if (nav) nav.style.display = 'none'; return;
+    }
+    sets.forEach(s => {
+        let has = s.querySelector('.set-header').textContent.toLowerCase().includes(term);
+        s.querySelectorAll('.qs-card').forEach(q => {
+            if (q.textContent.toLowerCase().includes(term)) { q.style.display = 'block'; q.classList.add('open'); has = true; searchMatches.push(q); }
+            else { q.style.display = 'none'; q.classList.remove('open'); }
+        });
+        s.style.display = has ? 'block' : 'none';
+        if(has) { s.classList.add('open'); const i = s.querySelector('.toggle-icon'); if(i) i.innerHTML = '▼'; }
+    });
+    if (searchMatches.length) {
+        if(nav) nav.style.display = 'flex'; currentSearchMatchIndex = 0;
+        updateSearchNav(); scrollToSearchMatch(0);
+    } else if(nav) nav.style.display = 'none';
+}
+
+function updateSearchNav() {
+    const c = document.getElementById('searchCount');
+    if (c) c.textContent = `${currentSearchMatchIndex + 1}/${searchMatches.length}`;
+}
+
+function scrollToSearchMatch(i) {
+    if (i<0 || i>=searchMatches.length) return;
+    const t = searchMatches[i]; t.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    t.style.transition = 'box-shadow 0.3s'; t.style.boxShadow = '0 0 20px var(--accent-color)';
+    setTimeout(() => { t.style.boxShadow = ''; }, 1000);
+}
+
+function nextSearchMatch() { if(!searchMatches.length) return; currentSearchMatchIndex = (currentSearchMatchIndex+1)%searchMatches.length; updateSearchNav(); scrollToSearchMatch(currentSearchMatchIndex); }
+function prevSearchMatch() { if(!searchMatches.length) return; currentSearchMatchIndex = (currentSearchMatchIndex-1+searchMatches.length)%searchMatches.length; updateSearchNav(); scrollToSearchMatch(currentSearchMatchIndex); }
+function searchHighlights() { performSearch(); }
+
+function normalizeMarkdownMath(m) {
+    if (!m) return m;
+    let n = m.replace(/\$\$([\s\S]*?)\$\$/g, (_, e) => `\\[${e.trim()}\\]`);
+    n = n.replace(/\$([^$]+?)\$/g, (_, e) => (e.includes('\n') || (/^\d/.test(e) && e.length < 2)) ? `$${e}$` : `\\(${e.trim()}\\)`);
+    return n;
+}
+
+function promoteComplexInlineMath(m) {
+    if (!m) return m;
+    return m.replace(/\\\(([^\n]+?)\\\)/g, (f, e) => {
+        const x = e.trim();
+        const c = /\\frac|\\sum|\\int|\\prod|\\lim|\\log|\\ln|\\sqrt|\\left|\\right|\^|_|=|\\cdot|\\times|\\Delta|\\mu|\\sigma|[*/]/;
+        return (x.length > 25 || c.test(x)) ? `\\[${x}\\]` : f;
+    });
+}
+
 window.onload = () => {
     localStorage.setItem('sm-last-visited', 'geb335');
     const savedTheme = localStorage.getItem('sm-theme');
@@ -1517,7 +1881,11 @@ window.onload = () => {
     }
     renderSets();
     buildQuickNav();
+    // Pre-warm addCopyButtons
+    requestAnimationFrame(addCopyButtons);
     updateProgressBar();
+    renderBookmarkPanel();
+    initDonationWidget();
 };
 </script>
     <script src="data/universal_controls.js"></script>

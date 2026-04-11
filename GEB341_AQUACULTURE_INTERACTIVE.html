@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <meta name="description" content="GEB 343 Bioprocess Engineering — Bilingual interactive study notebook by SM Ashikur Rahman. Smart Mix Bengali/English, search, PDF export.">
-    <meta property="og:title" content="GEB 343 · Bioprocess Engineering | SM NextGen BioNotes">
-    <meta property="og:description" content="Bilingual interactive exam prep for GEB 343 Bioprocess Engineering.">
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔬</text></svg>">
-    <title>GEB 343 · Bioprocess Study (Ben+Eng)</title>
+    <meta name="description" content="GEB 341 Aquaculture and Fish Genetics — Bilingual interactive study notebook by SM Ashikur Rahman. Smart Mix Bengali/English, search, PDF export.">
+    <meta property="og:title" content="GEB 341 · Aquaculture and Fish Genetics | SM NextGen BioNotes">
+    <meta property="og:description" content="Bilingual interactive exam prep for GEB 341 Aquaculture.">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐟</text></svg>">
+    <title>GEB 341 · Aquaculture Study (Ben+Eng)</title>
     <!-- Google Fonts for Eye-Saving Typography -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Noto+Sans+Bengali:wght@400;700&family=Outfit:wght@400;700&family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -923,7 +923,7 @@
     </div>
 
     <div class="header">
-        <h1>📘 GEB 343 — Bioprocess Engineering <span>Bilingual Interactive Note</span></h1>
+        <h1>📘 GEB 341 — Aquaculture & Fish Genetics <span>Bilingual Interactive Note</span></h1>
         <div class="controls">
             <button class="control-btn" onclick="window.location.href='/'" style="font-weight: bold;" title="Go to Home Hub">🏠 Home Hub</button>
             <select class="control-btn" style="background: #fff3cd !important; color: #856404 !important; font-weight: bold; border-color: #ffeeba;">
@@ -934,7 +934,7 @@
             <select class="control-btn live-btn" id="courseSelect" onchange="if(this.value !== '#') window.open(this.value, '_self')" style="background: #e4f0e4 !important; color: #1a4d1a !important;" title="Switch Course">
                 <option value="GEB331_MASTER_EXAM_PREP_INTERACTIVE_v4_FINAL.html">📘 GEB 331: Cell Signaling</option>
                 <option value="GEB335_FERMENTATION_TECH_INTERACTIVE.html">🧪 GEB 335: Fermentation Technology</option>
-                <option value="#" selected>⚙️ GEB 343: Bioprocess Engineering (Current)</option>
+                <option value="#" selected>⚙️ GEB 341: Aquaculture & Fish Genetics (Current)</option>
                 <option value="#">🧬 rDNA Technology (Coming Soon)</option>
                 <option value="#">🦠 Onco Virology (Coming Soon)</option>
                 <option value="#">🐟 Aqua & Fish Pathology (Coming Soon)</option>
@@ -1048,17 +1048,7 @@
         <button class="toggle-floatbar-btn" id="toggleFloatbarBtn" onclick="toggleFloatingBar()" title="Toggle floating control bar [G]">⚙️ Floating Control Bar Mode</button>
         <button class="toggle-bookmark-panel-btn" id="toggleBookmarkPanelBtn" onclick="toggleBookmarkPanel()" title="Bookmark Panel [P]">🔖</button>
     </div>
-    
-        <div class="search-bar" style="margin-top: 0; position: relative;">
-        <input type="text" id="searchInput" placeholder="🔎 Search anything..." autocomplete="off">
-        <div id="searchNav" style="display: none; position: absolute; right: 10px; top: 50%; transform: translateY(-50%); gap: 5px; background: var(--card-bg); padding: 2px 8px; border-radius: 8px; border: 1px solid var(--border-color); box-shadow: 0 2px 8px rgba(0,0,0,0.1); z-index: 10; align-items: center;">
-            <span id="searchCount" style="font-size: 0.75rem; font-weight: 700; color: var(--accent-color); margin-right: 5px;">0/0</span>
-            <button onclick="prevSearchMatch()" class="control-btn" style="padding: 2px 6px; font-size: 0.8rem;" title="Previous Match [↑]">↑</button>
-            <button onclick="nextSearchMatch()" class="control-btn" style="padding: 2px 6px; font-size: 0.8rem;" title="Next Match [↓]">↓</button>
-        </div>
-    </div>
-    </div>
-
+    <div class="search-bar" style="margin-top: 0;"><input type="text" id="searchInput" placeholder="🔎 Search anything (ethanol, yeast, bioreactor, fermentation...)" autocomplete="off"></div>
     <div class="quick-nav" id="quickNav" style="position: fixed; bottom: 0; left: 0; right: 0; z-index: 99;">
         <div id="progressBanner" class="progress-banner">
             <div id="progressBannerFill" class="progress-banner-fill"></div>
@@ -1088,7 +1078,7 @@
                 <div id="profileFallback" class="profile-fallback">SM</div>
             </div>
             <div class="author-name">SM Ashikur Rahman</div>
-            <div class="author-title">Developed with 💚 for GEB 343 | Bioprocess Engineering</div>
+            <div class="author-title">Developed with 💚 for GEB 341 | Aquaculture & Fish Genetics</div>
         </div>
 
         <div class="donation-card" id="donationCard">
@@ -1120,19 +1110,19 @@
 </div>
 
 <!-- Load external data -->
-<script src="data/geb343_data.js"></script>
+<script src="data/geb341_data.js"></script>
 <script>
 let currentFontSize = 16;
 let currentLang = 'bn';
 let allExpanded = false;
-const HIGHLIGHT_STORE_KEY = 'sm-geb343-highlights-v1';
-const HIGHLIGHT_VISIBILITY_KEY = 'sm-geb343-highlights-visible';
+const HIGHLIGHT_STORE_KEY = 'sm-geb341-highlights-v1';
+const HIGHLIGHT_VISIBILITY_KEY = 'sm-geb341-highlights-visible';
 let floatbarTipTimer = null;
-const setsData = geb343_sets;
+const setsData = geb341_sets;
 
-const PROGRESS_KEY = 'sm-progress-geb343';
+const PROGRESS_KEY = 'sm-progress-geb341';
 let visitedSets = new Set(JSON.parse(localStorage.getItem(PROGRESS_KEY) || '[]'));
-const BOOKMARK_STORE_KEY = 'sm-bookmarks-geb343-v1';
+const BOOKMARK_STORE_KEY = 'sm-bookmarks-geb341-v1';
 let bookmarkPositions = JSON.parse(localStorage.getItem(BOOKMARK_STORE_KEY) || '[]');
 
 function updateProgressBar() {
@@ -1369,11 +1359,20 @@ function applyViewMode() {
     }
 }
 
+function normalizeMarkdownMath(markdownText) {
+    if (!markdownText) return markdownText;
+    let normalized = markdownText.replace(/\$\$([\s\S]*?)\$\$/g, (_, expression) => `\\[${expression.trim()}\\]`);
+    normalized = normalized.replace(/\$(?!\d)([^$\n]*?[A-Za-z\\][^$\n]*?)\$/g, (_, expression) => `\\(${expression.trim()}\\)`);
+    return normalized;
+}
 
-
-
-
-\\]`;
+function promoteComplexInlineMath(markdownText) {
+    if (!markdownText) return markdownText;
+    return markdownText.replace(/\\\(([^\n]+?)\\\)/g, (full, expression) => {
+        const exp = expression.trim();
+        const complexPattern = /\\frac|\\sum|\\int|\\prod|\\lim|\\log|\\ln|\\sqrt|\\left|\\right|\^|_|=|\\cdot|\\times|\\Delta|\\mu|\\sigma/;
+        if (exp.length > 32 || complexPattern.test(exp)) {
+            return `\\[${exp}\\]`;
         }
         return full;
     });
@@ -1431,20 +1430,70 @@ let selectedDonationAmount = 100;
 const DONATION_NUMBER = '01773971905';
 const DONATION_AMOUNTS = [30,50,80,130,350,530,850,1030,1111,1300,1905,1911,1926,1937,1947,1952,1954,1966,1969,1971,1975,1991,1996,2001,2008,2013,2019,2024,2035,2558,2885,2999,3558];
 
+function selectDonationMethod(method) {
+    selectedDonationMethod = method;
+    document.querySelectorAll('#donationMethods .donate-method-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.method === method);
+    });
+    updateDonateNowButtonText();
+}
 
+function selectDonationAmount(amount) {
+    selectedDonationAmount = Number(amount) || 50;
+    const disp = document.getElementById('donationAmountDisplay');
+    if (disp) disp.textContent = '৳' + selectedDonationAmount;
+    updateDonateNowButtonText();
+}
 
+function updateDonateNowButtonText() {
+    const btn = document.getElementById('donateNowBtn');
+    if (!btn) return;
+    const mt = { 'bkash': 'bKash', 'nagad': 'Nagad', 'rocket': 'Rocket' };
+    btn.textContent = `Go to Donate ৳${selectedDonationAmount} via ${mt[selectedDonationMethod] || selectedDonationMethod}`;
+}
 
+function getDonationUrl(method, amount) {
+    const amt = encodeURIComponent(String(amount));
+    const num = encodeURIComponent(DONATION_NUMBER);
+    if (method === 'bkash') {
+        return `bkash://send-money?number=${num}&amount=${amt}`;
+    }
+    if (method === 'nagad') {
+        return `nagad://send-money?mobile=${num}&amount=${amt}`;
+    }
+    return `rocket://send-money?mobile=${num}&amount=${amt}`;
+}
 
+function donateNow() {
+    const url = getDonationUrl(selectedDonationMethod, selectedDonationAmount);
+    const fallbackInfo = `${selectedDonationMethod.toUpperCase()} | ${DONATION_NUMBER} | ৳${selectedDonationAmount}`;
 
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(fallbackInfo).catch(() => {});
+    }
 
+    window.location.href = url;
+    setTimeout(() => {
+        alert(`If app redirect did not open, use this info manually:\n${fallbackInfo}`);
+    }, 900);
+}
 
-
-
-
-
-
-
-
+function initDonationWidget() {
+    const methods = document.querySelectorAll('#donationMethods .donate-method-btn');
+    methods.forEach(btn => {
+        btn.addEventListener('click', () => selectDonationMethod(btn.dataset.method));
+    });
+    const slider = document.getElementById('donationSlider');
+    if (slider) {
+        slider.addEventListener('input', () => {
+            const idx = parseInt(slider.value, 10);
+            selectDonationAmount(DONATION_AMOUNTS[idx] || 50);
+        });
+    }
+    const donateBtn = document.getElementById('donateNowBtn');
+    if (donateBtn) donateBtn.addEventListener('click', donateNow);
+    updateDonateNowButtonText();
+}
 
 function enhanceResponsiveTables(scope = document) {
     scope.querySelectorAll('.markdown-body table').forEach((table) => {
@@ -2134,142 +2183,37 @@ document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') closeDuaModal();
 });
 
-
-let searchMatches = [];
-let currentSearchMatchIndex = -1;
-
-
-
-
-
-
-
-
-
-
-
-
+function searchHighlights() {
+    const term = document.getElementById('searchInput').value.trim().toLowerCase();
+    const cards = document.querySelectorAll('.qs-card');
+    
+    if (!term) {
+        cards.forEach(card => card.style.display = 'block');
+        return;
+    }
+    
+    cards.forEach(card => {
+        const text = card.textContent.toLowerCase();
+        if (text.includes(term)) {
+            card.style.display = 'block';
+            card.classList.add('open');
+            if (card.parentElement && card.parentElement.classList.contains('set-card')) {
+                card.parentElement.classList.add('open');
+            }
+        } else {
+            card.style.display = 'none';
+            card.classList.remove('open');
+        }
+    });
+}
 
 // Initial configuration
 document.getElementById('searchInput').addEventListener('input', searchHighlights);
 marked.setOptions({ gfm: true, breaks: true });
 
 // Load saved settings
-
-function selectDonationMethod(method) {
-    selectedDonationMethod = method;
-    document.querySelectorAll('#donationMethods .donate-method-btn').forEach(btn => {
-        btn.classList.toggle('active', btn.dataset.method === method);
-    });
-    updateDonateNowButtonText();
-}
-
-function selectDonationAmount(amount) {
-    selectedDonationAmount = Number(amount) || 50;
-    const disp = document.getElementById('donationAmountDisplay');
-    if (disp) disp.textContent = '৳' + selectedDonationAmount;
-    updateDonateNowButtonText();
-}
-
-function updateDonateNowButtonText() {
-    const btn = document.getElementById('donateNowBtn');
-    if (!btn) return;
-    const methodNames = { 'bkash': 'bKash', 'nagad': 'Nagad', 'rocket': 'Rocket' };
-    btn.textContent = `Go to Donate ৳${selectedDonationAmount} via ${methodNames[selectedDonationMethod] || selectedDonationMethod}`;
-}
-
-function getDonationUrl(method, amount) {
-    const amt = encodeURIComponent(String(amount));
-    const num = encodeURIComponent(DONATION_NUMBER);
-    if (method === 'bkash') return `bkash://send-money?number=${num}&amount=${amt}`;
-    if (method === 'nagad') return `nagad://send-money?number=${num}&amount=${amt}`;
-    return `rocket://send-money?number=${num}&amount=${amt}`;
-}
-
-function donateNow() {
-    const url = getDonationUrl(selectedDonationMethod, selectedDonationAmount);
-    const info = `${selectedDonationMethod.toUpperCase()} | ${DONATION_NUMBER} | ৳${selectedDonationAmount}`;
-    if (navigator.clipboard) navigator.clipboard.writeText(info).catch(() => {});
-    window.location.href = url;
-    setTimeout(() => { alert(`If app redirect did not open, use this info:\n${info}`); }, 900);
-}
-
-function initDonationWidget() {
-    const methods = document.querySelectorAll('#donationMethods .donate-method-btn');
-    methods.forEach(btn => { btn.addEventListener('click', () => selectDonationMethod(btn.dataset.method)); });
-    const slider = document.getElementById('donationSlider');
-    if (slider) {
-        slider.addEventListener('input', () => {
-            const idx = parseInt(slider.value, 10);
-            selectDonationAmount(DONATION_AMOUNTS[idx] || 50);
-        });
-    }
-    const btn = document.getElementById('donateNowBtn');
-    if (btn) btn.addEventListener('click', donateNow);
-    updateDonateNowButtonText();
-}
-
-let searchMatches = [];
-let currentSearchMatchIndex = -1;
-
-function performSearch() {
-    const term = document.getElementById('searchInput').value.trim().toLowerCase();
-    const sets = document.querySelectorAll('.set-card');
-    const nav = document.getElementById('searchNav');
-    searchMatches = []; currentSearchMatchIndex = -1;
-    if (!term) {
-        sets.forEach(s => { s.style.display = 'block'; s.querySelectorAll('.qs-card').forEach(q => q.style.display = 'block'); });
-        if (nav) nav.style.display = 'none'; return;
-    }
-    sets.forEach(s => {
-        let has = s.querySelector('.set-header').textContent.toLowerCase().includes(term);
-        s.querySelectorAll('.qs-card').forEach(q => {
-            if (q.textContent.toLowerCase().includes(term)) { q.style.display = 'block'; q.classList.add('open'); has = true; searchMatches.push(q); }
-            else { q.style.display = 'none'; q.classList.remove('open'); }
-        });
-        s.style.display = has ? 'block' : 'none';
-        if(has) { s.classList.add('open'); const i = s.querySelector('.toggle-icon'); if(i) i.innerHTML = '▼'; }
-    });
-    if (searchMatches.length) {
-        if(nav) nav.style.display = 'flex'; currentSearchMatchIndex = 0;
-        updateSearchNav(); scrollToSearchMatch(0);
-    } else if(nav) nav.style.display = 'none';
-}
-
-function updateSearchNav() {
-    const c = document.getElementById('searchCount');
-    if (c) c.textContent = `${currentSearchMatchIndex + 1}/${searchMatches.length}`;
-}
-
-function scrollToSearchMatch(i) {
-    if (i<0 || i>=searchMatches.length) return;
-    const t = searchMatches[i]; t.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    t.style.transition = 'box-shadow 0.3s'; t.style.boxShadow = '0 0 20px var(--accent-color)';
-    setTimeout(() => { t.style.boxShadow = ''; }, 1000);
-}
-
-function nextSearchMatch() { if(!searchMatches.length) return; currentSearchMatchIndex = (currentSearchMatchIndex+1)%searchMatches.length; updateSearchNav(); scrollToSearchMatch(currentSearchMatchIndex); }
-function prevSearchMatch() { if(!searchMatches.length) return; currentSearchMatchIndex = (currentSearchMatchIndex-1+searchMatches.length)%searchMatches.length; updateSearchNav(); scrollToSearchMatch(currentSearchMatchIndex); }
-function searchHighlights() { performSearch(); }
-
-function normalizeMarkdownMath(m) {
-    if (!m) return m;
-    let n = m.replace(/\$\$([\s\S]*?)\$\$/g, (_, e) => `\\[${e.trim()}\\]`);
-    n = n.replace(/\$([^$]+?)\$/g, (_, e) => (e.includes('\n') || (/^\d/.test(e) && e.length < 2)) ? `$${e}$` : `\\(${e.trim()}\\)`);
-    return n;
-}
-
-function promoteComplexInlineMath(m) {
-    if (!m) return m;
-    return m.replace(/\\\(([^\n]+?)\\\)/g, (f, e) => {
-        const x = e.trim();
-        const c = /\\frac|\\sum|\\int|\\prod|\\lim|\\log|\\ln|\\sqrt|\\left|\\right|\^|_|=|\\cdot|\\times|\\Delta|\\mu|\\sigma|[*/]/;
-        return (x.length > 25 || c.test(x)) ? `\\[${x}\\]` : f;
-    });
-}
-
 window.onload = () => {
-    localStorage.setItem('sm-last-visited', 'geb343');
+    localStorage.setItem('sm-last-visited', 'geb341');
     const savedTheme = localStorage.getItem('sm-theme');
     if (savedTheme) {
         document.documentElement.setAttribute('data-theme', savedTheme);
