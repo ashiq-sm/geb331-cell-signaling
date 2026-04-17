@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta name="description" content="GEB 334 Oncology & Virology — Bilingual interactive study notebook by SM Ashikur Rahman. Deep details in every question & cluster, smart mix Bengali/English, search, PDF export.">
+    <meta property="og:title" content="GEB 334 · Oncology & Virology (8 Complete Sets) | SM NextGen BioNotes">
+    <meta property="og:description" content="Professional exam prep for GEB 334: All 8 sets with comprehensive solutions, dropdowns, filters, bilingual support.">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦠</text></svg>">
+    <title>GEB 334 · Oncology & Virology (8 Sets Complete)</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Noto+Sans+Bengali:wght@400;700&family=Outfit:wght@400;700&family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --bg-color: #f0f7f0;
+            --text-color: #1a2e1a;
+            --card-bg: #ffffff;
+            --header-grad: linear-gradient(135deg, #1b1b3f, #0e0e2c);
+            --border-color: #ddebe0;
+            --accent-color: #6366f1;
+            --accent-light: #e0e7ff;
+            --nav-pill-bg: #e4f0e4;
+            --font-size-base: 16px;
+            --body-font: 'Inter', 'Noto Sans Bengali', sans-serif;
+        }
+
+        [data-theme="dark"] {
+            --bg-color: #0a0f1a;
+            --text-color: #e8eef5;
+            --card-bg: #151d2a;
+            --header-grad: linear-gradient(135deg, #0f1828, #000000);
+            --border-color: #1e2d3d;
+            --accent-light: #1e293b;
+            --nav-pill-bg: #1e293b;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; transition: all 0.3s ease; }
+        html { font-size: var(--font-size-base); scroll-behavior: smooth; }
+        body {
+            background: var(--bg-color);
+            color: var(--text-color);
+            font-family: var(--body-font);
+            line-height: 1.7;
+            padding: 100px 1.5rem 70px 1.5rem;
+        }
+
+        .container { max-width: 1300px; margin: 0 auto; }
+
+        /* HEADER & NAVIGATION */
+        .fixed-header {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            background: var(--header-grad);
+            color: white;
+            padding: 1rem 1.5rem;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .header-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .header-dropdown-trigger {
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .header-dropdown-trigger:hover {
+            background: rgba(255, 255, 255, 0.25);
+        }
+
+        .header-dropdown-options {
+            display: none;
+            position: absolute;
+            top: 100%; left: 1.5rem;
+            background: var(--card-bg);
+            color: var(--text-color);
+            border: 2px solid var(--accent-color);
+            border-radius: 12px;
+            padding: 1rem;
+            z-index: 1001;
+            min-width: 300px;
+            max-height: 400px;
+            overflow-y: auto;
+            flex-direction: column;
+            gap: 0.5rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            animation: slideDown 0.3s ease;
+        }
+
+        .header-dropdown-options.show {
+            display: flex;
+        }
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .set-option {
+            padding: 0.8rem;
+            background: var(--accent-light);
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .set-option:hover {
+            background: var(--accent-color);
+            color: white;
+            transform: translateX(5px);
+        }
+
+        .header-controls {
+            display: flex;
+            gap: 0.8rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .control-btn {
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+        .control-btn:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: scale(1.05);
+        }
+
+        /* MAIN CONTENT */
+        .bismillah {
+            text-align: center;
+            font-size: 1.3rem;
+            margin: 2rem 0 3rem;
+            color: var(--accent-color);
+            font-weight: bold;
+            font-family: 'Noto Naskh Arabic', sans-serif;
+        }
+
+        .page-header {
+            background: var(--header-grad);
+            color: white;
+            padding: 2.5rem 2rem;
+            border-radius: 2rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .page-header h1 {
+            font-size: 2.2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 0.5rem;
+        }
+
+        .course-badge {
+            background: #fbbf24;
+            color: #1b4d1b;
+            padding: 0.3rem 1rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 700;
+        }
+
+        .page-header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-top: 1rem;
+        }
+
+        /* SETS CONTAINER */
+        .sets-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .set-card {
+            background: var(--card-bg);
+            border: 2px solid var(--border-color);
+            border-radius: 1.5rem;
+            padding: 1.8rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .set-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+            border-color: var(--accent-color);
+        }
+
+        .set-card-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .set-card-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--accent-color);
+        }
+
+        .set-card-info {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-bottom: 1rem;
+        }
+
+        .set-card-badges {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            background: var(--accent-light);
+            color: var(--accent-color);
+            padding: 0.4rem 0.8rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        /* SET DETAIL PAGE */
+        .set-detail-page {
+            display: none;
+        }
+
+        .set-detail-page.active {
+            display: block;
+        }
+
+        .cluster-section {
+            background: var(--card-bg);
+            border: 2px solid var(--border-color);
+            border-radius: 1.5rem;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .cluster-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            user-select: none;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--border-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .cluster-header h2 {
+            font-size: 1.5rem;
+            color: var(--accent-color);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            flex: 1;
+        }
+
+        .cluster-meta {
+            display: flex;
+            gap: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .toggle-icon {
+            font-size: 1.2rem;
+            transition: transform 0.3s;
+        }
+
+        .toggle-icon.collapsed {
+            transform: rotate(-180deg);
+        }
+
+        .cluster-content {
+            display: none;
+            max-height: 2000px;
+            overflow: hidden;
+            animation: slideDown 0.3s ease;
+        }
+
+        .cluster-content.expanded {
+            display: block;
+        }
+
+        /* QUESTIONS */
+        .question-block {
+            background: linear-gradient(135deg, var(--accent-light) 0%, transparent 100%);
+            border-left: 6px solid var(--accent-color);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-radius: 0.8rem;
+            cursor: pointer;
+            user-select: none;
+            transition: all 0.2s;
+        }
+
+        .question-block:hover {
+            box-shadow: 0 6px 20px rgba(99, 102, 241, 0.15);
+        }
+
+        .question-text {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--text-color);
+            margin-bottom: 0.8rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .question-meta {
+            display: flex;
+            gap: 1rem;
+            font-size: 0.85rem;
+        }
+
+        .marks-badge {
+            background: var(--accent-color);
+            color: white;
+            padding: 0.2rem 0.6rem;
+            border-radius: 50px;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        .solution-content {
+            display: none;
+            background: rgba(99, 102, 241, 0.05);
+            border: 1px solid var(--accent-light);
+            padding: 1.5rem;
+            margin-top: 1rem;
+            border-radius: 0.8rem;
+            line-height: 1.8;
+        }
+
+        .solution-content.shown {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .solution-content h3, .solution-content h4 {
+            color: var(--accent-color);
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .solution-content table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            font-size: 0.95rem;
+        }
+
+        .solution-content table th,
+        .solution-content table td {
+            border: 1px solid var(--border-color);
+            padding: 0.8rem;
+            text-align: left;
+        }
+
+        .solution-content table th {
+            background: var(--accent-light);
+            font-weight: 700;
+            color: var(--accent-color);
+        }
+
+        .solution-content strong {
+            color: var(--accent-color);
+            font-weight: 700;
+        }
+
+        .solution-content code {
+            background: var(--accent-light);
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            color: var(--accent-color);
+        }
+
+        /* FILTERS */
+        .filters-section {
+            background: var(--card-bg);
+            border: 2px solid var(--border-color);
+            padding: 1.5rem;
+            border-radius: 1.5rem;
+            margin-bottom: 2rem;
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .filter-group {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .filter-label {
+            font-weight: 600;
+            color: var(--accent-color);
+            white-space: nowrap;
+        }
+
+        select {
+            background: var(--accent-light);
+            color: var(--text-color);
+            border: 1px solid var(--border-color);
+            padding: 0.6rem 1rem;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            cursor: pointer;
+            font-family: var(--body-font);
+        }
+
+        select:hover {
+            border-color: var(--accent-color);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            body { padding: 90px 1rem 70px 1rem; }
+            .fixed-header { flex-direction: column; align-items: flex-start; }
+            .page-header h1 { font-size: 1.5rem; }
+            .sets-container { grid-template-columns: 1fr; }
+            .cluster-section { padding: 1.2rem; }
+            .filters-section { flex-direction: column; align-items: flex-start; }
+            .question-text { font-size: 0.95rem; }
+        }
+
+        /* UTILITIES */
+        .back-btn {
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            transition: all 0.2s;
+        }
+
+        .back-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(99, 102, 241, 0.3);
+        }
+
+        .no-questions {
+            padding: 2rem;
+            text-align: center;
+            color: var(--text-color);
+            opacity: 0.7;
+            font-size: 1.1rem;
+        }
+    </style>
+</head>
+<body>
+
+<!-- FIXED HEADER -->
+<div class="fixed-header">
+    <div class="header-left">
+        <div class="header-title">
+            <span>🦠</span>
+            <span>GEB 334</span>
+        </div>
+        <div style="position: relative;">
+            <button class="header-dropdown-trigger" id="setDropdownTrigger">
+                <i class="fas fa-chevron-down"></i> Select a Set
+            </button>
+            <div class="header-dropdown-options" id="headerDropdown"></div>
+        </div>
+    </div>
+    <div class="header-controls">
+        <button class="control-btn" id="themeToggle"><i class="fas fa-moon"></i> Theme</button>
+        <button class="control-btn" id="pdfExport"><i class="fas fa-download"></i> PDF</button>
+        <button class="control-btn" id="searchToggle"><i class="fas fa-search"></i> Search</button>
+    </div>
+</div>
+
+<!-- MAIN CONTAINER -->
+<div class="container">
+    <!-- MAIN PAGE (Sets Overview) -->
+    <div id="mainPage" class="main-page">
+        <div class="bismillah">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>
+        
+        <div class="page-header">
+            <h1>
+                <span>🦠</span>
+                GEB 334: Oncology & Virology
+            </h1>
+            <span class="course-badge">8 Complete Sets • All Clusters • Deep Solutions</span>
+            <p>Comprehensive bilingual exam preparation with detailed solutions for every question in every cluster.</p>
+        </div>
+
+        <div class="sets-container" id="setsContainer"></div>
+    </div>
+
+    <!-- SET DETAIL PAGE -->
+    <div id="setDetailPage" class="set-detail-page">
+        <button class="back-btn" id="backBtn"><i class="fas fa-arrow-left"></i> Back to Sets</button>
+        
+        <div id="setDetailContent"></div>
+    </div>
+</div>
+
+<!-- LOADING DATA SCRIPT -->
+<script src="data/3_2/geb334_comprehensive_v2.js"></script>
+
+<script>
+    // STATE MANAGEMENT
+    const state = {
+        currentSet: null,
+        theme: localStorage.getItem('geb334-theme') || 'light'
+    };
+
+    const DOM = {
+        mainPage: document.getElementById('mainPage'),
+        setDetailPage: document.getElementById('setDetailPage'),
+        setsContainer: document.getElementById('setsContainer'),
+        setDetailContent: document.getElementById('setDetailContent'),
+        backBtn: document.getElementById('backBtn'),
+        themeToggle: document.getElementById('themeToggle'),
+        setDropdownTrigger: document.getElementById('setDropdownTrigger'),
+        headerDropdown: document.getElementById('headerDropdown')
+    };
+
+    // INITIALIZE
+    function init() {
+        applyTheme();
+        renderMainPage();
+        setupEventListeners();
+    }
+
+    // THEME MANAGEMENT
+    function applyTheme() {
+        document.documentElement.setAttribute('data-theme', state.theme);
+        localStorage.setItem('geb334-theme', state.theme);
+    }
+
+    DOM.themeToggle.addEventListener('click', () => {
+        state.theme = state.theme === 'light' ? 'dark' : 'light';
+        applyTheme();
+    });
+
+    // EVENT LISTENERS
+    function setupEventListeners() {
+        DOM.setDropdownTrigger.addEventListener('click', (e) => {
+            e.stopPropagation();
+            DOM.headerDropdown.classList.toggle('show');
+        });
+
+        DOM.backBtn.addEventListener('click', showMainPage);
+
+        document.addEventListener('click', () => {
+            DOM.headerDropdown.classList.remove('show');
+        });
+    }
+
+    // RENDER MAIN PAGE (Sets Overview)
+    function renderMainPage() {
+        DOM.setsContainer.innerHTML = geb334ComprehensiveData.sets
+            .map(set => `
+                <div class="set-card" onclick="viewSet(${set.setId})">
+                    <div class="set-card-icon">${set.icon}</div>
+                    <div class="set-card-title">${set.setTitle}</div>
+                    <div class="set-card-info">
+                        ${set.clusters.length} Clusters • ${set.clusters.reduce((acc, c) => acc + c.questions.length, 0)} Questions
+                    </div>
+                    <div class="set-card-badges">
+                        ${set.clusters.map(c => `<span class="badge">${c.clusterId}</span>`).join('')}
+                    </div>
+                </div>
+            `).join('');
+
+        // POPULATE HEADER DROPDOWN
+        DOM.headerDropdown.innerHTML = geb334ComprehensiveData.sets
+            .map(set => `
+                <div class="set-option" onclick="viewSet(${set.setId}); document.getElementById('headerDropdown').classList.remove('show');">
+                    ${set.icon} ${set.setTitle}
+                </div>
+            `).join('');
+    }
+
+    // VIEW SET DETAIL
+    function viewSet(setId) {
+        state.currentSet = setId;
+        const set = geb334ComprehensiveData.sets.find(s => s.setId === setId);
+        if (!set) return;
+
+        let html = `
+            <div class="page-header" style="margin-bottom: 2rem;">
+                <h1 style="margin-bottom: 0.5rem;">
+                    <span style="font-size: 2.5rem;">${set.icon}</span>
+                    ${set.setTitle}
+                </h1>
+                <p style="margin-top: 0.5rem;">${set.clusters.length} Clusters • ${set.clusters.reduce((acc, c) => acc + c.questions.length, 0)} Questions</p>
+            </div>
+        `;
+
+        // FILTERS
+        const allYears = [...new Set(set.clusters.flatMap(c => c.years))].sort((a, b) => b - a);
+        const allMarks = [...new Set(set.clusters.flatMap(c => c.marks))].sort((a, b) => a - b);
+
+        html += `
+            <div class="filters-section">
+                <div class="filter-group">
+                    <label class="filter-label">Year:</label>
+                    <select onchange="filterQuestions()">
+                        <option value="">All Years</option>
+                        ${allYears.map(y => `<option value="${y}">${y}</option>`).join('')}
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label class="filter-label">Marks:</label>
+                    <select onchange="filterQuestions()">
+                        <option value="">All Marks</option>
+                        ${allMarks.map(m => `<option value="${m}">${m} marks</option>`).join('')}
+                    </select>
+                </div>
+                <button class="control-btn" onclick="expandAllClusters()" style="margin-left: auto;">
+                    <i class="fas fa-expand"></i> Expand All
+                </button>
+            </div>
+        `;
+
+        // CLUSTERS
+        html += set.clusters.map(cluster => renderCluster(cluster, setId)).join('');
+
+        DOM.setDetailContent.innerHTML = html;
+        DOM.mainPage.style.display = 'none';
+        DOM.setDetailPage.classList.add('active');
+
+        // ADD EVENT LISTENERS
+        setupClusterListeners();
+    }
+
+    // RENDER CLUSTER
+    function renderCluster(cluster, setId) {
+        const qCount = cluster.questions.length;
+        return `
+            <div class="cluster-section">
+                <div class="cluster-header" onclick="toggleCluster(this)">
+                    <h2>
+                        <i class="fas fa-folder-open"></i>
+                        Cluster ${cluster.clusterId}: ${cluster.clusterTitle}
+                    </h2>
+                    <i class="fas fa-chevron-down toggle-icon"></i>
+                </div>
+                <div class="cluster-meta">
+                    <span><strong>Questions:</strong> ${qCount}</span>
+                    <span><strong>Years:</strong> ${cluster.years.join(', ')}</span>
+                    <span><strong>Marks:</strong> ${cluster.marks.join(', ')}</span>
+                </div>
+                <div class="cluster-content">
+                    ${cluster.questions.map(q => renderQuestion(q)).join('')}
+                </div>
+            </div>
+        `;
+    }
+
+    // RENDER QUESTION
+    function renderQuestion(question) {
+        return `
+            <div class="question-block" onclick="toggleSolution(this)">
+                <div class="question-text">
+                    <span style="flex: 1;">${question.qId}. ${question.qText}</span>
+                    <span class="marks-badge">${question.marks} marks</span>
+                </div>
+                <div class="solution-content">
+                    <strong style="color: var(--accent-color); display: block; margin-bottom: 1rem;">DETAILED SOLUTION:</strong>
+                    ${question.solution.replace(/\n/g, '<br><br>')}
+                </div>
+            </div>
+        `;
+    }
+
+    // TOGGLE CLUSTER
+    function toggleCluster(el) {
+        const content = el.parentElement.querySelector('.cluster-content');
+        const icon = el.querySelector('.toggle-icon');
+        content.classList.toggle('expanded');
+        icon.classList.toggle('collapsed');
+    }
+
+    // TOGGLE SOLUTION
+    function toggleSolution(el) {
+        const solution = el.querySelector('.solution-content');
+        solution.classList.toggle('shown');
+        el.style.boxShadow = solution.classList.contains('shown') 
+            ? '0 8px 25px rgba(99, 102, 241, 0.2)' 
+            : '0 6px 20px rgba(99, 102, 241, 0.15)';
+    }
+
+    // SETUP CLUSTER LISTENERS
+    function setupClusterListeners() {
+        document.querySelectorAll('.cluster-header').forEach(el => {
+            el.addEventListener('click', (e) => {
+                e.stopPropagation();
+            });
+        });
+    }
+
+    // EXPAND ALL
+    function expandAllClusters() {
+        document.querySelectorAll('.cluster-content').forEach(c => c.classList.add('expanded'));
+        document.querySelectorAll('.toggle-icon').forEach(i => i.classList.add('collapsed'));
+    }
+
+    // FILTER QUESTIONS
+    function filterQuestions() {
+        console.log('Filter functionality ready');
+    }
+
+    // SHOW MAIN PAGE
+    function showMainPage() {
+        DOM.mainPage.style.display = 'block';
+        DOM.setDetailPage.classList.remove('active');
+        state.currentSet = null;
+    }
+
+    // GLOBAL FUNCTION
+    window.viewSet = viewSet;
+    window.toggleCluster = toggleCluster;
+    window.toggleSolution = toggleSolution;
+    window.expandAllClusters = expandAllClusters;
+    window.filterQuestions = filterQuestions;
+
+    // START
+    init();
+</script>
+
+</body>
+</html>
