@@ -122,19 +122,60 @@ class AdminPowers {
 
         supportBtn.onclick = () => this.showSupportModal();
 
+        // Global styles to reduce top-controls padding and add sliding animations
+        if (!document.getElementById('sm-global-fixes')) {
+            const style = document.createElement('style');
+            style.id = 'sm-global-fixes';
+            style.innerHTML = `
+                .top-controls {
+                    padding: 0.4rem 0.6rem !important;
+                }
+                .nav-pill {
+                    padding: 0.35rem 0.9rem !important;
+                    font-size: 0.85rem !important;
+                }
+                .hide-on-scroll-right {
+                    transform: translateX(150px) !important;
+                    opacity: 0 !important;
+                    pointer-events: none !important;
+                }
+                .hide-on-scroll-bottom {
+                    transform: translateY(150px) !important;
+                    opacity: 0 !important;
+                    pointer-events: none !important;
+                }
+                #main-menu-btn, .toggle-floatbar-btn, .toggle-bookmark-panel-btn, #support-project-btn {
+                    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease !important;
+                }
+            `;
+            document.head.appendChild(style);
+        }
+
         // Hide on scroll down, show on scroll up
         let lastScrollY = window.scrollY;
         window.addEventListener('scroll', () => {
-            if (window.scrollY > lastScrollY && window.scrollY > 100) {
-                // Scrolling down
-                supportBtn.style.transform = 'translateY(100px)';
-                supportBtn.style.opacity = '0';
+            const currentScrollY = window.scrollY;
+            
+            const rightEls = [
+                document.getElementById('main-menu-btn'),
+                document.querySelector('.toggle-floatbar-btn'),
+                document.querySelector('.toggle-bookmark-panel-btn')
+            ];
+            
+            const bottomEls = [
+                document.getElementById('support-project-btn')
+            ];
+            
+            if (currentScrollY > lastScrollY && currentScrollY > 100) {
+                // Scrolling down -> Hide
+                rightEls.forEach(el => el && el.classList.add('hide-on-scroll-right'));
+                bottomEls.forEach(el => el && el.classList.add('hide-on-scroll-bottom'));
             } else {
-                // Scrolling up
-                supportBtn.style.transform = 'translateY(0)';
-                supportBtn.style.opacity = '1';
+                // Scrolling up -> Show
+                rightEls.forEach(el => el && el.classList.remove('hide-on-scroll-right'));
+                bottomEls.forEach(el => el && el.classList.remove('hide-on-scroll-bottom'));
             }
-            lastScrollY = window.scrollY;
+            lastScrollY = currentScrollY;
         });
 
         document.body.appendChild(supportBtn);
