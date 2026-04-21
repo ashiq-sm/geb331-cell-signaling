@@ -38,6 +38,7 @@ class AdminPowers {
     }
 
     addOptionsMenu() {
+        if (document.getElementById('main-menu-btn')) return;
         // Create top-right menu button (always visible)
         const menuBtn = document.createElement('button');
         menuBtn.id = 'main-menu-btn';
@@ -84,6 +85,7 @@ class AdminPowers {
     }
 
     addSupportButton() {
+        if (document.getElementById('support-project-btn')) return;
         // Create support button for course pages
         const supportBtn = document.createElement('button');
         supportBtn.id = 'support-project-btn';
@@ -1978,16 +1980,17 @@ function copyNumber(btn) {
     });
 }
 
-// Initialize on page load
-document.addEventListener('DOMContentLoaded', () => {
-    new AdminPowers();
-});
-
-// Also initialize if script loaded after DOM is ready
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => {
+// Initialize once
+(function() {
+    function init() {
+        if (window.adminPowersInitialized) return;
+        window.adminPowersInitialized = true;
         new AdminPowers();
-    });
-} else {
-    new AdminPowers();
-}
+    }
+    
+    if (document.readyState === 'complete' || document.readyState === 'interactive') {
+        init();
+    } else {
+        document.addEventListener('DOMContentLoaded', init);
+    }
+})();
