@@ -122,6 +122,21 @@ class AdminPowers {
 
         supportBtn.onclick = () => this.showSupportModal();
 
+        // Hide on scroll down, show on scroll up
+        let lastScrollY = window.scrollY;
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > lastScrollY && window.scrollY > 100) {
+                // Scrolling down
+                supportBtn.style.transform = 'translateY(100px)';
+                supportBtn.style.opacity = '0';
+            } else {
+                // Scrolling up
+                supportBtn.style.transform = 'translateY(0)';
+                supportBtn.style.opacity = '1';
+            }
+            lastScrollY = window.scrollY;
+        });
+
         document.body.appendChild(supportBtn);
     }
 
@@ -184,7 +199,7 @@ class AdminPowers {
                             text-align: center;
                             background: white;
                         ">
-                        <button onclick="copyNumber()" style="
+                        <button onclick="copyNumber(this)" style="
                             padding: 12px 16px;
                             background: #10b981;
                             color: white;
@@ -1907,10 +1922,9 @@ class AdminPowers {
 }
 
 // Helper function for copying support number
-function copyNumber() {
+function copyNumber(btn) {
     const number = '01773971905';
     navigator.clipboard.writeText(number).then(() => {
-        const btn = event.target;
         const originalText = btn.textContent;
         btn.textContent = '✅ Copied!';
         btn.style.background = '#059669';
