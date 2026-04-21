@@ -8,7 +8,7 @@
     <meta property="og:description" content="Bilingual interactive study hub for GEB 331, GEB 335 & more.">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧬</text></svg>">
     <title>SM NextGen BioNotes</title>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&family=Noto+Naskh+Arabic:wght@400;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -68,10 +68,34 @@
         .title { font-size: 3.5rem; font-weight: 800; margin-bottom: 0.8rem; position: relative; z-index: 2; }
         .subtitle { font-size: 1.3rem; opacity: 0.8; font-weight: 400; position: relative; z-index: 2; }
 
+        .bismillah {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #fbbf24;
+            margin: 1.2rem 0 1rem;
+            position: relative;
+            z-index: 2;
+            letter-spacing: 1px;
+            font-family: 'Noto Naskh Arabic', 'Amiri', 'Traditional Arabic', 'Arial Unicode MS', sans-serif;
+            text-align: center;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
         .controls {
             position: absolute;
             top: 20px; right: 20px;
             z-index: 10;
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            flex-wrap: wrap;
+            justify-content: flex-end;
         }
         .theme-btn {
             background: rgba(255,255,255,0.2);
@@ -279,23 +303,63 @@
         }
         .amount-chip.active { background: var(--accent-color); color: white; border-color: var(--accent-color); }
         .donate-now-btn {
-            background: linear-gradient(135deg, #f59e0b, #f97316); color: white;
+            background: linear-gradient(135deg, #10b981, #059669); color: white;
             border: none; padding: 12px 30px; border-radius: 50px; font-weight: 800; cursor: pointer;
-            font-size: 1rem; box-shadow: 0 10px 20px rgba(245, 158, 11, 0.3); font-family: inherit;
+            font-size: 1rem; box-shadow: 0 10px 20px rgba(16, 185, 129, 0.3); font-family: inherit;
         }
+        .mission-box {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem auto;
+            max-width: 800px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .mission-box::before {
+            content: '"';
+            position: absolute;
+            top: 10px; left: 20px;
+            font-size: 5rem; color: rgba(255,255,255,0.1); font-family: serif;
+        }
+        .mission-text { font-size: 1.25rem; font-style: italic; margin-bottom: 1rem; font-weight: 600; }
+        .mission-goal { font-size: 0.9rem; opacity: 0.8; font-weight: 700; color: var(--accent-color); text-transform: uppercase; letter-spacing: 1px; }
+        [data-theme="light"] .mission-box { background: rgba(0,0,0,0.03); border-color: rgba(0,0,0,0.1); }
+        [data-theme="light"] .mission-box::before { color: rgba(0,0,0,0.05); }
     </style>
 </head>
 <body>
 
     <div class="hub-header">
+        <div class="bismillah" style="margin: -1rem 0 2rem 0;">بسم الله الرحمن الرحيم</div>
         <div class="controls">
-            <button class="theme-btn" onclick="toggleTheme()">🌓 Theme Mode</button>
+            <button class="theme-btn" onclick="toggleTheme()" title="Toggle Dark/Light Mode">🌓 Theme</button>
+            <button class="theme-btn" onclick="showAdminMenu()" title="Admin Menu" style="margin-left:10px; background: rgba(16,185,129,0.3); border-color: rgba(16,185,129,0.5);"><i class="fas fa-cog"></i> Admin</button>
+            <button class="theme-btn" onclick="showSupportModal()" style="margin-left:10px; background: rgba(255,215,0,0.3); border-color: rgba(255,215,0,0.5);" title="Support the Project"><i class="fas fa-heart"></i> Support</button>
+        </div>
+        <div style="position: relative; z-index: 2; margin-bottom: 1.2rem; display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; align-items: center;">
+            <select id="semesterSelect" onchange="filterBySemester(this.value)" style="background: rgba(255,255,255,0.15); color: white; border: 1px solid rgba(255,255,255,0.3); padding: 8px 14px; border-radius: 20px; font-weight: 600; cursor: pointer; font-family: inherit; backdrop-filter: blur(5px);">
+                <option value="">📅 All Semesters</option>
+                <option value="3_2">Year 3 - Semester 2</option>
+                <option value="3_1">Year 3 - Semester 1</option>
+                <option value="4_2">Year 4 - Semester 2</option>
+            </select>
         </div>
         <h1 class="title">SM NextGen BioNotes</h1>
         <div class="subtitle">The Ultimate Interactive Academic Archive for GEB Students</div>
         <div style="margin-top:1.2rem; position:relative; z-index:2; display:flex; gap:8px; justify-content:center; flex-wrap:wrap;">
-            <a href="https://scholar.google.com/scholar?q=aquaculture+fish+genetics+bioprocess+engineering" target="_blank" rel="noopener" style="background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.3);color:#fff;padding:8px 16px;border-radius:50px;text-decoration:none;font-weight:700;font-size:0.85rem;backdrop-filter:blur(5px);display:inline-flex;align-items:center;gap:6px;">🔬 Research with Resources</a>
-            <button type="button" style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.6);padding:8px 16px;border-radius:50px;font-weight:700;font-size:0.85rem;cursor:not-allowed;font-family:inherit;">📚 Study Materials <small style="font-size:0.7rem;">(Coming Soon)</small></button>
+            <a href="https://scholar.google.com/scholar?q=aquaculture+fish+genetics+bioprocess+engineering" target="_blank" rel="noopener" style="background:linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0.05)); border:1px solid rgba(255,255,255,0.3);color:#fff;padding:10px 20px;border-radius:50px;text-decoration:none;font-weight:700;font-size:0.85rem;backdrop-filter:blur(10px);display:inline-flex;align-items:center;gap:8px; transition: all 0.3s ease;">🔬 Research with Resources</a>
+            <button type="button" style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.6);padding:10px 20px;border-radius:50px;font-weight:700;font-size:0.85rem;cursor:not-allowed;font-family:inherit; transition: all 0.3s ease;">📚 Study Materials <small style="font-size:0.7rem;">(Soon)</small></button>
+        </div>
+    <div class="mission-box">
+        <div class="mission-text">
+            "Education is not the learning of facts, but the training of the mind to think."
+        </div>
+        <div class="mission-goal">
+            Mission: Empowering GEB students with structured, bilingual, and interactive academic intelligence.
         </div>
     </div>
 
@@ -318,26 +382,19 @@
                 <div class="status-badge status-active">▶ Access Notebook</div>
             </a>
 
-            <div class="course-card card-disabled">
+            <a href="GEB337_RDNA_TECH_INTERACTIVE.html" class="course-card">
                 <div class="course-icon">🧬</div>
-                <div class="course-code">GEB 333</div>
-                <div class="course-name">rDNA Technology</div>
-                <div class="status-badge status-upcoming">⏳ Coming Soon</div>
-            </div>
+                <div class="course-code">GEB 337</div>
+                <div class="course-name">Recombinant DNA Technology</div>
+                <div class="status-badge status-active">▶ Access Notebook</div>
+            </a>
 
-            <div class="course-card card-disabled">
+            <a href="GEB334_ONCOLOGY_VIROLOGY_INTERACTIVE.html" class="course-card">
                 <div class="course-icon">🦠</div>
                 <div class="course-code">GEB 334</div>
-                <div class="course-name">Onco Virology</div>
-                <div class="status-badge status-upcoming">⏳ Coming Soon</div>
-            </div>
-
-            <div class="course-card card-disabled">
-                <div class="course-icon">🐟</div>
-                <div class="course-code">GEB 335</div>
-                <div class="course-name">Aqua & Fish Pathology</div>
-                <div class="status-badge status-upcoming">⏳ Coming Soon</div>
-            </div>
+                <div class="course-name">Oncology and Virology</div>
+                <div class="status-badge status-active">▶ Access Notebook</div>
+            </a>
 
             <div class="course-card card-disabled">
                 <div class="course-icon">⚡</div>
@@ -404,6 +461,7 @@
             </div>
 
             <div class="donation-cta-wrap">
+                <a href="https://wa.me/+8801773971905" target="_blank" style="color: #34d399; text-decoration: none; font-size: 0.85rem; font-weight: 600; display: flex; align-items: center; gap: 5px;"><i class="fab fa-whatsapp"></i> Need Help? Inbox me</a>
                 <button class="donate-now-btn" id="donateNowBtn" type="button">Go to Donate ৳50 via bKash</button>
             </div>
         </div>
@@ -439,6 +497,21 @@
             const theme = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
             root.setAttribute('data-theme', theme);
             localStorage.setItem('sm-theme', theme);
+        }
+
+        function filterBySemester(semester) {
+            const sections = document.querySelectorAll('.semester-section');
+            sections.forEach(section => {
+                if (!semester) {
+                    section.style.display = 'block';
+                } else if (semester === '3_2') {
+                    section.style.display = section.querySelector('h2').textContent.includes('Year 3, Semester 2') ? 'block' : 'none';
+                } else if (semester === '3_1') {
+                    section.style.display = section.querySelector('h2').textContent.includes('Year 3, Semester 1') ? 'block' : 'none';
+                } else if (semester === '4_2') {
+                    section.style.display = section.querySelector('h2').textContent.includes('Year 4, Semester 2') ? 'block' : 'none';
+                }
+            });
         }
 
         window.onload = () => {
@@ -481,6 +554,15 @@
                 }
             } else if (lastVisited === 'geb343') {
                 const card = document.querySelector('a[href="GEB343_BIOPROCESS_INTERACTIVE_v1.html"]');
+                if (card) {
+                    card.classList.add('last-visited');
+                    const badge = document.createElement('div');
+                    badge.className = 'last-visited-badge';
+                    badge.textContent = '⏰ Last Visited';
+                    card.appendChild(badge);
+                }
+            } else if (lastVisited === 'geb337') {
+                const card = document.querySelector('a[href="GEB337_RDNA_TECH_INTERACTIVE.html"]');
                 if (card) {
                     card.classList.add('last-visited');
                     const badge = document.createElement('div');
@@ -565,61 +647,44 @@ function showDonateModal(name, num, amount) {
     if (!modal) {
         modal = document.createElement('div');
         modal.id = 'smDonateModal';
-        modal.style.cssText = [
-            'position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;',
-            'background:rgba(0,0,0,0.65);backdrop-filter:blur(4px);'
-        ].join('');
+        modal.style.cssText = 'position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.65);backdrop-filter:blur(4px);';
         modal.addEventListener('click', function(e){ if(e.target===modal) modal.style.display='none'; });
         document.body.appendChild(modal);
     }
-    modal.innerHTML = '';
-    const box = document.createElement('div');
-    box.style.cssText = [
-        'background:linear-gradient(145deg,#064e3b,#022c22);',
-        'border:1px solid rgba(16,185,129,0.35);border-radius:1.5rem;',
-        'padding:2rem;max-width:400px;width:90%;color:#fff;',
-        'font-family:inherit;text-align:center;position:relative;',
-        'box-shadow:0 20px 50px rgba(0,0,0,0.45);'
-    ].join('');
-    box.innerHTML = [
-        '<button onclick="document.getElementById(\'smDonateModal\').style.display=\'none\'" ',
-        'style="position:absolute;top:12px;right:16px;background:none;border:none;color:rgba(255,255,255,0.6);',
-        'font-size:1.4rem;cursor:pointer;line-height:1;">&times;</button>',
-        '<div style="font-size:2rem;margin-bottom:0.8rem">💚</div>',
-        '<h3 style="margin:0 0 0.4rem;font-size:1.3rem;color:#34d399">Send via ' + name + '</h3>',
-        '<p style="opacity:0.75;font-size:0.85rem;margin-bottom:1.4rem">',
-        'If the app did not open, send manually using the details below.</p>',
-        '<div style="background:rgba(255,255,255,0.08);border-radius:1rem;padding:1.1rem;margin-bottom:1.2rem;text-align:left;">',
-        '<div style="display:flex;justify-content:space-between;margin-bottom:0.5rem;">',
-        '<span style="opacity:0.65;font-size:0.85rem">Method</span>',
-        '<strong>' + name + '</strong></div>',
-        '<div style="display:flex;justify-content:space-between;margin-bottom:0.5rem;">',
-        '<span style="opacity:0.65;font-size:0.85rem">Number</span>',
-        '<strong style="letter-spacing:1px">' + num + '</strong></div>',
-        '<div style="display:flex;justify-content:space-between;">',
-        '<span style="opacity:0.65;font-size:0.85rem">Amount</span>',
-        '<strong style="font-size:1.3rem;color:#fbbf24">৳' + amount + '</strong></div>',
-        '</div>',
-        '<button id="smDonateModalCopy" ',
-        'style="width:100%;padding:0.75rem;border:none;border-radius:0.9rem;',
-        'background:linear-gradient(135deg,#10b981,#059669);color:#fff;',
-        'font-size:1rem;font-weight:800;cursor:pointer;font-family:inherit;',
-        'box-shadow:0 6px 16px rgba(16,185,129,0.35);">📋 Copy Payment Info</button>',
-        '<p style="margin-top:0.9rem;font-size:0.75rem;opacity:0.5;">Tap outside to close</p>'
-    ].join('');
-    box.querySelector('#smDonateModalCopy').addEventListener('click', function() {
-        const info = name + '\nNumber: ' + num + '\nAmount: \u09f3' + amount;
-        if (navigator.clipboard) {
-            navigator.clipboard.writeText(info).then(() => {
-                this.textContent = '\u2705 Copied!';
-                setTimeout(() => { this.textContent = '\ud83d\udccb Copy Payment Info'; }, 2000);
-            }).catch(() => { this.textContent = '\u26a0\ufe0f Use manual copy'; });
-        } else {
-            prompt('Copy this:', name + ' | ' + num + ' | \u09f3' + amount);
-        }
+    modal.innerHTML = `<div style="background:linear-gradient(145deg,#064e3b,#022c22);border:1px solid rgba(16,185,129,0.35);border-radius:1.5rem;padding:2rem;max-width:480px;width:90%;color:#fff;text-align:center;position:relative;box-shadow:0 20px 50px rgba(0,0,0,0.45);">
+        <button onclick="document.getElementById('smDonateModal').style.display='none'" style="position:absolute;top:12px;right:16px;background:none;border:none;color:rgba(255,255,255,0.6);font-size:1.4rem;cursor:pointer;">&times;</button>
+        <h3 style="color:#34d399;margin-top:0;">Send via ${name}</h3>
+        <div style="background:rgba(255,255,255,0.08);border-radius:1rem;padding:1.5rem;margin:1.5rem 0;text-align:left;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;padding-bottom:1rem;border-bottom:1px solid rgba(255,255,255,0.1);">
+                <div><span style="opacity:0.7;font-size:0.9rem;">Method</span><div style="font-weight:700;margin-top:0.3rem;">${name}</div></div>
+                <button onclick="copyToClipboard('${name}', this)" style="background:rgba(16,185,129,0.3);border:1px solid rgba(16,185,129,0.5);color:#34d399;padding:0.4rem 0.9rem;border-radius:0.6rem;cursor:pointer;font-size:0.8rem;font-weight:600;">Copy</button>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;padding-bottom:1rem;border-bottom:1px solid rgba(255,255,255,0.1);">
+                <div><span style="opacity:0.7;font-size:0.9rem;">Number</span><div style="font-weight:700;margin-top:0.3rem;font-family:monospace;">${num}</div></div>
+                <button onclick="copyToClipboard('${num}', this)" style="background:rgba(16,185,129,0.3);border:1px solid rgba(16,185,129,0.5);color:#34d399;padding:0.4rem 0.9rem;border-radius:0.6rem;cursor:pointer;font-size:0.8rem;font-weight:600;">Copy</button>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;">
+                <div><span style="opacity:0.7;font-size:0.9rem;">Amount</span><div style="font-weight:700;margin-top:0.3rem;color:#fbbf24;">৳${amount}</div></div>
+                <button onclick="copyToClipboard('৳${amount}', this)" style="background:rgba(16,185,129,0.3);border:1px solid rgba(16,185,129,0.5);color:#34d399;padding:0.4rem 0.9rem;border-radius:0.6rem;cursor:pointer;font-size:0.8rem;font-weight:600;">Copy</button>
+            </div>
+        </div>
+        <button id="smDonateModalCopy" style="width:100%;padding:0.75rem;border:none;border-radius:0.9rem;background:linear-gradient(135deg,#10b981,#059669);color:#fff;font-weight:800;cursor:pointer;">📋 Copy All Info</button>
+    </div>`;
+    modal.querySelector('#smDonateModalCopy').addEventListener('click', function() {
+        navigator.clipboard.writeText(name + '\nNumber: ' + num + '\nAmount: ৳' + amount).then(() => {
+            this.textContent = '✅ Copied!';
+            setTimeout(() => { this.textContent = '📋 Copy All Info'; }, 2000);
+        });
     });
-    modal.appendChild(box);
     modal.style.display = 'flex';
+}
+
+function copyToClipboard(text, btn) {
+    navigator.clipboard.writeText(text).then(() => {
+        const originalText = btn.textContent;
+        btn.textContent = '✅ Copied!';
+        setTimeout(() => { btn.textContent = originalText; }, 1500);
+    });
 }
 
 function initDonationWidget() {
@@ -634,7 +699,83 @@ function initDonationWidget() {
     const btn = document.getElementById('donateNowBtn');
     if (btn) btn.addEventListener('click', donateNow);
     updateDonateNowButtonText();
-}</script>
+}
+
+function showSupportModal() {
+    showDonateModal('bKash, Nagad & Rocket', DONATION_NUMBER, 100);
+}
+
+function showAdminMenu() {
+    let modal = document.getElementById('smAdminModal');
+    if (!modal) {
+        modal = document.createElement('div');
+        modal.id = 'smAdminModal';
+        modal.style.cssText = 'position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.65);backdrop-filter:blur(4px);';
+        modal.addEventListener('click', function(e){ if(e.target===modal) modal.style.display='none'; });
+        document.body.appendChild(modal);
+    }
+    modal.innerHTML = `<div style="background:linear-gradient(145deg,#064e3b,#022c22);border:1px solid rgba(16,185,129,0.35);border-radius:1.5rem;padding:2rem;max-width:480px;width:90%;color:#fff;text-align:center;position:relative;box-shadow:0 20px 50px rgba(0,0,0,0.45);">
+        <button onclick="document.getElementById('smAdminModal').style.display='none'" style="position:absolute;top:12px;right:16px;background:none;border:none;color:rgba(255,255,255,0.6);font-size:1.4rem;cursor:pointer;">&times;</button>
+        <h3 style="color:#34d399;margin-top:0;margin-bottom:1.5rem;">⚙️ Admin Mode Menu</h3>
+        <div style="display:flex;flex-direction:column;gap:10px;margin:1.5rem 0;">
+            <button onclick="enableAdminLiveEdit()" style="padding:1rem;background:rgba(16,185,129,0.3);border:1px solid rgba(16,185,129,0.5);color:#34d399;border-radius:0.6rem;cursor:pointer;font-weight:700;font-size:0.95rem;font-family:inherit;transition:all 0.3s;">
+                ✏️ Live Edit Sets & Headlines
+            </button>
+            <button onclick="enableAdminDeleteMode()" style="padding:1rem;background:rgba(255,100,100,0.2);border:1px solid rgba(255,100,100,0.5);color:#ff6464;border-radius:0.6rem;cursor:pointer;font-weight:700;font-size:0.95rem;font-family:inherit;transition:all 0.3s;">
+                🗑️ Delete Sets & Questions
+            </button>
+            <button onclick="showAddNewSetModal()" style="padding:1rem;background:rgba(100,200,255,0.2);border:1px solid rgba(100,200,255,0.5);color:#64c8ff;border-radius:0.6rem;cursor:pointer;font-weight:700;font-size:0.95rem;font-family:inherit;transition:all 0.3s;">
+                ➕ Add New Sets
+            </button>
+            <button onclick="editInlineQuestions()" style="padding:1rem;background:rgba(255,200,100,0.2);border:1px solid rgba(255,200,100,0.5);color:#ffc864;border-radius:0.6rem;cursor:pointer;font-weight:700;font-size:0.95rem;font-family:inherit;transition:all 0.3s;">
+                📝 Edit Questions Inline
+            </button>
+            <button onclick="editSolutionBlocks()" style="padding:1rem;background:rgba(150,100,255,0.2);border:1px solid rgba(150,100,255,0.5);color:#9664ff;border-radius:0.6rem;cursor:pointer;font-weight:700;font-size:0.95rem;font-family:inherit;transition:all 0.3s;">
+                🔍 Edit Solution Blocks
+            </button>
+        </div>
+        <div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,0.1);">
+            <div style="background:rgba(255,255,255,0.08);border-radius:0.8rem;padding:1rem;margin-bottom:1rem;">
+                <p style="opacity:0.8;font-size:0.9rem;margin-bottom:0.8rem;">💚 Support Contact:</p>
+                <div style="display:flex;align-items:center;gap:8px;justify-content:center;flex-wrap:wrap;">
+                    <span style="font-family:monospace;font-weight:700;color:#fbbf24;">01773971905</span>
+                    <button onclick="copyToClipboard('01773971905', this)" style="background:rgba(16,185,129,0.3);border:1px solid rgba(16,185,129,0.5);color:#34d399;padding:0.4rem 0.9rem;border-radius:0.6rem;cursor:pointer;font-size:0.8rem;font-weight:600;font-family:inherit;">Copy</button>
+                </div>
+                <p style="font-size:0.8rem;opacity:0.6;margin-top:0.8rem;">Bkash • Nagad • Rocket</p>
+            </div>
+        </div>
+    </div>`;
+    modal.style.display = 'flex';
+}
+
+function enableAdminLiveEdit() {
+    alert('✏️ ADMIN MODE ENABLED\n\nYou can now click on any set title or headline to edit it live. Changes are saved locally. Click "Save" to confirm.');
+    document.getElementById('smAdminModal').style.display='none';
+}
+
+function enableAdminDeleteMode() {
+    alert('🗑️ DELETE MODE ENABLED\n\nHover over sets and questions to reveal delete buttons. Click to remove items permanently.');
+    document.getElementById('smAdminModal').style.display='none';
+}
+
+function showAddNewSetModal() {
+    alert('➕ NEW SET CREATION\n\nFeature coming soon! You will be able to add new question sets directly from this interface.');
+    document.getElementById('smAdminModal').style.display='none';
+}
+
+function editInlineQuestions() {
+    alert('📝 INLINE QUESTION EDITING\n\nClick on any question to edit it live. Smart formatting and bilingual support enabled.');
+    document.getElementById('smAdminModal').style.display='none';
+}
+
+function editSolutionBlocks() {
+    alert('🔍 SOLUTION BLOCK EDITING\n\nClick on solution blocks to edit detailed answers, formatting, and references.');
+    document.getElementById('smAdminModal').style.display='none';
+}
+</script>
+
+    <!-- Admin Powers: Live Editing -->
+    <script src="admin-powers.js"></script>
 
 </body>
 </html>

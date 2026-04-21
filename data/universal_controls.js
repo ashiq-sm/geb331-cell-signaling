@@ -708,8 +708,8 @@
         if (typeof window.updateHighlightButtons === 'function') {
             window.updateHighlightButtons();
         }
-        // Inject header extra buttons
-        injectHeaderExtraButtons();
+        // Removed header extra buttons as per latest user request (homepage only)
+        // injectHeaderExtraButtons();
         // Inject support CTAs (and re-inject on DOM changes from renderSets)
         injectSupportCTAs();
         var setsContainer = document.getElementById('setsContainer');

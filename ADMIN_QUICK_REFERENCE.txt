@@ -1,0 +1,170 @@
+# 🛠️ ADMIN PANEL QUICK REFERENCE
+
+## Login
+- **URL**: `/admin.html`
+- **Password**: `bismilla@1`
+
+## Main Sections
+
+### 📊 Dashboard
+- Overview of all courses, sets, questions
+- Activity log
+- Last edit timestamp
+- Statistics
+
+### 🎓 Manage Courses
+- View all courses
+- Edit course details
+- Delete courses
+- See number of sets per course
+
+### 📂 Manage Sets
+1. Select course from dropdown
+2. View all sets
+3. Edit titles and content
+4. Delete sets
+
+### ❓ Manage Questions
+1. Select course
+2. Select set
+3. View all questions
+4. Edit individual questions
+5. Delete questions
+
+### ➕ Create New
+
+**New Course**
+- Code: GEB###
+- Name: Full name
+- Semester: Year/Semester
+- Icon: Emoji
+- Description: Brief text
+
+**New Set**
+- Course: Select course
+- Title: Set name
+- Content: Markdown formatted
+
+**New Question**
+- Course: Select course
+- Set: Select set
+- Title: Q format (Q1.2.1 - Title)
+- Answer: Full markdown content
+
+### ⚙️ Settings
+- Change password (placeholder)
+- Backup data
+- Restore from backup
+- Clear all data ⚠️
+
+## Markdown Formatting
+
+```markdown
+# Heading 1
+## Heading 2
+### Heading 3
+
+**Bold** | *Italic* | ***Both***
+
+- Bullet list
+  - Nested
+
+1. Numbered
+2. List
+
+| Col 1 | Col 2 |
+|-------|-------|
+| Data  | Data  |
+
+> Quote
+```
+
+## Actions
+
+| Action | Location |
+|--------|----------|
+| Edit question | Manage Questions → Edit |
+| Add question | + New Question → Create |
+| Delete question | Manage Questions → Delete |
+| Edit set | Manage Sets → Edit |
+| Add set | + New Set → Create |
+| Delete set | Manage Sets → Delete |
+| Edit course | Manage Courses → Edit |
+| Add course | + New Course → Create |
+| Delete course | Manage Courses → Delete |
+| Backup | Settings → Backup button |
+| Restore | Settings → Restore button |
+
+## Keyboard Shortcuts
+
+- **Ctrl+S** / **Cmd+S**: Save in modal (use Save button)
+- **Esc**: Close modal
+- **Tab**: Navigate fields
+
+## File Management
+
+**Backup File Format**:
+- Name: `bionotes-backup-YYYY-MM-DD.json`
+- Contains: All courses, sets, questions, logs
+- Size: ~50-100KB typically
+
+**Restore Steps**:
+1. Settings → Data Management
+2. Click "Restore from Backup"
+3. Select .json file
+4. Confirm
+
+## Important Notes
+
+- ✅ All edits saved to localStorage
+- ✅ Data persists across sessions
+- ✅ Activity logged automatically
+- ⚠️ Create regular backups
+- ⚠️ Password is default - CHANGE IT!
+- ⚠️ Deletions are permanent
+- ⚠️ Clear data requires double confirmation
+
+## Troubleshooting
+
+**Forgotten password**: Reset browser localStorage
+**Lost data**: Restore from backup file
+**Changes not showing**: Refresh page
+**Slow performance**: Try smaller datasets
+**Can't login**: Check console (F12)
+
+## Stats Tracked
+
+Dashboard shows:
+- Total active courses
+- Total sets across all courses
+- Total questions across all sets
+- Last modification timestamp
+- 50 most recent activities
+
+## Data Validation
+
+- Course code required
+- Course name required
+- Set title required
+- Question title required
+- Answer/content required
+- All fields prevent empty saves
+
+## Mobile Support
+
+✅ Fully responsive
+✅ Works on tablets
+✅ Touch-friendly UI
+✅ Full functionality on mobile
+✅ Optimized sidebar for mobile
+
+## Browser Requirements
+
+- Modern browser (Chrome, Firefox, Safari, Edge)
+- JavaScript enabled
+- localStorage enabled
+- ~50MB free storage
+
+---
+
+**Quick Start**: Login → Dashboard → Manage Questions → Edit/Add → Done!

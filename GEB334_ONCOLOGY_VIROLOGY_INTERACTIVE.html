@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <meta name="description" content="GEB 331 Cell Signaling — Bilingual interactive study notebook by SM Ashikur Rahman. Smart Mix Bengali/English, search, PDF export.">
-    <meta property="og:title" content="GEB 331 · Cell Signaling | SM NextGen BioNotes">
-    <meta property="og:description" content="Bilingual interactive exam prep for GEB 331 Cell Signaling.">
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📘</text></svg>">
-    <title>GEB 331 · Complete Cell Signaling Study (Ben+Eng)</title>
+    <meta name="description" content="GEB 334 Oncology and Virology — Bilingual interactive study notebook by SM Ashikur Rahman. Smart Mix Bengali/English, search, PDF export.">
+    <meta property="og:title" content="GEB 334 · Oncology and Virology | SM NextGen BioNotes">
+    <meta property="og:description" content="Bilingual interactive exam prep for GEB 334 Oncology and Virology.">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦠</text></svg>">
+    <title>GEB 334 · Oncology & Virology Study (Ben+Eng)</title>
     <!-- Google Fonts for Eye-Saving Typography -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Noto+Sans+Bengali:wght@400;700&family=Outfit:wght@400;700&family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -66,7 +66,7 @@
             padding: 100px 1.5rem 70px 1.5rem;
             scroll-behavior: smooth;
         }
-        .container { max-width: 1300px; margin: 0 auto; transition: max-width 0.4s ease; padding-bottom: 0; }
+        .container { max-width: 1300px; margin: 0 auto; transition: max-width 0.4s ease; }
         
         .bismillah {
             text-align: center;
@@ -261,7 +261,11 @@
             background: var(--card-bg); border: 1px solid var(--border-color);
             color: var(--text-color); padding: 0.5rem 0.8rem; border-radius: 8px;
             cursor: pointer; font-size: 0.85rem; font-weight: 600; transition: all 0.2s;
-            font-family: inherit; display: flex; align-items: center; gap: 5px;
+            font-family: inherit;
+        }
+        
+        .top-controls button {
+            display: flex; align-items: center; gap: 5px;
         }
 
         .top-controls button:hover, .top-controls select:hover {
@@ -280,33 +284,148 @@
         .highlight-btn.indigo { background: rgba(99,102,241,0.2); color: #6366f1; border-color: #6366f1; }
         .highlight-btn.indigo:hover { background: #6366f1; color: white; }
         .highlight-btn.indigo.active { background: #6366f1; color: white; }
+        .highlight-btn.yellow { background: rgba(250,204,21,0.24); color: #a16207; border-color: #a16207; }
+        .highlight-btn.yellow:hover { background: #ca8a04; color: white; }
+        .highlight-btn.yellow.active { background: #ca8a04; color: white; }
         .highlight-btn.off { background: rgba(100,100,100,0.2); color: #666; border-color: #666; }
         .highlight-btn.off:hover { background: #666; color: white; }
         .highlight-btn.off.active { background: #666; color: white; }
         
         .toggle-floatbar-btn { position: sticky; top: 0; z-index: 97; background: var(--card-bg); border: 2px solid var(--accent-color); padding: 0.6rem 1rem; border-radius: 8px; margin-bottom: 1rem; cursor: pointer; font-weight: 600; color: var(--accent-color); transition: all 0.3s; }
         .toggle-floatbar-btn:hover { background: var(--accent-color); color: white; }
-        .toggle-bookmark-panel-btn { position: fixed; top: 110px; right: 16px; z-index: 97; background: var(--card-bg); border: 2px solid var(--accent-color); padding: 0.6rem 0.9rem; border-radius: 8px; cursor: pointer; font-weight: 700; color: var(--accent-color); transition: all 0.3s; }
-        .toggle-bookmark-panel-btn:hover, .toggle-bookmark-panel-btn.active { background: var(--accent-color); color: #fff; }
-        .bookmark-panel { position: fixed; top: 156px; right: 16px; width: 320px; max-height: 62vh; overflow-y: auto; background: var(--card-bg); border: 1px solid var(--border-color); box-shadow: 0 8px 24px rgba(0,0,0,0.2); border-radius: 12px; z-index: 97; display: none; }
+        .toggle-floatbar-btn .floatbar-icon { display: inline-flex; align-items: center; }
+        .toggle-floatbar-btn .floatbar-label {
+            display: inline-block;
+            max-width: 260px;
+            margin-left: 6px;
+            white-space: nowrap;
+            overflow: hidden;
+            transition: max-width 0.35s ease, opacity 0.25s ease, margin-left 0.35s ease;
+            opacity: 1;
+            vertical-align: middle;
+        }
+        .toggle-floatbar-btn.compact .floatbar-label {
+            max-width: 0;
+            opacity: 0;
+            margin-left: 0;
+        }
+
+        .floatbar-tip {
+            position: fixed;
+            top: 52px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 120;
+            background: rgba(20, 60, 36, 0.95);
+            color: #fff;
+            border: 1px solid rgba(255,255,255,0.24);
+            border-radius: 999px;
+            padding: 0.45rem 0.95rem;
+            font-size: 0.78rem;
+            letter-spacing: 0.1px;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.55s ease, visibility 0.55s ease;
+            pointer-events: none;
+        }
+        .floatbar-tip.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .toggle-bookmark-panel-btn {
+            position: fixed;
+            top: 110px;
+            right: 16px;
+            z-index: 97;
+            background: var(--card-bg);
+            border: 2px solid var(--accent-color);
+            padding: 0.6rem 0.9rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 700;
+            color: var(--accent-color);
+            transition: all 0.3s;
+        }
+        .toggle-bookmark-panel-btn:hover,
+        .toggle-bookmark-panel-btn.active {
+            background: var(--accent-color);
+            color: #fff;
+        }
+        .bookmark-panel {
+            position: fixed;
+            top: 156px;
+            right: 16px;
+            width: 320px;
+            max-height: 62vh;
+            overflow-y: auto;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+            border-radius: 12px;
+            z-index: 97;
+            display: none;
+        }
         .bookmark-panel.open { display: block; }
-        .bookmark-header { position: sticky; top: 0; display: flex; justify-content: space-between; align-items: center; padding: 10px 12px; font-size: 0.9rem; font-weight: 700; border-bottom: 1px solid var(--border-color); background: var(--nav-pill-bg); }
-        .bookmark-clear-btn { background: transparent; border: 1px solid var(--border-color); border-radius: 6px; padding: 2px 8px; cursor: pointer; color: #dc2626; font-size: 0.82rem; }
+        .bookmark-header {
+            position: sticky;
+            top: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 12px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            border-bottom: 1px solid var(--border-color);
+            background: var(--nav-pill-bg);
+        }
+        .bookmark-clear-btn {
+            background: transparent;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 2px 8px;
+            cursor: pointer;
+            color: #dc2626;
+            font-size: 0.82rem;
+        }
         .bookmark-list { padding: 10px; display: flex; flex-direction: column; gap: 8px; }
-        .bookmark-item { border: 1px solid var(--border-color); border-radius: 8px; padding: 8px; background: var(--bg-color); display: grid; gap: 6px; }
+        .bookmark-item {
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 8px;
+            background: var(--bg-color);
+            display: grid;
+            gap: 6px;
+        }
         .bookmark-item-title { font-size: 0.82rem; font-weight: 700; }
         .bookmark-item-meta { font-size: 0.74rem; opacity: 0.8; }
-        .bookmark-item button { justify-self: start; border: 1px solid var(--border-color); border-radius: 6px; background: var(--card-bg); color: var(--text-color); padding: 4px 8px; cursor: pointer; font-size: 0.75rem; }
+        .bookmark-item button {
+            justify-self: start;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            background: var(--card-bg);
+            color: var(--text-color);
+            padding: 4px 8px;
+            cursor: pointer;
+            font-size: 0.75rem;
+        }
         .bookmark-empty { padding: 12px; font-size: 0.8rem; opacity: 0.7; }
 
         /* Highlight styles for selected text */
         .highlight-red { background: rgba(239,68,68,0.3) !important; }
         .highlight-green { background: rgba(34,197,94,0.3) !important; }
         .highlight-indigo { background: rgba(99,102,241,0.3) !important; }
+        .highlight-yellow { background: rgba(250,204,21,0.36) !important; }
 
         .highlight-underline.underline-red { text-decoration: underline wavy #dc2626; background: none !important; }
         .highlight-underline.underline-green { text-decoration: underline wavy #16a34a; background: none !important; }
         .highlight-underline.underline-indigo { text-decoration: underline wavy #6366f1; background: none !important; }
+        .highlight-underline.underline-yellow { text-decoration: underline wavy #ca8a04; background: none !important; }
+
+        body.highlights-hidden [data-user-highlight="1"] {
+            background: transparent !important;
+            text-decoration: none !important;
+        }
 
         .underline-mode-active { background: var(--accent-color) !important; color: white !important; }
 
@@ -349,7 +468,7 @@
         }
         .nav-pill:hover { background: var(--accent-color); color: white; transform: translateY(-2px); }
         .nav-pill.active { background: var(--accent-color); color: white; transform: translateY(-2px); }
-        .search-bar { margin-bottom: 1rem; display: flex; gap: 0.5rem; }
+        .search-bar { margin-bottom: 1.6rem; display: flex; gap: 0.5rem; }
         #searchInput {
             flex: 1; padding: 0.7rem 1rem; border-radius: 3rem; border: 1px solid var(--border-color); 
             background: var(--card-bg); color: var(--text-color); font-size: 0.9rem;
@@ -394,6 +513,48 @@
             text-align: left;
         }
         .markdown-body th { background: var(--nav-pill-bg); }
+
+        @media (max-width: 760px) {
+            .markdown-body table.compact-ready {
+                display: block;
+                overflow: visible;
+                border: none;
+                margin: 1rem 0;
+            }
+            .markdown-body table.compact-ready thead {
+                display: none;
+            }
+            .markdown-body table.compact-ready tbody {
+                display: block;
+            }
+            .markdown-body table.compact-ready tr {
+                display: block;
+                margin: 0 0 0.9rem;
+                padding: 0.2rem 0.65rem;
+                background: var(--card-bg);
+                border: 1px solid var(--border-color);
+                border-radius: 12px;
+            }
+            .markdown-body table.compact-ready td {
+                display: grid;
+                grid-template-columns: minmax(105px, 42%) 1fr;
+                gap: 0.65rem;
+                border: none;
+                border-bottom: 1px dashed var(--border-color);
+                padding: 0.55rem 0.2rem;
+                min-width: 0;
+                line-height: 1.45;
+            }
+            .markdown-body table.compact-ready tr td:last-child {
+                border-bottom: none;
+            }
+            .markdown-body table.compact-ready td::before {
+                content: attr(data-label);
+                font-weight: 700;
+                color: var(--accent-color);
+            }
+        }
+
         .markdown-body mjx-container,
         .markdown-body mjx-container * {
             font-family: var(--math-font) !important;
@@ -402,11 +563,10 @@
         .footer {
             margin-top: 5rem;
             padding: 4rem 2rem;
-            background: var(--card-bg);
+            background: var(--nav-pill-bg); /* Adaptive background */
             border-top: 1px solid var(--border-color);
-            box-shadow: 0 -6px 18px rgba(0, 20, 0, 0.04);
             text-align: center;
-            color: var(--text-color);
+            color: var(--text-color); /* Adaptive text color */
         }
 
         .author-card {
@@ -457,7 +617,7 @@
             position: absolute;
             top: 0; left: 0;
             width: 100%; height: 100%;
-            display: none; /* Hidden by default, shown on error */
+            display: none;
             align-items: center;
             justify-content: center;
             background: linear-gradient(135deg, var(--accent-color), #065f46);
@@ -632,19 +792,21 @@
         /* Context menu for highlights */
         .highlight-menu {
             position: fixed; background: var(--card-bg); border: 1px solid var(--accent-color);
-            border-radius: 8px; z-index: 1000; box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-            min-width: 150px; display: none;
+            border-radius: 12px; z-index: 1000; box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            min-width: 0; display: none;
             overflow: hidden;
+            padding: 0.35rem;
+            gap: 0.3rem;
         }
-        .highlight-menu.show { display: flex; flex-direction: column; }
+        .highlight-menu.show { display: flex; flex-direction: row; align-items: center; }
         .highlight-menu button {
-            background: none; border: none; padding: 0.7rem 1rem;
+            background: var(--nav-pill-bg); border: 1px solid var(--border-color); padding: 0.45rem;
             cursor: pointer; font-family: inherit; font-size: 0.85rem;
-            color: var(--text-color); text-align: left; transition: background 0.2s;
+            color: var(--text-color); text-align: center; transition: background 0.2s;
+            width: 34px; height: 34px; border-radius: 8px; display: inline-flex; align-items: center; justify-content: center;
         }
         .highlight-menu button:hover { background: var(--nav-pill-bg); }
         .highlight-menu button.delete { color: #dc2626; }
-        .highlight-menu-divider { height: 1px; background: var(--border-color); margin: 0; }
         
         /* Expand all button */
         .expand-all-btn {
@@ -654,27 +816,16 @@
         }
         .expand-all-btn:hover { background: var(--accent-color); opacity: 0.8; transform: scale(1.05); }
 
-
-
-        /* Progress Bar */
         .progress-wrap { margin-top: 0.8rem; height: 5px; border-radius: 20px; background: rgba(255,255,255,0.18); overflow: hidden; }
         .progress-fill { height: 100%; width: 0%; border-radius: 20px; background: #ffd966; transition: width 0.6s ease; }
         .progress-label { font-size: 0.72rem; color: rgba(255,255,255,0.6); margin-top: 4px; }
-
-        /* Keyboard shortcuts */
         .shortcuts-bar { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 6px; font-size: 0.68rem; color: rgba(255,255,255,0.45); align-items: center; }
         .shortcuts-bar kbd { background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2); border-radius: 4px; padding: 1px 6px; font-size: 0.65rem; font-family: monospace; }
-
-        /* Reading time badge */
         .read-time { font-size: 0.7rem; color: var(--accent-color); font-weight: 700; opacity: 0.85; }
         .done-badge { font-size: 0.65rem; color: #34d399; font-weight: 700; }
-
-        /* Copy button */
         .markdown-body pre { position: relative; }
         .copy-btn { position: absolute; top: 8px; right: 8px; background: rgba(255,255,255,0.12); border: none; color: rgba(255,255,255,0.75); padding: 3px 10px; border-radius: 6px; font-size: 0.7rem; cursor: pointer; font-family: inherit; transition: 0.2s; }
         .copy-btn:hover { background: rgba(255,255,255,0.28); }
-
-        /* Footer social inside card */
         .footer-social-header { font-size: 1rem; font-weight: 700; color: rgba(255,255,255,0.72); letter-spacing: 0.5px; margin-bottom: 1.4rem; }
         .footer-divider { width: 72px; height: 2px; margin: 2rem auto; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.22), transparent); border-radius: 2px; }
 
@@ -691,7 +842,12 @@
         }
         .donation-head { font-size: 1.08rem; font-weight: 800; color: #fde68a; }
         .donation-sub { margin-top: 0.35rem; font-size: 0.88rem; opacity: 0.9; }
-        .donation-methods { margin-top: 0.9rem; display: flex; gap: 0.55rem; flex-wrap: wrap; }
+        .donation-methods {
+            margin-top: 0.9rem;
+            display: flex;
+            gap: 0.55rem;
+            flex-wrap: wrap;
+        }
         .donate-method-btn {
             border: 1px solid rgba(255, 255, 255, 0.24);
             background: rgba(255, 255, 255, 0.08);
@@ -702,7 +858,11 @@
             font-size: 0.82rem;
             font-weight: 700;
         }
-        .donate-method-btn.active { background: #facc15; color: #1b4332; border-color: #facc15; }
+        .donate-method-btn.active {
+            background: #facc15;
+            color: #1b4332;
+            border-color: #facc15;
+        }
         .amount-scroll {
             margin-top: 0.9rem;
             display: flex;
@@ -725,9 +885,24 @@
             font-weight: 700;
             font-size: 0.85rem;
         }
-        .amount-chip.active { background: #34d399; color: #042f2e; border-color: #34d399; }
-        .donation-cta-wrap { margin-top: 0.95rem; display: flex; flex-wrap: wrap; gap: 0.6rem; align-items: center; justify-content: space-between; }
-        .donation-number { font-size: 0.85rem; opacity: 0.92; letter-spacing: 0.2px; }
+        .amount-chip.active {
+            background: #34d399;
+            color: #042f2e;
+            border-color: #34d399;
+        }
+        .donation-cta-wrap {
+            margin-top: 0.95rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .donation-number {
+            font-size: 0.85rem;
+            opacity: 0.92;
+            letter-spacing: 0.2px;
+        }
         .donate-now-btn {
             border: none;
             background: linear-gradient(135deg, #f59e0b, #f97316);
@@ -790,21 +965,16 @@
     </div>
 
     <div class="header">
-        <h1>📘 GEB 331 — Cell Signaling <span>Bilingual Interactive Note</span></h1>
+        <h1>🦠 GEB 334 — Oncology & Virology <span>Bilingual Interactive Note</span></h1>
         <div class="controls">
-            <button class="control-btn" onclick="window.location.href='/'" style="font-weight: bold;">🏠 Home Hub</button>
-            <select class="control-btn" style="background: #fff3cd !important; color: #856404 !important; font-weight: bold; border-color: #ffeeba;">
-                <option value="3/2" selected>🎓 Semester 3/2</option>
-                <option value="4/1">🎓 Semester 4/1 (Coming Soon)</option>
-                <option value="4/2">🎓 Semester 4/2 (Coming Soon)</option>
-            </select>
+            <button class="control-btn" onclick="window.location.href='/'" style="font-weight: bold;" title="Go to Home Hub">🏠 Home Hub</button>
             <select class="control-btn live-btn" id="courseSelect" onchange="if(this.value !== '#') window.open(this.value, '_self')" style="background: #e4f0e4 !important; color: #1a4d1a !important;" title="Switch Course">
-                <option value="GEB331_MASTER_EXAM_PREP_INTERACTIVE_v4_FINAL.html" selected>📘 GEB 331: Cell Signaling</option>
+                <option value="GEB331_MASTER_EXAM_PREP_INTERACTIVE_v4_FINAL.html">📘 GEB 331: Cell Signaling</option>
                 <option value="GEB335_FERMENTATION_TECH_INTERACTIVE.html">🔬 GEB 335: Fermentation Technology</option>
                 <option value="GEB341_AQUACULTURE_INTERACTIVE.html">🐟 GEB 341: Aquaculture & Fish Genetics</option>
                 <option value="GEB343_BIOPROCESS_INTERACTIVE_v1.html">⚙️ GEB 343: Bioprocess Engineering</option>
                 <option value="GEB337_RDNA_TECH_INTERACTIVE.html">🧬 GEB 337: Recombinant DNA Technology</option>
-                <option value="GEB334_ONCOLOGY_VIROLOGY_INTERACTIVE.html">🦠 GEB 334: Oncology and Virology</option>
+                <option value="GEB334_ONCOLOGY_VIROLOGY_INTERACTIVE.html" selected>🦠 GEB 334: Oncology and Virology</option>
                 <option value="#">⚡ GEB 336: Bioenergetics (Soon)</option>
             </select>
             <button class="control-btn" id="toggleMoreHeaderControls" onclick="document.getElementById('moreHeaderControls').classList.toggle('show'); this.classList.toggle('active')" style="background: var(--accent-color); color: white; border-color: var(--accent-color);">⚙️ Options</button>
@@ -843,7 +1013,7 @@
             <span><kbd>P</kbd> Bookmark Panel</span>
             <span><kbd>Esc</kbd> Close modal</span>
         </div>
-        </div>
+    </div>
 
     <div class="mission-section">
         <div class="mission-text">
@@ -853,7 +1023,7 @@
         </div>
         <div id="print-dua" class="print-only">
             <strong>সুন্দর দোয়া (Rabbana Atina):</strong><br>
-            রাব্বানা আতিনা ফিদ দুনিয়া হাসানাতাওঁ ওয়া ফিল আখিরাতি হাসানাতাওঁ ওয়া কিনা আযাবান নার।<br>
+            রাব্বানা আতিনা ফিদ দুনিয়া হাসানাতাওঁ ওয়া ফিল আখিরাতি হাসানাতাওঁ ওয়া কিনা আযাবান নার.<br>
             (হে আমাদের প্রতিপালক! আমাদের দুনিয়াতে কল্যাণ দিন এবং আখিরাতেও কল্যাণ দিন এবং আমাদের দোযখের আগুন থেকে রক্ষা করুন।)
         </div>
     </div>
@@ -873,6 +1043,12 @@
 
     <!-- Top Control Bar (Fixed) -->
     <div class="top-controls" id="topControls">
+        <span style="font-weight: 600; color: var(--accent-color); font-size: 0.85rem;">View:</span>
+        <select id="viewModeSelector" onchange="changeViewMode(this.value)" title="Switch between Standard and Smart Mix view modes" style="font-weight: 600; color: var(--text-color);">
+            <option value="standard">📖 Standard</option>
+            <option value="smart-mix">✨ Smart Mix</option>
+        </select>
+        <div class="separator"></div>
         <span style="font-weight: 600; color: var(--accent-color); font-size: 0.85rem;">Highlight:</span>
         <button class="highlight-btn red" id="highlightRed" onclick="setHighlightMode('red')" title="Auto Red Highlight Mode [1]">🔴</button>
         <button class="highlight-btn green" id="highlightGreen" onclick="setHighlightMode('green')" title="Auto Green Highlight Mode [2]">🟢</button>
@@ -885,6 +1061,7 @@
         <button id="floatbarCloseBtn" onclick="toggleFloatingBar()" title="Show or Hide Floating Bar [G]">✕ Close</button>
         <div class="separator"></div>
         <span style="font-weight: 600; color: var(--accent-color); font-size: 0.85rem;">Text:</span>
+        <button onclick="toggleTheme()" title="Toggle Theme [T]">🌓</button>
         <button onclick="changeFont(-1)" title="Decrease Font Size">A−</button>
         <button onclick="changeFont(1)" title="Increase Font Size">A+</button>
         <button class="expand-all-btn" onclick="toggleAllSets()" title="Expand or Collapse All Sets [E]">📂 Expand All</button>
@@ -898,33 +1075,30 @@
         </div>
         <div class="bookmark-list" id="bookmarkList"></div>
     </aside>
+    <div class="floatbar-tip" id="floatbarTip">Longpress/hover on buttons/icons to know tooltips and shortcuts</div>
     
     <!-- Highlight Context Menu -->
     <div class="highlight-menu" id="highlightMenu">
-        <button onclick="changeHighlightColor('red')">🔴 Red</button>
-        <button onclick="changeHighlightColor('green')">🟢 Green</button>
-        <button onclick="changeHighlightColor('indigo')">🔵 Indigo</button>
-        <div class="highlight-menu-divider"></div>
-        <button onclick="toggleHighlightStyle()">🔄 Toggle Style</button>
-        <div class="highlight-menu-divider"></div>
-        <button class="delete" onclick="deleteHighlight()">🗑️ Delete</button>
+        <button onclick="changeHighlightColor('red')" title="Change Highlight to Red">🔴</button>
+        <button onclick="changeHighlightColor('green')" title="Change Highlight to Green">🟢</button>
+        <button onclick="changeHighlightColor('indigo')" title="Change Highlight to Indigo">🔵</button>
+        <button onclick="changeHighlightColor('yellow')" title="Change Highlight to Yellow">🟡</button>
+        <button onclick="toggleHighlightStyle()" title="Toggle Underline or Background">🔄</button>
+        <button class="delete" onclick="deleteHighlight()" title="Delete This Highlight">🗑️</button>
     </div>
 
     <div class="inline-toggles-container" style="display: none;">
         <button class="toggle-floatbar-btn" id="toggleFloatbarBtn" onclick="toggleFloatingBar()" title="Toggle floating control bar [G]">⚙️ Floating Control Bar Mode</button>
         <button class="toggle-bookmark-panel-btn" id="toggleBookmarkPanelBtn" onclick="toggleBookmarkPanel()" title="Bookmark Panel [P]">🔖</button>
     </div>
-    
-        <div class="search-bar" style="margin-top: 0; position: relative;">
-        <input type="text" id="searchInput" placeholder="🔎 Search anything..." autocomplete="off">
-        <div id="searchNav" style="display: none; position: absolute; right: 10px; top: 50%; transform: translateY(-50%); gap: 5px; background: var(--card-bg); padding: 2px 8px; border-radius: 8px; border: 1px solid var(--border-color); box-shadow: 0 2px 8px rgba(0,0,0,0.1); z-index: 10; align-items: center;">
-            <span id="searchCount" style="font-size: 0.75rem; font-weight: 700; color: var(--accent-color); margin-right: 5px;">0/0</span>
-            <button onclick="prevSearchMatch()" class="control-btn" style="padding: 2px 6px; font-size: 0.8rem;" title="Previous Match [↑]">↑</button>
-            <button onclick="nextSearchMatch()" class="control-btn" style="padding: 2px 6px; font-size: 0.8rem;" title="Next Match [↓]">↓</button>
+    <div class="search-bar" style="margin-top: 0;"><input type="text" id="searchInput" placeholder="🔎 Search anything (ethanol, yeast, bioreactor, fermentation...)" autocomplete="off"></div>
+    <div class="quick-nav" id="quickNav" style="position: fixed; bottom: 0; left: 0; right: 0; z-index: 99;">
+        <div id="progressBanner" class="progress-banner">
+            <div id="progressBannerFill" class="progress-banner-fill"></div>
+            <div id="progressBannerTitle" class="progress-banner-title"></div>
         </div>
     </div>
-    </div>
-
+    
     <!-- Loading Spinner -->
     <div id="loadingSpinner">
         <div class="spinner"></div>
@@ -954,17 +1128,19 @@
                 <div id="profileFallback" class="profile-fallback">SM</div>
             </div>
             <div class="author-name">SM Ashikur Rahman</div>
-            <div class="author-title">Developed with 💚 for GEB 331 | Cell Signaling</div>
+            <div class="author-title">Developed with 💚 for GEB 334 | Oncology & Virology</div>
         </div>
 
         <div class="donation-card" id="donationCard">
             <div class="donation-head">💚 Support This Study Project</div>
             <div class="donation-sub">Select method, drag the slider to choose amount, then tap the button to donate.</div>
+
             <div class="donation-methods" id="donationMethods">
                 <button class="donate-method-btn active" type="button" data-method="bkash">bKash</button>
                 <button class="donate-method-btn" type="button" data-method="nagad">Nagad</button>
                 <button class="donate-method-btn" type="button" data-method="rocket">Rocket</button>
             </div>
+
             
             <div style="margin: 1.2rem 0 0.4rem; display:flex; align-items:center; gap:12px; flex-wrap:wrap;">
                 <span style="font-size:0.9rem; font-weight:700; color:var(--accent-color);">Amount:</span>
@@ -985,32 +1161,21 @@
 </div>
 
 <!-- Load external data -->
-<script src="data/3_2/geb331_data.js"></script>
-<script src="data/3_2/geb331_data_part2.js"></script>
-<script src="data/3_2/geb331_data_part3.js"></script>
-<script src="data/3_2/geb331_data_part4.js"></script>
-<script>
-    window.MathJax = {
-        tex: {
-            inlineMath: [['\\(', '\\)']],
-            displayMath: [['\\[', '\\]']]
-        },
-        chtml: { matchFontHeight: false }
-    };
-</script>
-<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" defer></script>
+<script src="data/3_2/geb334_data.js"></script>
 <script>
 let currentFontSize = 16;
 let currentLang = 'en';
 let allExpanded = false;
 let highlightMode = 'background';
 let currentHighlightColor = null;
-const setsData = geb331_sets;
+const HIGHLIGHT_STORE_KEY = 'sm-geb334-highlights-v1';
+const HIGHLIGHT_VISIBILITY_KEY = 'sm-geb334-highlights-visible';
+let floatbarTipTimer = null;
+const setsData = geb334_sets;
 
-// Progress tracking
-const PROGRESS_KEY = 'sm-progress-geb331';
+const PROGRESS_KEY = 'sm-progress-geb334';
 let visitedSets = new Set(JSON.parse(localStorage.getItem(PROGRESS_KEY) || '[]'));
-const BOOKMARK_STORE_KEY = 'sm-bookmarks-geb331-v1';
+const BOOKMARK_STORE_KEY = 'sm-bookmarks-geb334-v1';
 let bookmarkPositions = JSON.parse(localStorage.getItem(BOOKMARK_STORE_KEY) || '[]');
 
 function updateProgressBar() {
@@ -1074,10 +1239,6 @@ function openDuaModal() {
     document.getElementById('duaModal').classList.add('active');
 }
 
-function closeDuaModal() {
-    document.getElementById('duaModal').classList.remove('active');
-}
-
 let activeSetId = null;
 
 function updateBannerTitle(id) {
@@ -1094,6 +1255,13 @@ function updateBannerTitle(id) {
 }
 
 window.addEventListener('scroll', () => {
+    const toggleBtn = document.getElementById('toggleFloatbarBtn');
+    const setsContainer = document.getElementById('setsContainer');
+    if (toggleBtn && setsContainer) {
+        const compactStartY = setsContainer.offsetTop + 220;
+        toggleBtn.classList.toggle('compact', window.scrollY > compactStartY);
+    }
+    
     if (!activeSetId) return;
     const banner = document.getElementById('progressBanner');
     const fill = document.getElementById('progressBannerFill');
@@ -1116,11 +1284,16 @@ window.addEventListener('scroll', () => {
     }
 });
 
+function closeDuaModal() {
+    document.getElementById('duaModal').classList.remove('active');
+}
+
 function toggleAllSets() {
     allExpanded = !allExpanded;
     const cards = document.querySelectorAll('.set-card');
     const qsCards = document.querySelectorAll('.qs-card');
     const btn = document.getElementById('toggleAllBtn');
+    const floatingExpandBtn = document.querySelector('.expand-all-btn');
     
     cards.forEach(card => {
         if (allExpanded) {
@@ -1141,10 +1314,12 @@ function toggleAllSets() {
         else qs.classList.remove('open');
     });
     
-    btn.innerHTML = allExpanded ? '📁 Collapse All' : '📂 Expand All';
+    const label = allExpanded ? '📁 Collapse All' : '📂 Expand All';
+    btn.innerHTML = label;
+    if (floatingExpandBtn) floatingExpandBtn.innerHTML = label;
     
     document.querySelectorAll('.local-toggle-btn').forEach(lbtn => {
-        lbtn.innerHTML = allExpanded ? ' Hide All' : '💡 Show All';
+        lbtn.innerHTML = allExpanded ? '💡 Hide All' : '💡 Show All';
     });
 }
 
@@ -1181,7 +1356,7 @@ function toggleLocalQS(setId, event) {
         else qs.classList.remove('open');
     });
     
-    btn.innerHTML = isExpanding ? ' Hide All' : '💡 Show All';
+    btn.innerHTML = isExpanding ? '💡 Hide All' : '💡 Show All';
 }
 
 function exportToPDF() {
@@ -1192,7 +1367,41 @@ function exportToPDF() {
     
     allExpanded = true;
     document.getElementById('toggleAllBtn').innerHTML = '📁 Collapse All';
-    window.print();
+    
+    setTimeout(() => {
+        window.print();
+    }, 500);
+}
+
+function toggleTheme() {
+    const root = document.documentElement;
+    const theme = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', theme);
+    localStorage.setItem('sm-theme', theme);
+}
+
+function changeFont(delta) {
+    currentFontSize = Math.max(12, Math.min(24, currentFontSize + delta));
+    document.documentElement.style.setProperty('--font-size-base', currentFontSize + 'px');
+    localStorage.setItem('fontSize', currentFontSize);
+}
+
+function applyFontFamily() {
+    const font = document.getElementById('fontFamily').value;
+    document.documentElement.style.setProperty('--body-font', font);
+    localStorage.setItem('bodyFont', font);
+}
+
+function applyViewMode() {
+    const mode = document.getElementById('viewMode').value;
+    const container = document.querySelector('.container');
+    if(mode === 'mobile') {
+        container.style.maxWidth = '450px';
+    } else if(mode === 'desktop') {
+        container.style.maxWidth = '1300px';
+    } else {
+        container.style.maxWidth = '100%';
+    }
 }
 
 function getLocalizedSetMarkdown(item) {
@@ -1237,6 +1446,7 @@ function renderSets() {
         if (index >= setsData.length) {
             setupNavObserver();
             if (typeof restoreHighlightsFromStorage === 'function') restoreHighlightsFromStorage();
+            if (typeof enhanceResponsiveTables === 'function') enhanceResponsiveTables(container);
             if (window.MathJax && MathJax.typesetPromise) {
                 MathJax.typesetPromise().catch(err => console.error('MathJax error:', err));
             }
@@ -1327,7 +1537,7 @@ function renderSets() {
         requestAnimationFrame(renderNext);
     }
     requestAnimationFrame(renderNext);
-};
+}
 
 function toggleSet(header) {
     const card = header.parentElement;
@@ -1358,30 +1568,18 @@ function buildQuickNav() {
     });
 }
 
-document.addEventListener('keydown', (e) => {
-    const tag = document.activeElement.tagName;
-    if (tag === 'INPUT' || tag === 'SELECT' || tag === 'TEXTAREA') return;
-    
-    if (e.key === '1') { setHighlightMode('red'); e.preventDefault(); return; }
-    if (e.key === '2') { setHighlightMode('green'); e.preventDefault(); return; }
-    if (e.key === '3') { setHighlightMode('indigo'); e.preventDefault(); return; }
-    if (e.key === '4') { setHighlightMode('yellow'); e.preventDefault(); return; }
-    if (e.key === '0') { setHighlightMode('off'); e.preventDefault(); return; }
-    
-    if (e.key === 'f' || e.key === 'F') { document.getElementById('searchInput').focus(); e.preventDefault(); }
-    if (e.key === 't' || e.key === 'T') toggleTheme();
-    if (e.key === 'e' || e.key === 'E') toggleAllSets();
-    if (e.key === 'g' || e.key === 'G') { toggleFloatingBar(); e.preventDefault(); return; }
-    if (e.key === 'b' || e.key === 'B') { addBookmarkPosition(); e.preventDefault(); return; }
-    if (e.key === 'v' || e.key === 'V') { goToPreviousBookmark(); e.preventDefault(); return; }
-    if (e.key === 'n' || e.key === 'N') { goToNextBookmark(); e.preventDefault(); return; }
-    if (e.key === 'p' || e.key === 'P') { toggleBookmarkPanel(); e.preventDefault(); return; }
-    if (e.key === 'u' || e.key === 'U') toggleUnderlineMode();
-    if (e.key === 'Escape') closeDuaModal();
-});
-
-let searchMatches = [];
-let currentSearchMatchIndex = -1;
+function toggleUnderlineMode() {
+    highlightMode = highlightMode === 'background' ? 'underline' : 'background';
+    localStorage.setItem('highlightMode', highlightMode);
+    const btn = document.getElementById('underlineModeBtn');
+    if (highlightMode === 'underline') {
+        btn.textContent = '📏 Underline';
+        btn.classList.add('underline-mode-active');
+    } else {
+        btn.textContent = '📋 Highlight';
+        btn.classList.remove('underline-mode-active');
+    }
+}
 
 function setHighlightMode(mode) {
     if (mode === 'off') {
@@ -1400,82 +1598,80 @@ function updateHighlightButtons() {
     document.getElementById('highlightRed').classList.remove('active');
     document.getElementById('highlightGreen').classList.remove('active');
     document.getElementById('highlightIndigo').classList.remove('active');
+    document.getElementById('highlightYellow').classList.remove('active');
     document.getElementById('highlightOff').classList.remove('active');
     
-    if (currentHighlightColor === 'red') {
-        document.getElementById('highlightRed').classList.add('active');
-    } else if (currentHighlightColor === 'green') {
-        document.getElementById('highlightGreen').classList.add('active');
-    } else if (currentHighlightColor === 'indigo') {
-        document.getElementById('highlightIndigo').classList.add('active');
-    } else {
-        document.getElementById('highlightOff').classList.add('active');
-    }
+    if (currentHighlightColor === 'red') document.getElementById('highlightRed').classList.add('active');
+    else if (currentHighlightColor === 'green') document.getElementById('highlightGreen').classList.add('active');
+    else if (currentHighlightColor === 'indigo') document.getElementById('highlightIndigo').classList.add('active');
+    else if (currentHighlightColor === 'yellow') document.getElementById('highlightYellow').classList.add('active');
+    else document.getElementById('highlightOff').classList.add('active');
 }
 
 let isFloatingBarVisible = localStorage.getItem('floatingBarVisible') !== 'false';
+let currentViewMode = localStorage.getItem('viewMode') || 'standard';
+
+// Initialize view mode on page load
+(function initViewMode() {
+    const selector = document.getElementById('viewModeSelector');
+    if (selector) {
+        selector.value = currentViewMode;
+    }
+    changeViewMode(currentViewMode);
+})();
 
 function toggleFloatingBar() {
     isFloatingBarVisible = !isFloatingBarVisible;
     const controlBar = document.getElementById('topControls');
-    const toggleBtn = document.getElementById('toggleFloatbarBtn');
-    
-    if (isFloatingBarVisible) {
-        controlBar.classList.add('visible');
-        toggleBtn.textContent = '⚙️ Floating Control Bar Mode (ON)';
-    } else {
-        controlBar.classList.remove('visible');
-        toggleBtn.textContent = '⚙️ Floating Control Bar Mode (OFF)';
-    }
+    if (isFloatingBarVisible) controlBar.classList.add('visible');
+    else controlBar.classList.remove('visible');
     localStorage.setItem('floatingBarVisible', isFloatingBarVisible);
 }
 
-document.addEventListener('mouseup', () => {
-    if (!isHighlightingEnabled || !currentHighlightColor) return;
-    
-    const selection = window.getSelection();
-    if (selection.toString().length > 0) {
-        const range = selection.getRangeAt(0);
-        const span = document.createElement('span');
-        
-        if (highlightMode === 'background') {
-            span.className = 'highlight-' + currentHighlightColor;
-        } else {
-            span.className = 'highlight-underline underline-' + currentHighlightColor;
-        }
-        
-        removeHighlightsInRange(range);
-        span.appendChild(range.extractContents());
-        range.insertNode(span);
-        selection.removeAllRanges();
-    }
-});
-
-function removeHighlightsInRange(range) {
-    const container = range.commonAncestorContainer;
-    if (container.nodeType === Node.TEXT_NODE) return;
-    
-    const highlightedElements = container.querySelectorAll('[class*="highlight"]');
-    highlightedElements.forEach(el => {
-        if (isNodeInRange(el, range)) {
-            while (el.firstChild) {
-                el.parentNode.insertBefore(el.firstChild, el);
+function changeViewMode(mode) {
+    currentViewMode = mode;
+    localStorage.setItem('viewMode', mode);
+    const sets = document.querySelectorAll('.set-card');
+    sets.forEach(set => {
+        const cards = set.querySelectorAll('.qs-card');
+        cards.forEach(card => {
+            const content = card.querySelector('.qs-content');
+            if (!content) return;
+            
+            if (mode === 'smart-mix') {
+                // In smart mix mode, show both standard and smart mix sections
+                const smartMixSection = content.querySelector('[data-view-type="smart-mix"]');
+                const standardSection = content.querySelector('[data-view-type="standard"]');
+                if (smartMixSection) smartMixSection.style.display = 'block';
+                // Keep standard visible too for reference
+                if (standardSection) standardSection.style.display = 'block';
+            } else {
+                // In standard mode, show only standard section
+                const smartMixSection = content.querySelector('[data-view-type="smart-mix"]');
+                const standardSection = content.querySelector('[data-view-type="standard"]');
+                if (smartMixSection) smartMixSection.style.display = 'none';
+                if (standardSection) standardSection.style.display = 'block';
             }
-            el.parentNode.removeChild(el);
-        }
+        });
     });
 }
 
-function isNodeInRange(node, range) {
-    try {
-        return range.containsNode(node, true);
-    } catch (e) {
-        return range.getBoundingClientRect().intersects(node.getBoundingClientRect());
-    }
+function showFloatbarTip() {
+    const tip = document.getElementById('floatbarTip');
+    if (!tip) return;
+    tip.classList.add('show');
+    if (floatbarTipTimer) clearTimeout(floatbarTipTimer);
+    floatbarTipTimer = setTimeout(() => {
+        tip.classList.remove('show');
+    }, 3500);
 }
 
 function clearAllHighlights() {
-    const highlighted = document.querySelectorAll('[class*="highlight-"]');
+    const highlighted = document.querySelectorAll('[data-user-highlight="1"]');
+    if (!highlighted.length) return;
+    const proceed = window.confirm('Erase all saved highlights? This action cannot be undone.');
+    if (!proceed) return;
+
     highlighted.forEach(el => {
         const parent = el.parentNode;
         while (el.firstChild) {
@@ -1483,78 +1679,90 @@ function clearAllHighlights() {
         }
         parent.removeChild(el);
     });
+    saveHighlightsToStorage();
 }
 
-window.addEventListener('load', () => {
-    const savedMode = localStorage.getItem('highlightMode');
-    const savedColor = localStorage.getItem('lastHighlightColor');
-    
-    if (savedMode === 'underline') {
-        toggleUnderlineMode();
+function saveHighlightsToStorage() {
+    const payload = {};
+    document.querySelectorAll('.set-card').forEach((setCard) => {
+        const setId = setCard.id;
+        const entries = [];
+        setCard.querySelectorAll('.qs-card .markdown-body').forEach((body, idx) => {
+            if (body.querySelector('[data-user-highlight="1"]')) {
+                entries.push({ idx, html: body.innerHTML });
+            }
+        });
+        if (entries.length) payload[setId] = entries;
+    });
+    try {
+        localStorage.setItem(HIGHLIGHT_STORE_KEY, JSON.stringify(payload));
+    } catch (err) {
+        console.warn('Could not save highlights:', err);
     }
-    
-    if (savedColor === 'red' || savedColor === 'green' || savedColor === 'indigo') {
-        setHighlightMode(savedColor);
-    } else {
-        setHighlightMode('off');
-    }
-    
-    isFloatingBarVisible = localStorage.getItem('floatingBarVisible') !== 'false';
-    if (!isFloatingBarVisible) {
-        document.getElementById('topControls').classList.remove('visible');
-        document.getElementById('toggleFloatbarBtn').textContent = '⚙️ Floating Control Bar Mode (OFF)';
-    } else {
-        document.getElementById('toggleFloatbarBtn').textContent = '⚙️ Floating Control Bar Mode (ON)';
-    }
-    
-    setupHighlightContextMenu();
-}, { once: true });
+}
 
-let currentHighlightElement = null;
+function restoreHighlightsFromStorage() {
+    let saved = null;
+    try {
+        saved = JSON.parse(localStorage.getItem(HIGHLIGHT_STORE_KEY) || '{}');
+    } catch {
+        saved = {};
+    }
+    Object.entries(saved).forEach(([setId, entries]) => {
+        const setCard = document.getElementById(setId);
+        if (!setCard || !Array.isArray(entries)) return;
+        const bodies = setCard.querySelectorAll('.qs-card .markdown-body');
+        entries.forEach((entry) => {
+            if (!entry || typeof entry.idx !== 'number' || typeof entry.html !== 'string') return;
+            const target = bodies[entry.idx];
+            if (target) target.innerHTML = entry.html;
+        });
+    });
+}
+
+function toggleHighlightsVisibility() {
+    const isHidden = document.body.classList.toggle('highlights-hidden');
+    const btn = document.getElementById('toggleHighlightsBtn');
+    if (btn) btn.textContent = isHidden ? '🙈' : '👁️';
+    localStorage.setItem(HIGHLIGHT_VISIBILITY_KEY, String(!isHidden));
+}
 
 function setupHighlightContextMenu() {
-    document.addEventListener('mouseup', () => {
-        const selection = window.getSelection();
-        const highlighted = document.querySelector('[class*="highlight-"]:hover');
-        if (highlighted && highlighted.className.includes('highlight-')) {
-            showHighlightMenu(highlighted);
-        }
+    let hoverTimer;
+    document.addEventListener('mouseover', (e) => {
+        const highlightNode = findHighlightTarget(e.target);
+        if (!highlightNode) return;
+        clearTimeout(hoverTimer);
+        hoverTimer = setTimeout(() => showHighlightMenu(highlightNode), 420);
     });
-    
+    document.addEventListener('mouseout', () => clearTimeout(hoverTimer));
     document.addEventListener('contextmenu', (e) => {
-        if (e.target.closest('[class*="highlight-"]')) {
+        const highlightNode = findHighlightTarget(e.target);
+        if (highlightNode) {
             e.preventDefault();
-            showHighlightMenu(e.target.closest('[class*="highlight-"]'));
+            showHighlightMenu(highlightNode, e.clientX, e.clientY);
         }
     });
-    
-    let longPressTimer;
-    document.addEventListener('touchstart', (e) => {
-        const highlighted = e.target.closest('[class*="highlight-"]');
-        if (highlighted && highlighted.className.includes('highlight-')) {
-            longPressTimer = setTimeout(() => {
-                showHighlightMenu(highlighted);
-            }, 500);
-        }
-    });
-    
-    document.addEventListener('touchend', () => {
-        clearTimeout(longPressTimer);
-    });
-    
     document.addEventListener('click', (e) => {
-        if (!e.target.closest('.highlight-menu')) {
-            document.getElementById('highlightMenu').classList.remove('show');
-        }
+        if (!e.target.closest('.highlight-menu')) document.getElementById('highlightMenu').classList.remove('show');
     });
 }
 
-function showHighlightMenu(element) {
+function findHighlightTarget(node) {
+    if (!node || !node.closest) return null;
+    const target = node.closest('[data-user-highlight="1"], .highlight-red, .highlight-green, .highlight-indigo, .highlight-yellow, .highlight-underline');
+    if (target && !target.dataset.userHighlight) target.dataset.userHighlight = '1';
+    return target;
+}
+
+function showHighlightMenu(element, clientX = null, clientY = null) {
     currentHighlightElement = element;
     const menu = document.getElementById('highlightMenu');
     const rect = element.getBoundingClientRect();
-    menu.style.left = rect.left + 'px';
-    menu.style.top = (rect.bottom + 5) + 'px';
+    const menuX = clientX !== null ? clientX : rect.left;
+    const menuY = clientY !== null ? clientY : (rect.bottom + 5);
+    menu.style.left = Math.max(8, Math.min(menuX, window.innerWidth - 265)) + 'px';
+    menu.style.top = Math.max(8, Math.min(menuY + 5, window.innerHeight - 220)) + 'px';
     menu.classList.add('show');
 }
 
@@ -1563,52 +1771,41 @@ function changeHighlightColor(newColor) {
     const oldClass = currentHighlightElement.className;
     const classList = oldClass.split(' ').filter(c => !c.includes('highlight-') || c.includes('underline'));
     const isUnderline = oldClass.includes('highlight-underline');
-    
-    if (isUnderline) {
-        currentHighlightElement.className = `highlight-underline underline-${newColor}`;
-    } else {
+    if (isUnderline) currentHighlightElement.className = `highlight-underline underline-${newColor}`;
+    else {
         classList.push(`highlight-${newColor}`);
         currentHighlightElement.className = classList.join(' ');
     }
+    currentHighlightElement.dataset.userHighlight = '1';
     localStorage.setItem('lastHighlightColor', newColor);
     document.getElementById('highlightMenu').classList.remove('show');
+    saveHighlightsToStorage();
 }
 
 function toggleHighlightStyle() {
     if (!currentHighlightElement) return;
     const oldClass = currentHighlightElement.className;
     const isUnderline = oldClass.includes('highlight-underline');
-    const colorMatch = oldClass.match(/(?:underline-)?(red|green|indigo)/);
+    const colorMatch = oldClass.match(/(?:underline-)?(red|green|indigo|yellow)/);
     const color = colorMatch ? colorMatch[1] : 'red';
-    
-    if (isUnderline) {
-        currentHighlightElement.className = `highlight-${color}`;
-    } else {
-        currentHighlightElement.className = `highlight-underline underline-${color}`;
-    }
+    if (isUnderline) currentHighlightElement.className = `highlight-${color}`;
+    else currentHighlightElement.className = `highlight-underline underline-${color}`;
+    currentHighlightElement.dataset.userHighlight = '1';
     document.getElementById('highlightMenu').classList.remove('show');
+    saveHighlightsToStorage();
 }
 
 function deleteHighlight() {
     if (!currentHighlightElement) return;
     const parent = currentHighlightElement.parentNode;
-    while (currentHighlightElement.firstChild) {
-        parent.insertBefore(currentHighlightElement.firstChild, currentHighlightElement);
-    }
+    while (currentHighlightElement.firstChild) parent.insertBefore(currentHighlightElement.firstChild, currentHighlightElement);
     parent.removeChild(currentHighlightElement);
     document.getElementById('highlightMenu').classList.remove('show');
+    saveHighlightsToStorage();
 }
 
 function saveBookmarks() { localStorage.setItem(BOOKMARK_STORE_KEY, JSON.stringify(bookmarkPositions)); }
-function getBookmarkLabel() {
-    const cards = [...document.querySelectorAll('.set-card')];
-    const active = cards.find(card => {
-        const rect = card.getBoundingClientRect();
-        return rect.top <= 160 && rect.bottom > 160;
-    });
-    const title = active?.querySelector('.set-header-title')?.textContent?.trim();
-    return title || `Scroll Y: ${Math.round(window.scrollY)}px`;
-}
+
 function renderBookmarkPanel() {
     const list = document.getElementById('bookmarkList');
     if (!list) return;
@@ -1620,37 +1817,48 @@ function renderBookmarkPanel() {
     bookmarkPositions.forEach((bm, idx) => {
         const item = document.createElement('div');
         item.className = 'bookmark-item';
-        item.innerHTML = `<div class="bookmark-item-title">${idx + 1}. ${bm.label}</div><div class="bookmark-item-meta">Y: ${Math.round(bm.y)} • ${bm.time || ''}</div><button type="button">Go</button>`;
+        item.innerHTML = `
+            <div class="bookmark-item-title">${idx + 1}. ${bm.label}</div>
+            <div class="bookmark-item-meta">Y: ${Math.round(bm.y)} • ${bm.time || ''}</div>
+            <button type="button">Go</button>
+        `;
         item.querySelector('button').addEventListener('click', () => goToBookmarkIndex(idx));
         list.appendChild(item);
     });
 }
+
 function addBookmarkPosition() {
     const y = window.scrollY;
-    const duplicate = bookmarkPositions.some(bm => Math.abs(bm.y - y) < 24);
-    if (duplicate) { alert('A bookmark already exists very close to this position.'); return; }
-    bookmarkPositions.push({ y, label: getBookmarkLabel(), time: new Date().toLocaleTimeString() });
+    bookmarkPositions.push({ y, label: 'Position at ' + Math.round(y) + 'px', time: new Date().toLocaleTimeString() });
     bookmarkPositions.sort((a, b) => a.y - b.y);
     saveBookmarks();
     renderBookmarkPanel();
-    alert('Bookmark saved for current page position.');
 }
-function goToBookmarkIndex(idx) { if (idx < 0 || idx >= bookmarkPositions.length) return; window.scrollTo({ top: bookmarkPositions[idx].y, behavior: 'smooth' }); }
+
+function goToBookmarkIndex(idx) {
+    if (idx < 0 || idx >= bookmarkPositions.length) return;
+    window.scrollTo({ top: bookmarkPositions[idx].y, behavior: 'smooth' });
+}
+
 function goToPreviousBookmark() {
-    if (!bookmarkPositions.length) { alert('No bookmarks saved yet. Press B to add one.'); return; }
+    if (!bookmarkPositions.length) return;
     const y = window.scrollY;
     let idx = -1;
-    for (let i = bookmarkPositions.length - 1; i >= 0; i--) { if (bookmarkPositions[i].y < y - 8) { idx = i; break; } }
+    for (let i = bookmarkPositions.length - 1; i >= 0; i--) {
+        if (bookmarkPositions[i].y < y - 8) { idx = i; break; }
+    }
     if (idx === -1) idx = bookmarkPositions.length - 1;
     goToBookmarkIndex(idx);
 }
+
 function goToNextBookmark() {
-    if (!bookmarkPositions.length) { alert('No bookmarks saved yet. Press B to add one.'); return; }
+    if (!bookmarkPositions.length) return;
     const y = window.scrollY;
     let idx = bookmarkPositions.findIndex(bm => bm.y > y + 8);
     if (idx === -1) idx = 0;
     goToBookmarkIndex(idx);
 }
+
 function toggleBookmarkPanel(forceOpen) {
     const panel = document.getElementById('bookmarkPanel');
     const btn = document.getElementById('toggleBookmarkPanelBtn');
@@ -1660,66 +1868,22 @@ function toggleBookmarkPanel(forceOpen) {
     btn.classList.toggle('active', willOpen);
     if (willOpen) renderBookmarkPanel();
 }
+
 function eraseAllBookmarks() {
-    if (!bookmarkPositions.length) { alert('No bookmark positions to erase.'); return; }
     if (!confirm('Erase all saved bookmark positions?')) return;
     bookmarkPositions = [];
     saveBookmarks();
     renderBookmarkPanel();
-    alert('All bookmark positions erased.');
-}
-
-function selectDonationMethod(method) {
-    selectedDonationMethod = method;
-    document.querySelectorAll('#donationMethods .donate-method-btn').forEach(btn => {
-        btn.classList.toggle('active', btn.dataset.method === method);
-    });
-    updateDonateNowButtonText();
-}
-
-function selectDonationAmount(amount) {
-    selectedDonationAmount = Number(amount) || 50;
-    const disp = document.getElementById('donationAmountDisplay');
-    if (disp) disp.textContent = '৳' + selectedDonationAmount;
-    updateDonateNowButtonText();
-}
-
-function updateDonateNowButtonText() {
-    const btn = document.getElementById('donateNowBtn');
-    if (!btn) return;
-    const methodNames = { 'bkash': 'bKash', 'nagad': 'Nagad', 'rocket': 'Rocket' };
-    btn.textContent = `Go to Donate ৳${selectedDonationAmount} via ${methodNames[selectedDonationMethod] || selectedDonationMethod}`;
-}
-
-function getDonationUrl(method, amount) {
-    const amt = encodeURIComponent(String(amount));
-    const num = encodeURIComponent(DONATION_NUMBER);
-    if (method === 'bkash')  return 'bkash://send-money?number=' + num + '&amount=' + amt;
-    if (method === 'nagad')  return 'nagad://send-money?number=' + num + '&amount=' + amt;
-    if (method === 'rocket') return 'rocket://send-money?number=' + num + '&amount=' + amt;
-    return '#';
 }
 
 function donateNow() {
     const method = selectedDonationMethod;
     const amount = selectedDonationAmount;
-    const num    = DONATION_NUMBER;
-    const mt     = { bkash:'bKash', nagad:'Nagad', rocket:'Rocket' };
-    const name   = mt[method] || method;
-
-    const deepLink = getDonationUrl(method, amount);
-    const a = document.createElement('a');
-    a.href = deepLink;
-    a.style.display = 'none';
-    document.body.appendChild(a);
-    a.click();
-    setTimeout(() => document.body.removeChild(a), 300);
-
+    const num = '01773971905';
+    const mt = { bkash:'bKash', nagad:'Nagad', rocket:'Rocket' };
+    const name = mt[method] || method;
     const info = name + '\nNumber: ' + num + '\nAmount: ৳' + amount;
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(info).catch(() => {});
-    }
-
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(info).catch(() => {});
     showDonateModal(name, num, amount);
 }
 
@@ -1769,80 +1933,72 @@ function copyToClipboard(text, btn) {
 }
 
 function initDonationWidget() {
-    const methods = document.querySelectorAll('#donationMethods .donate-method-btn');
-    methods.forEach(btn => { btn.addEventListener('click', () => selectDonationMethod(btn.dataset.method)); });
-    const slider = document.getElementById('donationSlider');
-    if (slider) {
-        slider.addEventListener('input', () => {
-            const idx = parseInt(slider.value, 10);
-            selectDonationAmount(DONATION_AMOUNTS[idx] || 50);
+    document.querySelectorAll('#donationMethods .donate-method-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            selectedDonationMethod = btn.dataset.method;
+            document.querySelectorAll('#donationMethods .donate-method-btn').forEach(b => b.classList.toggle('active', b === btn));
         });
-    }
-    const btn = document.getElementById('donateNowBtn');
-    if (btn) btn.addEventListener('click', donateNow);
-    updateDonateNowButtonText();
+    });
+    document.getElementById('donationSlider')?.addEventListener('input', (e) => {
+        selectedDonationAmount = [30,50,80,130,350,530,850,1030,1111,1300,1905,1911,1926,1937,1947,1952,1954,1966,1969,1971,1975,1991,1996,2001,2008,2013,2019,2024,2035,2558,2885,2999,3558][e.target.value] || 50;
+        document.getElementById('donationAmountDisplay').textContent = '৳' + selectedDonationAmount;
+    });
+    document.getElementById('donateNowBtn')?.addEventListener('click', donateNow);
 }
 
-function performSearch() {
+document.addEventListener('keydown', (e) => {
+    const tag = document.activeElement.tagName;
+    if (tag === 'INPUT' || tag === 'SELECT' || tag === 'TEXTAREA') return;
+    if (e.key === '1') { setHighlightMode('red'); e.preventDefault(); return; }
+    if (e.key === '2') { setHighlightMode('green'); e.preventDefault(); return; }
+    if (e.key === '3') { setHighlightMode('indigo'); e.preventDefault(); return; }
+    if (e.key === '4') { setHighlightMode('yellow'); e.preventDefault(); return; }
+    if (e.key === '0') { setHighlightMode('off'); e.preventDefault(); return; }
+    if (e.key === 'f' || e.key === 'F') { document.getElementById('searchInput').focus(); e.preventDefault(); }
+    if (e.key === 't' || e.key === 'T') toggleTheme();
+    if (e.key === 'e' || e.key === 'E') toggleAllSets();
+    if (e.key === 'g' || e.key === 'G') { toggleFloatingBar(); e.preventDefault(); return; }
+    if (e.key === 'b' || e.key === 'B') { addBookmarkPosition(); e.preventDefault(); return; }
+    if (e.key === 'v' || e.key === 'V') { goToPreviousBookmark(); e.preventDefault(); return; }
+    if (e.key === 'n' || e.key === 'N') { goToNextBookmark(); e.preventDefault(); return; }
+    if (e.key === 'p' || e.key === 'P') { toggleBookmarkPanel(); e.preventDefault(); return; }
+    if (e.key === 'u' || e.key === 'U') toggleUnderlineMode();
+    if (e.key === 'Escape') closeDuaModal();
+});
+
+function searchHighlights() {
     const term = document.getElementById('searchInput').value.trim().toLowerCase();
-    const sets = document.querySelectorAll('.set-card');
-    const nav = document.getElementById('searchNav');
-    searchMatches = []; currentSearchMatchIndex = -1;
+    const cards = document.querySelectorAll('.qs-card');
+    
     if (!term) {
-        sets.forEach(s => { s.style.display = 'block'; s.querySelectorAll('.qs-card').forEach(q => q.style.display = 'block'); });
-        if (nav) nav.style.display = 'none'; return;
+        cards.forEach(card => card.style.display = 'block');
+        return;
     }
-    sets.forEach(s => {
-        let has = s.querySelector('.set-header').textContent.toLowerCase().includes(term);
-        s.querySelectorAll('.qs-card').forEach(q => {
-            if (q.textContent.toLowerCase().includes(term)) { q.style.display = 'block'; q.classList.add('open'); has = true; searchMatches.push(q); }
-            else { q.style.display = 'none'; q.classList.remove('open'); }
-        });
-        s.style.display = has ? 'block' : 'none';
-        if(has) { s.classList.add('open'); const i = s.querySelector('.toggle-icon'); if(i) i.innerHTML = '▼'; }
-    });
-    if (searchMatches.length) {
-        if(nav) nav.style.display = 'flex'; currentSearchMatchIndex = 0;
-        updateSearchNav(); scrollToSearchMatch(0);
-    } else if(nav) nav.style.display = 'none';
-}
-
-function updateSearchNav() {
-    const c = document.getElementById('searchCount');
-    if (c) c.textContent = `${currentSearchMatchIndex + 1}/${searchMatches.length}`;
-}
-
-function scrollToSearchMatch(i) {
-    if (i<0 || i>=searchMatches.length) return;
-    const t = searchMatches[i]; t.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    t.style.transition = 'box-shadow 0.3s'; t.style.boxShadow = '0 0 20px var(--accent-color)';
-    setTimeout(() => { t.style.boxShadow = ''; }, 1000);
-}
-
-function nextSearchMatch() { if(!searchMatches.length) return; currentSearchMatchIndex = (currentSearchMatchIndex+1)%searchMatches.length; updateSearchNav(); scrollToSearchMatch(currentSearchMatchIndex); }
-function prevSearchMatch() { if(!searchMatches.length) return; currentSearchMatchIndex = (currentSearchMatchIndex-1+searchMatches.length)%searchMatches.length; updateSearchNav(); scrollToSearchMatch(currentSearchMatchIndex); }
-function searchHighlights() { performSearch(); }
-
-function normalizeMarkdownMath(m) {
-    if (!m) return m;
-    let n = m.replace(/\$\$([\s\S]*?)\$\$/g, (_, e) => `\\[${e.trim()}\\]`);
-    n = n.replace(/\$([^$]+?)\$/g, (_, e) => (e.includes('\n') || (/^\d/.test(e) && e.length < 2)) ? `$${e}$` : `\\(${e.trim()}\\)`);
-    return n;
-}
-
-function promoteComplexInlineMath(m) {
-    if (!m) return m;
-    return m.replace(/\\\(([^\n]+?)\\\)/g, (f, e) => {
-        const x = e.trim();
-        const c = /\\frac|\\sum|\\int|\\prod|\\lim|\\log|\\ln|\\sqrt|\\left|\\right|\^|_|=|\\cdot|\\times|\\Delta|\\mu|\\sigma|[*/]/;
-        return (x.length > 25 || c.test(x)) ? `\\[${x}\\]` : f;
+    
+    cards.forEach(card => {
+        const text = card.textContent.toLowerCase();
+        if (text.includes(term)) {
+            card.style.display = 'block';
+            card.classList.add('open');
+            if (card.parentElement && card.parentElement.classList.contains('set-card')) {
+                card.parentElement.classList.add('open');
+            }
+        } else {
+            card.style.display = 'none';
+            card.classList.remove('open');
+        }
     });
 }
 
+// Initial configuration
+document.getElementById('searchInput').addEventListener('input', searchHighlights);
+marked.setOptions({ gfm: true, breaks: true });
+
+// Load saved settings
 window.onload = () => {
     const spinner = document.getElementById('loadingSpinner');
     try {
-        localStorage.setItem('sm-last-visited', 'geb331');
+        localStorage.setItem('sm-last-visited', 'geb334');
         const savedTheme = localStorage.getItem('sm-theme');
         if (savedTheme) {
             document.documentElement.setAttribute('data-theme', savedTheme);
@@ -1864,24 +2020,20 @@ window.onload = () => {
             currentLang = savedLang;
             document.getElementById('languageSelect').value = currentLang;
         }
-        console.log('[GEB331 DEBUG] About to call renderSets. setsData exists?', typeof setsData !== 'undefined', 'setsData is array?', Array.isArray(setsData), 'setsData length?', setsData ? setsData.length : 'N/A');
+        console.log('[GEB334 DEBUG] About to call renderSets. setsData exists?', typeof setsData !== 'undefined', 'setsData is array?', Array.isArray(setsData), 'setsData length?', setsData ? setsData.length : 'N/A');
         if (typeof renderSets === 'function') {
-            console.log('[GEB331 DEBUG] renderSets function found, calling it now');
+            console.log('[GEB334 DEBUG] renderSets function found, calling it now');
             renderSets();
-            console.log('[GEB331 DEBUG] renderSets completed');
+            console.log('[GEB334 DEBUG] renderSets completed');
         } else {
-            console.error('[GEB331 DEBUG] renderSets function NOT found!');
+            console.error('[GEB334 DEBUG] renderSets function NOT found!');
         }
         if (typeof buildQuickNav === 'function') buildQuickNav();
         requestAnimationFrame(addCopyButtons);
         if (typeof updateProgressBar === 'function') updateProgressBar();
+        if (typeof renderBookmarkPanel === 'function') renderBookmarkPanel();
         if (typeof initDonationWidget === 'function') initDonationWidget();
-        
-        // Add bottom nav to page
-        const bottomNav = document.getElementById('quickNav');
-        if (bottomNav && !bottomNav.parentElement) {
-            document.body.appendChild(bottomNav);
-        }
+        setTimeout(() => showFloatbarTip(), 250);
     } catch (e) {
         console.error('Error during page initialization:', e);
     } finally {
@@ -1894,18 +2046,18 @@ window.onload = () => {
     }
 };
 </script>
-
-<!-- Bottom Navigation Bar (Fixed at bottom) -->
-<div class="quick-nav" id="quickNav" style="position: fixed; bottom: 0; left: 0; right: 0; z-index: 99;">
-    <div id="progressBanner" class="progress-banner" style="display: none;">
-        <div id="progressBannerFill" class="progress-banner-fill"></div>
-        <div id="progressBannerTitle" class="progress-banner-title"></div>
-    </div>
-</div>
-
-<script src="data/universal_controls.js"></script>
+    <script src="data/universal_controls.js"></script>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['\\(', '\\)']],
+                displayMath: [['\\[', '\\]']]
+            },
+            chtml: { matchFontHeight: false }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" defer></script>
     <!-- Admin Powers: Live Editing -->
     <script src="admin-powers.js"></script>
-
 </body>
 </html>

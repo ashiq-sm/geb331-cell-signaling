@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <meta name="description" content="GEB 331 Cell Signaling — Bilingual interactive study notebook by SM Ashikur Rahman. Smart Mix Bengali/English, search, PDF export.">
-    <meta property="og:title" content="GEB 331 · Cell Signaling | SM NextGen BioNotes">
-    <meta property="og:description" content="Bilingual interactive exam prep for GEB 331 Cell Signaling.">
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📘</text></svg>">
-    <title>GEB 331 · Complete Cell Signaling Study (Ben+Eng)</title>
+    <meta name="description" content="GEB 337 Recombinant DNA Technology — Bilingual interactive study notebook by SM Ashikur Rahman. Smart Mix Bengali/English, search, PDF export.">
+    <meta property="og:title" content="GEB 337 · Recombinant DNA Technology | SM NextGen BioNotes">
+    <meta property="og:description" content="Bilingual interactive exam prep for GEB 337 Recombinant DNA Technology.">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔬</text></svg>">
+    <title>GEB 337 · Recombinant DNA Tech Study (Ben+Eng)</title>
     <!-- Google Fonts for Eye-Saving Typography -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Noto+Sans+Bengali:wght@400;700&family=Outfit:wght@400;700&family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -66,7 +66,7 @@
             padding: 100px 1.5rem 70px 1.5rem;
             scroll-behavior: smooth;
         }
-        .container { max-width: 1300px; margin: 0 auto; transition: max-width 0.4s ease; padding-bottom: 0; }
+        .container { max-width: 1300px; margin: 0 auto; transition: max-width 0.4s ease; }
         
         .bismillah {
             text-align: center;
@@ -349,7 +349,7 @@
         }
         .nav-pill:hover { background: var(--accent-color); color: white; transform: translateY(-2px); }
         .nav-pill.active { background: var(--accent-color); color: white; transform: translateY(-2px); }
-        .search-bar { margin-bottom: 1rem; display: flex; gap: 0.5rem; }
+        .search-bar { margin-bottom: 1.6rem; display: flex; gap: 0.5rem; }
         #searchInput {
             flex: 1; padding: 0.7rem 1rem; border-radius: 3rem; border: 1px solid var(--border-color); 
             background: var(--card-bg); color: var(--text-color); font-size: 0.9rem;
@@ -457,7 +457,7 @@
             position: absolute;
             top: 0; left: 0;
             width: 100%; height: 100%;
-            display: none; /* Hidden by default, shown on error */
+            display: none;
             align-items: center;
             justify-content: center;
             background: linear-gradient(135deg, var(--accent-color), #065f46);
@@ -654,27 +654,16 @@
         }
         .expand-all-btn:hover { background: var(--accent-color); opacity: 0.8; transform: scale(1.05); }
 
-
-
-        /* Progress Bar */
         .progress-wrap { margin-top: 0.8rem; height: 5px; border-radius: 20px; background: rgba(255,255,255,0.18); overflow: hidden; }
         .progress-fill { height: 100%; width: 0%; border-radius: 20px; background: #ffd966; transition: width 0.6s ease; }
         .progress-label { font-size: 0.72rem; color: rgba(255,255,255,0.6); margin-top: 4px; }
-
-        /* Keyboard shortcuts */
         .shortcuts-bar { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 6px; font-size: 0.68rem; color: rgba(255,255,255,0.45); align-items: center; }
         .shortcuts-bar kbd { background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2); border-radius: 4px; padding: 1px 6px; font-size: 0.65rem; font-family: monospace; }
-
-        /* Reading time badge */
         .read-time { font-size: 0.7rem; color: var(--accent-color); font-weight: 700; opacity: 0.85; }
         .done-badge { font-size: 0.65rem; color: #34d399; font-weight: 700; }
-
-        /* Copy button */
         .markdown-body pre { position: relative; }
         .copy-btn { position: absolute; top: 8px; right: 8px; background: rgba(255,255,255,0.12); border: none; color: rgba(255,255,255,0.75); padding: 3px 10px; border-radius: 6px; font-size: 0.7rem; cursor: pointer; font-family: inherit; transition: 0.2s; }
         .copy-btn:hover { background: rgba(255,255,255,0.28); }
-
-        /* Footer social inside card */
         .footer-social-header { font-size: 1rem; font-weight: 700; color: rgba(255,255,255,0.72); letter-spacing: 0.5px; margin-bottom: 1.4rem; }
         .footer-divider { width: 72px; height: 2px; margin: 2rem auto; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.22), transparent); border-radius: 2px; }
 
@@ -790,20 +779,15 @@
     </div>
 
     <div class="header">
-        <h1>📘 GEB 331 — Cell Signaling <span>Bilingual Interactive Note</span></h1>
+        <h1>🔬 GEB 337 — Recombinant DNA Technology <span>Bilingual Interactive Note</span></h1>
         <div class="controls">
             <button class="control-btn" onclick="window.location.href='/'" style="font-weight: bold;">🏠 Home Hub</button>
-            <select class="control-btn" style="background: #fff3cd !important; color: #856404 !important; font-weight: bold; border-color: #ffeeba;">
-                <option value="3/2" selected>🎓 Semester 3/2</option>
-                <option value="4/1">🎓 Semester 4/1 (Coming Soon)</option>
-                <option value="4/2">🎓 Semester 4/2 (Coming Soon)</option>
-            </select>
             <select class="control-btn live-btn" id="courseSelect" onchange="if(this.value !== '#') window.open(this.value, '_self')" style="background: #e4f0e4 !important; color: #1a4d1a !important;" title="Switch Course">
-                <option value="GEB331_MASTER_EXAM_PREP_INTERACTIVE_v4_FINAL.html" selected>📘 GEB 331: Cell Signaling</option>
-                <option value="GEB335_FERMENTATION_TECH_INTERACTIVE.html">🔬 GEB 335: Fermentation Technology</option>
+                <option value="GEB331_MASTER_EXAM_PREP_INTERACTIVE_v4_FINAL.html">📘 GEB 331: Cell Signaling</option>
+                <option value="GEB337_RDNA_TECH_INTERACTIVE.html" selected>🔬 GEB 337: Fermentation Technology</option>
                 <option value="GEB341_AQUACULTURE_INTERACTIVE.html">🐟 GEB 341: Aquaculture & Fish Genetics</option>
                 <option value="GEB343_BIOPROCESS_INTERACTIVE_v1.html">⚙️ GEB 343: Bioprocess Engineering</option>
-                <option value="GEB337_RDNA_TECH_INTERACTIVE.html">🧬 GEB 337: Recombinant DNA Technology</option>
+                <option value="GEB337_RDNA_TECH_INTERACTIVE.html" selected>🧬 GEB 337: Recombinant DNA Technology</option>
                 <option value="GEB334_ONCOLOGY_VIROLOGY_INTERACTIVE.html">🦠 GEB 334: Oncology and Virology</option>
                 <option value="#">⚡ GEB 336: Bioenergetics (Soon)</option>
             </select>
@@ -843,7 +827,7 @@
             <span><kbd>P</kbd> Bookmark Panel</span>
             <span><kbd>Esc</kbd> Close modal</span>
         </div>
-        </div>
+    </div>
 
     <div class="mission-section">
         <div class="mission-text">
@@ -925,13 +909,19 @@
     </div>
     </div>
 
+    <div class="quick-nav" id="quickNav" style="position: fixed; bottom: 0; left: 0; right: 0; z-index: 99;">
+        <div id="progressBanner" class="progress-banner">
+            <div id="progressBannerFill" class="progress-banner-fill"></div>
+            <div id="progressBannerTitle" class="progress-banner-title"></div>
+        </div>
+    </div>
+    <div id="setsContainer"></div>
+    
     <!-- Loading Spinner -->
     <div id="loadingSpinner">
         <div class="spinner"></div>
         <div class="loading-text">Loading course content...</div>
     </div>
-    
-    <div id="setsContainer"></div>
     
     <div class="footer">
         <div class="author-card">
@@ -954,7 +944,7 @@
                 <div id="profileFallback" class="profile-fallback">SM</div>
             </div>
             <div class="author-name">SM Ashikur Rahman</div>
-            <div class="author-title">Developed with 💚 for GEB 331 | Cell Signaling</div>
+            <div class="author-title">Developed with 💚 for GEB 337 | Recombinant DNA Technology</div>
         </div>
 
         <div class="donation-card" id="donationCard">
@@ -985,32 +975,18 @@
 </div>
 
 <!-- Load external data -->
-<script src="data/3_2/geb331_data.js"></script>
-<script src="data/3_2/geb331_data_part2.js"></script>
-<script src="data/3_2/geb331_data_part3.js"></script>
-<script src="data/3_2/geb331_data_part4.js"></script>
-<script>
-    window.MathJax = {
-        tex: {
-            inlineMath: [['\\(', '\\)']],
-            displayMath: [['\\[', '\\]']]
-        },
-        chtml: { matchFontHeight: false }
-    };
-</script>
-<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" defer></script>
+<script src="data/3_2/geb337_rDNA.js"></script>
 <script>
 let currentFontSize = 16;
 let currentLang = 'en';
 let allExpanded = false;
 let highlightMode = 'background';
 let currentHighlightColor = null;
-const setsData = geb331_sets;
+const setsData = geb337_sets;
 
-// Progress tracking
-const PROGRESS_KEY = 'sm-progress-geb331';
+const PROGRESS_KEY = 'sm-progress-geb337';
 let visitedSets = new Set(JSON.parse(localStorage.getItem(PROGRESS_KEY) || '[]'));
-const BOOKMARK_STORE_KEY = 'sm-bookmarks-geb331-v1';
+const BOOKMARK_STORE_KEY = 'sm-bookmarks-geb337-v1';
 let bookmarkPositions = JSON.parse(localStorage.getItem(BOOKMARK_STORE_KEY) || '[]');
 
 function updateProgressBar() {
@@ -1074,10 +1050,6 @@ function openDuaModal() {
     document.getElementById('duaModal').classList.add('active');
 }
 
-function closeDuaModal() {
-    document.getElementById('duaModal').classList.remove('active');
-}
-
 let activeSetId = null;
 
 function updateBannerTitle(id) {
@@ -1116,6 +1088,10 @@ window.addEventListener('scroll', () => {
     }
 });
 
+function closeDuaModal() {
+    document.getElementById('duaModal').classList.remove('active');
+}
+
 function toggleAllSets() {
     allExpanded = !allExpanded;
     const cards = document.querySelectorAll('.set-card');
@@ -1144,7 +1120,7 @@ function toggleAllSets() {
     btn.innerHTML = allExpanded ? '📁 Collapse All' : '📂 Expand All';
     
     document.querySelectorAll('.local-toggle-btn').forEach(lbtn => {
-        lbtn.innerHTML = allExpanded ? ' Hide All' : '💡 Show All';
+        lbtn.innerHTML = allExpanded ? '💡 Hide All' : '💡 Show All';
     });
 }
 
@@ -1181,7 +1157,7 @@ function toggleLocalQS(setId, event) {
         else qs.classList.remove('open');
     });
     
-    btn.innerHTML = isExpanding ? ' Hide All' : '💡 Show All';
+    btn.innerHTML = isExpanding ? '💡 Hide All' : '💡 Show All';
 }
 
 function exportToPDF() {
@@ -1192,7 +1168,41 @@ function exportToPDF() {
     
     allExpanded = true;
     document.getElementById('toggleAllBtn').innerHTML = '📁 Collapse All';
-    window.print();
+    
+    setTimeout(() => {
+        window.print();
+    }, 500);
+}
+
+function toggleTheme() {
+    const root = document.documentElement;
+    const theme = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', theme);
+    localStorage.setItem('sm-theme', theme);
+}
+
+function changeFont(delta) {
+    currentFontSize = Math.max(12, Math.min(24, currentFontSize + delta));
+    document.documentElement.style.setProperty('--font-size-base', currentFontSize + 'px');
+    localStorage.setItem('fontSize', currentFontSize);
+}
+
+function applyFontFamily() {
+    const font = document.getElementById('fontFamily').value;
+    document.documentElement.style.setProperty('--body-font', font);
+    localStorage.setItem('bodyFont', font);
+}
+
+function applyViewMode() {
+    const mode = document.getElementById('viewMode').value;
+    const container = document.querySelector('.container');
+    if(mode === 'mobile') {
+        container.style.maxWidth = '450px';
+    } else if(mode === 'desktop') {
+        container.style.maxWidth = '1300px';
+    } else {
+        container.style.maxWidth = '100%';
+    }
 }
 
 function getLocalizedSetMarkdown(item) {
@@ -1207,45 +1217,46 @@ function cleanSetIntroHeading(md, item) {
 }
 
 function renderSets() {
+    console.log('renderSets called. setsData:', setsData ? setsData.length + ' sets' : 'undefined');
     const container = document.getElementById('setsContainer');
-    container.innerHTML = '';
-    
-    // Validate inputs
-    console.log('renderSets called. setsData:', setsData ? (Array.isArray(setsData) ? setsData.length + ' sets' : 'not an array') : 'undefined');
+    const spinner = document.getElementById('loadingSpinner');
     
     if (!setsData || !Array.isArray(setsData)) {
-        const errorMsg = 'Error: Course data not loaded. setsData is ' + (setsData ? 'not an array' : 'undefined');
-        console.error(errorMsg);
-        container.innerHTML = `<div style="padding:2rem; color:red; background:#ffe6e6; border:1px solid red; border-radius:5px;">${errorMsg}</div>`;
-        const spinner = document.getElementById('loadingSpinner');
-        if (spinner) setTimeout(() => spinner.classList.add('hidden'), 50);
+        console.error('ERROR: setsData not found or not an array!', setsData);
+        if (spinner) spinner.classList.add('hidden');
+        container.innerHTML = '<div style="padding: 2rem; color: red;">Error: Course data not loaded. Check browser console.</div>';
         return;
     }
     
-    // Check if marked.js is loaded
     if (!marked) {
-        const errorMsg = 'Error: Markdown parser (marked.js) failed to load';
-        console.error(errorMsg);
-        container.innerHTML = `<div style="padding:2rem; color:red; background:#ffe6e6; border:1px solid red; border-radius:5px;">${errorMsg}</div>`;
-        const spinner = document.getElementById('loadingSpinner');
-        if (spinner) setTimeout(() => spinner.classList.add('hidden'), 50);
+        console.error('ERROR: marked.js not loaded!');
+        if (spinner) spinner.classList.add('hidden');
+        container.innerHTML = '<div style="padding: 2rem; color: red;">Error: Markdown renderer not loaded. Please refresh page.</div>';
         return;
     }
+    
+    container.innerHTML = '';
     
     let index = 0;
     function renderNext() {
-        if (index >= setsData.length) {
-            setupNavObserver();
-            if (typeof restoreHighlightsFromStorage === 'function') restoreHighlightsFromStorage();
-            if (window.MathJax && MathJax.typesetPromise) {
-                MathJax.typesetPromise().catch(err => console.error('MathJax error:', err));
-            }
-            return;
-        }
-
         try {
+            if (index >= setsData.length) {
+                console.log('All sets rendered successfully');
+                setupNavObserver();
+                if (typeof restoreHighlightsFromStorage === 'function') restoreHighlightsFromStorage();
+                if (typeof enhanceResponsiveTables === 'function') enhanceResponsiveTables(container);
+                if (window.MathJax && MathJax.typesetPromise) {
+                    MathJax.typesetPromise().catch(err => console.error('MathJax error:', err));
+                }
+                // Hide spinner after rendering complete
+                if (spinner) {
+                    setTimeout(() => spinner.classList.add('hidden'), 50);
+                }
+                return;
+            }
+
             const item = setsData[index];
-            console.log('Rendering set ' + (index + 1) + '/' + setsData.length + ': ' + (item?.id || 'unknown'));
+            console.log(`Rendering set ${index + 1}/${setsData.length}: ${item?.id}`);
             
             const card = document.createElement('div');
             card.className = 'set-card';
@@ -1318,16 +1329,17 @@ function renderSets() {
                 visitedSets.add(item.id); 
                 activeSetId = item.id; 
             }
-        } catch (err) {
-            console.error('Error rendering set ' + index + ':', err);
-            container.innerHTML += `<div style="padding:1rem; color:red; background:#ffe6e6; border:1px solid red; border-radius:5px; margin:1rem 0;">Error: Failed to render set ${index + 1}: ${err.message}</div>`;
-        }
 
-        index++;
-        requestAnimationFrame(renderNext);
+            index++;
+            requestAnimationFrame(renderNext);
+        } catch (e) {
+            console.error(`Error rendering set ${index}:`, e);
+            if (spinner) spinner.classList.add('hidden');
+            container.innerHTML += `<div style="padding: 1rem; background: #fee; border: 1px solid #fcc; border-radius: 8px; margin: 1rem;">Error rendering set ${index}: ${e.message}</div>`;
+        }
     }
     requestAnimationFrame(renderNext);
-};
+}
 
 function toggleSet(header) {
     const card = header.parentElement;
@@ -1358,30 +1370,50 @@ function buildQuickNav() {
     });
 }
 
-document.addEventListener('keydown', (e) => {
-    const tag = document.activeElement.tagName;
-    if (tag === 'INPUT' || tag === 'SELECT' || tag === 'TEXTAREA') return;
-    
-    if (e.key === '1') { setHighlightMode('red'); e.preventDefault(); return; }
-    if (e.key === '2') { setHighlightMode('green'); e.preventDefault(); return; }
-    if (e.key === '3') { setHighlightMode('indigo'); e.preventDefault(); return; }
-    if (e.key === '4') { setHighlightMode('yellow'); e.preventDefault(); return; }
-    if (e.key === '0') { setHighlightMode('off'); e.preventDefault(); return; }
-    
-    if (e.key === 'f' || e.key === 'F') { document.getElementById('searchInput').focus(); e.preventDefault(); }
-    if (e.key === 't' || e.key === 'T') toggleTheme();
-    if (e.key === 'e' || e.key === 'E') toggleAllSets();
-    if (e.key === 'g' || e.key === 'G') { toggleFloatingBar(); e.preventDefault(); return; }
-    if (e.key === 'b' || e.key === 'B') { addBookmarkPosition(); e.preventDefault(); return; }
-    if (e.key === 'v' || e.key === 'V') { goToPreviousBookmark(); e.preventDefault(); return; }
-    if (e.key === 'n' || e.key === 'N') { goToNextBookmark(); e.preventDefault(); return; }
-    if (e.key === 'p' || e.key === 'P') { toggleBookmarkPanel(); e.preventDefault(); return; }
-    if (e.key === 'u' || e.key === 'U') toggleUnderlineMode();
-    if (e.key === 'Escape') closeDuaModal();
-});
+/* ═══════════════════════════════════════════════════════════ */
+/* TEXT HIGHLIGHTING & UNDERLINING FUNCTIONALITY */
+/* ═══════════════════════════════════════════════════════════ */
 
-let searchMatches = [];
-let currentSearchMatchIndex = -1;
+function toggleUnderlineMode() {
+    highlightMode = highlightMode === 'background' ? 'underline' : 'background';
+    localStorage.setItem('highlightMode', highlightMode);
+    const btn = document.getElementById('underlineModeBtn');
+    if (highlightMode === 'underline') {
+        btn.textContent = '📏 Underline';
+        btn.classList.add('underline-mode-active');
+    } else {
+        btn.textContent = '📋 Highlight';
+        btn.classList.remove('underline-mode-active');
+    }
+}
+
+function highlightSelected(color) {
+    const selection = window.getSelection();
+    if (!selection.toString().length) {
+        alert('Please select text first to highlight');
+        return;
+    }
+    
+    currentHighlightColor = color;
+    const range = selection.getRangeAt(0);
+    const span = document.createElement('span');
+    
+    if (highlightMode === 'background') {
+        span.className = 'highlight-' + color;
+    } else {
+        span.className = 'highlight-underline underline-' + color;
+    }
+    
+    removeHighlightsInRange(range);
+    
+    span.appendChild(range.extractContents());
+    range.insertNode(span);
+    selection.removeAllRanges();
+    
+    localStorage.setItem('lastHighlightColor', color);
+}
+
+let isHighlightingEnabled = true;
 
 function setHighlightMode(mode) {
     if (mode === 'off') {
@@ -1510,6 +1542,10 @@ window.addEventListener('load', () => {
     setupHighlightContextMenu();
 }, { once: true });
 
+/* ═══════════════════════════════════════════════════════════ */
+/* HIGHLIGHT CONTEXT MENU FUNCTIONALITY */
+/* ═══════════════════════════════════════════════════════════ */
+
 let currentHighlightElement = null;
 
 function setupHighlightContextMenu() {
@@ -1606,7 +1642,7 @@ function getBookmarkLabel() {
         const rect = card.getBoundingClientRect();
         return rect.top <= 160 && rect.bottom > 160;
     });
-    const title = active?.querySelector('.set-header-title')?.textContent?.trim();
+    const title = active?.querySelector('.set-title')?.textContent?.trim();
     return title || `Scroll Y: ${Math.round(window.scrollY)}px`;
 }
 function renderBookmarkPanel() {
@@ -1668,6 +1704,71 @@ function eraseAllBookmarks() {
     renderBookmarkPanel();
     alert('All bookmark positions erased.');
 }
+
+document.addEventListener('keydown', (e) => {
+    const tag = document.activeElement.tagName;
+    if (tag === 'INPUT' || tag === 'SELECT' || tag === 'TEXTAREA') return;
+    
+    if (e.key === '1') { setHighlightMode('red'); e.preventDefault(); return; }
+    if (e.key === '2') { setHighlightMode('green'); e.preventDefault(); return; }
+    if (e.key === '3') { setHighlightMode('indigo'); e.preventDefault(); return; }
+    if (e.key === '4') { setHighlightMode('yellow'); e.preventDefault(); return; }
+    if (e.key === '0') { setHighlightMode('off'); e.preventDefault(); return; }
+    
+    if (e.key === 'f' || e.key === 'F') { document.getElementById('searchInput').focus(); e.preventDefault(); }
+    if (e.key === 't' || e.key === 'T') toggleTheme();
+    if (e.key === 'e' || e.key === 'E') toggleAllSets();
+    if (e.key === 'g' || e.key === 'G') { toggleFloatingBar(); e.preventDefault(); return; }
+    if (e.key === 'b' || e.key === 'B') { addBookmarkPosition(); e.preventDefault(); return; }
+    if (e.key === 'v' || e.key === 'V') { goToPreviousBookmark(); e.preventDefault(); return; }
+    if (e.key === 'n' || e.key === 'N') { goToNextBookmark(); e.preventDefault(); return; }
+    if (e.key === 'p' || e.key === 'P') { toggleBookmarkPanel(); e.preventDefault(); return; }
+    if (e.key === 'u' || e.key === 'U') toggleUnderlineMode();
+    if (e.key === 'Escape') closeDuaModal();
+});
+
+let searchMatches = [];
+let currentSearchMatchIndex = -1;
+
+function performSearch() {
+    const term = document.getElementById('searchInput').value.trim().toLowerCase();
+    const sets = document.querySelectorAll('.set-card');
+    const nav = document.getElementById('searchNav');
+    searchMatches = []; currentSearchMatchIndex = -1;
+    if (!term) {
+        sets.forEach(s => { s.style.display = 'block'; s.querySelectorAll('.qs-card').forEach(q => q.style.display = 'block'); });
+        if (nav) nav.style.display = 'none'; return;
+    }
+    sets.forEach(s => {
+        let has = s.querySelector('.set-header').textContent.toLowerCase().includes(term);
+        s.querySelectorAll('.qs-card').forEach(q => {
+            if (q.textContent.toLowerCase().includes(term)) { q.style.display = 'block'; q.classList.add('open'); has = true; searchMatches.push(q); }
+            else { q.style.display = 'none'; q.classList.remove('open'); }
+        });
+        s.style.display = has ? 'block' : 'none';
+        if(has) { s.classList.add('open'); const i = s.querySelector('.toggle-icon'); if(i) i.innerHTML = '▼'; }
+    });
+    if (searchMatches.length) {
+        if(nav) nav.style.display = 'flex'; currentSearchMatchIndex = 0;
+        updateSearchNav(); scrollToSearchMatch(0);
+    } else if(nav) nav.style.display = 'none';
+}
+
+function updateSearchNav() {
+    const c = document.getElementById('searchCount');
+    if (c) c.textContent = `${currentSearchMatchIndex + 1}/${searchMatches.length}`;
+}
+
+function scrollToSearchMatch(i) {
+    if (i<0 || i>=searchMatches.length) return;
+    const t = searchMatches[i]; t.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    t.style.transition = 'box-shadow 0.3s'; t.style.boxShadow = '0 0 20px var(--accent-color)';
+    setTimeout(() => { t.style.boxShadow = ''; }, 1000);
+}
+
+function nextSearchMatch() { if(!searchMatches.length) return; currentSearchMatchIndex = (currentSearchMatchIndex+1)%searchMatches.length; updateSearchNav(); scrollToSearchMatch(currentSearchMatchIndex); }
+function prevSearchMatch() { if(!searchMatches.length) return; currentSearchMatchIndex = (currentSearchMatchIndex-1+searchMatches.length)%searchMatches.length; updateSearchNav(); scrollToSearchMatch(currentSearchMatchIndex); }
+function searchHighlights() { performSearch(); }
 
 function selectDonationMethod(method) {
     selectedDonationMethod = method;
@@ -1783,30 +1884,6 @@ function initDonationWidget() {
     updateDonateNowButtonText();
 }
 
-function performSearch() {
-    const term = document.getElementById('searchInput').value.trim().toLowerCase();
-    const sets = document.querySelectorAll('.set-card');
-    const nav = document.getElementById('searchNav');
-    searchMatches = []; currentSearchMatchIndex = -1;
-    if (!term) {
-        sets.forEach(s => { s.style.display = 'block'; s.querySelectorAll('.qs-card').forEach(q => q.style.display = 'block'); });
-        if (nav) nav.style.display = 'none'; return;
-    }
-    sets.forEach(s => {
-        let has = s.querySelector('.set-header').textContent.toLowerCase().includes(term);
-        s.querySelectorAll('.qs-card').forEach(q => {
-            if (q.textContent.toLowerCase().includes(term)) { q.style.display = 'block'; q.classList.add('open'); has = true; searchMatches.push(q); }
-            else { q.style.display = 'none'; q.classList.remove('open'); }
-        });
-        s.style.display = has ? 'block' : 'none';
-        if(has) { s.classList.add('open'); const i = s.querySelector('.toggle-icon'); if(i) i.innerHTML = '▼'; }
-    });
-    if (searchMatches.length) {
-        if(nav) nav.style.display = 'flex'; currentSearchMatchIndex = 0;
-        updateSearchNav(); scrollToSearchMatch(0);
-    } else if(nav) nav.style.display = 'none';
-}
-
 function updateSearchNav() {
     const c = document.getElementById('searchCount');
     if (c) c.textContent = `${currentSearchMatchIndex + 1}/${searchMatches.length}`;
@@ -1842,7 +1919,7 @@ function promoteComplexInlineMath(m) {
 window.onload = () => {
     const spinner = document.getElementById('loadingSpinner');
     try {
-        localStorage.setItem('sm-last-visited', 'geb331');
+        localStorage.setItem('sm-last-visited', 'geb337');
         const savedTheme = localStorage.getItem('sm-theme');
         if (savedTheme) {
             document.documentElement.setAttribute('data-theme', savedTheme);
@@ -1864,24 +1941,19 @@ window.onload = () => {
             currentLang = savedLang;
             document.getElementById('languageSelect').value = currentLang;
         }
-        console.log('[GEB331 DEBUG] About to call renderSets. setsData exists?', typeof setsData !== 'undefined', 'setsData is array?', Array.isArray(setsData), 'setsData length?', setsData ? setsData.length : 'N/A');
+        console.log('[GEB337 DEBUG] About to call renderSets. setsData exists?', typeof setsData !== 'undefined', 'setsData is array?', Array.isArray(setsData), 'setsData length?', setsData ? setsData.length : 'N/A');
         if (typeof renderSets === 'function') {
-            console.log('[GEB331 DEBUG] renderSets function found, calling it now');
+            console.log('[GEB337 DEBUG] renderSets function found, calling it now');
             renderSets();
-            console.log('[GEB331 DEBUG] renderSets completed');
+            console.log('[GEB337 DEBUG] renderSets completed');
         } else {
-            console.error('[GEB331 DEBUG] renderSets function NOT found!');
+            console.error('[GEB337 DEBUG] renderSets function NOT found!');
         }
         if (typeof buildQuickNav === 'function') buildQuickNav();
         requestAnimationFrame(addCopyButtons);
         if (typeof updateProgressBar === 'function') updateProgressBar();
+        if (typeof renderBookmarkPanel === 'function') renderBookmarkPanel();
         if (typeof initDonationWidget === 'function') initDonationWidget();
-        
-        // Add bottom nav to page
-        const bottomNav = document.getElementById('quickNav');
-        if (bottomNav && !bottomNav.parentElement) {
-            document.body.appendChild(bottomNav);
-        }
     } catch (e) {
         console.error('Error during page initialization:', e);
     } finally {
@@ -1894,18 +1966,18 @@ window.onload = () => {
     }
 };
 </script>
-
-<!-- Bottom Navigation Bar (Fixed at bottom) -->
-<div class="quick-nav" id="quickNav" style="position: fixed; bottom: 0; left: 0; right: 0; z-index: 99;">
-    <div id="progressBanner" class="progress-banner" style="display: none;">
-        <div id="progressBannerFill" class="progress-banner-fill"></div>
-        <div id="progressBannerTitle" class="progress-banner-title"></div>
-    </div>
-</div>
-
-<script src="data/universal_controls.js"></script>
+    <script src="data/universal_controls.js"></script>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['\\(', '\\)']],
+                displayMath: [['\\[', '\\]']]
+            },
+            chtml: { matchFontHeight: false }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" defer></script>
     <!-- Admin Powers: Live Editing -->
     <script src="admin-powers.js"></script>
-
 </body>
 </html>

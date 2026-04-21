@@ -910,6 +910,44 @@
             font-size: 0.9rem;
             box-shadow: 0 8px 18px rgba(249, 115, 22, 0.35);
         }
+        
+        /* Loading spinner */
+        #loadingSpinner {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        #loadingSpinner.hidden {
+            display: none;
+        }
+        
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid var(--nav-pill-bg);
+            border-top: 4px solid var(--accent-color);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .loading-text {
+            color: var(--text-color);
+            font-size: 0.95rem;
+            font-weight: 600;
+            text-align: center;
+        }
     </style>
     <!-- Include Marked.js for rendering beautiful Markdown to HTML -->
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
@@ -923,22 +961,17 @@
     </div>
 
     <div class="header">
-        <h1>📘 GEB 341 — Aquaculture & Fish Genetics <span>Bilingual Interactive Note</span></h1>
+        <h1>🐟 GEB 341 — Aquaculture & Fish Genetics <span>Bilingual Interactive Note</span></h1>
         <div class="controls">
             <button class="control-btn" onclick="window.location.href='/'" style="font-weight: bold;" title="Go to Home Hub">🏠 Home Hub</button>
-            <select class="control-btn" style="background: #fff3cd !important; color: #856404 !important; font-weight: bold; border-color: #ffeeba;">
-                <option value="3/2" selected>🎓 Semester 3/2</option>
-                <option value="4/1">🎓 Semester 4/1 (Coming Soon)</option>
-                <option value="4/2">🎓 Semester 4/2 (Coming Soon)</option>
-            </select>
             <select class="control-btn live-btn" id="courseSelect" onchange="if(this.value !== '#') window.open(this.value, '_self')" style="background: #e4f0e4 !important; color: #1a4d1a !important;" title="Switch Course">
                 <option value="GEB331_MASTER_EXAM_PREP_INTERACTIVE_v4_FINAL.html">📘 GEB 331: Cell Signaling</option>
-                <option value="GEB335_FERMENTATION_TECH_INTERACTIVE.html">🧪 GEB 335: Fermentation Technology</option>
-                <option value="#" selected>⚙️ GEB 341: Aquaculture & Fish Genetics (Current)</option>
-                <option value="#">🧬 rDNA Technology (Coming Soon)</option>
-                <option value="#">🦠 Onco Virology (Coming Soon)</option>
-                <option value="#">🐟 Aqua & Fish Pathology (Coming Soon)</option>
-                <option value="#">⚡ Bioenergetics (Coming Soon)</option>
+                <option value="GEB335_FERMENTATION_TECH_INTERACTIVE.html">🔬 GEB 335: Fermentation Technology</option>
+                <option value="GEB341_AQUACULTURE_INTERACTIVE.html" selected>🐟 GEB 341: Aquaculture & Fish Genetics</option>
+                <option value="GEB343_BIOPROCESS_INTERACTIVE_v1.html">⚙️ GEB 343: Bioprocess Engineering</option>
+                <option value="GEB337_RDNA_TECH_INTERACTIVE.html">🧬 GEB 337: Recombinant DNA Technology</option>
+                <option value="GEB334_ONCOLOGY_VIROLOGY_INTERACTIVE.html">🦠 GEB 334: Oncology and Virology</option>
+                <option value="#">⚡ GEB 336: Bioenergetics (Soon)</option>
             </select>
             <button class="control-btn" id="toggleMoreHeaderControls" onclick="document.getElementById('moreHeaderControls').classList.toggle('show'); this.classList.toggle('active')" style="background: var(--accent-color); color: white; border-color: var(--accent-color);">⚙️ Options</button>
             <div id="moreHeaderControls" class="header-dropdown-options">
@@ -951,17 +984,17 @@
                 <option value="'Roboto Slab', 'Noto Sans Bengali'">📖 Academic (Slab)</option>
                 <option value="system-ui">💻 System Default</option>
             </select>
-            <select class="control-btn" id="viewMode" onchange="applyViewMode()" title="Change View Mode">
+            <select class="control-btn" id="viewMode" onchange="applyViewMode()" title="Adjust width">
                 <option value="auto">🖥️ Auto View</option>
                 <option value="mobile">📱 Mobile</option>
                 <option value="desktop">💻 Desktop</option>
             </select>
-            <select class="control-btn" id="languageSelect" onchange="changeLanguage()" title="Change Language Mode">
+            <select class="control-btn" id="languageSelect" onchange="changeLanguage()" title="Language Switch">
                 <option value="bn">🌐 Smart Mix (Bilingual)</option>
                 <option value="en">🌐 Full English (Academic)</option>
             </select>
             <button class="control-btn" id="toggleAllBtn" onclick="toggleAllSets()" title="Expand or Collapse All Sets [E]">📂 Expand All</button>
-            <button class="control-btn live-btn" onclick="exportToPDF()" title="Export as PDF">🖨️ Export PDF</button>
+            <button class="control-btn live-btn" onclick="exportToPDF()" title="Print to PDF">🖨️ Export PDF</button>
             </div>
         </div>
         <div class="progress-wrap"><div class="progress-fill" id="progressFill"></div></div>
@@ -986,7 +1019,7 @@
         </div>
         <div id="print-dua" class="print-only">
             <strong>সুন্দর দোয়া (Rabbana Atina):</strong><br>
-            রাব্বানা আতিনা ফিদ দুনিয়া হাসানাতাওঁ ওয়া ফিল আখিরাতি হাসানাতাওঁ ওয়া কিনা আযাবান নার।<br>
+            রাব্বানা আতিনা ফিদ দুনিয়া হাসানাতাওঁ ওয়া ফিল আখিরাতি হাসানাতাওঁ ওয়া কিনা আযাবান নার.<br>
             (হে আমাদের প্রতিপালক! আমাদের দুনিয়াতে কল্যাণ দিন এবং আখিরাতেও কল্যাণ দিন এবং আমাদের দোযখের আগুন থেকে রক্ষা করুন।)
         </div>
     </div>
@@ -1057,6 +1090,12 @@
     </div>
     <div id="setsContainer"></div>
     
+    <!-- Loading Spinner -->
+    <div id="loadingSpinner">
+        <div class="spinner"></div>
+        <div class="loading-text">Loading course content...</div>
+    </div>
+    
     <div class="footer">
         <div class="author-card">
             <div class="footer-social-header">🤝 Follow & Connect</div>
@@ -1102,6 +1141,7 @@
                 <span>৳30</span><span>৳530</span><span>৳1971</span><span>৳3558</span>
             </div>
             <div class="donation-cta-wrap">
+                <a href="https://wa.me/+8801773971905" target="_blank" style="color: #34d399; text-decoration: none; font-size: 0.85rem; font-weight: 600; display: flex; align-items: center; gap: 5px;"><i class="fab fa-whatsapp"></i> Need Help? Inbox me</a>
                 
                 <button class="donate-now-btn" id="donateNowBtn" type="button">Go to Donate (bKash)</button>
             </div>
@@ -1110,11 +1150,13 @@
 </div>
 
 <!-- Load external data -->
-<script src="data/geb341_data.js"></script>
+<script src="data/3_2/geb341_data.js"></script>
 <script>
 let currentFontSize = 16;
-let currentLang = 'bn';
+let currentLang = 'en';
 let allExpanded = false;
+let highlightMode = 'background';
+let currentHighlightColor = null;
 const HIGHLIGHT_STORE_KEY = 'sm-geb341-highlights-v1';
 const HIGHLIGHT_VISIBILITY_KEY = 'sm-geb341-highlights-visible';
 let floatbarTipTimer = null;
@@ -1202,9 +1244,6 @@ function updateBannerTitle(id) {
 }
 
 window.addEventListener('scroll', () => {
-    // Show/hide floating control bar on scroll logic moved to universal_controls.js
-
-    // Collapse floating toggle label only when user is deep into answer region
     const toggleBtn = document.getElementById('toggleFloatbarBtn');
     const setsContainer = document.getElementById('setsContainer');
     if (toggleBtn && setsContainer) {
@@ -1268,7 +1307,6 @@ function toggleAllSets() {
     btn.innerHTML = label;
     if (floatingExpandBtn) floatingExpandBtn.innerHTML = label;
     
-    // Sync local toggle buttons
     document.querySelectorAll('.local-toggle-btn').forEach(lbtn => {
         lbtn.innerHTML = allExpanded ? '💡 Hide All' : '💡 Show All';
     });
@@ -1295,10 +1333,8 @@ function toggleLocalQS(setId, event) {
     const qsCards = setCard.querySelectorAll('.qs-card');
     const btn = event.currentTarget;
     
-    // Determine state from the first card if available
     const isExpanding = qsCards.length > 0 ? !qsCards[0].classList.contains('open') : true;
     
-    // Ensure set is expanded first
     if (!setCard.classList.contains('open')) {
         setCard.classList.add('open');
         setCard.querySelector('.toggle-icon').innerHTML = '▼';
@@ -1313,13 +1349,11 @@ function toggleLocalQS(setId, event) {
 }
 
 function exportToPDF() {
-    // Force expand for printing
     const cards = document.querySelectorAll('.set-card');
     cards.forEach(card => {
         if (!card.classList.contains('open')) card.querySelector('.set-header').click();
     });
     
-    // Update button state to reflect expansion
     allExpanded = true;
     document.getElementById('toggleAllBtn').innerHTML = '📁 Collapse All';
     
@@ -1359,318 +1393,151 @@ function applyViewMode() {
     }
 }
 
-function normalizeMarkdownMath(markdownText) {
-    if (!markdownText) return markdownText;
-    let normalized = markdownText.replace(/\$\$([\s\S]*?)\$\$/g, (_, expression) => `\\[${expression.trim()}\\]`);
-    normalized = normalized.replace(/\$(?!\d)([^$\n]*?[A-Za-z\\][^$\n]*?)\$/g, (_, expression) => `\\(${expression.trim()}\\)`);
-    return normalized;
-}
-
-function promoteComplexInlineMath(markdownText) {
-    if (!markdownText) return markdownText;
-    return markdownText.replace(/\\\(([^\n]+?)\\\)/g, (full, expression) => {
-        const exp = expression.trim();
-        const complexPattern = /\\frac|\\sum|\\int|\\prod|\\lim|\\log|\\ln|\\sqrt|\\left|\\right|\^|_|=|\\cdot|\\times|\\Delta|\\mu|\\sigma/;
-        if (exp.length > 32 || complexPattern.test(exp)) {
-            return `\\[${exp}\\]`;
-        }
-        return full;
-    });
-}
-
-function toBnSmartMix(englishText) {
-    if (!englishText) return englishText;
-    let mixed = englishText;
-    const replacements = [
-        [/\bDefinition\b/gi, 'Definition (সংজ্ঞা)'],
-        [/\bAdvantages\b/gi, 'Advantages (সুবিধা)'],
-        [/\bLimitations\b/gi, 'Limitations (সীমাবদ্ধতা)'],
-        [/\bProcess\b/gi, 'Process (প্রক্রিয়া)'],
-        [/\bScale-up\b/gi, 'Scale-up (স্কেল-আপ)'],
-        [/\bDownstream Processing\b/gi, 'Downstream Processing (ডাউনস্ট্রিম প্রসেসিং)'],
-        [/\bUpstream Processing\b/gi, 'Upstream Processing (আপস্ট্রিম প্রসেসিং)'],
-        [/\bLogical Reasoning\b/gi, 'Logical Reasoning (যুক্তিগত ব্যাখ্যা)'],
-        [/\bKey distinction\b/gi, 'Key distinction (মূল পার্থক্য)'],
-        [/\bDesign consequence\b/gi, 'Design consequence (ডিজাইন ফলাফল)']
-    ];
-    replacements.forEach(([pattern, replacement]) => {
-        mixed = mixed.replace(pattern, replacement);
-    });
-    return mixed;
-}
-
 function getLocalizedSetMarkdown(item) {
-    const en = item.rawMd_en || item.rawMd || '';
-    const bn = item.rawMd_bn || '';
-    const bnMissing = !bn || /Bengali version not yet implemented/i.test(bn);
-    if (currentLang === 'bn') {
-        return bnMissing ? toBnSmartMix(en) : bn;
-    }
-    return en;
+    return item['rawMd_' + currentLang] || item.rawMd_bn || item.rawMd || item.rawMd_en || "";
 }
 
-function cleanSetIntroHeading(markdownText, item) {
-    if (!markdownText) return markdownText;
-    const match = item.id && item.id.match(/set(\d+)/i);
-    const setNo = match ? match[1] : '';
-    const headPattern = new RegExp(`^\\s*###\\s*\\*\\*SET\\s*${setNo}\\s*[:\\-–].*?\\*\\*\\s*\\n+`, 'i');
-    let cleaned = markdownText.replace(headPattern, '');
-    cleaned = cleaned.replace(/^\s*---\s*\n/, '');
-    return cleaned;
-}
-
-function renderMarkdown(markdownText) {
-    const normalized = normalizeMarkdownMath(markdownText);
-    const displayFriendly = promoteComplexInlineMath(normalized);
-    return marked.parse(displayFriendly);
-}
-
-let selectedDonationMethod = 'bkash';
-let selectedDonationAmount = 100;
-const DONATION_NUMBER = '01773971905';
-const DONATION_AMOUNTS = [30,50,80,130,350,530,850,1030,1111,1300,1905,1911,1926,1937,1947,1952,1954,1966,1969,1971,1975,1991,1996,2001,2008,2013,2019,2024,2035,2558,2885,2999,3558];
-
-function selectDonationMethod(method) {
-    selectedDonationMethod = method;
-    document.querySelectorAll('#donationMethods .donate-method-btn').forEach(btn => {
-        btn.classList.toggle('active', btn.dataset.method === method);
-    });
-    updateDonateNowButtonText();
-}
-
-function selectDonationAmount(amount) {
-    selectedDonationAmount = Number(amount) || 50;
-    const disp = document.getElementById('donationAmountDisplay');
-    if (disp) disp.textContent = '৳' + selectedDonationAmount;
-    updateDonateNowButtonText();
-}
-
-function updateDonateNowButtonText() {
-    const btn = document.getElementById('donateNowBtn');
-    if (!btn) return;
-    const mt = { 'bkash': 'bKash', 'nagad': 'Nagad', 'rocket': 'Rocket' };
-    btn.textContent = `Go to Donate ৳${selectedDonationAmount} via ${mt[selectedDonationMethod] || selectedDonationMethod}`;
-}
-
-
-
-
-
-
-function getDonationUrl(method, amount) {
-    const amt = encodeURIComponent(String(amount));
-    const num = encodeURIComponent(DONATION_NUMBER);
-    if (method === 'bkash')  return 'bkash://send-money?number=' + num + '&amount=' + amt;
-    if (method === 'nagad')  return 'nagad://send-money?number=' + num + '&amount=' + amt;
-    if (method === 'rocket') return 'rocket://send-money?number=' + num + '&amount=' + amt;
-    return '#';
-}
-
-function donateNow() {
-    const method = selectedDonationMethod;
-    const amount = selectedDonationAmount;
-    const num    = DONATION_NUMBER;
-    const mt     = { bkash:'bKash', nagad:'Nagad', rocket:'Rocket' };
-    const name   = mt[method] || method;
-
-    // 1. Try deep-link via a temporary anchor (non-blocking on mobile)
-    const deepLink = getDonationUrl(method, amount);
-    const a = document.createElement('a');
-    a.href = deepLink;
-    a.style.display = 'none';
-    document.body.appendChild(a);
-    a.click();
-    setTimeout(() => document.body.removeChild(a), 300);
-
-    // 2. Copy info to clipboard silently
-    const info = name + '\nNumber: ' + num + '\nAmount: ৳' + amount;
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(info).catch(() => {});
-    }
-
-    // 3. Show the in-page payment info modal immediately (no alert)
-    showDonateModal(name, num, amount);
-}
-
-function showDonateModal(name, num, amount) {
-    let modal = document.getElementById('smDonateModal');
-    if (!modal) {
-        modal = document.createElement('div');
-        modal.id = 'smDonateModal';
-        modal.style.cssText = [
-            'position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;',
-            'background:rgba(0,0,0,0.65);backdrop-filter:blur(4px);'
-        ].join('');
-        modal.addEventListener('click', function(e){ if(e.target===modal) modal.style.display='none'; });
-        document.body.appendChild(modal);
-    }
-    modal.innerHTML = '';
-    const box = document.createElement('div');
-    box.style.cssText = [
-        'background:linear-gradient(145deg,#064e3b,#022c22);',
-        'border:1px solid rgba(16,185,129,0.35);border-radius:1.5rem;',
-        'padding:2rem;max-width:400px;width:90%;color:#fff;',
-        'font-family:inherit;text-align:center;position:relative;',
-        'box-shadow:0 20px 50px rgba(0,0,0,0.45);'
-    ].join('');
-    box.innerHTML = [
-        '<button onclick="document.getElementById(\'smDonateModal\').style.display=\'none\'" ',
-        'style="position:absolute;top:12px;right:16px;background:none;border:none;color:rgba(255,255,255,0.6);',
-        'font-size:1.4rem;cursor:pointer;line-height:1;">&times;</button>',
-        '<div style="font-size:2rem;margin-bottom:0.8rem">💚</div>',
-        '<h3 style="margin:0 0 0.4rem;font-size:1.3rem;color:#34d399">Send via ' + name + '</h3>',
-        '<p style="opacity:0.75;font-size:0.85rem;margin-bottom:1.4rem">',
-        'If the app did not open, send manually using the details below.</p>',
-        '<div style="background:rgba(255,255,255,0.08);border-radius:1rem;padding:1.1rem;margin-bottom:1.2rem;text-align:left;">',
-        '<div style="display:flex;justify-content:space-between;margin-bottom:0.5rem;">',
-        '<span style="opacity:0.65;font-size:0.85rem">Method</span>',
-        '<strong>' + name + '</strong></div>',
-        '<div style="display:flex;justify-content:space-between;margin-bottom:0.5rem;">',
-        '<span style="opacity:0.65;font-size:0.85rem">Number</span>',
-        '<strong style="letter-spacing:1px">' + num + '</strong></div>',
-        '<div style="display:flex;justify-content:space-between;">',
-        '<span style="opacity:0.65;font-size:0.85rem">Amount</span>',
-        '<strong style="font-size:1.3rem;color:#fbbf24">৳' + amount + '</strong></div>',
-        '</div>',
-        '<button id="smDonateModalCopy" ',
-        'style="width:100%;padding:0.75rem;border:none;border-radius:0.9rem;',
-        'background:linear-gradient(135deg,#10b981,#059669);color:#fff;',
-        'font-size:1rem;font-weight:800;cursor:pointer;font-family:inherit;',
-        'box-shadow:0 6px 16px rgba(16,185,129,0.35);">📋 Copy Payment Info</button>',
-        '<p style="margin-top:0.9rem;font-size:0.75rem;opacity:0.5;">Tap outside to close</p>'
-    ].join('');
-    box.querySelector('#smDonateModalCopy').addEventListener('click', function() {
-        const info = name + '\nNumber: ' + num + '\nAmount: \u09f3' + amount;
-        if (navigator.clipboard) {
-            navigator.clipboard.writeText(info).then(() => {
-                this.textContent = '\u2705 Copied!';
-                setTimeout(() => { this.textContent = '\ud83d\udccb Copy Payment Info'; }, 2000);
-            }).catch(() => { this.textContent = '\u26a0\ufe0f Use manual copy'; });
-        } else {
-            prompt('Copy this:', name + ' | ' + num + ' | \u09f3' + amount);
-        }
-    });
-    modal.appendChild(box);
-    modal.style.display = 'flex';
-}
-
-function initDonationWidget() {
-    const methods = document.querySelectorAll('#donationMethods .donate-method-btn');
-    methods.forEach(btn => {
-        btn.addEventListener('click', () => selectDonationMethod(btn.dataset.method));
-    });
-    const slider = document.getElementById('donationSlider');
-    if (slider) {
-        slider.addEventListener('input', () => {
-            const idx = parseInt(slider.value, 10);
-            selectDonationAmount(DONATION_AMOUNTS[idx] || 50);
-        });
-    }
-    const donateBtn = document.getElementById('donateNowBtn');
-    if (donateBtn) donateBtn.addEventListener('click', donateNow);
-    updateDonateNowButtonText();
-}
-
-function enhanceResponsiveTables(scope = document) {
-    scope.querySelectorAll('.markdown-body table').forEach((table) => {
-        const headerCells = Array.from(table.querySelectorAll('thead th')).map((th) => th.textContent.trim());
-        const rows = table.querySelectorAll('tbody tr');
-
-        rows.forEach((row) => {
-            Array.from(row.children).forEach((cell, idx) => {
-                if (cell.tagName.toLowerCase() !== 'td') return;
-                const fallback = `Column ${idx + 1}`;
-                cell.setAttribute('data-label', headerCells[idx] || fallback);
-            });
-        });
-
-        table.classList.add('compact-ready');
-    });
+function cleanSetIntroHeading(md, item) {
+    if (!md) return "";
+    const titleClean = item.title.replace(/^🔹\s*/i, '').replace(/—.*$/i, '').trim();
+    const titleRegex = new RegExp(`^#\\s*${titleClean}.*?\\n`, 'i');
+    return md.replace(titleRegex, '').trim();
 }
 
 function renderSets() {
     const container = document.getElementById('setsContainer');
     container.innerHTML = '';
-    setsData.forEach((item, idx) => {
-        const card = document.createElement('div');
-        card.className = 'set-card';
-        card.id = item.id;
-        
-        const mdContent = cleanSetIntroHeading(getLocalizedSetMarkdown(item), item);
-        const readTime = getReadingTime(mdContent);
-        const isDone = visitedSets.has(item.id);
+    
+    // Validate inputs
+    console.log('renderSets called. setsData:', setsData ? (Array.isArray(setsData) ? setsData.length + ' sets' : 'not an array') : 'undefined');
+    
+    if (!setsData || !Array.isArray(setsData)) {
+        const errorMsg = 'Error: Course data not loaded. setsData is ' + (setsData ? 'not an array' : 'undefined');
+        console.error(errorMsg);
+        container.innerHTML = `<div style="padding:2rem; color:red; background:#ffe6e6; border:1px solid red; border-radius:5px;">${errorMsg}</div>`;
+        const spinner = document.getElementById('loadingSpinner');
+        if (spinner) setTimeout(() => spinner.classList.add('hidden'), 50);
+        return;
+    }
+    
+    // Check if marked.js is loaded
+    if (!marked) {
+        const errorMsg = 'Error: Markdown parser (marked.js) failed to load';
+        console.error(errorMsg);
+        container.innerHTML = `<div style="padding:2rem; color:red; background:#ffe6e6; border:1px solid red; border-radius:5px;">${errorMsg}</div>`;
+        const spinner = document.getElementById('loadingSpinner');
+        if (spinner) setTimeout(() => spinner.classList.add('hidden'), 50);
+        return;
+    }
+    
+    let index = 0;
+    function renderNext() {
+        if (index >= setsData.length) {
+            setupNavObserver();
+            if (typeof restoreHighlightsFromStorage === 'function') restoreHighlightsFromStorage();
+            if (typeof enhanceResponsiveTables === 'function') enhanceResponsiveTables(container);
+            if (window.MathJax && MathJax.typesetPromise) {
+                MathJax.typesetPromise().catch(err => console.error('MathJax error:', err));
+            }
+            return;
+        }
 
-        // Split by ### headers (identifying questions)
-        const parts = mdContent.split(/(?=###\s+)/g);
-        let flashcardsHTML = '';
-        
-        parts.forEach(part => {
-            const trimmed = part.trim();
-            if (!trimmed) return;
+        try {
+            const item = setsData[index];
+            console.log('Rendering set ' + (index + 1) + '/' + setsData.length + ': ' + (item?.id || 'unknown'));
             
-            if (trimmed.startsWith('###')) {
-                // It's a question block
-                const lines = trimmed.split('\n');
-                const headerLine = lines[0].replace(/^###\s+/, '').replace(/\*\*/g, '').trim();
-                if (/^SET\s*\d+\s*[:\-–]/i.test(headerLine)) return;
-                const contentLines = lines.slice(1).join('\n').trim();
-                const parsedContent = renderMarkdown(contentLines);
+            const card = document.createElement('div');
+            card.className = 'set-card';
+            card.id = item.id;
+            
+            const mdContent = cleanSetIntroHeading(getLocalizedSetMarkdown(item), item);
+            const readTime = getReadingTime(mdContent);
+            const isDone = visitedSets.has(item.id);
 
-                flashcardsHTML += `
-                    <div class="qs-card">
-                        <div class="qs-header" onclick="toggleQS(this)">
-                            <div class="qs-title">${headerLine}</div>
-                            <div class="qs-controls">
-                                <button class="qs-copy-btn" onclick="copyQS(this, event)">📋 Copy</button>
-                                <span class="qs-toggle-icon">▶</span>
+            const parts = mdContent.split(/(?=###\s+)/g);
+            let flashcardsHTML = '';
+            
+            parts.forEach(part => {
+                const trimmed = part.trim();
+                if (!trimmed) return;
+
+                if (trimmed.startsWith('###')) {
+                    const lines = trimmed.split('\n');
+                    const qHeader = lines[0].replace('###', '').trim();
+                    const qBody = lines.slice(1).join('\n').trim();
+                    const qId = qHeader.match(/\[Q(\d+)\]/i)?.[1] || Math.random().toString(36).substr(2, 5);
+                    
+                    flashcardsHTML += `
+                        <div class="qs-card" id="q-${qId}">
+                            <div class="qs-header" onclick="toggleQS(this)">
+                                <div class="qs-title">${marked.parseInline(qHeader)}</div>
+                                <div class="qs-actions">
+                                    <button class="qs-action-btn" onclick="copyQS(this, event)" title="Copy this question and answer">📋 Copy</button>
+                                    <span class="qs-toggle-icon">▶</span>
+                                </div>
+                            </div>
+                            <div class="qs-content">
+                                <div class="markdown-body">${marked.parse(qBody)}</div>
                             </div>
                         </div>
-                        <div class="qs-content">
-                            <div class="markdown-body">${parsedContent}</div>
+                    `;
+                } else {
+                    flashcardsHTML += `<div class="markdown-body" style="margin-bottom:1.5rem; opacity:0.8;">${marked.parse(trimmed)}</div>`;
+                }
+            });
+
+            card.innerHTML = `
+                <div class="set-header" onclick="toggleSet(this)">
+                    <div class="set-info">
+                        <div class="set-title">${item.title}</div>
+                        <div class="set-meta">
+                            <span>⏱️ approx. ${readTime} min read</span>
+                            ${isDone ? '<span class="status-done">✅ Completed</span>' : '<span class="status-pending">📖 Not started</span>'}
                         </div>
                     </div>
-                `;
-            } else {
-                // Intro text or separators
-                flashcardsHTML += `<div class="markdown-body" style="margin-bottom:1.5rem; opacity:0.8;">${renderMarkdown(trimmed)}</div>`;
+                    <div class="toggle-icon">${isDone ? '▼' : '▶'}</div>
+                </div>
+                <div class="set-content ${isDone ? 'open' : ''}">
+                    <div class="local-toggle-bar">
+                        <button class="local-toggle-btn" onclick="toggleLocalQS('${item.id}', event)" title="Expand or collapse all questions in this set">💡 Show All</button>
+                    </div>
+                    ${flashcardsHTML}
+                    <div style="margin-top:2.5rem; padding-top:2rem; border-top:1px solid var(--border-color); text-align:center;">
+                        <div style="font-size:0.95rem; color:var(--text-muted); margin-bottom:0.8rem;">Found this helpful?</div>
+                        <button onclick="donateNow()" style="background:linear-gradient(135deg,#10b981,#059669);color:#fff;border:none;padding:0.7rem 1.5rem;border-radius:0.8rem;font-weight:700;cursor:pointer;font-size:0.95rem;">💚 Support This Project</button>
+                    </div>
+                </div>
+            `;
+            
+            container.appendChild(card);
+            if (isDone || index === 0) {
+                card.classList.add('open');
+                const icon = card.querySelector('.toggle-icon');
+                if(icon) icon.innerHTML = '▼'; 
+                visitedSets.add(item.id); 
+                activeSetId = item.id; 
             }
-        });
+        } catch (err) {
+            console.error('Error rendering set ' + index + ':', err);
+            container.innerHTML += `<div style="padding:1rem; color:red; background:#ffe6e6; border:1px solid red; border-radius:5px; margin:1rem 0;">Error: Failed to render set ${index + 1}: ${err.message}</div>`;
+        }
 
-        card.innerHTML =
-            `<div class="set-header">
-                <h2 style="display:flex;align-items:center;gap:15px;flex-wrap:wrap;">
-                    ${item.title}
-                    <button class="local-toggle-btn" onclick="toggleLocalQS('${item.id}', event)">💡 Show All</button>
-                </h2>
-                <span style="display:flex;align-items:center;gap:8px;">
-                    <span class="read-time">${readTime}</span>
-                    ${isDone ? '<span class="done-badge">✔ Done</span>' : ''}
-                    <span class="toggle-icon">▶</span>
-                </span>
-            </div>
-            <div class="set-content">${flashcardsHTML}</div>`;
-        
-        container.appendChild(card);
-        
-        card.querySelector('.set-header').addEventListener('click', (e) => {
-            if (e.target.closest('.local-toggle-btn')) return;
-            card.classList.toggle('open');
-            card.querySelector('.toggle-icon').innerHTML = card.classList.contains('open') ? '▼' : '▶';
-            if (card.classList.contains('open')) {
-                visitedSets.add(item.id);
-                localStorage.setItem(PROGRESS_KEY, JSON.stringify([...visitedSets]));
-                updateProgressBar();
-            }
-        });
-        
-        if (idx === 0) { card.classList.add('open'); card.querySelector('.toggle-icon').innerHTML = '▼'; visitedSets.add(item.id); activeSetId = item.id; }
-    });
-    restoreHighlightsFromStorage();
-    enhanceResponsiveTables(container);
-    setupNavObserver();
-    // Defer MathJax typesetting for faster initial paint
-    if (window.MathJax && MathJax.typesetPromise) {
-        requestAnimationFrame(() => MathJax.typesetPromise());
+        index++;
+        requestAnimationFrame(renderNext);
+    }
+    requestAnimationFrame(renderNext);
+}
+
+function toggleSet(header) {
+    const card = header.parentElement;
+    card.classList.toggle('open');
+    const icon = card.querySelector('.toggle-icon');
+    if(icon) icon.innerHTML = card.classList.contains('open') ? '▼' : '▶';
+    if (card.classList.contains('open')) {
+        const id = card.id;
+        visitedSets.add(id);
+        localStorage.setItem(PROGRESS_KEY, JSON.stringify([...visitedSets]));
+        updateProgressBar();
     }
 }
 
@@ -1690,13 +1557,6 @@ function buildQuickNav() {
     });
 }
 
-/* ═══════════════════════════════════════════════════════════ */
-/* TEXT HIGHLIGHTING & UNDERLINING FUNCTIONALITY */
-/* ═══════════════════════════════════════════════════════════ */
-
-let highlightMode = 'background'; // 'background' or 'underline'
-let currentHighlightColor = null; // 'red', 'green', 'indigo', 'yellow'
-
 function toggleUnderlineMode() {
     highlightMode = highlightMode === 'background' ? 'underline' : 'background';
     localStorage.setItem('highlightMode', highlightMode);
@@ -1709,38 +1569,6 @@ function toggleUnderlineMode() {
         btn.classList.remove('underline-mode-active');
     }
 }
-
-function highlightSelected(color) {
-    const selection = window.getSelection();
-    if (!selection.toString().length) {
-        alert('Please select text first to highlight');
-        return;
-    }
-    
-    currentHighlightColor = color;
-    const range = selection.getRangeAt(0);
-    const span = document.createElement('span');
-    
-    if (highlightMode === 'background') {
-        span.className = 'highlight-' + color;
-    } else {
-        span.className = 'highlight-underline underline-' + color;
-    }
-    span.dataset.userHighlight = '1';
-    
-    // Remove previous highlight class on overlapping selections
-    removeHighlightsInRange(range);
-    
-    span.appendChild(range.extractContents());
-    range.insertNode(span);
-    selection.removeAllRanges();
-    
-    localStorage.setItem('lastHighlightColor', color);
-    saveHighlightsToStorage();
-}
-
-// Set highlight mode and enable/disable highlighting
-let isHighlightingEnabled = true; // Track if highlighting is on or off
 
 function setHighlightMode(mode) {
     if (mode === 'off') {
@@ -1762,35 +1590,20 @@ function updateHighlightButtons() {
     document.getElementById('highlightYellow').classList.remove('active');
     document.getElementById('highlightOff').classList.remove('active');
     
-    if (currentHighlightColor === 'red') {
-        document.getElementById('highlightRed').classList.add('active');
-    } else if (currentHighlightColor === 'green') {
-        document.getElementById('highlightGreen').classList.add('active');
-    } else if (currentHighlightColor === 'indigo') {
-        document.getElementById('highlightIndigo').classList.add('active');
-    } else if (currentHighlightColor === 'yellow') {
-        document.getElementById('highlightYellow').classList.add('active');
-    } else {
-        document.getElementById('highlightOff').classList.add('active');
-    }
+    if (currentHighlightColor === 'red') document.getElementById('highlightRed').classList.add('active');
+    else if (currentHighlightColor === 'green') document.getElementById('highlightGreen').classList.add('active');
+    else if (currentHighlightColor === 'indigo') document.getElementById('highlightIndigo').classList.add('active');
+    else if (currentHighlightColor === 'yellow') document.getElementById('highlightYellow').classList.add('active');
+    else document.getElementById('highlightOff').classList.add('active');
 }
 
-// Toggle floating control bar visibility
 let isFloatingBarVisible = localStorage.getItem('floatingBarVisible') !== 'false';
 
 function toggleFloatingBar() {
     isFloatingBarVisible = !isFloatingBarVisible;
     const controlBar = document.getElementById('topControls');
-    const toggleBtn = document.getElementById('toggleFloatbarBtn');
-    const toggleLabel = toggleBtn ? toggleBtn.querySelector('.floatbar-label') : null;
-    
-    if (isFloatingBarVisible) {
-        controlBar.classList.add('visible');
-        if (toggleLabel) toggleLabel.textContent = 'Floating Control Bar Mode (ON)';
-    } else {
-        controlBar.classList.remove('visible');
-        if (toggleLabel) toggleLabel.textContent = 'Floating Control Bar Mode (OFF)';
-    }
+    if (isFloatingBarVisible) controlBar.classList.add('visible');
+    else controlBar.classList.remove('visible');
     localStorage.setItem('floatingBarVisible', isFloatingBarVisible);
 }
 
@@ -1802,55 +1615,6 @@ function showFloatbarTip() {
     floatbarTipTimer = setTimeout(() => {
         tip.classList.remove('show');
     }, 3500);
-}
-
-// Auto-highlight selected text when a color is active
-document.addEventListener('mouseup', () => {
-    if (!isHighlightingEnabled || !currentHighlightColor) return;
-    
-    const selection = window.getSelection();
-    if (selection.toString().length > 0) {
-        // Auto-highlight the selected text with the current color
-        const range = selection.getRangeAt(0);
-        const span = document.createElement('span');
-        span.dataset.userHighlight = '1';
-        
-        if (highlightMode === 'background') {
-            span.className = 'highlight-' + currentHighlightColor;
-        } else {
-            span.className = 'highlight-underline underline-' + currentHighlightColor;
-        }
-        
-        removeHighlightsInRange(range);
-        span.appendChild(range.extractContents());
-        range.insertNode(span);
-        selection.removeAllRanges();
-        saveHighlightsToStorage();
-    }
-});
-
-function removeHighlightsInRange(range) {
-    const container = range.commonAncestorContainer;
-    if (container.nodeType === Node.TEXT_NODE) return;
-    
-    const highlightedElements = container.querySelectorAll('[data-user-highlight="1"]');
-    highlightedElements.forEach(el => {
-        if (isNodeInRange(el, range)) {
-            // Unwrap the element
-            while (el.firstChild) {
-                el.parentNode.insertBefore(el.firstChild, el);
-            }
-            el.parentNode.removeChild(el);
-        }
-    });
-}
-
-function isNodeInRange(node, range) {
-    try {
-        return range.containsNode(node, true);
-    } catch (e) {
-        return range.getBoundingClientRect().intersects(node.getBoundingClientRect());
-    }
 }
 
 function clearAllHighlights() {
@@ -1911,82 +1675,18 @@ function toggleHighlightsVisibility() {
     const isHidden = document.body.classList.toggle('highlights-hidden');
     const btn = document.getElementById('toggleHighlightsBtn');
     if (btn) btn.textContent = isHidden ? '🙈' : '👁️';
-    if (btn) btn.title = isHidden ? 'Show Highlights' : 'Hide Highlights';
     localStorage.setItem(HIGHLIGHT_VISIBILITY_KEY, String(!isHidden));
-}
-
-// Load highlight settings on page load
-window.addEventListener('load', () => {
-    const savedMode = localStorage.getItem('highlightMode');
-    const savedColor = localStorage.getItem('lastHighlightColor');
-    
-    // Restore highlight mode
-    if (savedMode === 'underline') {
-        toggleUnderlineMode();
-    }
-    
-    // Restore highlight color/off state
-    if (savedColor === 'red' || savedColor === 'green' || savedColor === 'indigo' || savedColor === 'yellow') {
-        setHighlightMode(savedColor);
-    } else {
-        setHighlightMode('off');
-    }
-    
-    // Restore floating bar state
-    isFloatingBarVisible = localStorage.getItem('floatingBarVisible') !== 'false';
-    if (!isFloatingBarVisible) {
-        document.getElementById('topControls').classList.remove('visible');
-        const label = document.querySelector('#toggleFloatbarBtn .floatbar-label');
-        if (label) label.textContent = 'Floating Control Bar Mode (OFF)';
-    } else {
-        const label = document.querySelector('#toggleFloatbarBtn .floatbar-label');
-        if (label) label.textContent = 'Floating Control Bar Mode (ON)';
-    }
-
-    const highlightsVisible = localStorage.getItem(HIGHLIGHT_VISIBILITY_KEY) !== 'false';
-    if (!highlightsVisible) {
-        document.body.classList.add('highlights-hidden');
-        const toggleBtn = document.getElementById('toggleHighlightsBtn');
-        if (toggleBtn) {
-            toggleBtn.textContent = '🙈';
-            toggleBtn.title = 'Show Highlights';
-        }
-    }
-    
-    setupHighlightContextMenu();
-}, { once: true });
-
-/* ═══════════════════════════════════════════════════════════ */
-/* HIGHLIGHT CONTEXT MENU FUNCTIONALITY */
-/* ═══════════════════════════════════════════════════════════ */
-
-let currentHighlightElement = null;
-
-function findHighlightTarget(node) {
-    if (!node || !node.closest) return null;
-    const target = node.closest('[data-user-highlight="1"], .highlight-red, .highlight-green, .highlight-indigo, .highlight-yellow, .highlight-underline');
-    if (target && !target.dataset.userHighlight) {
-        target.dataset.userHighlight = '1';
-    }
-    return target;
 }
 
 function setupHighlightContextMenu() {
     let hoverTimer;
-
     document.addEventListener('mouseover', (e) => {
         const highlightNode = findHighlightTarget(e.target);
         if (!highlightNode) return;
         clearTimeout(hoverTimer);
-        hoverTimer = setTimeout(() => {
-            showHighlightMenu(highlightNode);
-        }, 420);
+        hoverTimer = setTimeout(() => showHighlightMenu(highlightNode), 420);
     });
-
-    document.addEventListener('mouseout', () => {
-        clearTimeout(hoverTimer);
-    });
-
+    document.addEventListener('mouseout', () => clearTimeout(hoverTimer));
     document.addEventListener('contextmenu', (e) => {
         const highlightNode = findHighlightTarget(e.target);
         if (highlightNode) {
@@ -1994,33 +1694,16 @@ function setupHighlightContextMenu() {
             showHighlightMenu(highlightNode, e.clientX, e.clientY);
         }
     });
-    
-    // Long press support for mobile
-    let longPressTimer;
-    document.addEventListener('touchstart', (e) => {
-        const highlighted = findHighlightTarget(e.target);
-        if (highlighted) {
-            longPressTimer = setTimeout(() => {
-                const touch = e.touches[0];
-                showHighlightMenu(highlighted, touch ? touch.clientX : null, touch ? touch.clientY : null);
-            }, 500);
-        }
-    });
-
-    document.addEventListener('touchmove', () => {
-        clearTimeout(longPressTimer);
-    });
-    
-    document.addEventListener('touchend', () => {
-        clearTimeout(longPressTimer);
-    });
-    
-    // Click outside to close menu
     document.addEventListener('click', (e) => {
-        if (!e.target.closest('.highlight-menu')) {
-            document.getElementById('highlightMenu').classList.remove('show');
-        }
+        if (!e.target.closest('.highlight-menu')) document.getElementById('highlightMenu').classList.remove('show');
     });
+}
+
+function findHighlightTarget(node) {
+    if (!node || !node.closest) return null;
+    const target = node.closest('[data-user-highlight="1"], .highlight-red, .highlight-green, .highlight-indigo, .highlight-yellow, .highlight-underline');
+    if (target && !target.dataset.userHighlight) target.dataset.userHighlight = '1';
+    return target;
 }
 
 function showHighlightMenu(element, clientX = null, clientY = null) {
@@ -2037,13 +1720,10 @@ function showHighlightMenu(element, clientX = null, clientY = null) {
 function changeHighlightColor(newColor) {
     if (!currentHighlightElement) return;
     const oldClass = currentHighlightElement.className;
-    // Remove old color class
     const classList = oldClass.split(' ').filter(c => !c.includes('highlight-') || c.includes('underline'));
     const isUnderline = oldClass.includes('highlight-underline');
-    
-    if (isUnderline) {
-        currentHighlightElement.className = `highlight-underline underline-${newColor}`;
-    } else {
+    if (isUnderline) currentHighlightElement.className = `highlight-underline underline-${newColor}`;
+    else {
         classList.push(`highlight-${newColor}`);
         currentHighlightElement.className = classList.join(' ');
     }
@@ -2059,14 +1739,8 @@ function toggleHighlightStyle() {
     const isUnderline = oldClass.includes('highlight-underline');
     const colorMatch = oldClass.match(/(?:underline-)?(red|green|indigo|yellow)/);
     const color = colorMatch ? colorMatch[1] : 'red';
-    
-    if (isUnderline) {
-        // Switch to background
-        currentHighlightElement.className = `highlight-${color}`;
-    } else {
-        // Switch to underline
-        currentHighlightElement.className = `highlight-underline underline-${color}`;
-    }
+    if (isUnderline) currentHighlightElement.className = `highlight-${color}`;
+    else currentHighlightElement.className = `highlight-underline underline-${color}`;
     currentHighlightElement.dataset.userHighlight = '1';
     document.getElementById('highlightMenu').classList.remove('show');
     saveHighlightsToStorage();
@@ -2075,65 +1749,13 @@ function toggleHighlightStyle() {
 function deleteHighlight() {
     if (!currentHighlightElement) return;
     const parent = currentHighlightElement.parentNode;
-    while (currentHighlightElement.firstChild) {
-        parent.insertBefore(currentHighlightElement.firstChild, currentHighlightElement);
-    }
+    while (currentHighlightElement.firstChild) parent.insertBefore(currentHighlightElement.firstChild, currentHighlightElement);
     parent.removeChild(currentHighlightElement);
     document.getElementById('highlightMenu').classList.remove('show');
     saveHighlightsToStorage();
 }
 
-/* ═══════════════════════════════════════════════════════════ */
-/* EXPAND ALL FUNCTIONALITY */
-/* ═══════════════════════════════════════════════════════════ */
-
-function expandAllRecursive() {
-    // Expand all set cards - FORCE all to open
-    document.querySelectorAll('.set-card').forEach(card => {
-        card.classList.add('open');
-        const toggleIcon = card.querySelector('.toggle-icon');
-        if (toggleIcon) toggleIcon.innerHTML = '▼';
-    });
-    
-    // Expand all question cards and their content - FORCE all to open
-    document.querySelectorAll('.qs-card').forEach(card => {
-        card.classList.add('open');
-        const content = card.querySelector('.qs-content');
-        if (content) {
-            content.style.display = 'block';
-            content.style.maxHeight = 'none';
-        }
-        const icon = card.querySelector('.qs-toggle-icon');
-        if (icon) icon.innerHTML = '▼';
-    });
-    
-    // Also ensure all answer content (.answer divs) is visible
-    document.querySelectorAll('.answer').forEach(answer => {
-        answer.style.display = 'block';
-        answer.style.visibility = 'visible';
-    });
-    
-    // Update visited sets for progress tracking
-    setsData.forEach(item => {
-        visitedSets.add(item.id);
-    });
-    localStorage.setItem(PROGRESS_KEY, JSON.stringify([...visitedSets]));
-    updateProgressBar();
-}
-
-function saveBookmarks() {
-    localStorage.setItem(BOOKMARK_STORE_KEY, JSON.stringify(bookmarkPositions));
-}
-
-function getBookmarkLabel() {
-    const cards = [...document.querySelectorAll('.set-card')];
-    const active = cards.find(card => {
-        const rect = card.getBoundingClientRect();
-        return rect.top <= 160 && rect.bottom > 160;
-    });
-    const title = active?.querySelector('.set-header-title')?.textContent?.trim();
-    return title || `Scroll Y: ${Math.round(window.scrollY)}px`;
-}
+function saveBookmarks() { localStorage.setItem(BOOKMARK_STORE_KEY, JSON.stringify(bookmarkPositions)); }
 
 function renderBookmarkPanel() {
     const list = document.getElementById('bookmarkList');
@@ -2158,20 +1780,10 @@ function renderBookmarkPanel() {
 
 function addBookmarkPosition() {
     const y = window.scrollY;
-    const duplicate = bookmarkPositions.some(bm => Math.abs(bm.y - y) < 24);
-    if (duplicate) {
-        alert('A bookmark already exists very close to this position.');
-        return;
-    }
-    bookmarkPositions.push({
-        y,
-        label: getBookmarkLabel(),
-        time: new Date().toLocaleTimeString()
-    });
+    bookmarkPositions.push({ y, label: 'Position at ' + Math.round(y) + 'px', time: new Date().toLocaleTimeString() });
     bookmarkPositions.sort((a, b) => a.y - b.y);
     saveBookmarks();
     renderBookmarkPanel();
-    alert('Bookmark saved for current page position.');
 }
 
 function goToBookmarkIndex(idx) {
@@ -2180,10 +1792,7 @@ function goToBookmarkIndex(idx) {
 }
 
 function goToPreviousBookmark() {
-    if (!bookmarkPositions.length) {
-        alert('No bookmarks saved yet. Press B to add one.');
-        return;
-    }
+    if (!bookmarkPositions.length) return;
     const y = window.scrollY;
     let idx = -1;
     for (let i = bookmarkPositions.length - 1; i >= 0; i--) {
@@ -2194,10 +1803,7 @@ function goToPreviousBookmark() {
 }
 
 function goToNextBookmark() {
-    if (!bookmarkPositions.length) {
-        alert('No bookmarks saved yet. Press B to add one.');
-        return;
-    }
+    if (!bookmarkPositions.length) return;
     const y = window.scrollY;
     let idx = bookmarkPositions.findIndex(bm => bm.y > y + 8);
     if (idx === -1) idx = 0;
@@ -2215,38 +1821,90 @@ function toggleBookmarkPanel(forceOpen) {
 }
 
 function eraseAllBookmarks() {
-    if (!bookmarkPositions.length) {
-        alert('No bookmark positions to erase.');
-        return;
-    }
     if (!confirm('Erase all saved bookmark positions?')) return;
     bookmarkPositions = [];
     saveBookmarks();
     renderBookmarkPanel();
-    alert('All bookmark positions erased.');
 }
 
-// Restore font size on page load
-window.addEventListener('load', () => {
-    const savedFontSize = localStorage.getItem('fontSize');
-    if (savedFontSize) {
-        currentFontSize = parseInt(savedFontSize);
-        document.documentElement.style.setProperty('--font-size-base', currentFontSize + 'px');
+function donateNow() {
+    const method = selectedDonationMethod;
+    const amount = selectedDonationAmount;
+    const num = '01773971905';
+    const mt = { bkash:'bKash', nagad:'Nagad', rocket:'Rocket' };
+    const name = mt[method] || method;
+    const info = name + '\nNumber: ' + num + '\nAmount: ৳' + amount;
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(info).catch(() => {});
+    showDonateModal(name, num, amount);
+}
+
+function showDonateModal(name, num, amount) {
+    let modal = document.getElementById('smDonateModal');
+    if (!modal) {
+        modal = document.createElement('div');
+        modal.id = 'smDonateModal';
+        modal.style.cssText = 'position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.65);backdrop-filter:blur(4px);';
+        modal.addEventListener('click', function(e){ if(e.target===modal) modal.style.display='none'; });
+        document.body.appendChild(modal);
     }
-}, { once: true });
+    modal.innerHTML = `<div style="background:linear-gradient(145deg,#064e3b,#022c22);border:1px solid rgba(16,185,129,0.35);border-radius:1.5rem;padding:2rem;max-width:480px;width:90%;color:#fff;text-align:center;position:relative;box-shadow:0 20px 50px rgba(0,0,0,0.45);">
+        <button onclick="document.getElementById('smDonateModal').style.display='none'" style="position:absolute;top:12px;right:16px;background:none;border:none;color:rgba(255,255,255,0.6);font-size:1.4rem;cursor:pointer;">&times;</button>
+        <h3 style="color:#34d399;margin-top:0;">Send via ${name}</h3>
+        <div style="background:rgba(255,255,255,0.08);border-radius:1rem;padding:1.5rem;margin:1.5rem 0;text-align:left;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;padding-bottom:1rem;border-bottom:1px solid rgba(255,255,255,0.1);">
+                <div><span style="opacity:0.7;font-size:0.9rem;">Method</span><div style="font-weight:700;margin-top:0.3rem;">${name}</div></div>
+                <button onclick="copyToClipboard('${name}', this)" style="background:rgba(16,185,129,0.3);border:1px solid rgba(16,185,129,0.5);color:#34d399;padding:0.4rem 0.9rem;border-radius:0.6rem;cursor:pointer;font-size:0.8rem;font-weight:600;">Copy</button>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;padding-bottom:1rem;border-bottom:1px solid rgba(255,255,255,0.1);">
+                <div><span style="opacity:0.7;font-size:0.9rem;">Number</span><div style="font-weight:700;margin-top:0.3rem;font-family:monospace;">${num}</div></div>
+                <button onclick="copyToClipboard('${num}', this)" style="background:rgba(16,185,129,0.3);border:1px solid rgba(16,185,129,0.5);color:#34d399;padding:0.4rem 0.9rem;border-radius:0.6rem;cursor:pointer;font-size:0.8rem;font-weight:600;">Copy</button>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;">
+                <div><span style="opacity:0.7;font-size:0.9rem;">Amount</span><div style="font-weight:700;margin-top:0.3rem;color:#fbbf24;">${amount}</div></div>
+                <button onclick="copyToClipboard('${amount}', this)" style="background:rgba(16,185,129,0.3);border:1px solid rgba(16,185,129,0.5);color:#34d399;padding:0.4rem 0.9rem;border-radius:0.6rem;cursor:pointer;font-size:0.8rem;font-weight:600;">Copy</button>
+            </div>
+        </div>
+        <button id="smDonateModalCopy" style="width:100%;padding:0.75rem;border:none;border-radius:0.9rem;background:linear-gradient(135deg,#10b981,#059669);color:#fff;font-weight:800;cursor:pointer;">📋 Copy All Info</button>
+    </div>`;
+    modal.querySelector('#smDonateModalCopy').addEventListener('click', function() {
+        navigator.clipboard.writeText(name + '\nNumber: ' + num + '\nAmount: ' + amount).then(() => {
+            this.textContent = '✅ Copied!';
+            setTimeout(() => { this.textContent = '📋 Copy All Info'; }, 2000);
+        });
+    });
+    modal.style.display = 'flex';
+}
+
+function copyToClipboard(text, btn) {
+    navigator.clipboard.writeText(text).then(() => {
+        const originalText = btn.textContent;
+        btn.textContent = '✅ Copied!';
+        setTimeout(() => { btn.textContent = originalText; }, 1500);
+    });
+}
+
+function initDonationWidget() {
+    document.querySelectorAll('#donationMethods .donate-method-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            selectedDonationMethod = btn.dataset.method;
+            document.querySelectorAll('#donationMethods .donate-method-btn').forEach(b => b.classList.toggle('active', b === btn));
+        });
+    });
+    document.getElementById('donationSlider')?.addEventListener('input', (e) => {
+        selectedDonationAmount = [30,50,80,130,350,530,850,1030,1111,1300,1905,1911,1926,1937,1947,1952,1954,1966,1969,1971,1975,1991,1996,2001,2008,2013,2019,2024,2035,2558,2885,2999,3558][e.target.value] || 50;
+        document.getElementById('donationAmountDisplay').textContent = '৳' + selectedDonationAmount;
+    });
+    document.getElementById('donateNowBtn')?.addEventListener('click', donateNow);
+}
 
 document.addEventListener('keydown', (e) => {
     const tag = document.activeElement.tagName;
     if (tag === 'INPUT' || tag === 'SELECT' || tag === 'TEXTAREA') return;
-    
-    // Auto-highlight mode shortcuts
     if (e.key === '1') { setHighlightMode('red'); e.preventDefault(); return; }
     if (e.key === '2') { setHighlightMode('green'); e.preventDefault(); return; }
     if (e.key === '3') { setHighlightMode('indigo'); e.preventDefault(); return; }
     if (e.key === '4') { setHighlightMode('yellow'); e.preventDefault(); return; }
     if (e.key === '0') { setHighlightMode('off'); e.preventDefault(); return; }
-    
-    // Existing shortcuts
     if (e.key === 'f' || e.key === 'F') { document.getElementById('searchInput').focus(); e.preventDefault(); }
     if (e.key === 't' || e.key === 'T') toggleTheme();
     if (e.key === 'e' || e.key === 'E') toggleAllSets();
@@ -2289,36 +1947,54 @@ marked.setOptions({ gfm: true, breaks: true });
 
 // Load saved settings
 window.onload = () => {
-    localStorage.setItem('sm-last-visited', 'geb341');
-    const savedTheme = localStorage.getItem('sm-theme');
-    if (savedTheme) {
-        document.documentElement.setAttribute('data-theme', savedTheme);
-    } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
-        document.documentElement.setAttribute('data-theme', 'light');
+    const spinner = document.getElementById('loadingSpinner');
+    try {
+        localStorage.setItem('sm-last-visited', 'geb341');
+        const savedTheme = localStorage.getItem('sm-theme');
+        if (savedTheme) {
+            document.documentElement.setAttribute('data-theme', savedTheme);
+        } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+            document.documentElement.setAttribute('data-theme', 'light');
+        }
+        const savedSize = localStorage.getItem('fontSize');
+        if (savedSize) {
+            currentFontSize = parseInt(savedSize);
+            document.documentElement.style.setProperty('--font-size-base', currentFontSize + 'px');
+        }
+        const savedFont = localStorage.getItem('bodyFont');
+        if (savedFont) {
+            document.documentElement.style.setProperty('--body-font', savedFont);
+            document.getElementById('fontFamily').value = savedFont;
+        }
+        const savedLang = localStorage.getItem('language');
+        if (savedLang) {
+            currentLang = savedLang;
+            document.getElementById('languageSelect').value = currentLang;
+        }
+        console.log('[GEB341 DEBUG] About to call renderSets. setsData exists?', typeof setsData !== 'undefined', 'setsData is array?', Array.isArray(setsData), 'setsData length?', setsData ? setsData.length : 'N/A');
+        if (typeof renderSets === 'function') {
+            console.log('[GEB341 DEBUG] renderSets function found, calling it now');
+            renderSets();
+            console.log('[GEB341 DEBUG] renderSets completed');
+        } else {
+            console.error('[GEB341 DEBUG] renderSets function NOT found!');
+        }
+        if (typeof buildQuickNav === 'function') buildQuickNav();
+        requestAnimationFrame(addCopyButtons);
+        if (typeof updateProgressBar === 'function') updateProgressBar();
+        if (typeof renderBookmarkPanel === 'function') renderBookmarkPanel();
+        if (typeof initDonationWidget === 'function') initDonationWidget();
+        setTimeout(() => showFloatbarTip(), 250);
+    } catch (e) {
+        console.error('Error during page initialization:', e);
+    } finally {
+        // Always hide spinner when initialization completes (with or without errors)
+        requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+                if (spinner) spinner.classList.add('hidden');
+            });
+        });
     }
-    const savedSize = localStorage.getItem('fontSize');
-    if (savedSize) {
-        currentFontSize = parseInt(savedSize);
-        document.documentElement.style.setProperty('--font-size-base', currentFontSize + 'px');
-    }
-    const savedFont = localStorage.getItem('bodyFont');
-    if (savedFont) {
-        document.documentElement.style.setProperty('--body-font', savedFont);
-        document.getElementById('fontFamily').value = savedFont;
-    }
-    const savedLang = localStorage.getItem('language');
-    if (savedLang) {
-        currentLang = savedLang;
-        document.getElementById('languageSelect').value = currentLang;
-    }
-    renderSets();
-    buildQuickNav();
-    // Pre-warm addCopyButtons
-    requestAnimationFrame(addCopyButtons);
-    updateProgressBar();
-    renderBookmarkPanel();
-    initDonationWidget();
-    setTimeout(() => showFloatbarTip(), 250);
 };
 </script>
     <script src="data/universal_controls.js"></script>
@@ -2332,5 +2008,7 @@ window.onload = () => {
         };
     </script>
     <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" defer></script>
+    <!-- Admin Powers: Live Editing -->
+    <script src="admin-powers.js"></script>
 </body>
 </html>

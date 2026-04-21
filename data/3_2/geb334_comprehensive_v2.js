@@ -884,8 +884,627 @@ Tumor Invades (breaks walls) → Angiogenesis (supply lines) → Intravasates (g
       ]
     },
 
-    // Additional sets (4-8) would follow similar structure
-    // For brevity, showing complete set 1-3 structure
+    // ============================
+    // SET 2: SPREAD OF TUMORS
+    // ============================
+    {
+      setId: 2,
+      setTitle: "SET 2: SPREAD OF TUMORS",
+      icon: "📡",
+      clusters: [
+        {
+          clusterId: "2.1",
+          clusterTitle: "Invasion and Dissemination",
+          years: [2023, 2022, 2016, 2014, 2013],
+          marks: [1, 3, 4, 5],
+          questions: [
+            {
+              qId: "2.1.1",
+              qText: "What do you mean by tumor invasion? Describe in brief the pathway of tumor invasion.",
+              marks: 4,
+              solution: `**TUMOR INVASION: CORE CONCEPT**
+
+**Definition:** Tumor invasion is the distinguishing hallmark of malignancy. It is defined as the capacity of tumor cells to disrupt the basement membrane [বেজমেন্ট মেমব্রেন] and penetrate the underlying stroma [স্ট্রোমা]. Unlike benign growths, invasive cells do NOT respect anatomical boundaries.
+
+**THE 3-STEP THEORY OF INVASION:**
+
+**Step 1: ATTACHMENT (আঠার মতো লেগে থাকা)**
+- Mechanism: Cells bind to extracellular matrix using surface receptors (Integrins, Fibronectin, Laminin)
+- Purpose: Stabilization at invasion site, initiation of signaling cascades
+- Outcome: Cell-matrix adhesion complexes form to anchor cells
+
+**Step 2: PROTEOLYSIS (এনজাইম দিয়ে টিস্যু গলিয়ে ফেলা)**
+- Mechanism: Local degradation of matrix/basement membrane
+- Key enzyme: Matrix Metalloproteinases (MMPs) - cleave collagen IV, laminin, proteoglycans
+- Regulation: MMP activity controlled by tissue inhibitors (TIMPs)
+- Result: Creation of "pathway" through tissue barrier
+- Note: MMP-2, MMP-9 overexpression correlates with invasiveness
+
+**Step 3: LOCOMOTION (অনুপ্রবেশের জন্য চলাফেরা করা)**
+- Mechanism: Migration into degraded region using invadopodia (pseudopodia-like extensions)
+- Cytoskeletal reorganization: Actin polymerization drives movement
+- Guidance: Chemotactic gradients (cytokines, growth factors) direct migration
+- Speed: ~1-50 micrometers per hour depending on tissue resistance
+
+**PATHWAYS OF DISSEMINATION (6 Routes):**
+1. **Tissue Spaces** - Direct infiltration through connective tissues
+2. **Lymph Vessels** - Often earliest route for carcinomas; leads to regional lymph node involvement
+3. **Blood Vessels** - Common in sarcomas; requires intravasation
+4. **Coelomic Cavities** - Peritoneal, pleural, pericardial spread
+5. **Cerebrospinal Spaces** - Migration through CSF within CNS
+6. **Epithelial Surfaces** - Direct spread along membranes
+
+**Dissemination via Blood Vessels:**
+- **Venous invasion >> Arterial invasion** (Why: Thin walls, low pressure)
+- **Arteries immune** due to elastic fibers and antiproteolytic factors
+- **CTCs (Circulating Tumor Cells)** shed ~500+ cells/gram/24hr from large tumors
+- **Survival rate** <0.01% due to immune attack, shear stress, anoikis`
+            }
+          ]
+        },
+        {
+          clusterId: "2.2",
+          clusterTitle: "Metastasis and Spread",
+          years: [2023, 2022, 2017, 2016, 2014, 2013],
+          marks: [1, 3, 4, 5],
+          questions: [
+            {
+              qId: "2.2.1",
+              qText: "What is metastasis? Write down the steps involved in metastasis. Explain the 'Seed and Soil' hypothesis.",
+              marks: 5,
+              solution: `**METASTASIS: COMPREHENSIVE DEFINITION**
+
+**Definition:** Metastasis is a growth, separate from the primary tumor, that has arisen from detached, transported fragments of the original mass. [স্থানান্তর/দূরবর্তী অঙ্গে বিস্তার]
+
+**THE METASTATIC CASCADE (7 STAGES):**
+1. **Invasion** - Breaking through basement membrane into local tissue
+2. **Angiogenesis** - Induction of new blood vessels for supply & pathway
+3. **Intravasation** - Entry into blood or lymph stream (CTCs formation)
+4. **Circulation** - Travel through bloodstream; platelets coat cells for protection
+5. **Arrest** - Mechanical wedging to capillary walls (organ tropism)
+6. **Extravasation** - Cells exit vessel into organ tissue (8-24 hours)
+7. **Growth** - Proliferation into secondary colony/mass
+
+**Survival Statistics:** Only ~0.01% of CTCs successfully complete the cascade; 99.99% die during circulation and arrest.
+
+**THE "SEED AND SOIL" HYPOTHESIS:**
+
+**Proposed by:** Stephen Paget (1889)
+
+**The SEED (বীজ): The Cancer Cell**
+- NOT all tumor cells can metastasize
+- Successful seeds are clonally distinct, hardy, adaptive, invasive
+- Express high levels of invasion-related genes
+- Requirements: EMT capacity, survival in circulation, chemokine receptors matching target organ
+
+**The SOIL (মাটি): The Target Organ**
+- Must provide growth factors (FGF, TGF-β, PDGF), stromal cells, angiogenic signals
+- Must express specific receptors and adhesion molecules
+- Immune milieu must be immunosuppressive (low NK cells, high Tregs, MDSCs)
+
+**Specific Seed-Soil Pairings:**
+- Breast → Bone, Brain, Liver, Lung (high CXCL12, periostin, RANKL)
+- Colorectal → Liver (portal circulation), Peritoneum
+- Melanoma → Lung, Brain, Bone
+- Prostate → Bone (osteoblasts produce RANKL)
+- Ovarian → Peritoneum, Omentum (adipose tissue provides energy)
+
+**Logic:** Metastasis only occurs when Seed and Soil are compatible.
+
+**Role of Immune System in Metastasis:**
+- **Immune Surveillance:** Cytotoxic T-cells & NK cells recognize mutant cells
+- **Immune Facilitation:** "Dark side" where immune response selects aggressive clones
+- **Immunoselection:** Weak cancer cells eliminated; aggressive clones survive
+
+**PATTERNS OF TUMOR SPREAD (4 Disseminating Groups):**
+- **Group I:** Lungs key filter (Melanoma, Head/Neck, Testicular)
+- **Group II:** Liver primary filter (GI tract tumors, via portal circulation)
+- **Group III:** Independent spread to liver AND lung (Bladder cancer)
+- **Group IV:** Bone primary site (Prostate cancer, via Batson's plexus)`
+            }
+          ]
+        }
+      ]
+    },
+
+    // ============================
+    // SET 3: MOLECULAR BASIS
+    // ============================
+    {
+      setId: 3,
+      setTitle: "SET 3: MOLECULAR BASIS OF CANCER",
+      icon: "🧪",
+      clusters: [
+        {
+          clusterId: "3.1",
+          clusterTitle: "Proto-oncogenes and Oncogene Activation",
+          years: [2023, 2022, 2021, 2017, 2016, 2015, 2014, 2013],
+          marks: [1, 3, 4, 5, 6, 9],
+          questions: [
+            {
+              qId: "3.1.1",
+              qText: "What is proto-oncogene? Write down the mechanism of oncogene activation (5 pathways).",
+              marks: 5,
+              solution: `**PROTO-ONCOGENE: DEFINITION & CONTEXT**
+
+**Definition:** Proto-oncogenes are normal cellular genes that regulate cell growth, division, and differentiation. [স্বাভাবিক কোষ বিভাজন নিয়ন্ত্রণকারী জিন]
+
+**Functional Categories:**
+1. **Growth Factor Genes** - sis (PDGF)
+2. **Growth Factor Receptor Genes** - erb-B (EGF-R), HER-2/neu
+3. **Signal Transducer Genes** - ras family, src, abl
+4. **Transcription Factor Genes** - myc family, fos, jun
+
+---
+
+**ONCOGENE ACTIVATION: 5 KEY MECHANISMS (M-A-I-D-T)**
+
+**Mechanism 1: POINT MUTATION (বিন্দু মিউটেশন)**
+- Example: RAS Gene Mutation at codon 12
+- **Normal RAS:** Can hydrolyze GTP to inactive GDP
+- **Mutated RAS:** Cannot hydrolyze GTP → remains permanently active
+- Result: Continuous proliferation signaling without growth factor stimulation
+
+**Mechanism 2: AMPLIFICATION (বহুগুণীকরণ)**
+- Gene copy number increases (normally 2 copies per cell)
+- Example: HER-2/neu amplification in breast cancer
+- Result: 20-50+ copies → Protein "floods" the cell
+- Clinical: HER-2 positive breast cancers = 20-30% of cases; treatable with Trastuzumab
+
+**Mechanism 3: INSERTION (অন্তঃস্থাপন)**
+- Viral LTRs integrate near proto-oncogene
+- Example: Avian Leukosis Virus (ALV) near c-myc
+- Result: Viral promoter drives aberrant oncogene expression → Lymphoma
+
+**Mechanism 4: DELETION (অপসারণ)**
+- Loss of chromosomal segment removing tumor suppressor gene
+- Example: RB1 deletion → Loss of G1/S checkpoint
+- Two-Hit Hypothesis: Hit 1 (hereditary), Hit 2 (somatic) → Complete loss of function
+
+**Mechanism 5: CHROMOSOMAL TRANSLOCATION (ক্রোমোজোম স্থানান্তর)**
+- Gene moves to new chromosomal location under strong promoter control
+- Example: t(8;14) Burkitt's Lymphoma → MYC under control of IgH enhancer
+- Result: 100-1000x MYC overexpression → Uncontrolled B-cell proliferation
+
+---
+
+**💡 MNEMONIC: M-A-I-D-T**
+- **M**utation | **A**mplification | **I**nsertion | **D**eletion | **T**ranslocation`
+            }
+          ]
+        },
+        {
+          clusterId: "3.2",
+          clusterTitle: "Oncogene Products and Families",
+          years: [2023, 2021, 2017, 2015, 2014, 2013],
+          marks: [4, 5],
+          questions: [
+            {
+              qId: "3.2.1",
+              qText: "What do you mean by oncogene products? Discuss the characteristics and function of oncogene products.",
+              marks: 5,
+              solution: `**ONCOGENE PRODUCTS: DEFINITION & FUNCTION**
+
+**Definition:** Proteins encoded by oncogenes that drive cell proliferation, survival, and transformation.
+
+**CLASSIFICATION BY FUNCTION:**
+
+| Group | Role | Examples | Location |
+|-------|------|----------|----------|
+| Growth Factors | Stimulate proliferation | sis (PDGF) | Extracellular |
+| Growth Factor Receptors | Transmit signals | erb-B (EGF-R), HER-2/neu | Cell Membrane |
+| Signal Transducers | Intracellular messengers | ras family, src, abl | Cytoplasm |
+| Transcription Factors | Regulate gene expression | myc family, fos, jun | Nucleus |
+
+**KEY FAMILY ANALYSIS:**
+
+**ras Gene Family (H-ras, K-ras, N-ras):**
+- Produce p21 protein with GTP-binding and GTPase activity
+- Mutant p21 cannot hydrolyze GTP → stays active continuously
+- Result: Uncontrolled signaling to divide
+- Found in ~30% of all cancers (lung, pancreas, colorectal)
+
+**c-myc Family:**
+- Nuclear protein driving G0 (resting) → G1 (dividing) transition
+- Justification: Abnormally high c-myc levels prevent cells from resting
+- Result: Forced continuous proliferation
+- Classic in Burkitt's lymphoma with t(8;14) translocation
+
+**HER-2/neu (c-erb B2):**
+- Encodes p185 receptor protein
+- Normal p185: "Bent" conformation (inactive without growth factor)
+- Mutated/Amplified: "Straight" a-helical conformation (autonomous growth-factor-independent activity)
+- Clinical: HER-2 positive breast cancer = poor prognosis without Herceptin, excellent with targeted therapy
+
+---
+
+**KEY LOGIC:** Oncogene products mimic normal signaling molecules but remain "permanently switched on," bypassing the body's physiological requirements for growth signals.`
+            }
+          ]
+        }
+      ]
+    },
+
+    // ============================
+    // SET 4: CARCINOGENESIS
+    // ============================
+    {
+      setId: 4,
+      setTitle: "SET 4: CARCINOGENESIS",
+      icon: "⚗️",
+      clusters: [
+        {
+          clusterId: "4.1",
+          clusterTitle: "Carcinogenesis and Carcinogens",
+          years: [2021, 2017, 2016, 2015],
+          marks: [4, 5],
+          questions: [
+            {
+              qId: "4.1.1",
+              qText: "What do you mean by carcinogenesis? Write down the classifications and characteristics of carcinogens.",
+              marks: 5,
+              solution: `**CARCINOGENESIS: COMPREHENSIVE DEFINITION**
+
+**Definition:** The multi-step process by which normal cells transform into cancer cells. Also called Oncogenesis or Tumorigenesis. [ক্যান্সার সৃষ্টির প্রক্রিয়া]
+
+**THREE STAGES OF CARCINOGENESIS:**
+
+1. **Initiation** - First genetic mutation making cell susceptible [শুরুয়াত]
+   - Irreversible process
+   - Requires single mutation to specific genes
+   
+2. **Promotion** - Initiated cells divide to form abnormal clusters [প্রসার]
+   - Often reversible if carcinogen removed
+   - Requires multiple/chronic doses
+   
+3. **Progression** - Cells acquire invasive & aggressive traits [মারাত্মক রূপান্তর]
+   - Final stage leading to malignancy
+   - Result: Outright cancer formation
+
+**CLASSIFICATIONS OF CARCINOGENS:**
+
+**Genotoxic Carcinogens (DNA-binding):**
+- Direct-acting: Bind to DNA immediately (e.g., Dimethyl Sulfate)
+- Procarcinogens: Require metabolic activation [বিপাকীয় সক্রিয়করণ] (e.g., Benzo[a]pyrene)
+- Inorganic: Metals altering DNA replication (Nickel, Chromium)
+
+**Epigenetic Carcinogens (Non-DNA-binding):**
+- Do NOT bind to DNA directly
+- Act as Tumor Promoters via hormonal, inflammatory, or oxidative stress mechanisms
+- Often require prior "initiation" by genotoxic agent
+
+**ROLE OF POLYCYCLIC AROMATIC HYDROCARBONS (PAHs):**
+- Source: Incomplete combustion (tobacco smoke, coal tar, automobile exhaust)
+- Mechanism: Procarcinogens → Cytochrome P-450 metabolizes to reactive epoxides [ইপোক্সাইড]
+- Action: Epoxides bind covalently to DNA → Mutations
+- Significance: Multi-hit process requiring 5-8 specific mutations before tumor develops
+
+---
+
+**💡 MEMORY TIP:** Initiation = "Lighting the fire" | Promotion = "Adding fuel" | Progression = "Fire spreading out of control"`
+            }
+          ]
+        },
+        {
+          clusterId: "4.2",
+          clusterTitle: "Epigenetic Carcinogenesis and Tumor Promoters",
+          years: [2021, 2017],
+          marks: [4],
+          questions: [
+            {
+              qId: "4.2.1",
+              qText: "What is epigenetic carcinogenesis? Write down the mechanism of tumor formation with epigenetic carcinogenesis.",
+              marks: 4,
+              solution: `**EPIGENETIC CARCINOGENESIS: DEFINITION & MECHANISMS**
+
+**Definition:** Cancer induction NOT by direct DNA strand breakage, but through changes to the cellular environment that promote transformation.
+
+**Functional Characteristics:**
+1. **Non-DNA Binding** - No direct DNA lesions or strand breaks
+2. **Promoters** - Act as Tumor Promoters enhancing growth of already-initiated cells
+3. **Hormonal Action** - Disrupt endocrine balance (e.g., Estrogen overexposure)
+4. **Tissue Injury** - Chronic inflammation & cell death trigger constant repair → errors
+
+**MECHANISM OF EPIGENETIC TUMOR FORMATION:**
+
+1. **DNA Methylation** - Methyl groups added to specific DNA sites turn OFF protective genes
+2. **Immunosuppression** - Reduce Immune Surveillance [রোগ প্রতিরোধ নজরদারি] allowing tumor growth undetected
+3. **Oxidative Stress** - Reactive Oxygen Species (ROS) damage cell membranes and signaling pathways
+
+**KEY DISTINCTION:**
+- **Genotoxic agents** = "Handgun assassins" (directly attack DNA)
+- **Epigenetic agents** = "Corrupt politicians" (change environment, don't pull trigger themselves)
+
+**Critical Point:** Epigenetic agents are NOT "complete carcinogens" - usually require prior cell "initiation" by genotoxic agent to work.
+
+**Xenobiotics [বিজাতীয় বিষাক্ত পদার্থ]:** Foreign toxic chemicals in food (compounds from cooking fat/meat) often acting via epigenetic pathways.`
+            }
+          ]
+        }
+      ]
+    },
+
+    // ============================
+    // SET 5: TUMOR SUPPRESSORS & VIRAL ONCOGENESIS
+    // ============================
+    {
+      setId: 5,
+      setTitle: "SET 5: TUMOR SUPPRESSORS & VIRAL ONCOGENESIS",
+      icon: "🛡️",
+      clusters: [
+        {
+          clusterId: "5.1",
+          clusterTitle: "Tumor Suppressor Genes and Anti-oncogenes",
+          years: [2016, 2015, 2014, 2013],
+          marks: [4, 5],
+          questions: [
+            {
+              qId: "5.1.1",
+              qText: "What is cancer suppressor genes? Cancer suppressor genes are anti-oncogenes — justify.",
+              marks: 5,
+              solution: `**TUMOR SUPPRESSOR GENES: DEFINITION & FUNCTION**
+
+**Definition:** Genes that function as negative growth regulators, inhibiting cell division and maintaining DNA integrity. [টিউমার নিরোধক জিন]
+
+**Function:** They act as "Brakes" [গতি নিরোধক] for the cell cycle and maintain DNA integrity [ডিএনএ-র অখণ্ডতা]
+
+**WHY "ANTI-ONCOGENES":**
+
+Their normal presence PREVENTS the transformation induced by oncogenes. If an individual loses both alleles (Two-Hit Hypothesis), the cell enters uncontrolled division.
+
+**KEY EXAMPLES:**
+
+**p53: "Guardian of the Genome" [জিনের প্রহরী]**
+- Detects DNA damage and triggers apoptosis if repair fails
+- Activates p21 checkpoint inhibitor
+- Loss → No cell death even with mutations → Cancer development
+
+**RB1: Retinoblastoma Gene**
+- Controls G1/S checkpoint by binding E2F transcription factor
+- When dephosphorylated: Inhibits cell division
+- When deleted: No brake → Uncontrolled S-phase entry
+- Two-Hit: Hereditary deletion (Hit 1) + Somatic deletion (Hit 2) → Retinoblastoma
+
+**Two-Hit Hypothesis (Knudson):**
+- Hit 1: Germline (inherited) deletion of one allele
+- Hit 2: Somatic deletion of second allele in specific tissue
+- Result: Loss of ALL suppressor function → Cancer with 100% penetrance
+
+**CLASSIFICATION OF TUMOR SUPPRESSORS:**
+1. **Cell Cycle Gatekeepers** - RB1, p53, p16, p21
+2. **Growth Inhibitors** - TGF-β pathway genes (SMAD proteins)
+3. **DNA Repair Genes** - BRCA1/BRCA2 (breast cancer predisposition)
+4. **Apoptosis Inducers** - p53, PTEN (phosphatase & tensin homolog)
+
+---
+
+**JUSTIFICATION:** They are anti-oncogenes because their NORMAL PRESENCE prevents cancer development. Their LOSS or INACTIVATION leads to uncontrolled proliferation, making them the opposite of oncogenes (which promote growth when activated).`
+            }
+          ]
+        },
+        {
+          clusterId: "5.2",
+          clusterTitle: "Viral Oncogenesis",
+          years: [2023, 2022, 2021, 2017, 2016, 2015, 2013],
+          marks: [2, 3, 4, 5],
+          questions: [
+            {
+              qId: "5.2.1",
+              qText: "What do you mean by oncogenic viruses? Compare and contrast between DNA and RNA tumor viruses.",
+              marks: 5,
+              solution: `**ONCOGENIC VIRUSES: DEFINITION & MECHANISMS**
+
+**Definition:** Viruses that maintain chronic infections and transform host cells by introducing viral oncogenes or inactivating host tumor suppressors. [ক্যান্সার সৃষ্টিকারী ভাইরাস]
+
+**COMPREHENSIVE COMPARISON TABLE:**
+
+| Feature | DNA Tumor Viruses | RNA Tumor Viruses (Retroviruses) |
+|---------|------------------|----------------------------------|
+| **Genome Type** | dsDNA or ssDNA | ssRNA; replicates via DNA intermediate |
+| **Mechanism** | Inactivate host suppressors (p53, pRb) | Introduce viral oncogenes (v-onc) |
+| **Integration** | Integration prerequisite for cancer | Integration (Provirus) is normal cycle |
+| **Examples** | HPV, HBV, EBV, KSHV/HHV-8 | HTLV-1, Rous Sarcoma Virus |
+
+**DNA TUMOR VIRUSES:**
+
+**HPV (Human Papillomavirus):**
+- Types 16, 18 cause cervical, vulvar, anal cancer
+- Mechanism: E6/E7 proteins inactivate p53 and pRb
+- Result: Loss of checkpoints → Uncontrolled division
+
+**HBV (Hepatitis B Virus):**
+- Causes Hepatocellular Carcinoma (Liver cancer)
+- Mechanism: Chronic inflammation + Integration → HCC
+- Statistical: ~80% of HCC cases worldwide
+
+**EBV (Epstein-Barr Virus):**
+- First human virus identified as cancer-causing agent
+- Associated: Burkitt's Lymphoma, Nasopharyngeal carcinoma
+- Mechanism: Transforms B-cells, establishes lifelong latency
+
+**RNA TUMOR VIRUSES (Retroviruses):**
+
+**HTLV-1:**
+- Causes Adult T-cell Leukemia (ATL)
+- Mechanism: Tax protein inactivates p53
+- Geographical: Endemic in Japan, Caribbean
+
+**Rous Sarcoma Virus (RSV):**
+- First discovered cancer virus (1911)
+- Carries src oncogene (protein tyrosine kinase)
+- Mechanism: Direct introduction of viral oncogene
+
+**GENERAL PRINCIPLES OF VIRAL MECHANISMS:**
+
+1. **Direct** - Virus carries oncogene (src in RSV) OR proteins (E6/E7 in HPV) interfere with p53/pRb
+2. **Indirect** - Chronic infection → inflammation + tissue damage → random mutations increase
+3. **Tenets** - Tumor viruses: establish persistent infections, have long latent periods, usually act as cofactors (not complete carcinogens alone)
+
+---
+
+**KEY STATISTIC:** Viruses cause ~20% of cancers in women and ~8% in men globally.`
+            }
+          ]
+        }
+      ]
+    },
+
+    // ============================
+    // SET 6-8: PLACEHOLDER STRUCTURE
+    // ============================
+    {
+      setId: 6,
+      setTitle: "SET 6: DIAGNOSIS, SCREENING & MANAGEMENT",
+      icon: "🏥",
+      clusters: [
+        {
+          clusterId: "6.1",
+          clusterTitle: "Cancer Diagnosis and Screening",
+          years: [2016, 2015],
+          marks: [4],
+          questions: [
+            {
+              qId: "6.1.1",
+              qText: "Write down the components which have improved the survival of cancer.",
+              marks: 4,
+              solution: `**COMPONENTS IMPROVING CANCER SURVIVAL:**
+
+**The Therapeutic Continuum:**
+
+1. **Primary Prevention** - Elimination of Tobacco [তামাক বর্জন]; UV protection; vaccination (HPV, HBV)
+2. **Secondary Prevention (Screening)** - Early detection in asymptomatic hosts
+   - Pap smears (Cervix)
+   - Mammograms (Breast)
+   - Colonoscopy (Rectum/Colon)
+3. **Multidisciplinary Treatment**
+   - Surgery (debulking)
+   - Radiation (DNA damaging)
+   - Chemotherapy (killing dividing cells)
+4. **Biologic Response Modifiers (BRMs)**
+   - Interferons (IFN)
+   - Interleukins (IL-2)
+   - Monoclonal antibodies
+5. **Immunotherapy** - Checkpoint inhibitors, CAR-T cells
+
+**Critical Info:** Early detection is essential - earlier tumors have less heterogeneity and are easier to eliminate.
+
+**💡 Memory:** "3D's" for survival = Detection (early), Diagnosis (multidisciplinary), Discipline (adherence)`
+            }
+          ]
+        }
+      ]
+    },
+    {
+      setId: 7,
+      setTitle: "SET 7: VIROLOGY INTRODUCTION",
+      icon: "🦠",
+      clusters: [
+        {
+          clusterId: "7.1",
+          clusterTitle: "Virus Classification, Virion, Viroid, Prion",
+          years: [2022, 2020, 2017, 2016, 2014, 2013, 2015],
+          marks: [3, 4, 7, 10],
+          questions: [
+            {
+              qId: "7.1.1",
+              qText: "Define virion and viroid. State the rules of viral classification by ICTV with examples.",
+              marks: 4,
+              solution: `**VIRION, VIROID, AND PRION: DEFINITIONS**
+
+**Virion (ভাইরিয়ন):** The complete, intact infectious unit as it exists outside the host cell. [সম্পূর্ণ সংক্রামক ভাইরাস কণা]
+
+**Viroid (ভাইরয়েড):** Infectious circular ssRNA replicating in plant hosts. No protein coat. [প্রোটিনহীন ক্ষুদ্র আরএনএ]
+
+**Prion (প্রিয়ন):** Proteinaceous infectious particles causing neurodegenerative disorders (Kuru, CJD). [সংক্রামক প্রোটিন কণা]
+
+**ICTV CLASSIFICATION RULES (International Committee on Taxonomy of Viruses):**
+
+Established: 1966 | Uses standardized suffixes:
+- **Order:** -virales (e.g., Caudovirales)
+- **Family:** -viridae (e.g., Herpesviridae)
+- **Genus:** -virus (e.g., Simplexvirus)
+
+**Basis of Classification:**
+1. Genome type (DNA/RNA)
+2. Strandness (ss/ds)
+3. Replication strategy (Baltimore Classification):
+   - Class I: dsDNA
+   - Class II: ssDNA
+   - Class III: dsRNA
+   - Class IV: (+)ssRNA → mRNA
+   - Class V: (-)ssRNA → mRNA template
+   - Class VI: Reverse transcriptase (Retrovirus)
+
+**Why viruses are Obligatory Parasites (অপরিহার্য পরজীবী):**
+- Lack own metabolism
+- Must hijack host energy (ATP), machinery (ribosomes), precursors (dNTPs)
+- Cannot replicate independently`
+            }
+          ]
+        }
+      ]
+    },
+    {
+      setId: 8,
+      setTitle: "SET 8: VIRAL PATHOGENESIS & SPECIFIC VIRUSES",
+      icon: "💉",
+      clusters: [
+        {
+          clusterId: "8.1",
+          clusterTitle: "Influenza, COVID-19, HIV, and Antiviral Strategies",
+          years: [2023, 2022, 2020, 2017, 2016, 2015, 2014, 2013],
+          marks: [3, 4, 6, 9, 13, 15],
+          questions: [
+            {
+              qId: "8.1.1",
+              qText: "Explain the structure and genomic makeup of SARS-CoV-2 and how it hijacks healthy cells.",
+              marks: 6,
+              solution: `**SARS-CoV-2 STRUCTURE AND HIJACKING MECHANISM**
+
+**GENOMIC MAKEUP:**
+- **Type:** (+)ssRNA, non-segmented lipid-enveloped virus
+- **Genome Size:** ~29.9 kb
+- **Key Genes:** S (Spike), E (Envelope), M (Membrane), N (Nucleocapsid), ORF1ab (replication enzymes)
+
+**VIRION STRUCTURE:**
+- **Spike (S) Protein:** Crown-like projections; two subunits S1 (receptor binding) and S2 (membrane fusion)
+- **Envelope (E)** & **Membrane (M):** Viral lipid bilayer with embedded proteins
+- **Nucleocapsid (N):** Packages genomic RNA
+
+**HOW SARS-COV-2 HIJACKS HEALTHY CELLS (5 STEPS):**
+
+1. **Attachment (S1 subunit)**
+   - Spike S1 binds human ACE2 receptor on respiratory epithelial cells
+   - Receptor is also on heart, kidney, intestine cells
+
+2. **Cleavage (by host protease)**
+   - TMPRSS2 (transmembrane serine protease 2) cleaves Spike at S2' site
+   - Exposes fusion-active conformation
+
+3. **Fusion (S2 subunit)**
+   - S2 subunit mediates fusion of viral and host membranes
+   - Conformational change drives lipid bilayer merger
+
+4. **Entry**
+   - Viral RNP complex (RNA + Nucleocapsid protein) enters cytoplasm
+   - RNA serves as direct translation template (Class IV: (+)ssRNA)
+
+5. **Hijacking Machinery**
+   - ORF1ab encodes: RNA-dependent RNA polymerase (RdRp), proteases, helicase
+   - Host ribosomes translate viral mRNA
+   - Viral RdRp replicates genome
+   - Virions assembled in ER-Golgi
+   - Released by exocytosis (budding)
+
+**Clinical Outcomes:**
+- Mild: Upper respiratory infection
+- Severe: Pneumonia, ARDS (Acute Respiratory Distress Syndrome)
+- Fatal: Multi-organ failure from immune hyperactivation`
+            }
+          ]
+        }
+      ]
+    }
   ]
 };
 

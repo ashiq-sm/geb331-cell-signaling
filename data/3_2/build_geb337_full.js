@@ -1,0 +1,848 @@
+const fs = require('fs');
+
+const fullData = `const geb337_sets = [
+  {
+    id: "set1",
+    title: "SET 1: rDNA Technology — Introduction, Scope, Importance, Tools & History",
+    rawMd_en: \`
+### Cluster 1.1: Definition, Scope, Importance & Applications of rDNA / Genetic Engineering
+<div class="logic-box">
+<span style="color: #e74c3c; font-weight: bold;">HIGH ★ · Every year</span><br/>
+<b>2021:</b> "Recombinant DNA technology is the basic strategy of genetic engineering and considered as a powerful tool" — justify the statement. 1.5+1.5<br/>
+<b>2021:</b> Write the achievements and future application of genetic engineering in the 21st century. 1.5+1.5<br/>
+<b>2021:</b> Mention the name of tools that are used in the recombinant DNA technology. Show the steps to prepare a recombinant DNA. 1.5+1.5<br/>
+<b>2021:</b> Prepare a list of three important enzymes with their functions used in recombinant DNA technology. 3<br/>
+<b>2023:</b> Write down the scope, importance and application of recombinant DNA technology. 4<br/>
+<b>2022:</b> Define recombinant DNA. "rDNA technology is a powerful tool" — justify the statement with appropriate example. 2+3<br/>
+<b>2022:</b> Write the importance of R-DNA technology in the field of agriculture, animal sciences and medical sciences. 3<br/>
+<b>2022:</b> Make a list of four (4) enzymes used in recombinant DNA technology with their functions. 2<br/>
+<b>2020:</b> Write the scope and importance of genetic engineering in near future. 4<br/>
+<b>2018:</b> Define recombinant DNA technology. 1<br/>
+<b>2015:</b> "r-DNA technology is a very powerful tool in the field of biotechnology" – justify the statement with appropriate example. Mention the achievements and future scope of genetic engineering. 4+4<br/>
+<b>2014:</b> What do you mean by recombinant DNA technology? Write the practical applications of genetic engineering. "Recombinant DNA technology is the basic strategy of genetic engineering" – Justify. 1+3 / 4<br/>
+<b>2013:</b> "rDNA technology is a very appropriate tool for biotechnologists" – justify the statement with appropriate example. Write the historical background of discovery of rDNA technology. Discuss the controversies of rDNA technology. 5+4+4<br/>
+<b>2012:</b> What is recombinant DNA technology? How will you produce a recombinant vector? Describe the application and controversies of recombinant DNA technology. 2+5+7<br/>
+<b>2011:</b> Define recombinant DNA technology. Narrate the basic steps and strategies of genetic engineering with a suitable example. State the importance of gene cloning in human welfare. 1+4+3
+</div>
+
+One answer covers all.
+📌 **Definition:** Recombinant DNA (rDNA) technology *re- (again) + combināre (to join) = পুনর্যোজন প্রযুক্তি; "recombinant" = নতুনভাবে সংযুক্ত* is the set of molecular techniques for locating, isolating, altering, combining, and studying DNA segments from two or more different organisms. Also called **genetic engineering** *genos (Gk: birth/origin) + engineer = জিনগত প্রকৌশল* or gene splicing *splice = জোড়া লাগানো*. 
+
+**GMOs** (Genetically Modified Organisms) are defined as those organisms with a gene or genetic construct of interest that has been introduced by molecular or rDNA techniques. 
+First demonstrated in 1973 by Stanley Cohen (Stanford) + Herbert Boyer (UCSF) — inserted foreign DNA into a plasmid (pSC101) and expressed it in *E. coli* — founding act of modern genetic engineering. It is the direct modification of an organism's genome *genome = গ্যামেট (gamete) + chromosome = সমগ্র বংশগতীয় উপাদান*, which is the list of specific traits (genes) stored in the DNA.
+
+| TOOL | NAME | Function |
+|---|---|---|
+| ✂ **Molecular Scissors** | Restriction Endonucleases | Cut dsDNA at specific palindromic recognition sites (4–8 bp) |
+| 🔗 **Molecular Glue** | DNA Ligase (T4) | Seals nicks; forms phosphodiester bonds between DNA fragments |
+| 🚌 **Vehicle** | Vectors (plasmid, phage, cosmid, YAC, BAC) | Carries foreign DNA into host cell; provides *ori* for replication |
+| 🏠 **Host** | *E. coli*, yeast, CHO cells, plant cells | Expresses and amplifies the recombinant DNA |
+| 🔬 **Amplifier** | PCR, Reverse Transcriptase | Amplify/copy DNA; synthesize cDNA from mRNA |
+| 🔍 **Detector** | Alkaline Phosphatase, Probes, Blotting | Prevent vector recircularization; detect/screen recombinants |
+
+**Basic steps of rDNA technology [7 key steps]:** 
+(1) **Isolation** of gene of interest (PCR / restriction digest / cDNA from mRNA) → (2) **Restriction digestion** *restriction = প্রতিবন্ধক*; enzyme cuts at palindromic sites → (3) **Ligation** *ligare (L) = to bind = DNA টুকরো জোড়া লাগানো* into vector → (4) **Transformation** *trans- (across) + forma = আকৃতি পরিবর্তন*; DNA প্রবেশ করানো into competent host → (5) **Selection** (antibiotic/insertional inactivation/blue-white) → (6) **Screening** → (7) **Expression** of recombinant protein.
+
+| Application Field | Examples | Impact |
+|---|---|---|
+| **Medicine** | Human insulin (1982, Eli Lilly — 1st rDNA drug), HGH Human Growth Hormone, EPO *erythropoietin = লোহিত রক্তকণিকা তৈরিতে উদ্দীপক*, tPA, IFN-α, mAbs (Herceptin), HBV vaccine (1986), Factor VIII/IX (haemophilia) | Unlimited pure supply, no animal contamination risk |
+| **Agriculture** | Bt cotton/corn (*cry* genes from *Bacillus thuringiensis* *thuringiensis = জার্মানির Thuringia অঞ্চল থেকে নামকরণ*), Golden Rice (*psy1*+*crtI* genes → β-carotene → Vit A), Flavr-Savr tomato (1994, 1st GM food), herbicide-tolerant soybean (*EPSPS* gene) | Reduced pesticide, improved nutrition |
+| **Animal Science** | bST *bovine somatotropin = গরুর বৃদ্ধি হরমোন* → *দুধ উৎপাদন বৃদ্ধি*, spider silk in goat milk (*MaSp1* gene), fast-growing salmon (GH gene), disease-resistant transgenic fish | Improved productivity, novel biomaterials |
+| **Industry & Environment** | Bioremediation (oil spill cleanup — nutrient-stimulated bacteria), bioplastics (cyanobacteria → polyethylene), biosensors, forensic RFLP/DNA fingerprinting, identity verification | Waste management, sustainable production |
+| **Forensics/Diagnosis** | DNA fingerprinting (RFLP), PCR-based disease diagnosis (COVID-19, HIV), pathogen detection, ancestry tracing | Legal, clinical, genealogical applications |
+
+⚠ **Why rDNA is "powerful" [justify the statement]:** The power lies in its ability to move genes from any organism (algae, bacteria, viruses, animals) to any other — crossing sexually incompatible species — impossible by traditional breeding. (1) Crosses kingdom boundaries — bacterial gene expressed in human cells; (2) Produces unlimited, pure pharmaceutical-grade protein; (3) Codon optimization allows expression in any organism; (4) One *E. coli* culture makes more insulin in 24 hrs than a ton of animal pancreases; (5) Genetic material can be shared across scientific kingdoms. Why NOT traditional breeding: Slow (years/decades), limited to sexually compatible species, unpredictable gene combinations, cannot introduce genes from bacteria or other kingdoms.
+
+**Historical milestones & timeline:** 
+*   **1962:** "Molecular scissors" (restriction enzymes) discovered in bacteria (Arber)
+*   **1970:** First RE isolated (HindII by Smith)
+*   **1973:** Cohen + Boyer — first rDNA in *E.coli* (pSC101) — founding moment
+*   **1974:** First GM mice
+*   **1977:** Sanger sequencing; Boyer founds Genentech
+*   **1978:** Nobel Prize — Arber, Smith, Nathans (restriction enzymes)
+*   **1982:** Insulin (Humulin) — first rDNA therapeutic, Eli Lilly
+*   **1986:** First recombinant vaccine — HBV (Recombivax HB, yeast system)
+*   **1990:** Human Genome Project begins
+*   **1993:** Nobel Prize — Kary Mullis (PCR)
+*   **1994:** Flavr-Savr tomato — first GM food on market
+*   **1996:** Dolly the sheep — first mammalian clone
+*   **1997:** First GMO crop widely planted (Bt cotton)
+*   **2003:** GloFish — first GM pet / HGP completed.
+
+⚡ **Controversies of rDNA technology [2012, 2013 exam questions]:** (1) Biosafety concerns — "escape" of recombinant organisms into natural populations; (2) Ethical issues — human germline editing, "playing God"; (3) Environmental risks — herbicide-resistant superweeds (gene flow to wild relatives), Bt toxin effects on non-target insects (monarch butterfly); (4) Health risks — allergenicity of GM foods (Brazil nut gene in soybean — abandoned); (5) Regulatory and labeling — 50+ countries ban or restrict GMO foods, 64 require GMO labeling; (6) Biopiracy — patenting of genes from developing nations; (7) Asilomar Conference (1975) — scientists voluntarily halted rDNA research to assess risks, then resumed with guidelines → model for responsible science.
+
+---
+
+### Cluster 1.2: Gateway Cloning
+<div class="logic-box">
+<span style="color: #e74c3c; font-weight: bold;">HIGH ★ · NEW 2023 (all 4 sub-parts)</span><br/>
+<b>2023:</b> Define gateway cloning. How does gateway cloning work? 3<br/>
+<b>2023:</b> How would you design a gateway cloning experiment? 3<br/>
+<b>2023:</b> Briefly discuss the steps involved in gateway cloning experiment. 3<br/>
+<b>2023:</b> Why researchers prefer gateway cloning over conventional gene cloning procedure? 3
+</div>
+
+One answer covers all: **Gateway cloning:** site-specific recombination-based system (Invitrogen) using bacteriophage λ *att* recombination sites. 
+**How it works:** *attB* (entry PCR product) × *attP* (donor vector) → **BP reaction** (BP clonase) → entry clone (*attL* flanked). Then *attL* × *attR* (destination vector) → **LR reaction** (LR clonase) → expression clone. 
+**Design:** (1) PCR-amplify gene of interest with *attB* sites in primers, (2) BP reaction → entry clone, (3) LR reaction into desired destination vector (bacterial expression, yeast, mammalian etc.). 
+**Steps:** PCR with *attB* primers → BP reaction (donor vector) → selection (*ccdB* negative selection) → verified entry clone → LR reaction into destination vector → transform → select. 
+**Advantages over conventional:** no restriction enzymes needed → no sequence constraints; directional; parallel cloning into multiple vectors; no subcloning; high efficiency; compatible with many expression systems.
+
+---
+
+### Cluster 1.3: Gibson Assembly
+<div class="logic-box">
+<span style="color: #e74c3c; font-weight: bold;">HIGH ★ · NEW 2022 (all sub-parts) — likely to recur</span><br/>
+<b>2022:</b> What is Gibson assembly? 2<br/>
+<b>2022:</b> Write the functions of the enzymes involved in Gibson assembly. 3<br/>
+<b>2022:</b> Briefly discuss the approaches of Gibson cloning process. 4<br/>
+<b>2022:</b> Write the application and advantages of Gibson cloning. 3
+</div>
+
+One answer covers all.
+📌 **Gibson Assembly** [Named after Daniel G. Gibson (J. Craig Venter Institute, 2009) — *সমস্ত ডিএনএ টুকরো একটি পরীক্ষানলে জোড়া লাগানোর পদ্ধতি*]: An isothermal, single-tube, *in vitro* method that seamlessly joins multiple DNA fragments based on 15–80 bp sequence overlaps between adjacent fragments. No restriction enzymes required. Can assemble up to 15 fragments simultaneously. DNA molecules up to 15 kb can be assembled.
+
+| Enzyme | Action | Why Essential |
+|---|---|---|
+| **T5 Exonuclease** | Chews back DNA 5'→3' from both ends → creates 3' single-stranded overhangs | Generates complementary ssDNA overhangs that allow adjacent fragments to anneal. *exonuclease = exo (outside) + nuclease = প্রান্ত থেকে কাটে* |
+| **Phusion DNA Polymerase** | High-fidelity polymerase fills in gaps after annealing | Restores missing bases without introducing errors (proofreading); Phusion = high-fidelity thermostable polymerase |
+| **Taq Ligase** | Seals nicks (forms phosphodiester bonds) in the annealed double-stranded regions | Creates covalently sealed, fully intact dsDNA product |
+
+**Two approaches:**
+**1-Step method:** ≤5 fragments; all fragments + master mix of 3 enzymes combined in single reaction vessel; incubate at 50°C for 1 hour; simpler, faster. 
+**2-Step method:** For complex constructs with 6–15 fragments (100 bp – 10 kb each); Step 1 — T5 exonuclease + annealing (lower temp); Step 2 — add Phusion polymerase + Taq ligase for gap-fill and sealing. Two different incubation temperatures used.
+
+| Feature | Conventional RE Cloning | Gibson Assembly ★ |
+|---|---|---|
+| **Restriction enzymes needed?** | ✅ Required | ❌ Not required (no RE sites needed) |
+| **Restriction site scar?** | ✅ Leaves scar sequence | ❌ Seamless — no scar |
+| **Number of fragments** | 1–2 (typically) | Up to 15 simultaneously |
+| **Steps required** | Digest → gel purify → ligate → transform | Single-tube isothermal reaction → transform |
+| **Internal RE sites** | Problem (internal cuts) | ❌ No issue |
+| **Cost** | High (multiple enzymes) | Cheaper overall |
+| **Applications** | Standard cloning | Synthetic biology, large constructs, site-directed mutagenesis |
+
+⚠ **Why T5 exonuclease and NOT other exonucleases:** T5 exo chews back 5'→3' — this creates 3' overhangs (NOT 5' overhangs) which are the correct substrate for annealing; also, T5 exo is thermolabile → inactivated during subsequent polymerization/ligation steps, preventing over-digestion. **Primer design rule:** Each primer must have a ~20 bp binding region (Tm ≈ 60°C) PLUS a 20 bp overlap tail matching the adjacent fragment → total primer length ~40–60 bp. Assembly efficiency requires ≥15–40 bp overlap between adjacent fragments.
+
+**Applications:** Construction of synthetic genes, genome editing vectors (CRISPR), simultaneous assembly of multigene pathways, protein engineering, site-directed mutagenesis (insertions, deletions, point mutations).
+    \`,
+    rawMd_bn: \`[Bengali version matching technical depth will be auto-generated by the platform]\`
+  },
+  {
+    id: "set2",
+    title: "SET 2: Restriction Enzymes & DNA Manipulative Enzymes",
+    rawMd_en: \`
+### Cluster 2.1: Restriction Enzymes — Types, Properties, Classification, R-M System
+<div class="logic-box">
+<span style="color: #e74c3c; font-weight: bold;">HIGH ★ · Every year</span><br/>
+<b>2022, 2021:</b> "Restriction enzymes are called molecular scissors" — explain with justification. 3<br/>
+<b>2022, 2021:</b> Clarify the nomenclature of the restriction enzymes with one example and write the applications in the field of biotechnology. 2+1<br/>
+<b>2022:</b> How does restriction enzyme differ from other enzymes? 1<br/>
+<b>2018:</b> Compare among three major classes of restriction endonucleases. Discuss the steps involved in DNA binding and cleavage by a type II restriction endonuclease with appropriate figure. 4+5<br/>
+<b>2017:</b> Classify and define DNA manipulative enzymes involved in rDNA technology. 4<br/>
+<b>2015:</b> Define molecular scissor. Write down the characteristics and functions of molecular scissors. What do you mean by recognition sequence? Discuss in brief the frequency of recognition sites. 1+4 / 1+4<br/>
+<b>2014:</b> Define restriction enzyme. Discuss the properties of restriction enzymes. 1+5<br/>
+<b>2013:</b> Discuss the properties of type I and type II restriction enzymes. 4<br/>
+<b>2012:</b> Describe the various types of restriction enzymes with examples and mention which type is extensively used in genetic engineering. 5<br/>
+<b>2022, 2021, 2020, 2018, 2014:</b> "The restriction modification system functions as a type of immune system" – justify/prove the statement. 3–4
+</div>
+
+One answer covers all.
+📌 **Why "Molecular Scissors":** Restriction endonucleases *restrict = প্রতিবন্ধ করা; endonuclease = endo- (ভেতর) + nuclease = ডিএনএ কাটার যন্ত্র* scan DNA → recognize specific palindromic sequence → make precise double-stranded cuts. Just as scissors cut at a defined location, RE cut ONLY at their specific recognition site. Over 3,000 restriction enzymes have been studied in detail; more than 800 are commercially available. The activity of restriction enzymes depends on precise environmental conditions: pH, temperature, salt concentration, and Mg²⁺ ions. An Enzymatic Unit (u) = amount of enzyme required to digest 1 μg of DNA in optimal conditions (typically 3–5 u/μg genomic DNA; 1 u/μg plasmid DNA; stocks at 10 u/μl).
+
+| Feature | Type I | Type II ★ | Type III |
+|---|---|---|---|
+| **Cut site** | Random (~1000 bp away from recognition site) | Within recognition site — precise | ~25–30 bp away from recognition site |
+| **Recognition sequence** | Bipartite, asymmetric (3–4 nt + 4–5 nt separated by 6–8 nt spacer = ~15 bp total) | Palindromic (4–8 bp) — undivided | Non-palindromic, inversely oriented pairs |
+| **Cofactors required** | ATP, Mg²⁺, SAM (*S-Adenosylmethionine SAM = universal methyl donor = মিথাইল গ্রুপ দাতা*) | Mg²⁺ only — simple | ATP, Mg²⁺, AdoMet (S-Adenosylmethionine) |
+| **Subunits** | 3 subunits: HsdR (restriction), HsdM (methyltransferase = methylates host DNA), HsdS (specificity) | Single polypeptide — simplest | 2 subunits (endonuclease + methylase) |
+| **Products** | Heterogeneous fragments (unpredictable sizes) | Defined sticky or blunt ends (reproducible) | Defined ends, but relatively homogeneous |
+| **Use in Genetic Eng?** | ❌ No — random cuts unusable | ✅ Primary tool — only Type II used routinely | ❌ Limited use only |
+| **Named examples** | EcoKI, EcoBI (K-12 and B strains of *E. coli*) | EcoRI, BamHI, HindIII, SmaI, PstI, HaeIII, StuI (*Streptomyces tubereidicus*) | MboII, FokI, HpaII |
+
+**Restriction-Modification (R-M) System as Bacterial Immune System — Arber & Linn (1969):** 
+Experiment: Phage λ grown on *E. coli* strain C (unprotected) efficiently infected *E. coli* K-12 AND B. But phage grown on K-12 could NOT infect B (and vice versa) — plating efficiency dropped ~1000×. Finding: DNA of phage grown on K-12 had chemically modified (methylated) bases. Methylation occurs at palindromic sequences within the recognition site. 
+**Two-component defense system:** 
+*   **Restriction arm** = endonuclease destroys unmethylated foreign (phage) DNA. 
+*   **Modification arm** = methylase (hsdM) adds –CH₃ to same recognition site in host DNA → host DNA is "marked" as self → NOT cut by its own RE. 
+Analogy: just like immune system identifies self vs non-self, R-M system identifies self (methylated) DNA vs non-self (unmethylated) DNA and destroys foreign.
+
+**Nomenclature system (decoded — EcoRI example):** *E* = *Escherichia* (genus, italicized) + *co* = *coli* (species) + *R* = RY13 (strain designation) + *I* = first enzyme identified from that strain. Another example: StuI = *Streptomyces tubereidicus I*; HindIII = *Haemophilus influenzae* strain d, 3rd enzyme.
+
+⚠ **Why Type II only in GE:** Type II enzymes (1) recognize palindromic sequences, (2) cut within or near the recognition site → predictable, defined fragments, (3) produce sticky OR blunt ends that can be ligated with matching ends from ANY organism → enables cross-species DNA joining, (4) require only Mg²⁺ (no ATP or SAM) → simple reaction. 
+**Type I not useful:** cuts ~1000 bp AWAY from recognition site → random, non-reproducible fragments → cannot predict what gene is in what fragment. 
+**Recognition site frequency:** Probability = (1/4)ⁿ for random sequence; 4-cutter (n=4): cuts every 256 bp → ~12,000,000 fragments from human genome (too many); 6-cutter (n=6): cuts every 4096 bp → ~700,000 fragments (manageable for gel analysis); 8-cutter (n=8): cuts every 65.5 kb → ~46,000 fragments. 
+**Applications:** gene cloning, RFLP/DNA fingerprinting, restriction mapping, cDNA library, GMO creation, molecular diagnostics.
+
+---
+
+### Cluster 2.2: Palindromic Sequences — Cohesive & Blunt End Cleavage
+<div class="logic-box">
+<span style="color: #e74c3c; font-weight: bold;">HIGH ★ · Every year</span><br/>
+<b>2022, 2021, 2020, 2018, 2017, 2014, 2013, 2012:</b> What is palindromic sequence? Write the importance of palindromic sequences in rDNA technology. Show cohesive and blunt end cleavage of two palindromic sequences. 3-5
+</div>
+
+One answer covers all.
+📌 **Palindrome** [*palin (Gk: again) + dromos (Gk: running) = উভমুখী পাঠযোগ্য ক্রম; verbal examples: "Mom", "Racecar" — forwards = backwards!*]: A palindromic sequence in DNA reads the same 5'→3' on BOTH strands. Example: 5'–GAATTC–3' / 3'–CTTAAG–5'. 
+**Why preferred by RE:** Restriction enzymes are dimeric proteins with 2-fold rotational symmetry → they bind and cleave BOTH strands simultaneously ONLY if the target sequence has the same rotational symmetry (palindrome). Non-palindromic sequences cannot be cleaved symmetrically.
+
+| Feature | Cohesive (Sticky) Ends | Blunt Ends |
+|---|---|---|
+| **Cut type** | Staggered (asymmetric — cuts at different positions on each strand) | Straight across (symmetric, same position both strands) |
+| **Overhangs produced** | 5' overhang (EcoRI: 5'–AATT protrudes) OR 3' overhang (PstI: 3'–ACGT protrudes) | No overhang — flush ends |
+| **Ligation efficiency** | ~100× faster — complementary overhangs form H-bonds → pre-align before ligase seals | Low efficiency — no pre-alignment; need high conc. of T4 ligase or topoisomerase |
+| **Directionality** | Directional cloning possible (two different RE → forced orientation) | Non-directional — insert goes in either orientation |
+| **Example enzymes** | EcoRI (5' overhang: AATT), BamHI (5': GATC), HindIII (5': AGCT), PstI (3': ACGT) | SmaI (5'–CCC↓GGG–3'), HaeIII (5'–GG↓CC–3'), RsaI |
+
+**Diagram 1 — EcoRI (cohesive, 5' overhang):**
+5'–G↓AATTC–3'  →  5'–G     AATTC–3'
+3'–CTTAA↑G–5'      3'–CTTAA     G–5'
+→ 4-nt 5' overhang: 5'–AATT (sticky ends → H-bond → anneal → ligase seals phosphodiester bond).
+
+**Diagram 2 — SmaI (blunt end):**
+5'–CCC↓GGG–3'  →  5'–CCC    GGG–3'
+3'–GGG↑CCC–5'      3'–GGG    CCC–5' → no overhang, blunt flush ends.
+
+**Diagram 3 — BamHI (cohesive, 5' overhang: GATC):**
+5'–G↓GATCC–3'  →  5'–G     GATCC–3'
+3'–CCTAG↑G–5'      3'–CCTAG     G–5' → 4-nt 5' overhang: GATC.
+
+⚠ **Significance of palindromic sequences:** (1) Short palindromes serve as recognition sites for proteins with 2-fold symmetry (e.g., *lac* repressor binds palindromic operator; REs); (2) Bacterial RE specifically protect against foreign DNA by destroying it at palindromic sites; (3) Palindromes give structural strength to transcribed RNA by hydrogen bonding in hairpin loops (tRNA, rRNA, mRNA stability); (4) Long palindromic sequences contain genes coding for rRNA.
+
+---
+
+### Cluster 2.3: DNA Manipulative Enzymes
+<div class="logic-box">
+<span style="color: #e74c3c; font-weight: bold;">HIGH ★ · 6 yrs</span><br/>
+<b>2023:</b> Make a list of four (4) enzymes used in recombinant DNA technology with their functions. 4<br/>
+<b>2018:</b> Discuss about the four types of DNA polymerases that are used in genetic engineering. DNA topoisomerases have both nuclease and ligase activity – explain. 5+4<br/>
+<b>2017:</b> Write down the mode of action of T4 DNA ligase. "Sticky ends increase the efficiency of ligation" – justify. How can you overcome the limitations of adaptors? Write down the functional differences between DNA polymerase I and Klenow fragment with appropriate figures. How does DNA topoisomerase help in blunt end ligation? Describe the use of homopolymer tailing. 4+3+3 / 4 / 5 / 5<br/>
+<b>2015:</b> What is biological glue? Write down the functional characteristics of biological glue. 1+3<br/>
+<b>2013:</b> Write the functions of: i) DNA ligase ii) Nuclease S1 iii) Taq polymerase iv) RNase A. 4<br/>
+<b>2011:</b> Properties and functions of: i) Polynucleotide kinase ii) Alkaline phosphatase iii) S1 nuclease. What is homopolymer tail? 2 / 3×3 / 1+2
+</div>
+
+One answer covers all.
+📌 **DNA Ligase — "Biological Glue":** *ligare (L) = to bind; biological glue = জৈবিক আঠা* T4 DNA Ligase (from T4 phage) forms phosphodiester bonds; seals nicks; joins blunt OR sticky ends. **Mechanism:** (1) AMP (adenylyl group) transferred from NAD⁺ (E.coli ligase) or ATP (T4 ligase) to 5'-phosphate of nick → forms adenylated intermediate; (2) AMP-activated 5'-P attacked by 3'-OH → phosphodiester bond formed; (3) AMP released. Requires: 5'-phosphate (from ATP or polynucleotide kinase) + free 3'-OH; MgCl₂ + ATP.
+
+| Enzyme | Type | Function in rDNA Technology | Key Fact |
+|---|---|---|---|
+| **T4 DNA Ligase** | Ligase | Joins sticky and blunt ends → seals nicks in dsDNA | Uses ATP; "biological glue" |
+| **DNA Pol I** (*E. coli*) | Polymerase + Exonuclease | Nick translation (probe labeling); has 5'→3' exo + 5'→3' poly | 3 activities: 5'→3' poly, 3'→5' exo (proofreading), 5'→3' exo |
+| **Klenow Fragment** | Polymerase (truncated) | Fill-in 5' overhangs → make blunt ends; 2nd strand cDNA synthesis; random primer labeling | LACKS 5'→3' exonuclease → no nick translation |
+| **Taq Polymerase** | Thermostable polymerase | PCR amplification; adds A-overhang (used in TA cloning) | From *Thermus aquaticus*; 72°C optimal |
+| **Reverse Transcriptase** | RNA-dep. DNA Polymerase | Copies mRNA → ssDNA (first strand cDNA) | From retroviruses (MMLV/AMV) |
+| **Alkaline Phosphatase** (CIP/SAP) | Phosphatase | Removes 5'-phosphate from linearized vector → prevents self-ligation → forces insert ligation | *phosphatase = ফসফেট সরানোর যন্ত্র* |
+| **Polynucleotide Kinase** (T4 PNK) | Kinase | Adds 5'-phosphate (phosphorylation) to blunt-end fragments or oligo probes | Required before blunt-end ligation if DNA lacks 5'-P |
+| **Nuclease S1** | ssDNA/ssRNA nuclease | Cleaves single-stranded DNA/RNA; removes hairpin loop in cDNA synthesis | From *Aspergillus*; requires Zn²⁺ + low pH |
+| **RNase H** | Ribonuclease H | Degrades mRNA in RNA:DNA hybrid → creates nicks used by DNA Pol I | H = Hybrid-specific |
+| **Terminal Transferase** (TdT) | Template-independent poly | Adds homopolymer tail (poly-dC or poly-dA) to 3'-OH ends for blunt-end ligation | Does NOT need template → adds any dNTP randomly |
+| **DNA Topoisomerase I** | Topoisomerase | Nicks 1 strand → relaxes supercoils → used in TOPO cloning (blunt-end) | Has both nuclease AND ligase activity |
+
+**Homopolymer Tailing (step-by-step):** For joining blunt-ended DNA: (1) Terminal transferase + dCTP → adds poly-C tail to 3'-OH of linearized vector; (2) Terminal transferase + dGTP → adds poly-G tail to 3'-OH of blunt-ended insert; (3) Mix vector (poly-C) + insert (poly-G) → complementary tails anneal by G:C base pairing; (4) Transform E.coli → DNA repair enzymes fill gaps + seal nicks in vivo. 
+**Topoisomerase: both nuclease AND ligase activity:** DNA topoisomerase I recognizes sequence 5'–(C/T)CCTT–3' → cleaves phosphodiester bond of one strand → forms covalent 3'-phosphotyrosyl bond with cut end (nuclease activity) → DNA unwinds through gap → enzyme re-ligates the cut strand (ligase activity). In TOPO cloning, the stored ligation energy in the enzyme-DNA covalent bond is used to join PCR products instantly. 
+**Adaptors vs Linkers limitations (2017):** Linkers — short synthetic dsDNA with RE site; must use RE to cut → problem: if insert has same RE site internally, insert gets cut too. Adaptors — pre-cut sticky-end oligos; avoids RE cutting of insert; disadvantage: adaptors can ligate to each other (adaptor-adaptor ligation) → add phosphatase to one strand to prevent this.
+
+---
+
+### Cluster 2.4: DNA Sequencing — Sanger Method
+<div class="logic-box">
+<span style="color: #e74c3c; font-weight: bold;">MED · 2 yrs (prominent in 2011)</span><br/>
+<b>2011:</b> Write down the importance of DNA sequencing. Write the procedure for the sequencing of following segment by chain termination method: 3'–ATGCATGCAT–5'. Write the advantages and disadvantages. 3+8+3
+</div>
+
+One answer covers all: **Sanger dideoxy chain termination method:** template + primer + 4 ddNTPs (each in separate reaction) + DNA polymerase → chain terminated when ddNTP incorporated (no 3'-OH). Gel electrophoresis → read sequence from bottom to top. Sequence of 3'–ATGCATGCAT–5' → complement read 5'→3' is 5'–TACGTACGTA–3'. Advantages: long reads, accurate. Disadvantages: radioactive labeling (in classic method), slower than NGS. Automated Sanger: fluorescent ddNTPs, single-lane capillary electrophoresis.
+    \`,
+    rawMd_bn: \`[Bengali version matching technical depth will be auto-generated by the platform]\`
+  },
+  {
+    id: "set3",
+    title: "SET 3: Cloning Vectors — Plasmids, Bacteriophages, Cosmids, YAC, BAC, Special Vectors",
+    rawMd_en: \`
+### Cluster 3.1: Cloning Vector — Definition, Characteristics of Ideal Vector, Types
+<div class="logic-box">
+<span style="color: #e74c3c; font-weight: bold;">HIGH ★ · Every year</span><br/>
+<b>2023, 2021, 2018, 2017, 2015, 2013, 2012, 2011:</b> Define cloning vector with main characteristics. Functional differences between gene cloning vector and expression vector. 4–6
+</div>
+
+One answer covers all.
+📌 **Cloning Vector** [*vector = vehere (L) = to carry = বাহক = যে DNA অণু বিদেশী জিনকে আতিথেয় কোষে বহন করে*]: A DNA molecule that can carry a foreign DNA insert into a host cell, replicate autonomously, and allow the selection of transformed cells. It is the "vehicle" of molecular cloning.
+
+| Feature | Why It Is Essential | Example |
+|---|---|---|
+| **1. Origin of Replication (ori)** | Enables autonomous replication inside host — independent of chromosomal DNA. | pMB1/ColE1 ori (pBR322, pUC) |
+| **2. Selectable Marker** | Allows identification of host cells that contain the vector. | *ampR* (β-lactamase), *tetR* |
+| **3. Multiple Cloning Site (MCS)** | Short DNA segment with many unique RE sites clustered together → flexibility. *polylinker = বহু ছেদনস্থানের সমাহার* | pUC19 MCS has 13 unique sites |
+| **4. Small Size** | Easier to manipulate (restriction digest, ligation); higher transformation efficiency. | pUC19 = 2686 bp; pBR322 = 4361 bp |
+| **5. High Copy Number** | More copies per cell = higher yield of cloned DNA upon extraction. | pUC = 500–700 copies/cell |
+| **6. Screenable Marker** | Distinguishes recombinants (with insert) from empty vector. | *lacZα* → Blue/White selection |
+
+| Feature | Cloning Vector | Expression Vector ★ |
+|---|---|---|
+| **Primary Purpose** | Propagation & storage of DNA insert | High-level production of protein |
+| **Promoter** | Weak or absent — gene not expressed | Strong, regulatable (T7, lac, CMV) |
+| **RBS / Kozak** | Not required | Shine-Dalgarno (prok) or Kozak (euk) |
+| **Terminator** | Not critical | Efficient transcription terminator |
+| **Purification Tag** | None | His-tag, GST-tag, MBP-tag |
+
+⚠ **Types of Vectors at a glance:** Plasmids (pBR322, pUC) → small inserts (<10 kb). Bacteriophages (λ, M13) → 10–23 kb. Cosmids → 40–50 kb. BAC → 100–300 kb. YAC → up to 10 Mb. Shuttle vectors → replicate in two hosts. Ti plasmid → plant transformation. Retroviral → stable integration in mammalian cells. 
+**Why MCS is critical:** Without MCS, the researcher must find a single unique RE site in the vector that also has compatible ends on the insert → very limiting. MCS offers 10–15 options.
+
+---
+
+### Cluster 3.2: pBR322 — Origin, Structure, "Workhorse of Gene Cloning"
+<div class="logic-box">
+<span style="color: #e74c3c; font-weight: bold;">HIGH ★ · Every year</span><br/>
+<b>2023, 2021, 2018, 2015, 2014, 2013, 2012, 2011:</b> What is pBR322? Write the origin, structure and function of pBR322. Which characteristics make it a suitable cloning vector? "pBR322 is called the work house of gene cloning laboratory" – Explain. 4–5
+</div>
+
+One answer covers all.
+📌 **pBR322 — Origin & Pedigree:** *p* = plasmid; *BR* = Bolivar & Rodriguez (scientists, 1977, UCSF); 322 = arbitrary designation; *প্রথম প্রযুক্তি হিসেবে ব্যাপক ব্যবহৃত প্লাজমিড*. 4361 bp circular dsDNA. It is the first artificial cloning vector (1977). Deliberately engineered by combining DNA from 3 naturally occurring plasmids: *ampR* gene from Tn3 on plasmid R1; *tetR* gene from plasmid pSC101; *ori* from pMB1.
+
+| Feature | Detail | Significance for Cloning |
+|---|---|---|
+| **Size** | 4361 bp (4.3 kb) — small circular dsDNA | Easy manipulation, high transformation efficiency |
+| **Origin (ori)** | pMB1 origin → 15–20 copies/cell normally; amplified to 1000–3000 copies with chloramphenicol *chloramphenicol = প্রোটিন সংশ্লেষণ বাধা দেয়* | Autonomous replication; amplification increases yield |
+| ***ampR* gene** | Encodes β-lactamase *β-lactamase = অ্যাম্পিসিলিন নষ্ট করার যন্ত্র* → inactivates ampicillin | Primary selectable marker |
+| ***tetR* gene** | Tetracycline resistance; contains restriction sites BamHI, SalI | Insertional inactivation for recombinant selection (AmpR TetS) |
+| **Restriction sites** | Multiple unique sites: EcoRI, HindIII, BamHI, SalI, PstI | Can clone fragments with any of several kinds of sticky ends |
+
+⚠ **Why pBR322 = "Workhorse" of gene cloning:** (1) Small, well-characterized; (2) *ampR* + *tetR* dual markers → insertional inactivation; (3) Reasonable high copy number (amplifiable); (4) Variety of restriction sites; (5) Used as parent/template to construct hundreds of derivative vectors (pUC series).
+
+---
+
+### Cluster 3.3: Bacteriophage Vectors — Lambda (λ) & M13
+<div class="logic-box">
+<span style="color: #e74c3c; font-weight: bold;">HIGH ★ · Every year</span><br/>
+<b>2022, 2020, 2017:</b> What is bacteriophage lambda? Write the advantages of phage over plasmid. 3-4<br/>
+<b>2018, 2014, 2013:</b> How can a suitable vector be derived from bacteriophage M13? 4<br/>
+<b>2015, 2014, 2011:</b> How bacteriophage lambda is used as a vector in gene cloning? 3-4
+</div>
+
+One answer covers all.
+📌 **λ Phage structure:** *bacteriophage = bakterion (small rod) + phagein (to eat) = ব্যাকটেরিয়া-ভক্ষণকারী ভাইরাস* — 48.5 kb linear dsDNA genome; proteinaceous head + long tail; 12-nucleotide 5' single-stranded *cos* sites at both ends → anneal to circularize after injection into *E.coli*.
+
+| Type | Insertion Vector | Replacement Vector ★ |
+|---|---|---|
+| **Mechanism** | Foreign DNA inserted into non-essential region | Non-essential "stuffer" fragment replaced with foreign DNA |
+| **Insert size** | Up to ~10 kb | 9–23 kb |
+| **Selection** | Insertional inactivation of *cI* gene → clear plaques | Plaque formation (requires min 37 kb for packaging) |
+| **Examples** | λgt10, λgt11 | Charon 4A, λEMBL series |
+
+| Feature | Plasmid | λ Phage Vector ★ |
+|---|---|---|
+| **Insert capacity** | ~10 kb max | Up to 23 kb (replacement) |
+| **Transformation efficiency** | 10⁴–10⁶ per μg DNA | 10⁶–10⁷ per μg DNA (1000× higher) |
+| **Screening method** | Colony hybridization | Plaque hybridization (5×10⁴ plaques/plate) |
+| **Introduction into host** | Transformation | Infection (highly efficient, natural) |
+
+**M13 phage as vector:** 6.4 kb filamentous ssDNA phage; replicative form (RF = dsDNA) isolated → multiple cloning sites inserted into *lacZ* gene → blue/white screening. Key advantages: progeny ssDNA used as template for Sanger sequencing; used in phage display.
+⚠ **Why packaging selects for correct-size inserts:** λ head can package ONLY 37–52 kb DNA (≈ 78–105% of wild-type 48.5 kb). Too small → not packaged; too large → doesn't fit. This "packaging pressure" automatically selects inserts of 9–23 kb in replacement vectors — a built-in quality control.
+
+---
+
+### Cluster 3.4: Special Vectors — Ti Plasmid, Cosmids, YAC, BAC, Shuttle Vectors
+<div class="logic-box">
+<span style="color: #e74c3c; font-weight: bold;">HIGH ★ · Short notes every year</span><br/>
+<b>2021, 2018, 2015:</b> What is Ti plasmid? Why is Ti plasmid not used in recombinant DNA technology directly? 3-4<br/>
+<b>2021:</b> Differentiate between a plasmid and a cosmid vector. 3<br/>
+<b>2017, 2014, 2012, 2011:</b> Short notes: BAC, Ti plasmid, Shuttle vector, Retroviral vectors, Feature of cosmid vector, pUC8, YAC.
+</div>
+
+One answer covers all.
+📌 **Ti plasmid:** *Ti = Tumor-inducing — উদ্ভিদে টিউমার সৃষ্টিকারী প্লাজমিড; tumefaciens = ফোলাবানোর কারণ* Very large (200–800 kb) plasmid of *Agrobacterium tumefaciens* — causes crown gall disease *crown gall = ফুলকপির মতো গোলাকার গাদি বা পিণ্ড*. T-DNA integrates stably into plant genome → causes hyperplasia *hyper (excess) + plasia (growth) = অতিবৃদ্ধি (tumor)*. 
+**Why NOT used directly:** (1) Very large → difficult to manipulate; (2) T-DNA carries oncogenes (*iaaM, iaaH, ipt*) that cause tumor, not desirable protein; (3) Has opine synthesis genes. **Solution — Disarmed Binary Vector System:** Remove all oncogenes from T-DNA → keep only 25-bp border repeats → insert GOI into small binary vector.
+
+| Vector | Basis | Insert Size | Key Features | Use |
+|---|---|---|---|---|
+| **Cosmid** | Plasmid + λ *cos* sites | 40–50 kb | Packaged into λ heads (phage efficiency) + replicates as plasmid (colony selection) | Genomic library for large genomes |
+| **YAC** | Yeast Artificial Chromosome | 100 kb–10 Mb | CEN (centromere) + TEL (telomere) + ARS; linear artificial chromosome | Large-scale genome mapping (HGP) |
+| **BAC** | Bacterial Artificial Chromosome | 100–300 kb | Derived from *E. coli* F-plasmid; 1-2 copies/cell → very stable (no chimerism) | Preferred over YAC for genome sequencing |
+| **Shuttle Vector** | Two origins of replication | Varies | Replicates in two different hosts (e.g., *E. coli* + yeast) | Manipulate DNA in bacteria → express in eukaryote |
+| **Retroviral Vector** | MLV or lentivirus (HIV) | Up to 8 kb | *gag, pol, env* replaced by GOI; stable genomic integration | Gene therapy, stable cell line generation |
+| **pUC8/pUC19** | Derived from pBR322 | <10 kb | *lacZα* gene with MCS; ColE1 ori → very high copy (~500/cell); Blue/white selection | General purpose cloning |
+
+⚠ **Why BAC preferred over YAC for HGP sequencing:** YAC problems: (1) Chimerism — two non-contiguous genomic fragments join → false map; (2) Insert instability; (3) Difficult DNA preparation (yeast grow slowly). BAC: single copy in stable *E.coli* → no chimerism; standard molecular biology techniques work.
+
+---
+
+### Cluster 3.5: Expression Hosts
+<div class="logic-box">
+<span style="color: #e74c3c; font-weight: bold;">MED · 2018 specific</span><br/>
+<b>2018:</b> Advantages/disadvantages of E.coli, B. subtiles, S. cerevisiae and P. pastoris as expression hosts? Reasons for transgenic hamster cell lines for therapeutic proteins. Why Pichia preferred more than Saccharomyces? Limitations of plant expression systems? 6+4+2+2
+</div>
+
+One answer covers all: 
+*   ***E.coli*:** pros — rapid growth, cheap, high yield; cons — no glycosylation, inclusion bodies, endotoxins. 
+*   ***B. subtilis*:** secretes proteins; Gram+, no endotoxins; cons — protease activity. 
+*   ***S. cerevisiae*:** glycosylation (hyperglycosylation can be problem), easy genetic manipulation. 
+*   ***P. pastoris* preferred over *Saccharomyces*:** can grow to very high density; methanol-inducible AOX1 promoter → very high expression; glycosylation more similar to mammalian. 
+*   **Mammalian (CHO, BHK, transgenic hamster cells):** correct glycosylation, folding, post-translational modifications → required for complex therapeutic proteins (mAbs, EPO, Factor VIII). 
+*   **Plant systems limitations:** low yield, complex purification, inconsistent glycosylation, regulatory concerns.
+    \`,
+    rawMd_bn: \`[Bengali version matching technical depth will be auto-generated by the platform]\`
+  },
+  {
+    id: "set4",
+    title: "SET 4: DNA Libraries — Genomic Library, cDNA Library, Construction & Calculations",
+    rawMd_en: \`
+### Cluster 4.1: Genomic Library — Definition, Types, Construction Steps, Applications, λ as Vector
+<div class="logic-box">
+<span style="color: #e74c3c; font-weight: bold;">HIGH ★ · Every year</span><br/>
+<b>2022, 2023, 2018, 2017, 2015, 2014, 2013:</b> Define DNA library. Types. Applications of genomic and C-DNA library. Steps to prepare a genomic library. Specify the reasons to use λ phage as a vector to produce genomic library. 5-8
+</div>
+
+One answer covers all.
+📌 **DNA Library** [*library = librarium (book collection) = একটি জীবের সকল ডিএনএ খণ্ডের সংগ্রহশালা*]: A collection of DNA fragments cloned into vectors and stored in a host organism for ease of purification, storage, and analysis. Think of it as an encyclopedia where the whole genome is cut into pages (fragments) and bound into books (vectors/phages).
+
+| Feature | Genomic Library | cDNA Library |
+|---|---|---|
+| **Template** | Total chromosomal DNA | mRNA (expressed genes only) |
+| **Introns?** | ✅ Present | ❌ Absent (from processed mRNA) |
+| **Regulatory regions?** | ✅ Present (promoters, enhancers) | ❌ Absent |
+| **Tissue specific?** | Same for all tissues | Yes — represents transcriptome of specific tissue |
+| **Vector used** | λ replacement vector or cosmid | Plasmid or λ insertion vector |
+| **Best for** | Genome sequencing, physical mapping | Protein expression in bacteria, gene discovery |
+
+**Steps to construct a Genomic Library:** (1) Purify genomic DNA; (2) **Partial restriction digest** with Sau3AI (4-cutter) → ~20–23 kb fragments (NOT complete digestion — partial gives overlapping, representative fragments); (3) Size fractionation (gel electrophoresis or sucrose gradient); (4) Dephosphorylate fragments if needed; (5) Ligate into λ replacement vector arms; (6) **In vitro packaging** with phage head + tail proteins; (7) Infect *E.coli* → grow plaques = library constructed.
+
+⚠ **Why λ phage for genomic library:** (1) 1000× higher transformation efficiency than plasmid; (2) Large insert capacity (23 kb replacement vectors); (3) In vitro packaging selects for correct-size inserts (48.5 kb packaging limit); (4) Can screen 5×10⁴ plaques per plate (vs ~500 colonies per plate for plasmid). **Partial digest reason:** Complete digest cuts ALL restriction sites → fragments too small for library; partial digest → average 20–23 kb overlapping fragments → ensures complete coverage and allows chromosome walking.
+
+**Screening approaches:** (1) Colony/plaque hybridization (probe with labeled nucleic acid); (2) PCR-based screening; (3) Functional complementation; (4) Expression screening (immunoscreening with antibody); (5) In silico / sequence-based (BLAST).
+
+---
+
+### Cluster 4.2: cDNA Synthesis from mRNA — Steps, ds-cDNA Preparation
+<div class="logic-box">
+<span style="color: #e74c3c; font-weight: bold;">HIGH ★ · 7 yrs</span><br/>
+<b>2022, 2021, 2023, 2017, 2015, 2013, 2011:</b> What do you mean by cDNA? How complementary DNA / double stranded DNA could be prepared from mRNA? Write the significance of the synthesis of gene from mRNA. 4-7
+</div>
+
+One answer covers all: **cDNA (complementary DNA):** DNA synthesized from mRNA using reverse transcriptase; represents coding sequence only (no introns). 
+**Steps to make dsDNA from mRNA:** 
+(1) Poly(A)+ mRNA isolation (oligo-dT cellulose) 
+(2) Oligo-dT primer anneals to poly(A) tail 
+(3) **Reverse transcriptase** + dNTPs → ssDNA:mRNA hybrid (first strand) 
+(4) **RNase H** degrades mRNA → nicks in mRNA 
+(5) **DNA Pol I** (using nicks as primers) → second strand synthesis (Gubler-Hoffman method) OR self-priming via hairpin loop 
+(6) **S1 nuclease** removes hairpin loop (classic method) 
+(7) Klenow fill-in → blunt ends 
+(8) Adaptor/linker addition → ligate into vector. 
+*Modern method: random hexamers or gene-specific primers; MMLV or AMV reverse transcriptase.*
+
+**Decapping of mRNA & Full-length cDNA:** Eukaryotic mRNA has 5' m7GpppN cap. Problem: prevents oligo-dT from priming at 5' end → incomplete cDNA clones. Strategies: (1) Tobacco Acid Pyrophosphatase (TAP) removes cap → allows RNA adaptor ligation to 5' end; (2) Cap-Trapper method (biotinylate cap → capture full-length cDNAs); (3) SMART (Switching Mechanism At 5' end of RNA Template) — RT adds non-templated Cs at 5' end → template switching to SMART oligo.
+
+**3'-RACE and 5'-RACE (Rapid Amplification of cDNA Ends):** 
+*   **3'-RACE:** Finds unknown 3' end of mRNA. RT with oligo-dT anchor primer → PCR with gene-specific primer (GSP) + adaptor primer.
+*   **5'-RACE:** Finds unknown 5' end. RT with GSP1 → RNase H → Terminal transferase adds homopolymer tail (poly-dC) to 3' end of cDNA → PCR with poly-dG anchor primer + nested GSP2.
+
+---
+
+### Cluster 4.3: Number of Recombinants Calculation — Clarke-Carbon Formula
+<div class="logic-box">
+<span style="color: #e74c3c; font-weight: bold;">MED · 3 yrs (numerical)</span><br/>
+<b>2022, 2023, 2017, 2018:</b> How would you determine the size of the library calculating the number of recombinants? Calculate the number of recombinants present in a human genome (3×10⁹ bp) for a probability of 0.99 with the insert size of 20 kb (2×10⁴). 3
+</div>
+
+One answer covers all.
+📌 **Clarke-Carbon Formula:** $N = \frac{\ln(1 - P)}{\ln(1 - f)}$
+*N = number of independent clones needed; P = desired probability; f = fraction of genome per insert = একটি ইনসার্ট জিনোমের কত ভাগ প্রতিনিধিত্ব করে*
+
+**Example Calculation for Human Genome:**
+*   Genome Size = 3×10⁹ bp
+*   Insert Size = 20,000 bp (20 kb λ phage)
+*   Probability ($P$) = 0.99
+*   Fraction ($f$) = $\frac{20,000}{3,000,000,000} = 6.67 \times 10^{-6}$
+
+$N = \frac{\ln(1 - 0.99)}{\ln(1 - 6.67 \times 10^{-6})} = \frac{-4.605}{-6.67 \times 10^{-6}} \approx 690,000 \text{ clones}$
+
+**Biological reasoning:** Genomic fragmentation is random — there is no guarantee that any particular sequence will be present in a library unless enough clones exist. The formula computes the statistical certainty. For *E.coli* (~1,100 clones needed) — simple plasmid library works. For human (~690,000 clones) — must use λ phage or cosmid vector with large insert capacity AND plaque screening.
+
+---
+
+### Cluster 4.4: Chemical Synthesis of tRNA Genes & Measures to Express Transgenes
+<div class="logic-box">
+<span style="color: #e74c3c; font-weight: bold;">MED · UNIQUE 2021 topics — likely to recur</span><br/>
+<b>2021:</b> Briefly write the steps involved in chemical synthesis of tRNA genes. 6<br/>
+<b>2021:</b> What are the measures you should take to express transgenes in host cell? 3
+</div>
+
+One answer covers all: 
+**Chemical synthesis of tRNA genes (Khorana 1970, Nobel 1968):** Total synthesis of a gene without a template using known nucleotide sequence. Steps: (1) Determine tRNA sequence (yeast alanine tRNA, 77 nt); (2) Design overlapping short oligonucleotides (~10–20 nt) covering both strands; (3) Chemically synthesize each oligonucleotide segment (solid-phase phosphoramidite chemistry); (4) Anneal complementary overlapping oligonucleotides → partial duplex with nicks; (5) T4 DNA ligase seals all nicks → complete dsDNA gene; (6) Verify by sequencing. Significance: proved genes can be made de novo; opened pathway for codon optimization, synthetic biology.
+
+**Measures to express transgenes in host cell:** (1) Use strong/appropriate promoter (CMV for mammalian, T7 for bacteria, 35S CaMV for plants); (2) Codon optimization for host organism; (3) Add Kozak sequence (GCCACCATG) near start codon for eukaryotes; (4) Add signal peptide if secretion needed; (5) Include introns if in mammalian cells (enhances expression); (6) Provide poly(A) signal; (7) Use appropriate selectable marker; (8) Optimize copy number; (9) Avoid methylation of CpG islands (mammalian); (10) Use chromatin insulator elements to prevent position-effect silencing.
+    \`,
+    rawMd_bn: \`[Bengali version matching technical depth will be auto-generated by the platform]\`
+  },
+  {
+    id: "set5",
+    title: "SET 5: PCR, Probes & Hybridization Techniques",
+    rawMd_en: \`
+### Cluster 5.1: PCR — Principles, Steps, Applications in Modern Biotechnology
+<div class="logic-box">
+<span style="color: #e74c3c; font-weight: bold;">HIGH ★ · 5 yrs</span><br/>
+<b>2012, 2011, 2013, 2017:</b> What is PCR? Write the principle and applications of PCR in modern biotechnology. 5-7
+</div>
+
+One answer covers all.
+📌 **PCR (Polymerase Chain Reaction)** [*chain reaction = শৃঙ্খল বিক্রিয়া*]: Invented by Kary Mullis (1983). It is an *in vitro* technique to exponentially amplify a specific target DNA sequence to billions of copies within hours. Principle: Uses a thermostable DNA polymerase (*Taq*) to repeatedly synthesize complementary strands from sequence-specific oligonucleotide primers. Amplification is exponential: $2^n$ (n = number of cycles).
+
+**Key Components:** (1) Template DNA; (2) *Taq* Polymerase (thermostable from *Thermus aquaticus*); (3) Two Primers (forward & reverse); (4) dNTPs (building blocks); (5) Mg²⁺ (cofactor); (6) Buffer.
+
+| Step | Temperature & Time | Mechanism / What Happens |
+|---|---|---|
+| **1. Denaturation** | 94–95°C (30 sec) | Hydrogen bonds between dsDNA break → two single-stranded DNA (ssDNA) templates form. |
+| **2. Annealing** | 50–65°C (30 sec) | Temperature lowered to allow forward and reverse primers to hybridize (base-pair) to complementary target sequences. |
+| **3. Extension** | 72°C (1 min/kb) | Optimal temp for *Taq* polymerase → binds to primer 3'-OH and adds dNTPs (5'→3') to synthesize the new complementary strand. |
+
+| Application Area | Specific Uses of PCR |
+|---|---|
+| **Diagnostics & Medicine** | Rapid detection of infectious diseases (COVID-19, HIV, TB); genetic screening for mutations; prenatal diagnosis. |
+| **Forensics & Law** | DNA fingerprinting (VNTRs/STRs) from a single hair or drop of blood; paternity testing. |
+| **Recombinant DNA Tech** | Amplifying genes for cloning (adding RE sites to primer ends); Site-directed mutagenesis; constructing libraries. |
+| **Evolutionary Biology** | Amplifying DNA from extinct species (mammoths) or ancient mummies (paleogenomics); phylogenetics. |
+
+⚠ **Why *Taq* Polymerase is essential:** Before *Taq*, scientists used *E. coli* DNA Pol I, which denatured at 95°C. They had to manually add fresh enzyme after every denaturation step! *Taq* is thermostable (survives 95°C) → enables full automation in a thermal cycler. **Why two primers:** Needed to flank the target sequence and synthesize both the (+) and (-) strands, leading to exponential ($2^n$) amplification rather than linear.
+
+---
+
+### Cluster 5.2: Probes — Types, Labeled DNA Probe Production by Random Primer Method
+<div class="logic-box">
+<span style="color: #e74c3c; font-weight: bold;">HIGH ★ · 5 yrs</span><br/>
+<b>2022, 2014, 2012, 2011, 2013:</b> What are probes? Write down the uses of DNA probe. Briefly describe the synthesis of DNA probe using nick translation and random priming method. How would you detect digoxigenin labelled probe using anti-DIG antibody? 8-9
+</div>
+
+One answer covers all.
+📌 **Probe** [*probe = অনুসন্ধানকারী — a labeled ssDNA/RNA molecule that finds its complementary target by Watson-Crick base pairing*]: A single-stranded labeled nucleic acid used to detect/locate a specific complementary sequence by hybridization. Rationale: genomic DNA cut with RE → thousands of fragments on gel = cannot identify one band by eye → labeled probe anneals ONLY to target → detected by label.
+
+| Label Type | Detection | Sensitivity | Safety |
+|---|---|---|---|
+| **Radioactive** (³²P-dCTP) | Autoradiography (X-ray film) | Very high | ⚠ Radioactive hazard |
+| **Digoxigenin** (DIG-dUTP) | Anti-DIG antibody → enzyme (AP/HRP) → colorimetric or chemiluminescent | High | ✅ Non-radioactive |
+| **Biotin-dUTP** | Streptavidin-enzyme conjugate → NBT/BCIP | High | ✅ Non-radioactive |
+| **Fluorescent** (Cy3, Cy5) | Fluorescence scanner/microscope | Moderate | ✅ Used in FISH, microarrays |
+
+**Two probe labeling methods compared:**
+| Feature | Nick Translation | Random Primer Method ★ (Feinberg-Vogelstein) |
+|---|---|---|
+| **Enzyme** | DNase I (creates nicks) + DNA Pol I | Random hexamers + Klenow fragment |
+| **Template** | dsDNA | dsDNA (denatured to ssDNA) |
+| **Process** | DNase I randomly nicks → DNA Pol I removes old nucleotides (5'→3' exo) + inserts labeled ones (5'→3' poly) → probe "translated" along template | Denature template → anneal random hexamers (all possible 6-nt sequences) → Klenow extends incorporating labeled dNTPs |
+| **Specific activity**| Moderate | Very high ($10^8–10^9$ cpm/μg) |
+| **Preferred for** | End-labeling, older method | Southern/Northern blotting, library screening |
+
+**DIG-labeled probe detection (non-radioactive method):** 
+Cause: Digoxigenin [*cardiac glycoside from Digitalis plant = উদ্ভিজ্জ গ্লাইকোসাইড যা DNA-তে লেবেল হিসেবে ব্যবহৃত*] is a hapten (small molecule) not naturally found in animal/plant tissues → no background antibody binding. Effect: Highly specific detection. 
+**Steps:** (1) Label probe with DIG-dUTP during synthesis; (2) Hybridize labeled probe to target DNA on membrane; (3) Wash away unhybridized probe; (4) Add anti-DIG antibody conjugated to alkaline phosphatase (AP); (5) Add AP substrate (NBT/BCIP) → insoluble blue-purple precipitate at target location OR add chemiluminescent substrate (CDP-Star) → light emission detected on X-ray film.
+
+⚠ **Why Klenow NOT intact DNA Pol I for random primer labeling:** Intact DNA Pol I has 5'→3' exonuclease activity → would degrade newly synthesized labeled strands. Klenow fragment LACKS this activity → only polymerizes → longer, more uniformly labeled probes. **Why random hexamers vs specific primers:** Random hexamers anneal at ~every 6 bp → many synthesis initiation points → HIGHER specific activity probe. Specific primers give fewer initiation sites → lower labeling efficiency.
+
+---
+
+### Cluster 5.3: Southern, Northern Blotting & Hybridization Techniques
+<div class="logic-box">
+<span style="color: #e74c3c; font-weight: bold;">HIGH ★ · 5 yrs</span><br/>
+<b>2012, 2011, 2015, 2021:</b> Define hybridization. Explain the technique of southern hybridization with labeled diagram. Write the steps of Southern hybridization in brief. Explain the specific DNA detection process by hybridization. How would you separate and view DNA fragment? 6-8
+</div>
+
+One answer covers all.
+📌 **Hybridization** [*hybrid = শংকর = দুটি ভিন্ন উৎসের নিউক্লিক এসিডের মিলন*]: The phenomenon where two single-stranded nucleic acid molecules form a double-stranded hybrid (DNA-DNA or DNA-RNA) via specific Watson-Crick base pairing. Forms the basis of all blotting and probe detection techniques.
+
+| Feature | Southern Blot (DNA) | Northern Blot (RNA) | Western Blot (Protein) |
+|---|---|---|---|
+| **Inventor** | Edwin Southern (1975) | Alwine et al. (1977, pun on Southern) | Towbin et al. (1979) |
+| **Target Analyzed**| Genomic DNA | mRNA (gene expression) | Proteins |
+| **Gel Used** | Agarose | Formaldehyde-Agarose (denaturing) | SDS-PAGE (polyacrylamide) |
+| **Probe Used** | Labeled DNA or RNA | Labeled DNA or RNA | Primary Ab → Secondary Ab |
+| **Key Application**| Detect specific gene, RFLP (DNA fingerprinting) | Measure gene expression levels, detect mRNA size/splicing | Detect specific protein expression, size |
+
+**Steps of Southern Hybridization Technique (labeled diagram workflow):**
+| Step | Procedure & Rationale |
+|---|---|
+| **1. Digestion** | Cut genomic DNA with Restriction Enzymes → millions of fragments. |
+| **2. Electrophoresis**| Run fragments on Agarose gel. Gel electrophoresis separates by size; smaller fragments move faster toward (+) anode. Stain with Ethidium Bromide to visualize a continuous "smear" of DNA. |
+| **3. Denaturation** | Soak gel in strong alkali (NaOH) → breaks H-bonds → dsDNA becomes ssDNA. (Essential so the probe can bind later). |
+| **4. Blotting** | Capillary action transfer: Sponge → Gel → Nitrocellulose/Nylon membrane → Paper towels. Buffer flows UP, carrying ssDNA out of gel onto the membrane. |
+| **5. Cross-linking**| Bake membrane (80°C) or UV crosslink to permanently fix ssDNA to membrane. |
+| **6. Hybridization**| Incubate membrane with labeled single-stranded probe (e.g., ³²P or DIG-labeled) in a sealed bag. Probe hybridizes ONLY to complementary target sequence. |
+| **7. Washing/Detect**| Wash off unbound probe (stringency wash). Detect target band via autoradiography or chemiluminescence. |
+
+⚠ **Why denature before blotting?** DNA in agarose gel is double-stranded. If not denatured, the probe (which is single-stranded) has nothing to bind to! NaOH makes it single-stranded. **Why use Nylon membrane over Nitrocellulose?** Nylon is physically stronger, binds more DNA covalently (not just hydrophobically), and can be stripped and reprobed multiple times. **Gel Electrophoresis Principle:** DNA backbone has negative phosphate groups → migrates toward positive electrode (anode) in an electric field; agarose matrix acts as a sieve.
+    \`,
+    rawMd_bn: \`[Bengali version matching technical depth will be auto-generated by the platform]\`
+  },
+  {
+    id: "set6",
+    title: "SET 6: Gene Cloning, Transformation, Competent Cells & Selection of Recombinants",
+    rawMd_en: \`
+### Cluster 6.1: Gene Cloning — Steps, Diagrammatic Representation, Strategies
+<div class="logic-box">
+<span style="color: #e74c3c; font-weight: bold;">HIGH ★ · Every year</span><br/>
+<b>2021, 2018, 2017, 2015, 2014, 2013:</b> What is gene cloning? Write the importance of gene cloning. Briefly explain the different steps involved in gene cloning. Write the diagrammatic representation of gene cloning with brief description. How will you select transformed recombinant bacteria from colony? 5-9
+</div>
+
+One answer covers all.
+📌 **Gene Cloning** [*clone = klon (Gk) = twig/slip = একটি মূল থেকে সদৃশ অনুলিপি তৈরি*]: The process of inserting a foreign gene into a self-replicating vector, introducing it into a host cell, and producing multiple identical copies of that gene. Importance: (1) Study gene function; (2) Produce recombinant protein; (3) Create genomic/cDNA libraries; (4) Gene therapy; (5) Genetic engineering of crops/animals.
+
+| Step | Action | Key Enzyme / Tool |
+|---|---|---|
+| **1. Isolation** | Identify and isolate the Gene of Interest from genomic DNA, cDNA library, or PCR amplification. | RE, PCR, RT-PCR, probe screening |
+| **2. Vector Prep**| Cut vector with SAME restriction enzyme(s) used for insert. Treat with alkaline phosphatase (CIP) to remove 5'-P → prevents vector self-ligation. | Same RE; CIP/SAP |
+| **3. Ligation** | Join insert + vector via compatible sticky (or blunt) ends. T4 DNA Ligase seals phosphodiester bonds. | T4 DNA Ligase; ATP; Mg²⁺ |
+| **4. Transformation**| Introduce recombinant DNA into competent *E. coli* (CaCl₂ / heat shock / electroporation). | Competent cells; 42°C heat shock |
+| **5. Selection** | Plate on selective medium (antibiotic). Only cells with vector survive. | Ampicillin / Kanamycin plates |
+| **6. Screening** | Distinguish cells with insert from those with empty vector → Blue/White selection, insertional inactivation, or colony hybridization. | X-gal/IPTG; probe; replica plating |
+| **7. Verification**| Confirm insert by: restriction mapping (cut plasmid → check band size), colony PCR, or DNA sequencing. | Gel electrophoresis; Sanger sequencing |
+
+| Selection Strategy | How It Works | Vector Example |
+|---|---|---|
+| **Blue/White Selection ★** | Insert cloned into MCS within *lacZα* → disrupts α-complementation → no functional β-galactosidase → cannot cleave X-gal → WHITE colony = RECOMBINANT. Empty vector → intact *lacZα* → blue colony. | pUC18/19, pBluescript, pGEM-T |
+| **Insertional Inactivation**| Insert into antibiotic resistance gene (e.g., BamHI site in *tetR* of pBR322) → *tetR* disrupted → AmpR TetS = recombinant (requires replica plating on two plates). | pBR322 |
+| **Positive Selection** | Vector carries lethal gene (e.g., *ccdB* toxin in Gateway vectors). Insert disrupts lethal gene → only recombinants survive. | Gateway pDEST, pZErO |
+
+⚠ **Blue/White in detail (very frequent exam question):** Host *E.coli* carries *lacZΔM15* deletion (missing α fragment of β-gal). Vector (pUC) provides *lacZα* fragment. Together they reconstitute functional β-gal (α-complementation). X-gal (5-bromo-4-chloro-3-indolyl-β-D-galactoside) is a colorless substrate → β-gal cleaves it → releases 5-bromo-4-chloro-indole → dimerizes in air → blue precipitate. IPTG induces *lac* promoter. When insert is in MCS → *lacZα* reading frame disrupted → no α fragment → no α-complementation → no blue → WHITE. 
+**Modern cloning strategies:** (1) RE-based (cut-and-paste); (2) TA cloning (*Taq* A-overhang + T-vector); (3) TOPO cloning (topoisomerase-mediated, 5 min ligation); (4) Gateway (*att* recombination, no RE); (5) Gibson Assembly (isothermal, seamless, multi-fragment).
+
+---
+
+### Cluster 6.2: Transformation Methods — Chemical, Electroporation, Microinjection, A. tumefaciens
+<div class="logic-box">
+<span style="color: #e74c3c; font-weight: bold;">HIGH ★ · Every year</span><br/>
+<b>2022, 2021, 2020, 2018, 2015, 2014, 2012, 2011:</b> Agrobacterium is the natural genetic engineer — justify this statement. What is transgenesis? Write the microinjection and biolistic methods of gene delivery system. What are the different methods of transformation? Describe the methods of gene transfer with their relative advantages and disadvantages. What are competent cells? 7-10
+</div>
+
+One answer covers all.
+| Method | Mechanism | Target Host | Advantages | Disadvantages / Notes |
+|---|---|---|---|---|
+| **CaCl₂ / Heat Shock** | CaCl₂ disrupts outer membrane lipopolysaccharide *LPS = বাইরের স্তর* + Ca²⁺ ions neutralize DNA negative charge → heat shock (42°C, 90 sec) creates transient pores → DNA enters | *E.coli* (bacteria only) | Simple, cheap, no special equipment | Low efficiency for large DNA; only works for bacteria with thin peptidoglycan |
+| **Electroporation** | *electro- (electric) + poration = porus (pore) = বিদ্যুৎ দ্বারা ছিদ্র তৈরি* High-voltage pulse (4–25 kV/cm) → reversible membrane pores → DNA enters; pores close after pulse | Bacteria, yeast, protoplasts, mammalian cells — universal method | Most efficient method; works for ALL cell types including those resistant to chemical transformation | Requires specialized electroporator equipment; high voltage kills some cells |
+| **Biolistics (Gene Gun)**| *bios (life) + ballistics (projectile) = জীবন্ত লক্ষ্যে গুলি ছোড়া* DNA-coated gold/tungsten particles (1–1.6 μm) fired at 450 m/s by helium pulse → penetrate cell wall and membrane; DNA released inside | Plants (especially monocots: maize, wheat, rice), chloroplast | No regeneration of protoplasts needed; works on intact tissue/leaves; only method for chloroplast transformation | Random insertion; multiple copies; tissue damage; low efficiency per cell |
+| **Silicon Carbide Whiskers**| Needle-like SiC crystals (0.3–0.6 μm diameter) vortexed with cells + DNA → microscopic holes puncture membrane → DNA enters | Plant protoplasts, some animal cells | Simple; no specialized equipment | Potential health hazard (carcinogenic SiC fibers); not widely adopted |
+| **Microinjection** | DNA injected directly into nucleus via glass pipette (0.5–1 μm tip) under phase-contrast microscope; 1 cell at a time | Animal oocytes/embryos (1-cell stage, pronucleus injection) | Precise delivery; guaranteed nuclear delivery; used for stable transgenic animals | Very low throughput (1 cell at a time); requires skilled microscopist; expensive micromanipulator |
+| ***A. tumefaciens*** | Wound signal (phenolics) → *virA* sensor detects → *virG* activates *vir* genes → VirD1/D2 nick T-DNA at borders → VirE2 coats T-strand → Type IV secretion (virB pilus) into plant nucleus | Dicot plants (tobacco, tomato); many monocots now possible | Stable single-copy integration (usually); precise insertion with borders; legal regulatory preference | Not all monocots susceptible; requires tissue culture and regeneration; wound needed |
+| **Liposome Transfection** | Cationic lipid vesicles (Lipofectamine) bind anionic DNA → lipoplex enters cell by endocytosis or membrane fusion → DNA released | Mammalian cell lines (HEK293, CHO, COS-7) | Efficient for cell lines; no equipment needed | Transient unless stable selection applied; cytotoxicity at high doses; serum inhibits |
+
+**"Agrobacterium is the natural genetic engineer" — Full Justification:** *A. tumefaciens* is the ONLY known organism in nature that routinely transfers DNA from one kingdom (bacteria) to another (plants). Detailed mechanism: (1) Plant wounding releases phenolic compounds (acetosyringone) into soil → (2) VirA (sensor histidine kinase) detects these chemicals → autophosphorylates → (3) Transfers phosphate to VirG (transcription factor) → (4) Activated VirG turns ON *vir* operons → (5) VirD1/D2 nicks T-DNA at 25-bp border repeat sequences → ssDNA T-strand freed → (6) VirE2 coats entire T-strand → forms narrow rod (T-complex) resistant to nucleases → (7) VirB forms Type IV secretion system (pilus channel) into plant cell → (8) T-complex enters plant cytoplasm → import to nucleus → integrates into plant chromosome. This natural kingdom-crossing DNA transfer is precisely what genetic engineers do artificially with rDNA technology — hence *Agrobacterium* = "Natural Genetic Engineer."
+
+⚠ **Competent cells** [*competens (L) = capable = গ্রহণে সক্ষম কোষ*]: Cells capable of taking up naked exogenous DNA. Characteristics: (1) Thin/disrupted outer membrane (CaCl₂ treatment); (2) Lacks restriction endonuclease activity (*endA⁻* mutant → DNA not degraded by host nuclease); (3) Lacks RecA recombinase (*recA⁻* → no homologous recombination → insert stability); (4) Maximum competency during exponential phase (OD₆₀₀ = 0.4–0.6 → cells most active, most permeable). 
+**Why CaCl₂/heat shock NOT used for plants:** Plant cells have rigid cellulose cell wall → DNA cannot enter by pore formation. 
+**Why gene gun (biolistics) for monocots:** Agrobacterium does not infect most monocots (wheat, corn, rice) naturally. 
+**Why microinjection for animals:** Must inject into pronucleus of fertilized egg before first division → ensures all cells of organism carry transgene.
+
+---
+
+### Cluster 6.3: Animal Cloning — Nuclear Transfer (Dolly), Embryo Splitting
+<div class="logic-box">
+<span style="color: #e74c3c; font-weight: bold;">MED · 3 yrs</span><br/>
+<b>2018, 2017:</b> How is nuclear cloning done? Detail the nuclear transfer technique for the creation of Dolly. Briefly specify the steps of embryo cloning for animal cloning purpose. How first mammalian clone was created through nuclear transfer? Mention the problems of mammalian clones. 4-7
+</div>
+
+One answer covers all.
+📌 **SCNT (Somatic Cell Nuclear Transfer)** [*somatic = soma (Gk) = body cell (not germ cell) = দেহকোষ; nuclear transfer = নিউক্লিয়াস স্থানান্তর*]: The technique of removing the nucleus from a body cell and inserting it into an enucleated oocyte to create a genetic replica (clone) of the donor organism. Proof of concept: ALL differentiated body cells contain the SAME complete genome as the fertilized egg — differentiation is due to epigenetic gene regulation, not gene loss. SCNT reprograms somatic nucleus back to totipotency using oocyte cytoplasm factors.
+
+**Creation of Dolly (Ian Wilmut, Roslin Institute, Edinburgh, 1996):**
+| Step | Action | Technical Detail |
+|---|---|---|
+| **1. Donor Somatic Cell** | Mammary gland cells of a 6-year-old Finn Dorset sheep were cultured in low-serum medium (0.5% FCS for 5 days) → G₀ cell cycle arrest. | Why G₀ arrest? Synchronizes donor nucleus with the M-phase of the enucleated oocyte, essential for chromatin remodeling and reprogramming by oocyte factors. |
+| **2. Enucleation of Oocyte** | Mature MII-stage oocyte (from Scottish Blackface sheep) → nucleus removed by micropipette (micromanipulation under UV) → cytoplast. | MII-arrested oocyte = richest source of reprogramming factors. UV visualizes mitotic spindle to confirm enucleation. |
+| **3. Fusion (Electrofusion)** | Enucleated oocyte + donor somatic cell placed in close contact → brief electric pulse (DC field) → cell membranes fuse → donor nucleus enters oocyte cytoplasm. | Electric pulse: disrupts membranes transiently → lipid bilayers reseal around combined cytoplasm. |
+| **4. Activation** | Reconstructed embryo activated by Ca²⁺ ionophore + kinase inhibitor to mimic fertilization signal → zygote-like activation. | Normal fertilization: sperm triggers Ca²⁺ oscillations. Here: artificial Ca²⁺ pulse. Initiates cleavage divisions. |
+| **5. Culture** | Activated reconstructed embryo cultured in vitro to blastocyst stage (5–7 days). | Blastocyst = hollow sphere with inner cell mass (ICM = future embryo) + trophoblast (future placenta). |
+| **6. Transfer to Surrogate** | Blastocyst implanted into uterus of a Scottish Blackface surrogate mother → carried to term (5 months). | Dolly born July 5, 1996 — genetically identical to Finn Dorset DNA donor, NOT to surrogate mother. Out of 277 fused couplets → 1 live lamb = 0.4% efficiency. |
+
+| Problem | Biological Explanation |
+|---|---|
+| **Premature aging / short telomeres** | Donor cell (6 yr old sheep) had already-shortened telomeres. Telomerase not fully reactivated during reprogramming → Dolly's telomeres shorter than age-matched controls → died at 6 yrs (half normal lifespan). |
+| **Epigenetic reprogramming errors** | Somatic cell DNA heavily methylated. Oocyte must demethylate and re-establish embryonic pattern. Incomplete reprogramming → abnormal gene expression → Large Offspring Syndrome (LOS): oversized, organ defects. |
+| **Low efficiency** | Success rate 0.1–3% — most clones die before/after birth. Major bottleneck: incomplete reprogramming of pluripotency genes in somatic nucleus. |
+
+| Feature | SCNT (Reproductive Cloning) | Embryo Splitting |
+|---|---|---|
+| **Genetic identity** | Identical to nuclear DNA donor (not surrogate) | Identical to each other AND to original embryo |
+| **Starting material**| Differentiated somatic cell + enucleated oocyte | 2–8 cell embryo; blastomeres separated mechanically |
+| **Efficiency** | Very low (0.1–3%) | High (80–90%); used commercially in cattle |
+| **Application** | Cloning deceased/superior animals; therapeutic cloning | Commercial livestock production; twinning; embryo banking |
+
+⚠ **Therapeutic cloning vs Reproductive cloning:** Therapeutic cloning = SCNT → blastocyst → extract ICM → ES cells (genetically matched to patient) → differentiate into needed cell type for transplant. Reproductive cloning = allow cloned blastocyst to develop to term. Ethical controversy: Reproductive cloning is banned in most countries. Therapeutic cloning: stem cells derived from human embryo = embryo destroyed → ethical debate. iPSC technology (Yamanaka 2006, Nobel 2012) provides alternative: reprogram patient's own adult cells to pluripotent state using 4 TFs (Oct3/4, Sox2, Klf4, c-Myc) — no embryo destroyed.
+    \`,
+    rawMd_bn: \`[Bengali version matching technical depth will be auto-generated by the platform]\`
+  },
+  {
+    id: "set7",
+    title: "SET 7: Applications — Transgenic Plants & Animals, Insulin, Vaccines & R-DNA in Medicine/Agriculture",
+    rawMd_en: \`
+### Cluster 7.1: Transgenic Plants — Creation Steps, Ti Vector, Importance
+<div class="logic-box">
+<span style="color: #e74c3c; font-weight: bold;">HIGH ★ · 5 yrs</span><br/>
+<b>2022, 2023, 2020, 2015, 2014:</b> Outline the steps involved in the process of transgenesis. Briefly mention the steps of creation of transgenic plant. Mention the importance of creating transgenic animal. What are transgenics? "Transformation is a powerful tool" – justify. 4-8
+</div>
+
+One answer covers all.
+📌 **Transgenesis** [*trans- (across) + genos (birth/origin) = ভিন্ন প্রজাতি থেকে জিন স্থানান্তর প্রক্রিয়া*]: Introduction of a foreign gene (transgene) from one organism into the genome of another, so that the resulting transgenic organism expresses a new trait. Possible because the genetic code is universal across all life.
+
+**Three universal steps of transgenesis:**
+| Step | Action | Key Techniques |
+|---|---|---|
+| **1. Identification**| Find the gene responsible for the desired trait or protein | Protein sequencing → back-translation; microarray; BLAST; probe hybridization |
+| **2. Isolation** | Physically isolate and amplify the target gene | PCR (if sequence known); restriction digest; cDNA synthesis from mRNA |
+| **3. Transformation**| Insert the transgene (with regulatory elements: promoter + coding sequence + terminator + selectable marker) into target host cell | *Agrobacterium* (plants); biolistics (monocots, chloroplast); microinjection (animals); viral vectors (mammals); electroporation |
+
+**Steps for transgenic plant (Agrobacterium-mediated):** (1) Clone GOI + CaMV35S promoter + *nptII* marker into T-DNA of disarmed Ti binary vector; (2) Transform *A. tumefaciens*; (3) Co-cultivate with leaf disc/explant; (4) Select on kanamycin medium; (5) Callus induction → shoot regeneration (cytokinins) → rooting (auxins); (6) Soil transfer; (7) Confirm by Southern blot + PCR + Western blot.
+
+| Transgenic Organism | Key Examples & Mechanism | Significance / Impact |
+|---|---|---|
+| **Transgenic Plants (Agriculture)** | 1. **Bt Cotton:** *cry* gene from *Bacillus thuringiensis* produces crystal toxin → binds to Lepidopteran insect gut → kills bollworm.<br/>2. **Golden Rice:** *psy1* (daffodil) + *crtI* (Erwinia) completes β-carotene pathway in endosperm.<br/>3. **Flavr Savr Tomato:** Antisense RNA silences polygalacturonase (PG) enzyme → delays ripening/softening.<br/>4. **Salt Tolerance:** Overexpress Na⁺/H⁺ antiporter → sequesters toxic Na⁺ into vacuoles.<br/>5. **Venomous Cabbage:** Scorpion venom gene (toxic only to insects) reduces caterpillar damage. | Reduced pesticide use, enhanced nutritional value (prevents Vitamin A deficiency blindness), extended shelf life, growth in saline soils. |
+| **Transgenic Animals (Medicine/Pharming)** | 1. **Knockout Mice:** Specific genes deleted to model human diseases (cancer, Alzheimer's).<br/>2. **Bioreactors (Pharming):** Transgenic goats producing spider silk in milk; cows producing human Factor VIII for hemophiliacs.<br/>3. **EnviroPig:** Transgenic pig with phytase gene → reduces phosphorus in manure. | Disease research, mass production of complex therapeutic proteins that bacteria cannot fold, environmental protection. |
+| **Transgenic Microbes (Industry)** | 1. ***E. coli*:** Expresses human insulin (Humulin), Human Growth Hormone.<br/>2. ***Pseudomonas putida*:** "Superbug" (Chakrabarty) engineered with multiple plasmids to degrade crude oil spills. | Endless supply of pure medical drugs, bioremediation of environmental disasters. |
+
+⚠ **Why the transgene needs a "Gene Construct" not just the coding sequence:** Without a promoter, the gene will not be transcribed. Without a terminator/poly-A signal, unstable mRNA. Without a selectable marker, impossible to identify transformed cells from millions of untransformed ones. The complete construct = promoter + intron (optional, enhances expression in mammalian) + coding sequence + 3'UTR/poly-A signal + selectable marker.
+**Importance of transgenic animals:** (1) Disease models (knockout mice for cancer, Alzheimer's); (2) Bioreactors/pharming (therapeutic proteins in milk/blood); (3) Xenotransplantation (pig organs for human); (4) Improved livestock (disease resistance, growth).
+
+---
+
+### Cluster 7.2: Insulin Production & Recombinant Vaccines
+<div class="logic-box">
+<span style="color: #e74c3c; font-weight: bold;">HIGH ★ · 6 yrs</span><br/>
+<b>2023, 2018, 2015, 2013:</b> Specify the production steps of insulin through recombinant DNA technique. Write the importance of R-DNA technology in the field of agriculture, animal sciences and medical sciences. Briefly state the procedure of insulin production using rDNA technology. How would you produce recombinant vaccine for Hepatitis B virus? 5-8
+</div>
+
+One answer covers all.
+📌 **Why insulin was chosen as first rDNA drug:** (1) Amino acid sequence fully known; (2) Only 51 amino acids (A-chain 21 AA + B-chain 30 AA) → genes small enough to synthesize chemically; (3) Enormous medical need (diabetes); (4) Previous source (pig/cow pancreas) had problems: immune reactions, risk of contamination, limited supply.
+
+**Insulin Production (Eli Lilly, 1982 — first rDNA therapeutic):**
+| Step | Action | Key Point |
+|---|---|---|
+| **1** | Chemically synthesize A-chain gene (21 AA = 63 bp) and B-chain gene (30 AA = 90 bp) based on known amino acid sequence | Uses back-translation + codon optimization for *E.coli*; *back-translation = প্রোটিনের অ্যামিনো অ্যাসিড ক্রম থেকে ডিএনএ ক্রম নির্ধারণ* |
+| **2** | Insert each gene separately into pBR322 behind *lacZ* promoter → expressed as β-galactosidase fusion protein | Fusion prevents degradation of small peptides by proteases in *E.coli* |
+| **3** | Transform *E.coli*; induce with IPTG; express → inclusion bodies form | *inclusion bodies = অদ্রবণীয় প্রোটিন সংগ্রহ = দেনাতুরেশনের কারণে* |
+| **4** | Extract inclusion bodies; cleave fusion protein with CNBr (cyanogen bromide cleaves at methionine residues) → releases A-chain or B-chain | Must add Met between *lacZ*-chain junction for CNBr to work |
+| **5** | Purify A-chain and B-chain separately by HPLC | High-purity pharmaceutical-grade protein needed |
+| **6** | Combine A + B chains under oxidizing conditions (air oxidation or DMSO) → disulfide bonds form between Cys residues → biologically active insulin | 2 inter-chain S-S bonds (A7-B7, A20-B19) + 1 intra-chain (A6-A11) |
+| **7** | Quality control, formulation, packaging | Modern method: single proinsulin gene → express in yeast → fold → enzymatic removal of C-peptide by trypsin + carboxypeptidase B |
+
+**HBV Vaccine (first recombinant vaccine, 1986):** 
+(1) Clone HBsAg (Hepatitis B Surface Antigen) gene; (2) Express in *Saccharomyces cerevisiae* under ADH promoter → produces 22-nm virus-like particles (VLPs); (3) Purify VLPs; (4) Formulate with alum adjuvant → Recombivax HB / Engerix-B. Why yeast NOT *E.coli*: HBsAg needs to form VLPs (self-assembles in membrane of eukaryotes); *E.coli* lacks ER/Golgi → cannot assemble VLPs correctly.
+
+| Application | Examples | Impact |
+|---|---|---|
+| **Medicine** | Insulin, hGH, EPO, IFN-α, tPA, mAbs (Herceptin), HBV vaccine, Factor VIII/IX | Endless supply, high purity, no animal contamination risk |
+| **Agriculture** | Bt cotton/corn (*cry* genes), Golden Rice (*psy1+crtI*), herbicide-tolerant soy (*EPSPS*), virus-resistant papaya | Reduced pesticide use, improved nutrition, crop protection |
+| **Animal Science**| Bovine somatotropin (bST for milk yield), disease-resistant transgenic fish, transgenic goats (spider silk) | Improved productivity, novel biomaterials |
+
+⚠ **Why insulin NOT directly from human gene cloned into *E.coli*:** Human insulin gene has introns → *E.coli* cannot splice → non-functional mRNA. Must use (a) chemically synthesized intron-free gene OR (b) cDNA from pancreatic β-cell mRNA. **Why proinsulin approach is now preferred:** Single gene → single expression → fold correctly in *E.coli* → site-specific enzymatic cleavage of C-peptide = simpler, higher yield than two-chain approach.
+    \`,
+    rawMd_bn: \`[Bengali version matching technical depth will be auto-generated by the platform]\`
+  },
+  {
+    id: "set8",
+    title: "SET 8: Gene Expression & Regulation — RNA, RNA Polymerase, Central Dogma, Prokaryotic vs Eukaryotic",
+    rawMd_en: \`
+### Cluster 8.1: Types of RNA, RNA Polymerase Enzymes, Prokaryotic vs Eukaryotic mRNA Differences
+<div class="logic-box">
+<span style="color: #e74c3c; font-weight: bold;">HIGH ★ · Every year (2011–2023)</span><br/>
+<b>2021, 2023, 2012, 2014:</b> Write down the structural and functional differences between core RNA polymerase and RNA polymerase holoenzyme. Classify different types of RNA with their function. What are the roles of RNA polymerase enzymes in different organisms. Write the differences of prokaryotic and eukaryotic mRNA. How gene expression is regulated post transcriptionally in eukaryotes? 5-14
+</div>
+
+One answer covers all.
+| RNA Type | % in Cell | Function | Key Feature |
+|---|---|---|---|
+| **mRNA** (messenger) | ~5% | Carries genetic code from DNA to ribosome for translation into protein. | Monocistronic (eukaryotes); has 5' cap + 3' poly-A tail; contains ORF (open reading frame) |
+| **rRNA** (ribosomal) | ~80% | Structural and catalytic component of ribosomes; 23S rRNA = peptidyl transferase = ribozyme *ribozyme = catalytic RNA* | Prokaryote: 5S + 16S + 23S (50S+30S = 70S). Eukaryote: 5S + 5.8S + 18S + 28S (60S+40S = 80S) |
+| **tRNA** (transfer) | ~15% | Adapter molecule: reads codon on mRNA (via anticodon), delivers correct amino acid to ribosome (aminoacyl-tRNA) | Cloverleaf secondary structure; L-shaped 3D form; CCA-3' end accepts amino acid; anticodon loop reads codon |
+| **snRNA** (small nuclear) | Trace | Component of spliceosome → removes introns from pre-mRNA (U1, U2, U4, U5, U6) | U = uridine-rich; associates with proteins → snRNP ("snurps") |
+| **snoRNA** (small nucleolar)| Trace | Guides chemical modification (methylation, pseudouridylation) of rRNA in nucleolus | Box C/D (methylation) and Box H/ACA (pseudouridylation) types |
+| **miRNA** (micro) | Trace | ~22 nt; binds complementary mRNA via RISC complex → mRNA degradation OR translation repression → key post-transcriptional regulator | Encoded in genome as pre-miRNA hairpin; processed by Drosha + Dicer |
+| **siRNA** (small interfering)| Trace | ~21 nt; triggers RNAi (RNA interference) → sequence-specific mRNA degradation → gene silencing; used therapeutically | Exogenous dsRNA (viral) → Dicer cleaves → RISC + siRNA → slices mRNA |
+| **lncRNA** (long non-coding) | Variable | >200 nt; chromatin remodeling, gene imprinting, X-inactivation (Xist), scaffolding transcription factor complexes | XIST lncRNA coats inactive X chromosome → Polycomb silencing |
+
+| RNA Pol | Organism | Products | Location | Key Detail |
+|---|---|---|---|---|
+| **Single RNA Pol** | Prokaryotes | All RNA types (mRNA, rRNA, tRNA) | Cytoplasm (coupled to translation) | Core: α₂ββ'ω; Holoenzyme = Core + σ factor (σ⁷⁰ housekeeping; σ³² heat shock; σ⁵⁴ nitrogen starvation). σ⁷⁰ recognizes −35 (TTGACA) and −10 (TATAAT) boxes. |
+| **RNA Pol I** | Eukaryotes | Large rRNA precursor (45S pre-rRNA → 5.8S + 18S + 28S) | Nucleolus | Most active Pol (80% of RNA); inhibited by α-amanitin only at very high concentrations (NOT affected by normal doses) |
+| **RNA Pol II** | Eukaryotes | mRNA + most snRNA + some miRNA | Nucleus | SENSITIVE to α-amanitin (mushroom toxin); requires general transcription factors (TBP, TFIID, TFIIA, TFIIB, TFIIF, TFIIE, TFIIH); CTD phosphorylation by TFIIH switches pol from initiation → elongation |
+| **RNA Pol III** | Eukaryotes | tRNA + 5S rRNA + U6 snRNA | Nucleus | Uses internal promoters (Box A, Box B) inside gene body; inhibited by α-amanitin at intermediate concentrations |
+| **RNA Pol (Chloroplast)**| Plants | Plastid-encoded genes | Chloroplast | Similar to prokaryotic RNA Pol (σ-factor based); remnant of endosymbiotic cyanobacterial ancestor |
+
+| Feature | Prokaryotic mRNA | Eukaryotic mRNA |
+|---|---|---|
+| **Gene organization**| Polycistronic (one mRNA = multiple genes; e.g., *lac* operon encodes *lacZ*+*lacY*+*lacA*) | Monocistronic (one mRNA = one gene) |
+| **5' end** | Triphosphate (pppG); NO cap | 5' m⁷G cap (7-methylguanosine + 5'-5' triphosphate linkage) |
+| **3' end** | No poly-A tail (bacterial); some archaeal have poly-A | Poly-A tail (~200 adenines added post-transcriptionally by poly-A polymerase) |
+| **Introns** | None (genes are split in some archaea, but typical bacteria: no introns) | Present in pre-mRNA → removed by spliceosome → mature mRNA |
+| **Translation coupling**| Coupled (ribosome binds Shine-Dalgarno near 5' end DURING transcription) | Separated in space (transcription nucleus → export → translation cytoplasm) |
+| **Half-life** | Very short (seconds to minutes; ~2 min for *E. coli*) | Minutes to hours (stabilized by cap + poly-A) |
+
+⚠ **Post-transcriptional regulation in eukaryotes (5 key mechanisms):** (1) Alternative splicing — same gene produces multiple proteins by varying which exons are included (e.g., Drosophila *Dscam* gene: 38,000 isoforms!); (2) miRNA/RISC — miRNA guides RISC to complementary mRNA → cleavage (perfect match) or translational repression (partial match); (3) RNA editing — ADAR enzyme deaminates A→I (Inosine reads as G) → changes codon identity; (4) mRNA stability — AU-rich elements (AREs) in 3'UTR recruit deadenylases → rapid decay; (5) NMD (Nonsense-mediated mRNA decay) — premature stop codon detected by Upf1 complex → mRNA degraded to prevent truncated proteins.
+
+**Core RNA Polymerase vs Holoenzyme (prokaryotic):** Core enzyme = α₂ββ'ω (4 subunit types, 5 subunits): can elongate RNA but CANNOT initiate transcription (cannot recognize promoter). Holoenzyme = Core + σ (sigma) factor: σ factor confers promoter recognition ability → initiation competent. σ⁷⁰ (housekeeping genes, −10 TATAAT box and −35 TTGACA). After initiation, σ dissociates → core enzyme elongates → holoenzyme reforms for next initiation. Different σ factors for stress responses (σ³², σ⁵⁴, σ²⁸). Structural differences: σ factor has 4 domains (σ1–σ4); σ4 recognizes −35; σ2 recognizes −10.
+
+---
+
+### Cluster 8.2: Gene Regulation — Central Dogma, Eukaryotic Gene Structure, Operon Systems
+<div class="logic-box">
+<span style="color: #e74c3c; font-weight: bold;">HIGH ★ · 5 yrs</span><br/>
+<b>2022, 2023, 2020, 2013, 2014:</b> Briefly discuss the points where gene expression are regulated. What is central dogma? Brief about the modified version of central dogma. Show the construct of an eukaryotic gene. What do you mean by gene regulation? Compare between the negative inducible and negative repressible operon. Differentiate between prokaryotic and eukaryotic gene regulation system. 5-10
+</div>
+
+One answer covers all.
+📌 **Central Dogma (Francis Crick, 1958):** *dogma = established principle = প্রতিষ্ঠিত মূলনীতি* The fundamental flow of genetic information: DNA → (Transcription) → RNA → (Translation) → Protein. 
+**Modified Central Dogma:** Additional pathways discovered: (1) RNA → DNA (Reverse Transcription by retroviruses — Temin & Baltimore, 1970 Nobel); (2) RNA → RNA (RNA replication by RNA viruses); (3) DNA → Protein (cell-free translation, ribosomes can directly translate DNA in vitro). Prions: Protein → Protein (misfolded proteins replicate by converting normal prions — not encoded in central dogma).
+
+| Level of Regulation | Mechanism | Example |
+|---|---|---|
+| **Transcriptional** | Regulation of when and how much RNA Pol transcribes a gene. Involves TFs binding promoters/enhancers. | *Lac* repressor; steroid hormone receptors; NF-κB activation |
+| **Post-transcriptional**| Splicing, capping, polyadenylation, mRNA stability, miRNA, RNA editing. | Alternative splicing of DSCAM (38,000 isoforms); miR-21 in cancer |
+| **Translational** | Ribosome binding, mRNA secondary structure, IRES, eIF2α phosphorylation. | Iron response element (IRE) in ferritin mRNA: iron-bound IRP releases mRNA → translation; eIF2α phosphorylation = global translation shutdown in stress |
+| **Post-translational** | Phosphorylation, ubiquitination, glycosylation, proteolytic cleavage. | Cyclin degradation (26S proteasome) regulates cell cycle; Ras GTPase: active (GTP-bound) vs inactive (GDP-bound) |
+| **Epigenetic** | DNA methylation (CpG), histone modifications (H3K4me3=active; H3K27me3=silent), chromatin remodeling. | X-chromosome inactivation (XIST lncRNA + Polycomb); imprinting (IGF2, H19) |
+
+**Eukaryotic Gene Structure (5'→3'):**
+[Enhancers / Silencers / Insulators] — [Promoter: −35(CAAT box), −25(TATA box)] — [+1 TSS] — [5'UTR] — [Exon1] — [Intron1] — [Exon2] — [Intron2] — [Exon3(stop)] — [3'UTR] — [AATAAA poly-A signal]
+*Key elements: TSS (+1) = Transcription Start Site. TATA box (−25 from TSS): binds TBP → recruits TFIID → forms preinitiation complex. Enhancers: can be 50,000 bp away, work in any orientation. Silencers = negative enhancers. Insulators = boundary elements (prevent enhancer from acting on neighboring genes).*
+
+| Feature | Lac Operon (Negative Inducible) | Trp Operon (Negative Repressible) |
+|---|---|---|
+| **Type** | Catabolic (uses sugar when available) | Anabolic (stops making amino acid when plentiful) |
+| **Default state** | OFF (Lac repressor blocks operator) | ON (Trp repressor inactive — no tryptophan) |
+| **Inducer** | Allolactose (isomer of lactose) binds repressor → repressor leaves operator → ON | Tryptophan (corepressor) binds Trp repressor → active complex blocks operator → OFF |
+| **Genes** | *lacZ* (β-gal), *lacY* (permease), *lacA* (transacetylase) | *trpE, trpD, trpC, trpB, trpA* (tryptophan biosynthesis) |
+| **Additional control**| Catabolite repression (CAP protein + cAMP: high glucose → low cAMP → CAP inactive → Lac operon poorly expressed even with inducer) | Attenuation (ribosome stalls at leader sequence rich in Trp codons → terminator hairpin forms → premature termination) |
+
+⚠ **DNA Methylation (short note):** *methyl = CH₃ group; methylation = মিথাইল গ্রুপ সংযোজন* In eukaryotes: cytosine-5 methylation at CpG dinucleotides by DNA methyltransferases (DNMT1 for maintenance; DNMT3A/B for de novo). Methylated CpG-rich regions (CpG islands at promoters) → gene silencing. Mechanism: methylated DNA recruits methyl-CpG binding proteins (MeCP2) → HDAC (histone deacetylase) → compact chromatin → transcription OFF. Inheritance: DNMT1 recognizes hemimethylated DNA after replication → restores methylation on new strand = epigenetic memory. In bacteria: Dam methylase (GATC → N6-methyladenine) is part of R-M protection system. Importance: X-inactivation, genomic imprinting, cancer (TSG silencing by hypermethylation), aging.
+
+**Positive vs Negative control of gene expression:** 
+**Negative control:** A repressor protein BLOCKS transcription by default. Gene is OFF until repressor is removed. Two types: (a) Negative inducible — repressor binds operator constitutively; inducer (e.g., allolactose) binds repressor → conformational change → repressor releases operator → gene turns ON (e.g., *lac* operon). (b) Negative repressible — repressor is inactive (aporepressor) until co-repressor (e.g., tryptophan) binds it → repressor complex now binds operator → gene turns OFF (e.g., *trp* operon). 
+**Positive control:** An activator protein is REQUIRED to turn gene ON. Gene is OFF by default until activator binds. Two types: (a) Positive inducible — activator binds only when inducer present → turns gene ON (e.g., *araBAD* operon: AraC + arabinose → binds *araI* → activates transcription). (b) Positive repressible — activator works until co-repressor inactivates it. In eukaryotes, most control is positive (transcription factors act as activators; heterochromatin = default OFF state).
+
+---
+
+### Cluster 8.3/8.4: Short Notes (Recurring) — Alternative Splicing, DNA Methylation, Gel Electrophoresis, α-Complementation, pUC19, λ Phage, vir genes, DNA Probe, Retroviral Vectors
+<div class="logic-box">
+<span style="color: #e74c3c; font-weight: bold;">MED/HIGH ★ · Appear every year in short-note section</span><br/>
+<b>2021, 2017, 2015, 2014, 2013, 2012, 2011:</b> Short notes format.
+</div>
+
+One answer covers all: 
+*   **Alternative splicing:** same pre-mRNA → different mRNAs → different proteins (e.g., calcitonin/CGRP gene; *Dscam* gene in Drosophila → 38,016 isoforms); types: exon skipping, intron retention, alternative 5'/3' splice sites, mutually exclusive exons. Increases proteome diversity without gene duplication. 
+*   **DNA methylation:** 5-methylcytosine at CpG dinucleotides in mammals; written by DNMT3A/3B (de novo), maintained by DNMT1. Role: gene silencing (methylation of promoter CpG islands → recruit MBD proteins → condense chromatin → block transcription), X-inactivation, imprinting, transposon silencing. Cancer: global hypomethylation (genomic instability) + local hypermethylation (tumor suppressor silencing). 
+*   **Gel electrophoresis / Separating & viewing DNA:** Agarose gel (0.5–3%) in TAE/TBE buffer. Load DNA + loading dye → run at 80–120V → smaller fragments migrate faster. Stain with EtBr (intercalates between bases) or SYBR Safe → visualize under UV transilluminator. DNA ladder for size comparison. Preparative: cut band and extract DNA (gel extraction kit). Applications: verify PCR, restriction digest pattern, Southern transfer.
+*   **α-complementation:** *lacZ* gene of *E.coli* divided into two fragments: N-terminal fragment (*lacZα*, encoded by vector e.g. pUC19) and C-terminal fragment (*lacZ∆M15*, present in special *E.coli* host strain e.g. DH5α). Neither fragment alone is active. When both fragments are produced together in the same cell → complementation → functional β-galactosidase enzyme → hydrolyzes X-gal → blue colour. If insert is cloned into MCS within *lacZα* → disrupts α-fragment → no complementation → white colony. Blue = no insert (self-ligated vector); White = recombinant with insert. Used for blue/white colony screening in pUC and M13mp series vectors.
+*   **pUC19:** 2686 bp plasmid; derivative of pBR322 (simplified). Features: (1) *ampR* (selectable marker), (2) *lacZα* gene with MCS (polylinker — 13 unique restriction sites: EcoRI, SacI, KpnI, AvaI, XmaI, SmaI, BamHI, XbaI, AccI, HincII, SalI, HindIII etc.), (3) ColE1 ori → high copy number (~500–700/cell), (4) Blue/white selection with X-gal/IPTG. pUC18 = same but MCS in reverse orientation. Very widely used basic cloning vector.
+*   **λ phage vector:** 48.5 kb linear dsDNA; 12-nt 5' *cos* sites (sticky, circularize on infection). Non-essential region (~14 kb: *att, int, xis, bio, nin*) replaced with insert. Insertion vector: ≤10 kb; Replacement vector: 9–23 kb inserts. In vitro packaging with phage head + tail proteins (packaging extracts). Infect *E.coli* → plaques. Clear plaques = recombinant; turbid = non-recombinant (has *cI* repressor). Advantages over plasmid: higher capacity, efficient delivery, easy plaque assay screening. Used extensively in genomic library construction.
+*   **Virgenes (vir genes):** Located on Ti plasmid of *Agrobacterium tumefaciens*; ~35 kb region. Not transferred to plant — they encode the machinery for T-DNA transfer. Key genes: *virA* (membrane sensor histidine kinase, detects wound signals — acetosyringone, phenolics) → autophosphorylates → phosphorylates *virG* (response regulator transcription activator) → activates all other *vir* genes. *virD1/D2*: site-specific endonuclease — nicks T-DNA at 25-bp border repeats → generates ssDNA T-strand; VirD2 covalently attaches to 5' end. *virE2*: ssDNA-binding protein → coats entire T-strand → forms T-complex (long rod). *virB*: encodes Type IV secretion system (T4SS) — 11 subunit pilus channel → delivers T-complex into plant cell. *virC*: enhances virulence. T-complex enters plant nucleus, integrates into chromosome.
+*   **DNA probe:** Single-stranded labeled nucleic acid (DNA or RNA) that hybridizes to complementary target sequence by Watson-Crick base pairing. Types: cDNA probe, genomic DNA probe, oligonucleotide probe, RNA probe. Labels: radioactive (³²P-dCTP), non-radioactive (digoxigenin-dUTP, biotin-dUTP → detected by antibody-enzyme conjugate → colorimetric/chemiluminescent). Production: random primer labeling, nick translation, end-labeling (polynucleotide kinase + [γ-³²P]ATP). Used in: Southern/Northern blotting, colony hybridization (screen libraries), FISH, microarray, in situ hybridization, diagnostic kits.
+*   **Retroviral vectors:** Based on retroviruses (MLV, lentivirus); 8–10 kb ssRNA genome. Key features: *gag, pol, env* replaced with GOI (packaging signals ψ retained). Packaging cell line provides *gag/pol/env* in trans → produces replication-incompetent viral particles. GOI stably integrates into host genome via reverse transcriptase + integrase → permanent expression. Used in: gene therapy, stable cell line generation. Lentiviral vectors (HIV-based): can transduce non-dividing cells (nerve, muscle) → 3rd generation safest (split-intron, self-inactivating LTR).
+    \`,
+    rawMd_bn: \`[Bengali version matching technical depth will be auto-generated by the platform]\`
+  }
+];
+
+if (typeof module !== "undefined" && module.exports) {
+    module.exports = { geb337_sets };
+}
+if (typeof window !== "undefined") {
+    window.geb337_sets = geb337_sets;
+}
+`
+
+fs.writeFileSync('geb337_rDNA.js', fullData);
