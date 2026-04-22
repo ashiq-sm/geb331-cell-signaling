@@ -518,6 +518,7 @@ function renderSets() {
                 MathJax.typesetPromise().catch(err => console.error('MathJax error:', err));
             }
                 if (typeof restoreHighlightsFromStorage === "function") restoreHighlightsFromStorage();
+    if (window.AdminPowersInstance) AdminPowersInstance.pushHighlightState();
     return;
         }
 
@@ -726,7 +727,7 @@ document.addEventListener('mouseup', () => {
         span.appendChild(range.extractContents());
         range.insertNode(span);
         selection.removeAllRanges();
-        saveHighlightsToStorage();
+        AdminPowersInstance.pushHighlightState(); saveHighlightsToStorage();
     }
 });
 
@@ -773,7 +774,22 @@ function saveHighlightsToStorage() {
     }
 }
 
-function restoreHighlightsFromStorage() {
+function restoreHighlightsFromStorage(forceClear) {
+    if (forceClear) {
+        document.querySelectorAll('.set-card .qs-card .markdown-body').forEach(body => {
+            // Check if it HAS highlights before clearing, to avoid unnecessary DOM churn
+            if (body.querySelector('[data-user-highlight="1"]')) {
+                // Clear all highlights by replacing with original text if possible, 
+                // but since we render dynamically, the simplest is to just remove the spans
+                const spans = body.querySelectorAll('[data-user-highlight="1"]');
+                spans.forEach(span => {
+                    const parent = span.parentNode;
+                    while (span.firstChild) parent.insertBefore(span.firstChild, span);
+                    parent.removeChild(span);
+                });
+            }
+        });
+    }
     let saved = null;
     try {
         saved = JSON.parse(localStorage.getItem(HIGHLIGHT_STORE_KEY) || '{}');
@@ -801,7 +817,7 @@ function clearAllHighlights() {
         }
         parent.removeChild(el);
     });
-    saveHighlightsToStorage();
+    AdminPowersInstance.pushHighlightState(); saveHighlightsToStorage();
 }
 
 window.addEventListener('load', () => {
@@ -878,6 +894,7 @@ function showHighlightMenu(element) {
 }
 
 function changeHighlightColor(newColor) {
+    if (window.AdminPowersInstance) AdminPowersInstance.pushHighlightState();
     if (!currentHighlightElement) return;
     const oldClass = currentHighlightElement.className;
     const classList = oldClass.split(' ').filter(c => !c.includes('highlight-') || c.includes('underline'));
@@ -890,11 +907,12 @@ function changeHighlightColor(newColor) {
         currentHighlightElement.className = classList.join(' ');
     }
     localStorage.setItem('lastHighlightColor', newColor);
-    saveHighlightsToStorage();
+    AdminPowersInstance.pushHighlightState(); saveHighlightsToStorage();
     document.getElementById('highlightMenu').classList.remove('show');
 }
 
 function toggleHighlightStyle() {
+    if (window.AdminPowersInstance) AdminPowersInstance.pushHighlightState();
     if (!currentHighlightElement) return;
     const oldClass = currentHighlightElement.className;
     const isUnderline = oldClass.includes('highlight-underline');
@@ -903,22 +921,23 @@ function toggleHighlightStyle() {
     
     if (isUnderline) {
         currentHighlightElement.className = `highlight-${color}`;
-    saveHighlightsToStorage();
+    AdminPowersInstance.pushHighlightState(); saveHighlightsToStorage();
     } else {
         currentHighlightElement.className = `highlight-underline underline-${color}`;
-    saveHighlightsToStorage();
+    AdminPowersInstance.pushHighlightState(); saveHighlightsToStorage();
     }
     document.getElementById('highlightMenu').classList.remove('show');
 }
 
 function deleteHighlight() {
+    if (window.AdminPowersInstance) AdminPowersInstance.pushHighlightState();
     if (!currentHighlightElement) return;
     const parent = currentHighlightElement.parentNode;
     while (currentHighlightElement.firstChild) {
         parent.insertBefore(currentHighlightElement.firstChild, currentHighlightElement);
     }
     parent.removeChild(currentHighlightElement);
-    saveHighlightsToStorage();
+    AdminPowersInstance.pushHighlightState(); saveHighlightsToStorage();
     document.getElementById('highlightMenu').classList.remove('show');
 }
 

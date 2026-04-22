@@ -548,6 +548,7 @@ function renderSets() {
                 MathJax.typesetPromise().catch(err => console.error('MathJax error:', err));
             }
                 if (typeof restoreHighlightsFromStorage === "function") restoreHighlightsFromStorage();
+    if (window.AdminPowersInstance) AdminPowersInstance.pushHighlightState();
     return;
         }
 
@@ -757,8 +758,8 @@ function clearAllHighlights() {
         }
         parent.removeChild(el);
     });
-    saveHighlightsToStorage();
-    saveHighlightsToStorage();
+    AdminPowersInstance.pushHighlightState(); saveHighlightsToStorage();
+    AdminPowersInstance.pushHighlightState(); saveHighlightsToStorage();
 }
 
 function saveHighlightsToStorage() {
@@ -780,7 +781,22 @@ function saveHighlightsToStorage() {
     }
 }
 
-function restoreHighlightsFromStorage() {
+function restoreHighlightsFromStorage(forceClear) {
+    if (forceClear) {
+        document.querySelectorAll('.set-card .qs-card .markdown-body').forEach(body => {
+            // Check if it HAS highlights before clearing, to avoid unnecessary DOM churn
+            if (body.querySelector('[data-user-highlight="1"]')) {
+                // Clear all highlights by replacing with original text if possible, 
+                // but since we render dynamically, the simplest is to just remove the spans
+                const spans = body.querySelectorAll('[data-user-highlight="1"]');
+                spans.forEach(span => {
+                    const parent = span.parentNode;
+                    while (span.firstChild) parent.insertBefore(span.firstChild, span);
+                    parent.removeChild(span);
+                });
+            }
+        });
+    }
     let saved = null;
     try {
         saved = JSON.parse(localStorage.getItem(HIGHLIGHT_STORE_KEY) || '{}');
@@ -846,6 +862,7 @@ function showHighlightMenu(element, clientX = null, clientY = null) {
 }
 
 function changeHighlightColor(newColor) {
+    if (window.AdminPowersInstance) AdminPowersInstance.pushHighlightState();
     if (!currentHighlightElement) return;
     const oldClass = currentHighlightElement.className;
     const classList = oldClass.split(' ').filter(c => !c.includes('highlight-') || c.includes('underline'));
@@ -857,24 +874,25 @@ function changeHighlightColor(newColor) {
     }
     currentHighlightElement.dataset.userHighlight = '1';
     localStorage.setItem('lastHighlightColor', newColor);
-    saveHighlightsToStorage();
+    AdminPowersInstance.pushHighlightState(); saveHighlightsToStorage();
     document.getElementById('highlightMenu').classList.remove('show');
-    saveHighlightsToStorage();
+    AdminPowersInstance.pushHighlightState(); saveHighlightsToStorage();
 }
 
 function toggleHighlightStyle() {
+    if (window.AdminPowersInstance) AdminPowersInstance.pushHighlightState();
     if (!currentHighlightElement) return;
     const oldClass = currentHighlightElement.className;
     const isUnderline = oldClass.includes('highlight-underline');
     const colorMatch = oldClass.match(/(?:underline-)?(red|green|indigo|yellow)/);
     const color = colorMatch ? colorMatch[1] : 'red';
     if (isUnderline) currentHighlightElement.className = `highlight-${color}`;
-    saveHighlightsToStorage();
+    AdminPowersInstance.pushHighlightState(); saveHighlightsToStorage();
     else currentHighlightElement.className = `highlight-underline underline-${color}`;
-    saveHighlightsToStorage();
+    AdminPowersInstance.pushHighlightState(); saveHighlightsToStorage();
     currentHighlightElement.dataset.userHighlight = '1';
     document.getElementById('highlightMenu').classList.remove('show');
-    saveHighlightsToStorage();
+    AdminPowersInstance.pushHighlightState(); saveHighlightsToStorage();
 }
 
 function deleteHighlight() {
@@ -883,7 +901,7 @@ function deleteHighlight() {
     while (currentHighlightElement.firstChild) parent.insertBefore(currentHighlightElement.firstChild, currentHighlightElement);
     parent.removeChild(currentHighlightElement);
     document.getElementById('highlightMenu').classList.remove('show');
-    saveHighlightsToStorage();
+    AdminPowersInstance.pushHighlightState(); saveHighlightsToStorage();
 }
 
 function saveBookmarks() { localStorage.setItem(BOOKMARK_STORE_KEY, JSON.stringify(bookmarkPositions)); }

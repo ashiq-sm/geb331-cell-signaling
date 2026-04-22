@@ -11,6 +11,8 @@ class AdminPowers {
         this.ADMIN_PASSWORD = 'bismilla@1';
         this.ADMIN_SESSION_KEY = 'sm_bioNotes_adminSession';
         this.isAdminMode = false;
+        this.highlightUndoStack = [];
+        this.highlightRedoStack = [];
         this.init();
     }
 
@@ -79,9 +81,21 @@ class AdminPowers {
             }
 
             const key = e.key.toLowerCase();
+            const isCtrl = e.ctrlKey || e.metaKey;
+            const isShift = e.shiftKey;
 
+            // Ctrl+Z - Undo Highlight
+            if (isCtrl && key === 'z' && !isShift) {
+                e.preventDefault();
+                this.undoHighlight();
+            }
+            // Ctrl+Shift+Z or Ctrl+Y - Redo Highlight
+            else if ((isCtrl && isShift && key === 'z') || (isCtrl && key === 'y')) {
+                e.preventDefault();
+                this.redoHighlight();
+            }
             // 'M' - Toggle Main Menu
-            if (key === 'm') {
+            else if (key === 'm') {
                 e.preventDefault();
                 this.showTopMenu();
             } 
@@ -1926,6 +1940,52 @@ class AdminPowers {
         document.head.appendChild(style);
 
         setTimeout(() => toast.remove(), 3000);
+    }
+
+    /* ===== UNDO / REDO SYSTEM ===== */
+    pushHighlightState() {
+        if (!window.HIGHLIGHT_STORE_KEY) return;
+        const currentState = localStorage.getItem(window.HIGHLIGHT_STORE_KEY) || '{}';
+        
+        // Only push if different from last
+        if (this.highlightUndoStack.length === 0 || this.highlightUndoStack[this.highlightUndoStack.length - 1] !== currentState) {
+            this.highlightUndoStack.push(currentState);
+            if (this.highlightUndoStack.length > 40) this.highlightUndoStack.shift();
+            this.highlightRedoStack = []; // Clear redo on new action
+        }
+    }
+
+    undoHighlight() {
+        if (this.highlightUndoStack.length > 1) {
+            const current = this.highlightUndoStack.pop();
+            this.highlightRedoStack.push(current);
+            
+            const previous = this.highlightUndoStack[this.highlightUndoStack.length - 1];
+            localStorage.setItem(window.HIGHLIGHT_STORE_KEY, previous);
+            
+            if (typeof window.restoreHighlightsFromStorage === 'function') {
+                window.restoreHighlightsFromStorage(true); // true means 'force clear'
+                this.showToast('↩️ Undo', 'Highlight action reversed.');
+            }
+        } else {
+            this.showToast('ℹ️ No more history', 'Nothing left to undo.');
+        }
+    }
+
+    redoHighlight() {
+        if (this.highlightRedoStack.length > 0) {
+            const next = this.highlightRedoStack.pop();
+            this.highlightUndoStack.push(next);
+            
+            localStorage.setItem(window.HIGHLIGHT_STORE_KEY, next);
+            
+            if (typeof window.restoreHighlightsFromStorage === 'function') {
+                window.restoreHighlightsFromStorage(true);
+                this.showToast('🔁 Redo', 'Action re-applied.');
+            }
+        } else {
+            this.showToast('ℹ️ End of history', 'Nothing left to redo.');
+        }
     }
 }
 
