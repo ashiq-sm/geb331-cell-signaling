@@ -340,12 +340,13 @@ function renderSets() {
     function renderNext() {
         if (index >= setsData.length) {
             setupNavObserver();
-            if (typeof restoreHighlightsFromStorage === 'function') restoreHighlightsFromStorage();
+            
             if (typeof enhanceResponsiveTables === 'function') enhanceResponsiveTables(container);
             if (window.MathJax && MathJax.typesetPromise) {
                 MathJax.typesetPromise().catch(err => console.error('MathJax error:', err));
             }
-            return;
+                if (typeof restoreHighlightsFromStorage === "function") restoreHighlightsFromStorage();
+    return;
         }
 
         try {
@@ -710,8 +711,10 @@ function highlightSelected(color) {
     
     if (highlightMode === 'background') {
         span.className = 'highlight-' + color;
+        span.dataset.userHighlight = "1";
     } else {
         span.className = 'highlight-underline underline-' + color;
+        span.dataset.userHighlight = "1";
     }
     span.dataset.userHighlight = '1';
     
@@ -804,8 +807,10 @@ document.addEventListener('mouseup', () => {
         
         if (highlightMode === 'background') {
             span.className = 'highlight-' + currentHighlightColor;
+        span.dataset.userHighlight = "1";
         } else {
             span.className = 'highlight-underline underline-' + currentHighlightColor;
+        span.dataset.userHighlight = "1";
         }
         
         removeHighlightsInRange(range);
@@ -853,6 +858,7 @@ function clearAllHighlights() {
         }
         parent.removeChild(el);
     });
+    saveHighlightsToStorage();
     saveHighlightsToStorage();
 }
 
@@ -1036,6 +1042,7 @@ function changeHighlightColor(newColor) {
     }
     currentHighlightElement.dataset.userHighlight = '1';
     localStorage.setItem('lastHighlightColor', newColor);
+    saveHighlightsToStorage();
     document.getElementById('highlightMenu').classList.remove('show');
     saveHighlightsToStorage();
 }
@@ -1050,9 +1057,11 @@ function toggleHighlightStyle() {
     if (isUnderline) {
         // Switch to background
         currentHighlightElement.className = `highlight-${color}`;
+    saveHighlightsToStorage();
     } else {
         // Switch to underline
         currentHighlightElement.className = `highlight-underline underline-${color}`;
+    saveHighlightsToStorage();
     }
     currentHighlightElement.dataset.userHighlight = '1';
     document.getElementById('highlightMenu').classList.remove('show');
@@ -1066,6 +1075,7 @@ function deleteHighlight() {
         parent.insertBefore(currentHighlightElement.firstChild, currentHighlightElement);
     }
     parent.removeChild(currentHighlightElement);
+    saveHighlightsToStorage();
     document.getElementById('highlightMenu').classList.remove('show');
     saveHighlightsToStorage();
 }

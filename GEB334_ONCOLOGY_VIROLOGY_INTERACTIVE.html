@@ -549,12 +549,13 @@ function renderSets() {
     function renderNext() {
         if (index >= setsData.length) {
             setupNavObserver();
-            if (typeof restoreHighlightsFromStorage === 'function') restoreHighlightsFromStorage();
+            
             if (typeof enhanceResponsiveTables === 'function') enhanceResponsiveTables(container);
             if (window.MathJax && MathJax.typesetPromise) {
                 MathJax.typesetPromise().catch(err => console.error('MathJax error:', err));
             }
-            return;
+                if (typeof restoreHighlightsFromStorage === "function") restoreHighlightsFromStorage();
+    return;
         }
 
         try {
@@ -802,6 +803,7 @@ function clearAllHighlights() {
         parent.removeChild(el);
     });
     saveHighlightsToStorage();
+    saveHighlightsToStorage();
 }
 
 function saveHighlightsToStorage() {
@@ -900,6 +902,7 @@ function changeHighlightColor(newColor) {
     }
     currentHighlightElement.dataset.userHighlight = '1';
     localStorage.setItem('lastHighlightColor', newColor);
+    saveHighlightsToStorage();
     document.getElementById('highlightMenu').classList.remove('show');
     saveHighlightsToStorage();
 }
@@ -911,7 +914,9 @@ function toggleHighlightStyle() {
     const colorMatch = oldClass.match(/(?:underline-)?(red|green|indigo|yellow)/);
     const color = colorMatch ? colorMatch[1] : 'red';
     if (isUnderline) currentHighlightElement.className = `highlight-${color}`;
+    saveHighlightsToStorage();
     else currentHighlightElement.className = `highlight-underline underline-${color}`;
+    saveHighlightsToStorage();
     currentHighlightElement.dataset.userHighlight = '1';
     document.getElementById('highlightMenu').classList.remove('show');
     saveHighlightsToStorage();

@@ -218,6 +218,8 @@ let currentHighlightColor = null;
 const setsData = geb335_sets;
 
 const PROGRESS_KEY = 'sm-progress-geb335';
+const HIGHLIGHT_STORE_KEY = "sm-highlights-geb335-v1";
+const HIGHLIGHT_VISIBILITY_KEY = "sm-highlights-visible";
 let visitedSets = new Set(JSON.parse(localStorage.getItem(PROGRESS_KEY) || '[]'));
 const BOOKMARK_STORE_KEY = 'sm-bookmarks-geb335-v1';
 let bookmarkPositions = JSON.parse(localStorage.getItem(BOOKMARK_STORE_KEY) || '[]');
@@ -541,7 +543,7 @@ function renderSets() {
             if (index >= setsData.length) {
                 console.log('All sets rendered successfully');
                 setupNavObserver();
-                if (typeof restoreHighlightsFromStorage === 'function') restoreHighlightsFromStorage();
+                
                 if (typeof enhanceResponsiveTables === 'function') enhanceResponsiveTables(container);
                 if (window.MathJax && MathJax.typesetPromise) {
                     MathJax.typesetPromise().catch(err => console.error('MathJax error:', err));
@@ -550,7 +552,8 @@ function renderSets() {
                 if (spinner) {
                     setTimeout(() => spinner.classList.add('hidden'), 50);
                 }
-                return;
+                    if (typeof restoreHighlightsFromStorage === "function") restoreHighlightsFromStorage();
+    return;
             }
 
             const item = setsData[index];
@@ -716,15 +719,18 @@ function highlightSelected(color) {
     
     if (highlightMode === 'background') {
         span.className = 'highlight-' + color;
+        span.dataset.userHighlight = "1";
     } else {
         span.className = 'highlight-underline underline-' + color;
+        span.dataset.userHighlight = "1";
     }
     
     removeHighlightsInRange(range);
     
     span.appendChild(range.extractContents());
     range.insertNode(span);
-    selection.removeAllRanges();
+        selection.removeAllRanges();
+        saveHighlightsToStorage();
     
     localStorage.setItem('lastHighlightColor', color);
 }
@@ -788,14 +794,17 @@ document.addEventListener('mouseup', () => {
         
         if (highlightMode === 'background') {
             span.className = 'highlight-' + currentHighlightColor;
+        span.dataset.userHighlight = "1";
         } else {
             span.className = 'highlight-underline underline-' + currentHighlightColor;
+        span.dataset.userHighlight = "1";
         }
         
         removeHighlightsInRange(range);
         span.appendChild(range.extractContents());
         range.insertNode(span);
         selection.removeAllRanges();
+        saveHighlightsToStorage();
     }
 });
 
@@ -822,6 +831,45 @@ function isNodeInRange(node, range) {
     }
 }
 
+
+function saveHighlightsToStorage() {
+    const payload = {};
+    document.querySelectorAll('.set-card').forEach((setCard) => {
+        const setId = setCard.id;
+        const entries = [];
+        setCard.querySelectorAll('.qs-card .markdown-body').forEach((body, idx) => {
+            if (body.querySelector('[data-user-highlight="1"]')) {
+                entries.push({ idx, html: body.innerHTML });
+            }
+        });
+        if (entries.length) payload[setId] = entries;
+    });
+    try {
+        localStorage.setItem(HIGHLIGHT_STORE_KEY, JSON.stringify(payload));
+    } catch (err) {
+        console.warn('Could not save highlights:', err);
+    }
+}
+
+function restoreHighlightsFromStorage() {
+    let saved = null;
+    try {
+        saved = JSON.parse(localStorage.getItem(HIGHLIGHT_STORE_KEY) || '{}');
+    } catch {
+        saved = {};
+    }
+    Object.entries(saved).forEach(([setId, entries]) => {
+        const setCard = document.getElementById(setId);
+        if (!setCard || !Array.isArray(entries)) return;
+        const bodies = setCard.querySelectorAll('.qs-card .markdown-body');
+        entries.forEach((entry) => {
+            if (!entry || typeof entry.idx !== 'number' || typeof entry.html !== 'string') return;
+            const target = bodies[entry.idx];
+            if (target) target.innerHTML = entry.html;
+        });
+    });
+}
+
 function clearAllHighlights() {
     const highlighted = document.querySelectorAll('[class*="highlight-"]');
     highlighted.forEach(el => {
@@ -831,6 +879,7 @@ function clearAllHighlights() {
         }
         parent.removeChild(el);
     });
+    saveHighlightsToStorage();
 }
 
 window.addEventListener('load', () => {
@@ -923,6 +972,7 @@ function changeHighlightColor(newColor) {
         currentHighlightElement.className = classList.join(' ');
     }
     localStorage.setItem('lastHighlightColor', newColor);
+    saveHighlightsToStorage();
     document.getElementById('highlightMenu').classList.remove('show');
 }
 
@@ -935,8 +985,10 @@ function toggleHighlightStyle() {
     
     if (isUnderline) {
         currentHighlightElement.className = `highlight-${color}`;
+    saveHighlightsToStorage();
     } else {
         currentHighlightElement.className = `highlight-underline underline-${color}`;
+    saveHighlightsToStorage();
     }
     document.getElementById('highlightMenu').classList.remove('show');
 }
@@ -948,6 +1000,7 @@ function deleteHighlight() {
         parent.insertBefore(currentHighlightElement.firstChild, currentHighlightElement);
     }
     parent.removeChild(currentHighlightElement);
+    saveHighlightsToStorage();
     document.getElementById('highlightMenu').classList.remove('show');
 }
 
