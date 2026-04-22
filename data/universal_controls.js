@@ -613,11 +613,6 @@
                 window.setHighlightMode('off');
                 consumed = true;
             }
-        } else if (key === sc.expandAll) {
-            if (typeof window.toggleAllSets === 'function') {
-                window.toggleAllSets();
-                consumed = true;
-            }
         } else if (key === sc.underlineMode) {
             if (typeof window.toggleUnderlineMode === 'function') {
                 window.toggleUnderlineMode();

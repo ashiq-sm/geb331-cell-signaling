@@ -74,24 +74,52 @@ class AdminPowers {
             lastScrollY = currentScrollY;
         }, { passive: true });
 
-        // Keyboard Shortcut: 'M' for Menu, 'Esc' for Close All
+        // Global Keyboard Shortcuts
         window.addEventListener('keydown', (e) => {
-            if (e.key.toLowerCase() === 'm' && !['INPUT', 'TEXTAREA'].includes(document.activeElement.tagName)) {
-                this.showTopMenu();
+            // Avoid triggering when typing in inputs or editable areas
+            if (['INPUT', 'TEXTAREA', 'SELECT'].includes(document.activeElement.tagName) || document.activeElement.isContentEditable) {
+                return;
             }
-            if (e.key === 'Escape') {
-                // Close Top Menu
+
+            const key = e.key.toLowerCase();
+
+            // 'M' - Toggle Main Menu
+            if (key === 'm') {
+                e.preventDefault();
+                this.showTopMenu();
+            } 
+            // 'E' - Expand/Collapse All
+            else if (key === 'e') {
+                if (typeof window.toggleAllSets === 'function') {
+                    e.preventDefault();
+                    window.toggleAllSets();
+                    this.showToast('📂 Section Toggled', 'Expanding or collapsing all course modules.');
+                }
+            }
+            // 'B' - Add Bookmark
+            else if (key === 'b') {
+                if (typeof window.addBookmarkPosition === 'function') {
+                    e.preventDefault();
+                    window.addBookmarkPosition();
+                    this.showToast('🔖 Bookmark Saved', 'Your current reading position has been recorded.');
+                }
+            }
+            // 'Esc' - Close All
+            else if (key === 'escape') {
                 const menu = document.getElementById('top-menu');
-                if (menu) menu.remove();
+                if (menu) {
+                    menu.remove();
+                    this.showToast('✖️ Menu Closed', 'Returning to distraction-free mode.');
+                }
                 
-                // Close Pinned Panels (if universal_controls is present)
                 if (window.UniversalControlsInstance) {
                     const states = window.UniversalControlsInstance.getStates();
-                    if (states) {
+                    if (states && (states.topControls.pinned || states.bookmarkPanel.pinned)) {
                         states.topControls.pinned = false;
                         states.bookmarkPanel.pinned = false;
                         window.UniversalControlsInstance.initiateCloseTimer('topControls');
                         window.UniversalControlsInstance.initiateCloseTimer('bookmarkPanel');
+                        this.showToast('🧹 Panels Collapsed', 'Clearing the reading area.');
                     }
                 }
             }

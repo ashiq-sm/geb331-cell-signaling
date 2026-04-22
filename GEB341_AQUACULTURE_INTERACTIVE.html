@@ -1031,25 +1031,7 @@ function initDonationWidget() {
     document.getElementById('donateNowBtn')?.addEventListener('click', donateNow);
 }
 
-document.addEventListener('keydown', (e) => {
-    const tag = document.activeElement.tagName;
-    if (tag === 'INPUT' || tag === 'SELECT' || tag === 'TEXTAREA') return;
-    if (e.key === '1') { setHighlightMode('red'); e.preventDefault(); return; }
-    if (e.key === '2') { setHighlightMode('green'); e.preventDefault(); return; }
-    if (e.key === '3') { setHighlightMode('indigo'); e.preventDefault(); return; }
-    if (e.key === '4') { setHighlightMode('yellow'); e.preventDefault(); return; }
-    if (e.key === '0') { setHighlightMode('off'); e.preventDefault(); return; }
-    if (e.key === 'f' || e.key === 'F') { document.getElementById('searchInput').focus(); e.preventDefault(); }
-    if (e.key === 't' || e.key === 'T') toggleTheme();
-    if (e.key === 'e' || e.key === 'E') toggleAllSets();
-    if (e.key === 'g' || e.key === 'G') { toggleFloatingBar(); e.preventDefault(); return; }
-    if (e.key === 'b' || e.key === 'B') { addBookmarkPosition(); e.preventDefault(); return; }
-    if (e.key === 'v' || e.key === 'V') { goToPreviousBookmark(); e.preventDefault(); return; }
-    if (e.key === 'n' || e.key === 'N') { goToNextBookmark(); e.preventDefault(); return; }
-    if (e.key === 'p' || e.key === 'P') { toggleBookmarkPanel(); e.preventDefault(); return; }
-    if (e.key === 'u' || e.key === 'U') toggleUnderlineMode();
-    if (e.key === 'Escape') closeDuaModal();
-});
+
 
 function searchHighlights() {
     const term = document.getElementById('searchInput').value.trim().toLowerCase();
