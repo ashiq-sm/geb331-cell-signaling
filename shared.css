@@ -228,6 +228,11 @@ body {
 .highlight-menu button:hover { background: var(--nav-pill-bg); }
 .highlight-menu button.delete { color: #dc2626; }
 
+[data-user-highlight="1"].has-note {
+    border-bottom: 2px dotted var(--accent-color);
+    cursor: help;
+}
+
 /* ═══ Navigation & Search ═══ */
 .quick-nav {
     display: flex; overflow-x: auto; flex-wrap: nowrap; gap: 0.6rem; 

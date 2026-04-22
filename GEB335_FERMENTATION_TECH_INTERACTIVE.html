@@ -118,6 +118,7 @@
         <button onclick="changeHighlightColor('indigo')">🔵 Indigo</button>
         <div class="highlight-menu-divider"></div>
         <button onclick="toggleHighlightStyle()">🔄 Toggle Style</button>
+        <button onclick="editHighlightNote()">📝 Add/Edit Note</button>
         <div class="highlight-menu-divider"></div>
         <button class="delete" onclick="deleteHighlight()">🗑️ Delete</button>
     </div>
@@ -973,6 +974,26 @@ function showHighlightMenu(element) {
     menu.style.left = rect.left + 'px';
     menu.style.top = (rect.bottom + 5) + 'px';
     menu.classList.add('show');
+}
+
+
+function editHighlightNote() {
+    if (!currentHighlightElement) return;
+    const oldNote = currentHighlightElement.getAttribute('title') || '';
+    const newNote = prompt('Enter your note for this highlight:', oldNote);
+    if (newNote !== null) {
+        if (newNote.trim() === '') {
+            currentHighlightElement.removeAttribute('title');
+            currentHighlightElement.classList.remove('has-note');
+        } else {
+            currentHighlightElement.setAttribute('title', newNote);
+            currentHighlightElement.classList.add('has-note');
+        }
+        if (window.AdminPowersInstance) AdminPowersInstance.pushHighlightState();
+        if (typeof saveHighlightsToStorage === 'function') saveHighlightsToStorage();
+    }
+    const menu = document.getElementById('highlightMenu');
+    if (menu) menu.classList.remove('show');
 }
 
 function changeHighlightColor(newColor) {
