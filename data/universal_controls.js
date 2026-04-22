@@ -238,6 +238,34 @@
         }
     }
 
+    function addCloseButtons() {
+        // Floating Controls Close
+        var topControls = document.getElementById('topControls');
+        if (topControls && !document.getElementById('topControlsClose')) {
+            var cBtn = document.createElement('button');
+            cBtn.id = 'topControlsClose'; cBtn.innerHTML = '×'; cBtn.className = 'pin-icon-btn';
+            cBtn.style.cssText = 'color: #dc2626; font-size: 1.2rem; font-weight: bold; margin-left: auto;';
+            cBtn.title = 'Force Collapse';
+            cBtn.onclick = function() { states.topControls.pinned = false; initiateCloseTimer('topControls'); };
+            topControls.appendChild(cBtn);
+        }
+        // Bookmark Panel Close
+        var bookmarkPanel = document.getElementById('bookmarkPanel');
+        if (bookmarkPanel && !document.getElementById('bookmarkPanelClose')) {
+            var bcBtn = document.createElement('button');
+            bcBtn.id = 'bookmarkPanelClose'; bcBtn.innerHTML = '×'; bcBtn.className = 'pin-icon-btn';
+            bcBtn.style.cssText = 'color: #dc2626; font-size: 1.2rem; font-weight: bold;';
+            bcBtn.title = 'Force Collapse';
+            bcBtn.onclick = function() { states.bookmarkPanel.pinned = false; initiateCloseTimer('bookmarkPanel'); };
+            var header = bookmarkPanel.querySelector('.bookmark-header');
+            if (header) {
+                var actions = header.querySelector('.bookmark-header-actions');
+                if (actions) actions.appendChild(bcBtn);
+                else header.appendChild(bcBtn);
+            }
+        }
+    }
+
     function togglePin(panelId) {
         states[panelId].pinned = !states[panelId].pinned;
         var btn = document.getElementById(panelId + 'Pin');
@@ -697,6 +725,7 @@
         ensureYellowControls();
         iconizeTopControlBar();
         enhanceToggleButtons();
+        addCloseButtons();
         enhanceBookmarkPanelHeader();
         patchBookmarkPanelFunctions();
         patchHighlightStateUpdater();

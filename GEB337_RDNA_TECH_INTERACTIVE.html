@@ -25,40 +25,23 @@
 
     <div class="header">
         <h1>🔬 GEB 337 — Recombinant DNA Technology <span>Bilingual Interactive Note</span></h1>
-        <div class="controls">
+                <div class="controls">
             <button class="control-btn" onclick="window.location.href='/'" style="font-weight: bold;">🏠 Home Hub</button>
+            <select class="control-btn" style="background: #fff3cd !important; color: #856404 !important; font-weight: bold; border-color: #ffeeba;">
+                <option value="3/2" selected>🎓 Semester 3/2</option>
+                <option value="4/1">🎓 Semester 4/1 (Soon)</option>
+                <option value="4/2">🎓 Semester 4/2 (Soon)</option>
+            </select>
             <select class="control-btn live-btn" id="courseSelect" onchange="if(this.value !== '#') window.open(this.value, '_self')" style="background: #e4f0e4 !important; color: #1a4d1a !important;" title="Switch Course">
                 <option value="GEB331_MASTER_EXAM_PREP_INTERACTIVE_v4_FINAL.html">📘 GEB 331: Cell Signaling</option>
-                <option value="GEB337_RDNA_TECH_INTERACTIVE.html" selected>🔬 GEB 337: Fermentation Technology</option>
-                <option value="GEB341_AQUACULTURE_INTERACTIVE.html">🐟 GEB 341: Aquaculture & Fish Genetics</option>
+                <option value="GEB335_FERMENTATION_TECH_INTERACTIVE.html">🔬 GEB 335: Fermentation Tech</option>
+                <option value="GEB337_RDNA_TECH_INTERACTIVE.html" selected>🧬 GEB 337: Recombinant DNA Tech</option>
+                <option value="GEB334_ONCOLOGY_VIROLOGY_INTERACTIVE.html">🦠 GEB 334: Oncology & Virology</option>
+                <option value="GEB341_AQUACULTURE_INTERACTIVE.html">🐟 GEB 341: Aquaculture & Genetics</option>
                 <option value="GEB343_BIOPROCESS_INTERACTIVE_v1.html">⚙️ GEB 343: Bioprocess Engineering</option>
-                <option value="GEB337_RDNA_TECH_INTERACTIVE.html" selected>🧬 GEB 337: Recombinant DNA Technology</option>
-                <option value="GEB334_ONCOLOGY_VIROLOGY_INTERACTIVE.html">🦠 GEB 334: Oncology and Virology</option>
                 <option value="#">⚡ GEB 336: Bioenergetics (Soon)</option>
             </select>
-            <button class="control-btn" id="toggleMoreHeaderControls" onclick="document.getElementById('moreHeaderControls').classList.toggle('show'); this.classList.toggle('active')" style="background: var(--accent-color); color: white; border-color: var(--accent-color);">⚙️ Options</button>
-            <div id="moreHeaderControls" class="header-dropdown-options">
-                <button class="control-btn" onclick="toggleTheme()" title="Toggle Theme [T]">🌓 Theme</button>
-            <button class="control-btn" onclick="changeFont(-1)" title="Decrease Font Size">A-</button>
-            <button class="control-btn" onclick="changeFont(1)" title="Increase Font Size">A+</button>
-            <select class="control-btn" id="fontFamily" onchange="applyFontFamily()" title="Change Font Family">
-                <option value="'Inter', 'Noto Sans Bengali'">👁️ Eye Saver (Inter)</option>
-                <option value="'Outfit', 'Noto Sans Bengali'">✨ Premium (Outfit)</option>
-                <option value="'Roboto Slab', 'Noto Sans Bengali'">📖 Academic (Slab)</option>
-                <option value="system-ui">💻 System Default</option>
-            </select>
-            <select class="control-btn" id="viewMode" onchange="applyViewMode()" title="Adjust width">
-                <option value="auto">🖥️ Auto View</option>
-                <option value="mobile">📱 Mobile</option>
-                <option value="desktop">💻 Desktop</option>
-            </select>
-            <select class="control-btn" id="languageSelect" onchange="changeLanguage()" title="Language Switch">
-                <option value="bn">🌐 Smart Mix (Bilingual)</option>
-                <option value="en">🌐 Full English (Academic)</option>
-            </select>
-            <button class="control-btn" id="toggleAllBtn" onclick="toggleAllSets()" title="Expand or Collapse All Sets [E]">📂 Expand All</button>
-            <button class="control-btn live-btn" onclick="exportToPDF()" title="Print to PDF">🖨️ Export PDF</button>
-            </div>
+            <!-- Options moved to Main Menu (3===) -->
         </div>
         <div class="progress-wrap"><div class="progress-fill" id="progressFill"></div></div>
         <div class="progress-label" id="progressLabel">0 topics explored</div>
@@ -177,9 +160,10 @@
                 <a href="https://www.youtube.com/@smashiqurrahman8150" target="_blank" class="youtube"><i class="fab fa-youtube"></i> YouTube</a>
                 <a href="https://x.com/smar1ashiq" target="_blank" class="twitter"><i class="fab fa-x-twitter"></i> Twitter</a>
                 <a href="http://smashiq.blogspot.com/" target="_blank" class="blog"><i class="fas fa-rss"></i> Blog</a>
-                <a href="https://facebook.com/sm1ar" target="_blank" class="facebook"><i class="fab fa-facebook-f"></i> Facebook</a>
+                <a href="https://facebook.com/sm1ar" target="_blank" class="facebook"><i class="fab fa-facebook-f"></i> FB</a>
                 <a href="https://t.me/sm_ash1q" target="_blank" class="telegram"><i class="fab fa-telegram-plane"></i> Telegram</a>
                 <a href="https://wa.me/+8801773971905" target="_blank" class="whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                <a href="https://sm-nextgen-bionotes.vercel.app/" target="_blank" class="vercel" style="background: #000;"><i class="fas fa-globe"></i> Live Hub</a>
             </div>
             <div class="footer-divider"></div>
             <div class="profile-img-wrapper">
@@ -188,7 +172,7 @@
                      onerror="this.style.display='none'; document.getElementById('profileFallback').style.display='flex';">
                 <div id="profileFallback" class="profile-fallback">SM</div>
             </div>
-            <div class="author-name">SM Ashikur Rahman</div>
+            <a href="https://www.linkedin.com/in/sm-ashikur-rahman/" target="_blank" class="author-name">SM Ashikur Rahman</a>
             <div class="author-title">Developed with 💚 for GEB 337 | Recombinant DNA Technology</div>
         </div>
 
@@ -250,8 +234,9 @@ function getReadingTime(md) {
     return mins <= 1 ? '~1 min' : '~' + mins + ' min';
 }
 
-function changeLanguage() {
-    currentLang = document.getElementById('languageSelect').value;
+function changeLanguage(lang) {
+    if(!lang) lang = document.getElementById("languageSelect")?.value;
+    
     localStorage.setItem('language', currentLang);
     renderSets();
 }
@@ -420,6 +405,7 @@ function exportToPDF() {
 }
 
 function toggleTheme() {
+    sessionStorage.setItem("sm-theme-manual-override", "true");
     const root = document.documentElement;
     const theme = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
     root.setAttribute('data-theme', theme);
@@ -432,14 +418,16 @@ function changeFont(delta) {
     localStorage.setItem('fontSize', currentFontSize);
 }
 
-function applyFontFamily() {
-    const font = document.getElementById('fontFamily').value;
+function applyFontFamily(font) {
+    if(!font) font = document.getElementById("fontFamily")?.value;
+    
     document.documentElement.style.setProperty('--body-font', font);
     localStorage.setItem('bodyFont', font);
 }
 
-function applyViewMode() {
-    const mode = document.getElementById('viewMode').value;
+function applyViewMode(mode) {
+    if(!mode) mode = document.getElementById("viewMode")?.value;
+    
     const container = document.querySelector('.container');
     if(mode === 'mobile') {
         container.style.maxWidth = '450px';
@@ -451,7 +439,25 @@ function applyViewMode() {
 }
 
 function getLocalizedSetMarkdown(item) {
-    return item['rawMd_' + currentLang] || item.rawMd_bn || item.rawMd || item.rawMd_en || "";
+    const preferred = item['rawMd_' + currentLang];
+    if (preferred && preferred.trim().length > 50) return preferred; // Assuming 50 chars as 'complete' enough
+    
+    // Fallback logic
+    const fallback = item.rawMd_bn || item.rawMd || item.rawMd_en || "";
+    if (!fallback) return "";
+
+    const isEng = currentLang === 'en';
+    const langLabel = isEng ? 'English (Academic)' : 'Smart Mix (Bilingual)';
+    const otherLabel = isEng ? 'Smart Mix (Bilingual)' : 'English (Academic)';
+    
+    const hint = `
+<div style="background: rgba(251, 191, 36, 0.1); border-left: 5px solid #fbbf24; padding: 1rem; border-radius: 8px; margin-bottom: 1.5rem; font-size: 0.9rem; color: var(--text-color);">
+    <strong>⚠️ Content Notice:</strong> This set is currently unavailable in <b>${langLabel}</b>. 
+    Showing available version instead. Please switch to <b>${otherLabel}</b> in the ≡ Menu for the complete bilingual experience.
+</div>
+`;
+
+    return hint + fallback;
 }
 
 function cleanSetIntroHeading(md, item) {
@@ -507,7 +513,24 @@ function renderSets() {
             card.className = 'set-card';
             card.id = item.id;
             
-            const mdContent = cleanSetIntroHeading(getLocalizedSetMarkdown(item), item);
+                        const mdContent = cleanSetIntroHeading(getLocalizedSetMarkdown(item), item);
+            
+            let mdRaw = item['rawMd_' + currentLang];
+            let hasDirectLang = mdRaw && mdRaw.trim() !== '';
+            let langHintHTML = '';
+            
+            if (!hasDirectLang) {
+                const targetLangName = currentLang === 'en' ? 'Smart Mix (Bilingual)' : 'English (Academic)';
+                const targetLangCode = currentLang === 'en' ? 'bn' : 'en';
+                langHintHTML = `
+                    <div class="empty-lang-hint" style="margin-top:0; margin-bottom:1.5rem; padding: 1.5rem;">
+                        <p style="font-size:0.9rem;">🌐 This set is primarily available in <b>${targetLangName}</b>.</p>
+                        <button class="control-btn" style="background:var(--accent-color); color:white; padding: 6px 16px; border-radius: 20px; margin-top: 10px; font-size:0.8rem;" onclick="changeLanguage('${targetLangCode}')">
+                            Switch to ${targetLangName} 🚀
+                        </button>
+                    </div>
+                `;
+            }
             const readTime = getReadingTime(mdContent);
             const isDone = visitedSets.has(item.id);
 
@@ -555,6 +578,7 @@ function renderSets() {
                     <div class="toggle-icon">${isDone ? '▼' : '▶'}</div>
                 </div>
                 <div class="set-content ${isDone ? 'open' : ''}">
+                    ${langHintHTML}
                     <div class="local-toggle-bar">
                         <button class="local-toggle-btn" onclick="toggleLocalQS('${item.id}', event)" title="Expand or collapse all questions in this set">💡 Show All</button>
                     </div>

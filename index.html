@@ -336,14 +336,15 @@
     <div class="hub-header">
         <div class="bismillah" style="margin: -1rem 0 2rem 0;">بسم الله الرحمن الرحيم</div>
         <div class="controls">
-            <button class="theme-btn" onclick="toggleTheme()" title="Toggle Dark/Light Mode">🌓 Theme</button>
+            <!-- Theme moved to Main Menu (3===) -->
         </div>
         <div style="position: relative; z-index: 2; margin-bottom: 1.2rem; display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; align-items: center;">
             <select id="semesterSelect" onchange="filterBySemester(this.value)" style="background: rgba(255,255,255,0.15); color: white; border: 1px solid rgba(255,255,255,0.3); padding: 8px 14px; border-radius: 20px; font-weight: 600; cursor: pointer; font-family: inherit; backdrop-filter: blur(5px);">
                 <option value="">📅 All Semesters</option>
                 <option value="3_2">Year 3 - Semester 2</option>
-                <option value="3_1">Year 3 - Semester 1</option>
-                <option value="4_2">Year 4 - Semester 2</option>
+                <option value="3_1">Year 3 - Semester 1 (Soon)</option>
+                <option value="4_1">Year 4 - Semester 1 (Soon)</option>
+                <option value="4_2">Year 4 - Semester 2 (Soon)</option>
             </select>
         </div>
         <h1 class="title">SM NextGen BioNotes</h1>
@@ -474,9 +475,10 @@
                 <a href="https://www.youtube.com/@smashiqurrahman8150" target="_blank" class="youtube"><i class="fab fa-youtube"></i> YouTube</a>
                 <a href="https://x.com/smar1ashiq" target="_blank" class="twitter"><i class="fab fa-x-twitter"></i> Twitter</a>
                 <a href="http://smashiq.blogspot.com/" target="_blank" class="blog"><i class="fas fa-rss"></i> Blog</a>
-                <a href="https://facebook.com/sm1ar" target="_blank" class="facebook"><i class="fab fa-facebook-f"></i> Facebook</a>
+                <a href="https://facebook.com/sm1ar" target="_blank" class="facebook"><i class="fab fa-facebook-f"></i> FB</a>
                 <a href="https://t.me/sm_ash1q" target="_blank" class="telegram"><i class="fab fa-telegram-plane"></i> Telegram</a>
                 <a href="https://wa.me/+8801773971905" target="_blank" class="whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                <a href="https://sm-nextgen-bionotes.vercel.app/" target="_blank" class="vercel" style="background: #000;"><i class="fas fa-globe"></i> Live Hub</a>
             </div>
             <div class="footer-divider"></div>
             <div class="profile-img-wrapper">
@@ -485,13 +487,14 @@
                      onerror="this.style.display='none'; document.getElementById('profileFallbackHub').style.display='flex';">
                 <div id="profileFallbackHub" class="profile-fallback">SM</div>
             </div>
-            <div class="author-name">SM Ashikur Rahman</div>
+            <a href="https://www.linkedin.com/in/sm-ashikur-rahman/" target="_blank" class="author-name">SM Ashikur Rahman</a>
             <div class="author-title">Developed with 💚 | SM NextGen BioNotes</div>
         </div>
     </div>
 
     <script>
         function toggleTheme() {
+    sessionStorage.setItem("sm-theme-manual-override", "true");
             const root = document.documentElement;
             const theme = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
             root.setAttribute('data-theme', theme);
@@ -501,14 +504,17 @@
         function filterBySemester(semester) {
             const sections = document.querySelectorAll('.semester-section');
             sections.forEach(section => {
+                const title = section.querySelector('h2').textContent;
                 if (!semester) {
                     section.style.display = 'block';
                 } else if (semester === '3_2') {
-                    section.style.display = section.querySelector('h2').textContent.includes('Year 3, Semester 2') ? 'block' : 'none';
+                    section.style.display = title.includes('Year 3, Semester 2') ? 'block' : 'none';
                 } else if (semester === '3_1') {
-                    section.style.display = section.querySelector('h2').textContent.includes('Year 3, Semester 1') ? 'block' : 'none';
+                    section.style.display = title.includes('Year 3, Semester 1') ? 'block' : 'none';
+                } else if (semester === '4_1') {
+                    section.style.display = title.includes('Year 4') && title.includes('Sem 1') ? 'block' : 'none';
                 } else if (semester === '4_2') {
-                    section.style.display = section.querySelector('h2').textContent.includes('Year 4, Semester 2') ? 'block' : 'none';
+                    section.style.display = title.includes('Year 4') && title.includes('Sem 2') ? 'block' : 'none';
                 }
             });
         }

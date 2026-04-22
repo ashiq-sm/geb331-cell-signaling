@@ -24,10 +24,105 @@ class AdminPowers {
         // Add support button
         this.addSupportButton();
         
+        // Auto Theme based on time
+        this.initAutoTheme();
+        
         // If admin, enable editing buttons
         if (this.isAdminMode) {
             this.enableAdminMode();
         }
+
+        // Hide floating buttons on scroll down, show on scroll up
+        let lastScrollY = window.scrollY;
+        window.addEventListener('scroll', () => {
+            const currentScrollY = window.scrollY;
+            const isMobile = window.innerWidth <= 768;
+            
+            // Toggle body class for mobile reading mode
+            if (currentScrollY > 150) {
+                document.body.classList.add('body-scrolled');
+            } else {
+                document.body.classList.remove('body-scrolled');
+            }
+            
+            const rightEls = [
+                document.getElementById('main-menu-btn'),
+                document.querySelector('.toggle-bookmark-panel-btn'),
+                document.getElementById('rightHintHandle')
+            ];
+            
+            const leftEls = [
+                document.querySelector('.toggle-floatbar-btn'),
+                document.getElementById('leftHintHandle')
+            ];
+            
+            const bottomEls = [
+                document.getElementById('support-project-btn')
+            ];
+            
+            if (currentScrollY > lastScrollY && currentScrollY > 100) {
+                // Scrolling down -> Hide
+                rightEls.forEach(el => el && el.classList.add('hide-on-scroll-right'));
+                leftEls.forEach(el => el && el.classList.add('hide-on-scroll-left'));
+                bottomEls.forEach(el => el && el.classList.add('hide-on-scroll-bottom'));
+            } else {
+                // Scrolling up -> Show
+                rightEls.forEach(el => el && el.classList.remove('hide-on-scroll-right'));
+                leftEls.forEach(el => el && el.classList.remove('hide-on-scroll-left'));
+                bottomEls.forEach(el => el && el.classList.remove('hide-on-scroll-bottom'));
+            }
+            lastScrollY = currentScrollY;
+        }, { passive: true });
+
+        // Keyboard Shortcut: 'M' for Menu
+        window.addEventListener('keydown', (e) => {
+            if (e.key.toLowerCase() === 'm' && !['INPUT', 'TEXTAREA'].includes(document.activeElement.tagName)) {
+                this.showTopMenu();
+            }
+        });
+    }
+
+    initAutoTheme() {
+        const hour = new Date().getHours();
+        const isNight = hour >= 18 || hour < 7;
+        const targetTheme = isNight ? 'dark' : 'light';
+        const currentTheme = document.documentElement.getAttribute('data-theme') || localStorage.getItem('sm-theme');
+        
+        // If the current theme doesn't match the time-based theme, and user hasn't manually overridden in this session
+        if (currentTheme !== targetTheme && !sessionStorage.getItem('sm-theme-manual-override')) {
+            document.documentElement.setAttribute('data-theme', targetTheme);
+            localStorage.setItem('sm-theme', targetTheme);
+            
+            // Show hint toast
+            setTimeout(() => {
+                this.showToast(
+                    isNight ? "🌙 Night mode enabled auto-magically!" : "☀️ Day mode enabled auto-magically!",
+                    "Changing automatically based on local time (7am/6pm). Manual control in ≡ Menu."
+                );
+            }, 2000);
+        }
+    }
+
+    showToast(title, message) {
+        const toast = document.createElement('div');
+        toast.className = 'sm-toast';
+        toast.innerHTML = `
+            <i class="fas fa-magic"></i>
+            <div>
+                <div style="font-size: 0.95rem;">${title}</div>
+                <div style="font-size: 0.75rem; opacity: 0.8; font-weight: normal;">${message}</div>
+            </div>
+        `;
+        document.body.appendChild(toast);
+        
+        // Trigger animation
+        setTimeout(() => toast.classList.add('show'), 100);
+        
+        // Remove after 5 seconds
+        setTimeout(() => {
+            toast.classList.remove('show');
+            setTimeout(() => toast.remove(), 500);
+        }, 6000);
     }
 
     checkAdminSession() {
@@ -43,44 +138,11 @@ class AdminPowers {
         const menuBtn = document.createElement('button');
         menuBtn.id = 'main-menu-btn';
         menuBtn.innerHTML = '≡';
-        menuBtn.title = 'Menu & Admin Access';
-        menuBtn.setAttribute('aria-label', 'Menu');
-        menuBtn.style.cssText = `
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 99999;
-            padding: 12px 18px;
-            background: linear-gradient(135deg, #10b981, #059669);
-            color: white;
-            border: 2px solid rgba(255,255,255,0.3);
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: bold;
-            font-size: 24px;
-            box-shadow: 0 4px 15px rgba(16,185,129,0.4);
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            backdrop-filter: blur(10px);
-            line-height: 1;
-        `;
-
-        menuBtn.onmouseover = () => {
-            menuBtn.style.background = 'linear-gradient(135deg, #059669, #047857)';
-            menuBtn.style.transform = 'scale(1.1) rotate(5deg)';
-            menuBtn.style.boxShadow = '0 6px 25px rgba(16,185,129,0.6)';
-        };
-
-        menuBtn.onmouseout = () => {
-            menuBtn.style.background = 'linear-gradient(135deg, #10b981, #059669)';
-            menuBtn.style.transform = 'scale(1) rotate(0deg)';
-            menuBtn.style.boxShadow = '0 4px 15px rgba(16,185,129,0.4)';
-        };
-
+        menuBtn.title = 'Main Menu & Options';
         menuBtn.onclick = (e) => {
             e.stopPropagation();
             this.showTopMenu(menuBtn);
         };
-
         document.body.appendChild(menuBtn);
     }
 
@@ -123,33 +185,6 @@ class AdminPowers {
         };
 
         supportBtn.onclick = () => this.showSupportModal();
-
-        // Hide on scroll down, show on scroll up
-        let lastScrollY = window.scrollY;
-        window.addEventListener('scroll', () => {
-            const currentScrollY = window.scrollY;
-            
-            const rightEls = [
-                document.getElementById('main-menu-btn'),
-                document.querySelector('.toggle-floatbar-btn'),
-                document.querySelector('.toggle-bookmark-panel-btn')
-            ];
-            
-            const bottomEls = [
-                document.getElementById('support-project-btn')
-            ];
-            
-            if (currentScrollY > lastScrollY && currentScrollY > 100) {
-                // Scrolling down -> Hide
-                rightEls.forEach(el => el && el.classList.add('hide-on-scroll-right'));
-                bottomEls.forEach(el => el && el.classList.add('hide-on-scroll-bottom'));
-            } else {
-                // Scrolling up -> Show
-                rightEls.forEach(el => el && el.classList.remove('hide-on-scroll-right'));
-                bottomEls.forEach(el => el && el.classList.remove('hide-on-scroll-bottom'));
-            }
-            lastScrollY = currentScrollY;
-        });
 
         document.body.appendChild(supportBtn);
     }
@@ -262,185 +297,91 @@ class AdminPowers {
 
         const menu = document.createElement('div');
         menu.id = 'top-menu';
-        menu.style.cssText = `
-            position: fixed;
-            top: 65px;
-            right: 20px;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
-            z-index: 10000;
-            min-width: 280px;
-            overflow: hidden;
-        `;
 
+        // Check which page we are on
+        const isCoursePage = document.getElementById('setsContainer') !== null;
+        
         let menuHTML = `
-            <div style="padding: 15px; border-bottom: 1px solid #eee;">
-                <div style="font-size: 12px; color: #666; margin-bottom: 3px;">About</div>
-                <div style="font-weight: bold; color: #333; margin-bottom: 5px;">SM BioNotes</div>
-                <div style="font-size: 12px; color: #666; line-height: 1.4;">
-                    Interactive Study Platform<br>
-                    for Biotech & Life Sciences
-                </div>
+            <div class="menu-header">
+                <div class="menu-label" style="margin-bottom: 0;">Main Menu</div>
+                <button class="menu-close-btn" onclick="document.getElementById('top-menu').remove()">×</button>
             </div>
-
-            <div style="padding: 15px; border-bottom: 1px solid #eee;">
-                <div style="font-size: 12px; color: #666; margin-bottom: 8px; font-weight: bold;">Author</div>
-                <div style="font-size: 13px; color: #333; margin-bottom: 3px;">SM Ashikur Rahman</div>
-                <div style="font-size: 11px; color: #999;">Biotech Education Specialist</div>
-            </div>
-
-            <div style="padding: 15px; border-bottom: 1px solid #eee;">
-                <div style="font-size: 12px; color: #666; margin-bottom: 8px; font-weight: bold;">Support & Donation</div>
-                <div style="display: flex; gap: 8px; margin-bottom: 8px;">
-                    <input type="text" value="01773971905" id="donation-number" readonly style="
-                        flex: 1;
-                        padding: 6px;
-                        border: 1px solid #ddd;
-                        border-radius: 4px;
-                        font-size: 12px;
-                        font-family: monospace;
-                        background: #f5f5f5;
-                    ">
-                    <button id="copy-donation-btn" style="
-                        padding: 6px 10px;
-                        background: #27ae60;
-                        color: white;
-                        border: none;
-                        border-radius: 4px;
-                        cursor: pointer;
-                        font-size: 11px;
-                        font-weight: bold;
-                        transition: background 0.2s;
-                    " title="Copy donation number">Copy</button>
-                </div>
-                <div style="font-size: 11px; color: #999;">Bkash/Nagad: 01773971905</div>
+            <div class="menu-section">
+                <div class="menu-label">Platform Settings</div>
+                <button class="menu-item" onclick="if(typeof toggleTheme === 'function') toggleTheme()">
+                    🌓 Toggle Theme (Dark/Light)
+                </button>
             </div>
         `;
 
-        // Add admin option only if logged in
-        if (this.isAdminMode) {
+        if (isCoursePage) {
             menuHTML += `
-                <button id="admin-menu-option" style="
-                    width: 100%;
-                    padding: 12px 15px;
-                    border: none;
-                    background: #f8f9fa;
-                    cursor: pointer;
-                    text-align: left;
-                    border-bottom: 1px solid #eee;
-                    font-size: 14px;
-                    color: #333;
-                    transition: background 0.2s;
-                    font-weight: 500;
-                ">👑 Admin Controls</button>
-                
-                <button id="logout-menu-option" style="
-                    width: 100%;
-                    padding: 12px 15px;
-                    border: none;
-                    background: #f8f9fa;
-                    cursor: pointer;
-                    text-align: left;
-                    font-size: 14px;
-                    color: #e74c3c;
-                    transition: background 0.2s;
-                    font-weight: 500;
-                ">🚪 Logout</button>
-            `;
-        } else {
-            menuHTML += `
-                <button id="login-menu-option" style="
-                    width: 100%;
-                    padding: 12px 15px;
-                    border: none;
-                    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-                    cursor: pointer;
-                    text-align: left;
-                    font-size: 14px;
-                    color: white;
-                    transition: opacity 0.2s;
-                    font-weight: 500;
-                ">🔐 Admin Login</button>
+                <div class="menu-section">
+                    <div class="menu-label">Reading Controls</div>
+                    <div class="menu-grid">
+                        <div class="menu-grid-item" onclick="if(typeof changeFont === 'function') changeFont(-1)">A− Smaller</div>
+                        <div class="menu-grid-item" onclick="if(typeof changeFont === 'function') changeFont(1)">A+ Larger</div>
+                    </div>
+                    <select class="menu-select" onchange="if(typeof applyFontFamily === 'function') applyFontFamily(this.value)">
+                        <option value="'Inter', 'Noto Sans Bengali'">👁️ Eye Saver (Inter)</option>
+                        <option value="'Outfit', 'Noto Sans Bengali'">✨ Premium (Outfit)</option>
+                        <option value="'Roboto Slab', 'Noto Sans Bengali'">📖 Academic (Slab)</option>
+                    </select>
+                </div>
+                <div class="menu-section">
+                    <div class="menu-label">Language & View</div>
+                    <select class="menu-select" onchange="if(typeof changeLanguage === 'function') changeLanguage(this.value)">
+                        <option value="en" selected>🌐 English (Academic)</option>
+                        <option value="bn">🌐 Smart Mix (Bilingual)</option>
+                    </select>
+                    <select class="menu-select" style="margin-top: 10px;" onchange="if(typeof applyViewMode === 'function') applyViewMode(this.value)">
+                        <option value="auto">🖥️ Auto View</option>
+                        <option value="mobile">📱 Mobile</option>
+                        <option value="desktop">💻 Desktop</option>
+                    </select>
+                </div>
+                <div class="menu-section">
+                    <div class="menu-label">Quick Actions</div>
+                    <button class="menu-item" onclick="if(typeof toggleAllSets === 'function') toggleAllSets()">
+                        📂 Expand/Collapse All
+                    </button>
+                    <button class="menu-item" onclick="if(typeof exportToPDF === 'function') exportToPDF()">
+                        🖨️ Export as PDF
+                    </button>
+                </div>
             `;
         }
+
+        menuHTML += `
+            <div class="menu-section">
+                <div class="menu-label">Admin & Support</div>
+                ${this.isAdminMode ? 
+                    `<button class="menu-item" onclick="AdminPowersInstance.showAdminMenu()">👑 Admin Controls</button>
+                     <button class="menu-item" style="color: #e74c3c;" onclick="sessionStorage.removeItem('sm_bioNotes_adminSession'); location.reload();">🚪 Logout</button>` :
+                    `<button class="menu-item" onclick="AdminPowersInstance.showLoginModal()">🔐 Admin Login</button>`
+                }
+                <button class="menu-item" onclick="AdminPowersInstance.showSupportModal()">💚 Support This Project</button>
+            </div>
+            <div class="menu-section" style="background: var(--nav-pill-bg); text-align: center; font-size: 0.7rem; opacity: 0.6;">
+                SM NextGen BioNotes v4.0<br>
+                by SM Ashikur Rahman
+            </div>
+        `;
 
         menu.innerHTML = menuHTML;
         document.body.appendChild(menu);
 
-        // Copy donation number
-        const copyBtn = document.getElementById('copy-donation-btn');
-        if (copyBtn) {
-            copyBtn.onclick = () => {
-                const donationNumber = document.getElementById('donation-number').value;
-                navigator.clipboard.writeText(donationNumber).then(() => {
-                    const originalText = copyBtn.textContent;
-                    copyBtn.textContent = '✓ Copied!';
-                    copyBtn.style.background = '#27ae60';
-                    setTimeout(() => {
-                        copyBtn.textContent = originalText;
-                    }, 2000);
-                });
-            };
-        }
-
-        // Admin option
-        const adminOption = document.getElementById('admin-menu-option');
-        if (adminOption) {
-            adminOption.onmouseover = function() {
-                this.style.background = '#e8e9f0';
-            };
-            adminOption.onmouseout = function() {
-                this.style.background = '#f8f9fa';
-            };
-            adminOption.onclick = () => {
-                menu.remove();
-                this.showAdminMenu();
-            };
-        }
-
-        // Login option
-        const loginOption = document.getElementById('login-menu-option');
-        if (loginOption) {
-            loginOption.onmouseover = function() {
-                this.style.opacity = '0.9';
-            };
-            loginOption.onmouseout = function() {
-                this.style.opacity = '1';
-            };
-            loginOption.onclick = () => {
-                menu.remove();
-                this.showLoginModal();
-            };
-        }
-
-        // Logout option
-        const logoutOption = document.getElementById('logout-menu-option');
-        if (logoutOption) {
-            logoutOption.onmouseover = function() {
-                this.style.background = '#ffe0e0';
-            };
-            logoutOption.onmouseout = function() {
-                this.style.background = '#f8f9fa';
-            };
-            logoutOption.onclick = () => {
-                sessionStorage.removeItem(this.ADMIN_SESSION_KEY);
-                this.isAdminMode = false;
-                menu.remove();
-                location.reload();
-            };
-        }
-
         // Close menu when clicking outside
         setTimeout(() => {
-            document.onclick = (e) => {
+            const closeMenu = (e) => {
                 if (!e.target.closest('#top-menu') && !e.target.closest('#main-menu-btn')) {
                     if (document.getElementById('top-menu')) {
                         document.getElementById('top-menu').remove();
                     }
-                    document.onclick = null;
+                    document.removeEventListener('click', closeMenu);
                 }
             };
+            document.addEventListener('click', closeMenu);
         }, 100);
     }
 
@@ -1956,7 +1897,7 @@ function copyNumber(btn) {
     function init() {
         if (window.adminPowersInitialized) return;
         window.adminPowersInitialized = true;
-        new AdminPowers();
+        window.AdminPowersInstance = new AdminPowers();
     }
     
     if (document.readyState === 'complete' || document.readyState === 'interactive') {
