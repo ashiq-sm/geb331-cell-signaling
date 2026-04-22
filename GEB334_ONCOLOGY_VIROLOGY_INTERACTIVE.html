@@ -238,9 +238,10 @@ function getReadingTime(md) {
 }
 
 function changeLanguage(lang) {
-    if(!lang) lang = document.getElementById("languageSelect")?.value;
-    
+    if(!lang) lang = document.getElementById('languageSelect')?.value || currentLang;
+    currentLang = lang;
     localStorage.setItem('language', currentLang);
+    localStorage.setItem('sm-language-manual-override', 'true');
     renderSets();
 }
 
@@ -479,6 +480,38 @@ function cleanSetIntroHeading(md, item) {
     const titleClean = item.title.replace(/^🔹\s*/i, '').replace(/—.*$/i, '').trim();
     const titleRegex = new RegExp(`^#\\s*${titleClean}.*?\\n`, 'i');
     return md.replace(titleRegex, '').trim();
+}
+
+function autoDetectBestLanguage() {
+    if (!setsData || !Array.isArray(setsData) || setsData.length === 0) return;
+    
+    // Only detect if no manual override exists
+    if (localStorage.getItem('sm-language-manual-override')) return;
+
+    let enLen = 0;
+    let bnLen = 0;
+    
+    setsData.forEach(set => {
+        enLen += (set.rawMd_en || "").length;
+        bnLen += (set.rawMd_bn || "").length;
+        // Also check default rawMd which is often BN
+        if (!set.rawMd_bn && set.rawMd) bnLen += set.rawMd.length;
+    });
+    
+    const bestLang = enLen >= bnLen ? 'en' : 'bn';
+    if (currentLang !== bestLang) {
+        currentLang = bestLang;
+        localStorage.setItem('language', currentLang);
+        console.log(`[Auto-Detect] Switched to ${bestLang} (EN:${enLen} vs BN:${bnLen})`);
+    }
+});
+    
+    const bestLang = enLen >= bnLen ? 'en' : 'bn';
+    if (currentLang !== bestLang) {
+        currentLang = bestLang;
+        localStorage.setItem('language', currentLang);
+        console.log(`[Auto-Detect] Switched to ${bestLang} (EN:${enLen} vs BN:${bnLen})`);
+    }
 }
 
 function renderSets() {
@@ -1120,6 +1153,7 @@ window.onload = () => {
         console.log('[GEB334 DEBUG] About to call renderSets. setsData exists?', typeof setsData !== 'undefined', 'setsData is array?', Array.isArray(setsData), 'setsData length?', setsData ? setsData.length : 'N/A');
         if (typeof renderSets === 'function') {
             console.log('[GEB334 DEBUG] renderSets function found, calling it now');
+            autoDetectBestLanguage();
             renderSets();
             console.log('[GEB334 DEBUG] renderSets completed');
         } else {
