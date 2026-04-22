@@ -466,14 +466,6 @@ function autoDetectBestLanguage() {
         localStorage.setItem('language', currentLang);
         console.log(`[Auto-Detect] Switched to ${bestLang} (EN:${enLen} vs BN:${bnLen})`);
     }
-});
-    
-    const bestLang = enLen >= bnLen ? 'en' : 'bn';
-    if (currentLang !== bestLang) {
-        currentLang = bestLang;
-        localStorage.setItem('language', currentLang);
-        console.log(`[Auto-Detect] Switched to ${bestLang} (EN:${enLen} vs BN:${bnLen})`);
-    }
 }
 
 function renderSets() {
