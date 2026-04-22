@@ -36,14 +36,6 @@ class AdminPowers {
         let lastScrollY = window.scrollY;
         window.addEventListener('scroll', () => {
             const currentScrollY = window.scrollY;
-            const isMobile = window.innerWidth <= 768;
-            
-            // Toggle body class for mobile reading mode
-            if (currentScrollY > 150) {
-                document.body.classList.add('body-scrolled');
-            } else {
-                document.body.classList.remove('body-scrolled');
-            }
             
             const rightEls = [
                 document.getElementById('main-menu-btn'),
@@ -61,15 +53,20 @@ class AdminPowers {
             ];
             
             if (currentScrollY > lastScrollY && currentScrollY > 100) {
-                // Scrolling down -> Hide
+                // Scrolling down -> Hide everything
+                document.body.classList.add('body-scrolled');
                 rightEls.forEach(el => el && el.classList.add('hide-on-scroll-right'));
                 leftEls.forEach(el => el && el.classList.add('hide-on-scroll-left'));
                 bottomEls.forEach(el => el && el.classList.add('hide-on-scroll-bottom'));
-            } else {
-                // Scrolling up -> Show
+            } else if (currentScrollY < lastScrollY) {
+                // Scrolling up -> Show everything
+                document.body.classList.remove('body-scrolled');
                 rightEls.forEach(el => el && el.classList.remove('hide-on-scroll-right'));
                 leftEls.forEach(el => el && el.classList.remove('hide-on-scroll-left'));
                 bottomEls.forEach(el => el && el.classList.remove('hide-on-scroll-bottom'));
+            } else if (currentScrollY < 10) {
+                // At the very top
+                document.body.classList.remove('body-scrolled');
             }
             lastScrollY = currentScrollY;
         }, { passive: true });

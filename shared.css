@@ -575,16 +575,21 @@ body {
 /* ═══ Mobile Optimizations ═══ */
 @media (max-width: 768px) {
     body {
-        padding: 80px 0.8rem 80px 0.8rem;
+        padding: 80px 0.5rem 80px 0.5rem;
     }
     .container {
         max-width: 100%;
-        padding: 0 0.2rem;
+        padding: 0 0.1rem;
     }
     .header {
         padding: 1.2rem 1rem;
         border-radius: 1rem;
     }
+    .set-header { padding: 1rem 1.2rem; font-size: 1.1rem; }
+    .set-content { padding: 1.2rem 0.8rem 1.5rem; }
+    .qs-header { padding: 0.9rem 1rem; font-size: 0.95rem; }
+    .qs-card.open .qs-content { padding: 1.2rem 0.9rem !important; }
+    
     #top-menu {
         width: calc(100% - 40px);
         left: 20px;
@@ -596,8 +601,21 @@ body {
     }
     /* Hide side arrows when reading starts */
     .body-scrolled .edge-hint-handle {
-        opacity: 0 !important;
+        opacity: 0;
         pointer-events: none;
+    }
+    .edge-hint-handle {
+        width: 24px;
+        height: 50px;
+        font-size: 1rem;
+    }
+    /* Hide side arrows when reading starts */
+    .body-scrolled .edge-hint-handle {
+        opacity: 0;
+        pointer-events: none;
+    }
+    .body-scrolled .edge-hint-handle.visible {
+        opacity: 0;
     }
 }
 
