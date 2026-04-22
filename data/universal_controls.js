@@ -244,8 +244,8 @@
         if (topControls && !document.getElementById('topControlsClose')) {
             var cBtn = document.createElement('button');
             cBtn.id = 'topControlsClose'; cBtn.innerHTML = '×'; cBtn.className = 'pin-icon-btn';
-            cBtn.style.cssText = 'color: #dc2626; font-size: 1.2rem; font-weight: bold; margin-left: auto;';
-            cBtn.title = 'Force Collapse';
+            cBtn.style.cssText = 'color: #dc2626; font-size: 1.4rem; font-weight: bold; margin-left: auto; padding: 2px 10px; background: rgba(220, 38, 38, 0.1); border: 1px solid rgba(220, 38, 38, 0.2); border-radius: 8px; cursor: pointer; line-height: 1;';
+            cBtn.title = 'Force Collapse [Esc]';
             cBtn.onclick = function() { states.topControls.pinned = false; initiateCloseTimer('topControls'); };
             topControls.appendChild(cBtn);
         }
@@ -254,8 +254,8 @@
         if (bookmarkPanel && !document.getElementById('bookmarkPanelClose')) {
             var bcBtn = document.createElement('button');
             bcBtn.id = 'bookmarkPanelClose'; bcBtn.innerHTML = '×'; bcBtn.className = 'pin-icon-btn';
-            bcBtn.style.cssText = 'color: #dc2626; font-size: 1.2rem; font-weight: bold;';
-            bcBtn.title = 'Force Collapse';
+            bcBtn.style.cssText = 'color: #dc2626; font-size: 1.4rem; font-weight: bold; padding: 2px 10px; background: rgba(220, 38, 38, 0.1); border: 1px solid rgba(220, 38, 38, 0.2); border-radius: 8px; cursor: pointer; line-height: 1;';
+            bcBtn.title = 'Force Collapse [Esc]';
             bcBtn.onclick = function() { states.bookmarkPanel.pinned = false; initiateCloseTimer('bookmarkPanel'); };
             var header = bookmarkPanel.querySelector('.bookmark-header');
             if (header) {
@@ -263,6 +263,15 @@
                 if (actions) actions.appendChild(bcBtn);
                 else header.appendChild(bcBtn);
             }
+        }
+        // Selection Highlight Menu Close
+        var highlightMenu = document.querySelector('.highlight-menu');
+        if (highlightMenu && !document.getElementById('highlightMenuClose')) {
+            var hmBtn = document.createElement('button');
+            hmBtn.id = 'highlightMenuClose'; hmBtn.innerHTML = '×';
+            hmBtn.style.cssText = 'padding: 4px; color: #dc2626; font-weight: bold; border-top: 1px solid var(--border-color); text-align: center; cursor: pointer; background: var(--nav-pill-bg);';
+            hmBtn.onclick = function() { highlightMenu.classList.remove('show'); };
+            highlightMenu.appendChild(hmBtn);
         }
     }
 
@@ -752,6 +761,13 @@
         setTimeout(injectSupportCTAs, 600);
         setTimeout(injectSupportCTAs, 1200);
     }
+
+    window.UniversalControlsInstance = {
+        init: initUniversalControls,
+        getStates: function() { return states; },
+        initiateCloseTimer: initiateCloseTimer,
+        openPanel: openPanel
+    };
 
     window.addEventListener('load', function () {
         // Run after page-level onload handlers initialize course-specific controls.

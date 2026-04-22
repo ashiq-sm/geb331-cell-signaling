@@ -206,6 +206,10 @@
 <!-- Load external data -->
 <script src="data/3_2/geb335_data.js"></script>
 <script>
+let selectedDonationMethod = "bkash"; 
+let selectedDonationAmount = 50; 
+const DONATION_NUMBER = "01773971905";
+const DONATION_AMOUNTS = [30,50,80,130,350,530,850,1030,1111,1300,1905,1911,1926,1937,1947,1952,1954,1966,1969,1971,1975,1991,1996,2001,2008,2013,2019,2024,2035,2558,2885,2999,3558];
 let currentFontSize = 16;
 let currentLang = 'en';
 let allExpanded = false;
@@ -328,6 +332,7 @@ function toggleAllSets() {
     const qsCards = document.querySelectorAll('.qs-card');
     const btn = document.getElementById('toggleAllBtn');
     
+    
     cards.forEach(card => {
         if (allExpanded) {
             if (!card.classList.contains('open')) {
@@ -347,7 +352,7 @@ function toggleAllSets() {
         else qs.classList.remove('open');
     });
     
-    btn.innerHTML = allExpanded ? '📁 Collapse All' : '📂 Expand All';
+    if (btn) btn.innerHTML = allExpanded ? '📁 Collapse All' : '📂 Expand All';
     
     document.querySelectorAll('.local-toggle-btn').forEach(lbtn => {
         lbtn.innerHTML = allExpanded ? '💡 Hide All' : '💡 Show All';
@@ -472,12 +477,29 @@ function renderSets() {
     const container = document.getElementById('setsContainer');
     const spinner = document.getElementById('loadingSpinner');
     
-    if (!setsData || !Array.isArray(setsData)) {
-        console.error('ERROR: setsData not found or not an array!', setsData);
+    if (!setsData || !Array.isArray(setsData) || setsData.length === 0) {
+        console.error('ERROR: setsData not found or empty!', setsData);
         if (spinner) spinner.classList.add('hidden');
-        container.innerHTML = '<div style="padding: 2rem; color: red;">Error: Course data not loaded. Check browser console.</div>';
+        
+        const isEng = currentLang === 'en';
+        const otherLang = isEng ? 'Smart Mix (Bilingual)' : 'English (Academic)';
+        
+        container.innerHTML = `
+            <div style="padding: 2.5rem; text-align: center; background: var(--nav-pill-bg); border-radius: 1.5rem; border: 2px dashed var(--accent-color); margin: 2rem 0;">
+                <div style="font-size: 3rem; margin-bottom: 1rem;">🤔</div>
+                <h3 style="color: var(--accent-color); margin-bottom: 1rem;">No content loaded for this language</h3>
+                <p style="color: var(--text-color); opacity: 0.8; margin-bottom: 1.5rem;">
+                    It seems there are no sets available in the selected language yet. 
+                    Please try switching to <b>${otherLang}</b> from the ≡ Menu to see the content.
+                </p>
+                <button onclick="AdminPowersInstance.showTopMenu()" style="background: var(--accent-color); color: white; border: none; padding: 0.8rem 1.5rem; border-radius: 50px; font-weight: 700; cursor: pointer; transition: 0.3s;">
+                    Open Menu to Change Language
+                </button>
+            </div>
+        `;
         return;
     }
+
     
     if (!marked) {
         console.error('ERROR: marked.js not loaded!');
@@ -1203,12 +1225,12 @@ window.onload = () => {
         const savedFont = localStorage.getItem('bodyFont');
         if (savedFont) {
             document.documentElement.style.setProperty('--body-font', savedFont);
-            document.getElementById('fontFamily').value = savedFont;
+            const fEl = document.getElementById('fontFamily'); if(fEl) fEl.value = savedFont;
         }
         const savedLang = localStorage.getItem('language');
         if (savedLang) {
             currentLang = savedLang;
-            document.getElementById('languageSelect').value = currentLang;
+            const lEl = document.getElementById('languageSelect'); if(lEl) lEl.value = currentLang;
         }
         console.log('[GEB335 DEBUG] About to call renderSets. setsData exists?', typeof setsData !== 'undefined', 'setsData is array?', Array.isArray(setsData), 'setsData length?', setsData ? setsData.length : 'N/A');
         if (typeof renderSets === 'function') {

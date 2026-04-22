@@ -74,10 +74,26 @@ class AdminPowers {
             lastScrollY = currentScrollY;
         }, { passive: true });
 
-        // Keyboard Shortcut: 'M' for Menu
+        // Keyboard Shortcut: 'M' for Menu, 'Esc' for Close All
         window.addEventListener('keydown', (e) => {
             if (e.key.toLowerCase() === 'm' && !['INPUT', 'TEXTAREA'].includes(document.activeElement.tagName)) {
                 this.showTopMenu();
+            }
+            if (e.key === 'Escape') {
+                // Close Top Menu
+                const menu = document.getElementById('top-menu');
+                if (menu) menu.remove();
+                
+                // Close Pinned Panels (if universal_controls is present)
+                if (window.UniversalControlsInstance) {
+                    const states = window.UniversalControlsInstance.getStates();
+                    if (states) {
+                        states.topControls.pinned = false;
+                        states.bookmarkPanel.pinned = false;
+                        window.UniversalControlsInstance.initiateCloseTimer('topControls');
+                        window.UniversalControlsInstance.initiateCloseTimer('bookmarkPanel');
+                    }
+                }
             }
         });
     }
@@ -190,7 +206,11 @@ class AdminPowers {
     }
 
     showSupportModal() {
-        // Show donation modal with support number
+        if (typeof window.showDonateModal === 'function') {
+            window.showDonateModal('bKash, Nagad & Rocket', '01773971905', 100);
+            return;
+        }
+        // Fallback for pages without the donation widget (like landing page if not loaded)
         const modal = document.createElement('div');
         modal.id = 'support-modal';
         modal.style.cssText = `
@@ -362,9 +382,17 @@ class AdminPowers {
                 }
                 <button class="menu-item" onclick="AdminPowersInstance.showSupportModal()">💚 Support This Project</button>
             </div>
-            <div class="menu-section" style="background: var(--nav-pill-bg); text-align: center; font-size: 0.7rem; opacity: 0.6;">
-                SM NextGen BioNotes v4.0<br>
-                by SM Ashikur Rahman
+            <div class="menu-section" style="background: var(--nav-pill-bg); text-align: center; padding: 1.5rem 1rem;">
+                <div style="display: flex; justify-content: center; gap: 10px; margin-bottom: 0.8rem; font-size: 1.2rem;">
+                    <a href="https://www.linkedin.com/in/sm-ashikur-rahman/" target="_blank" style="color: #0077b5;"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/ashiq-sm" target="_blank" style="color: var(--text-color); opacity: 0.8;"><i class="fab fa-github"></i></a>
+                    <a href="https://www.youtube.com/@smashiqurrahman8150" target="_blank" style="color: #ff0000;"><i class="fab fa-youtube"></i></a>
+                    <a href="https://t.me/sm_ash1q" target="_blank" style="color: #0088cc;"><i class="fab fa-telegram"></i></a>
+                </div>
+                <div style="font-size: 0.7rem; opacity: 0.6; margin-bottom: 0.3rem;">SM NextGen BioNotes v4.0</div>
+                <a href="https://www.linkedin.com/in/sm-ashikur-rahman/" target="_blank" style="font-size: 0.85rem; font-weight: 700; color: var(--accent-color); text-decoration: none;">
+                    by SM Ashikur Rahman
+                </a>
             </div>
         `;
 

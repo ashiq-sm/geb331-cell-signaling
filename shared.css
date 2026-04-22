@@ -319,8 +319,19 @@ body {
 .donation-card {
     margin: 2.5rem auto 0; max-width: 760px; background: linear-gradient(145deg, #052e24, #083f32); border: 1px solid rgba(16, 185, 129, 0.25); border-radius: 1.4rem; padding: 1.2rem; color: #ecfdf5;
 }
-.donation-head { font-size: 1.08rem; font-weight: 800; color: #fde68a; }
-.donate-now-btn { border: none; background: linear-gradient(135deg, #f59e0b, #f97316); color: #fff; padding: 0.6rem 1rem; border-radius: 10px; font-weight: 800; cursor: pointer; font-size: 0.9rem; box-shadow: 0 8px 18px rgba(249, 115, 22, 0.35); }
+.donation-head { font-size: 1.08rem; font-weight: 800; color: #fde68a; margin-bottom: 0.5rem; }
+.donation-sub { font-size: 0.8rem; opacity: 0.8; margin-bottom: 1.2rem; }
+.donation-methods { display: flex; justify-content: center; gap: 8px; margin-bottom: 1.2rem; flex-wrap: wrap; }
+.donate-method-btn {
+    background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: #fff;
+    padding: 6px 16px; border-radius: 50px; cursor: pointer; font-weight: 600; font-family: inherit; transition: 0.3s;
+}
+.donate-method-btn[data-method="bkash"].active { background: #e2136e !important; border-color: #e2136e !important; color: white !important; box-shadow: 0 4px 12px rgba(226, 19, 110, 0.4); }
+.donate-method-btn[data-method="nagad"].active { background: #f47321 !important; border-color: #f47321 !important; color: white !important; box-shadow: 0 4px 12px rgba(244, 115, 33, 0.4); }
+.donate-method-btn[data-method="rocket"].active { background: #8c3494 !important; border-color: #8c3494 !important; color: white !important; box-shadow: 0 4px 12px rgba(140, 52, 148, 0.4); }
+
+.donate-now-btn { border: none; background: linear-gradient(135deg, #f59e0b, #f97316); color: #fff; padding: 0.6rem 1rem; border-radius: 10px; font-weight: 800; cursor: pointer; font-size: 0.9rem; box-shadow: 0 8px 18px rgba(249, 115, 22, 0.35); transition: 0.3s; }
+.donate-now-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 22px rgba(249, 115, 22, 0.45); }
 
 /* ═══ Scroll-Hide Utilities ═══ */
 .hide-on-scroll-right { transform: translateX(150px) !important; opacity: 0 !important; pointer-events: none !important; }

@@ -337,6 +337,7 @@ function toggleAllSets() {
     const cards = document.querySelectorAll('.set-card');
     const qsCards = document.querySelectorAll('.qs-card');
     const btn = document.getElementById('toggleAllBtn');
+    
     const floatingExpandBtn = document.querySelector('.expand-all-btn');
     
     cards.forEach(card => {
@@ -481,20 +482,33 @@ function cleanSetIntroHeading(md, item) {
 }
 
 function renderSets() {
+    console.log('renderSets called. setsData:', setsData ? setsData.length + ' sets' : 'undefined');
     const container = document.getElementById('setsContainer');
-    container.innerHTML = '';
+    const spinner = document.getElementById('loadingSpinner');
     
-    // Validate inputs
-    console.log('renderSets called. setsData:', setsData ? (Array.isArray(setsData) ? setsData.length + ' sets' : 'not an array') : 'undefined');
-    
-    if (!setsData || !Array.isArray(setsData)) {
-        const errorMsg = 'Error: Course data not loaded. setsData is ' + (setsData ? 'not an array' : 'undefined');
-        console.error(errorMsg);
-        container.innerHTML = `<div style="padding:2rem; color:red; background:#ffe6e6; border:1px solid red; border-radius:5px;">${errorMsg}</div>`;
-        const spinner = document.getElementById('loadingSpinner');
-        if (spinner) setTimeout(() => spinner.classList.add('hidden'), 50);
+    if (!setsData || !Array.isArray(setsData) || setsData.length === 0) {
+        console.error('ERROR: setsData not found or empty!', setsData);
+        if (spinner) spinner.classList.add('hidden');
+        
+        const isEng = currentLang === 'en';
+        const otherLang = isEng ? 'Smart Mix (Bilingual)' : 'English (Academic)';
+        
+        container.innerHTML = `
+            <div style="padding: 2.5rem; text-align: center; background: var(--nav-pill-bg); border-radius: 1.5rem; border: 2px dashed var(--accent-color); margin: 2rem 0;">
+                <div style="font-size: 3rem; margin-bottom: 1rem;">🤔</div>
+                <h3 style="color: var(--accent-color); margin-bottom: 1rem;">No content loaded for this language</h3>
+                <p style="color: var(--text-color); opacity: 0.8; margin-bottom: 1.5rem;">
+                    It seems there are no sets available in the selected language yet. 
+                    Please try switching to <b>${otherLang}</b> from the ≡ Menu to see the content.
+                </p>
+                <button onclick="AdminPowersInstance.showTopMenu()" style="background: var(--accent-color); color: white; border: none; padding: 0.8rem 1.5rem; border-radius: 50px; font-weight: 700; cursor: pointer; transition: 0.3s;">
+                    Open Menu to Change Language
+                </button>
+            </div>
+        `;
         return;
     }
+
     
     // Check if marked.js is loaded
     if (!marked) {
@@ -1096,12 +1110,12 @@ window.onload = () => {
         const savedFont = localStorage.getItem('bodyFont');
         if (savedFont) {
             document.documentElement.style.setProperty('--body-font', savedFont);
-            document.getElementById('fontFamily').value = savedFont;
+            const fEl = document.getElementById('fontFamily'); if(fEl) fEl.value = savedFont;
         }
         const savedLang = localStorage.getItem('language');
         if (savedLang) {
             currentLang = savedLang;
-            document.getElementById('languageSelect').value = currentLang;
+            const lEl = document.getElementById('languageSelect'); if(lEl) lEl.value = currentLang;
         }
         console.log('[GEB334 DEBUG] About to call renderSets. setsData exists?', typeof setsData !== 'undefined', 'setsData is array?', Array.isArray(setsData), 'setsData length?', setsData ? setsData.length : 'N/A');
         if (typeof renderSets === 'function') {
