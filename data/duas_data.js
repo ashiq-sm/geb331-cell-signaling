@@ -196,10 +196,21 @@
         return out;
     }
 
+    var shuffledQueue = [];
+
+    function getShuffledDua() {
+        if (shuffledQueue.length === 0) {
+            // Refill and reshuffle
+            shuffledQueue = DUAS_DB.slice().sort(function() { return 0.5 - Math.random(); });
+        }
+        return shuffledQueue.pop();
+    }
+
     global.SM_DUAS = {
         all: DUAS_DB,
         byTopic: byTopic,
         getRandomDua: getRandomDua,
-        getRandomDuas: getRandomDuas
+        getRandomDuas: getRandomDuas,
+        getShuffledDua: getShuffledDua
     };
 })(typeof window !== 'undefined' ? window : this);
