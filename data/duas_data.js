@@ -97,6 +97,70 @@
             english: 'Our Lord, grant us good in this world and good in the Hereafter, and protect us from the punishment of the Fire.',
             bengali: 'হে আমাদের রব, আমাদের দুনিয়াতে কল্যাণ দিন, আখিরাতে কল্যাণ দিন এবং জাহান্নামের শাস্তি থেকে রক্ষা করুন।',
             reference: 'Quran 2:201'
+        },
+        {
+            id: 'd13',
+            topic: 'guidance_mercy',
+            arabic: 'رَبَّنَا آتِنَا مِنْ لَدُنْكَ رَحْمَةً وَهَيِّئْ لَنَا مِنْ أَمْرِنَا رَشَدًا',
+            english: 'Our Lord, grant us from Yourself mercy and prepare for us from our affair right guidance.',
+            bengali: 'হে আমাদের রব, আপনার পক্ষ থেকে আমাদের রহমত দান করুন এবং আমাদের জন্য আমাদের কাজ সঠিকভাবে পরিচালনার ব্যবস্থা করুন।',
+            reference: 'Quran 18:10'
+        },
+        {
+            id: 'd14',
+            topic: 'patience',
+            arabic: 'إِنَّ اللَّهَ مَعَ الصَّابِرِينَ',
+            english: 'Indeed, Allah is with the patient.',
+            bengali: 'নিশ্চয়ই আল্লাহ ধৈর্যশীলদের সাথে আছেন।',
+            reference: 'Quran 2:153'
+        },
+        {
+            id: 'd15',
+            topic: 'heart_opening',
+            arabic: 'رَبِّ اشْرَحْ لِي صَدْرِي وَيَسِّرْ لِي أَمْرِي',
+            english: 'My Lord, expand for me my chest [with assurance] and ease for me my task.',
+            bengali: 'হে আমার রব, আমার বক্ষ প্রশস্ত করে দিন এবং আমার কাজ সহজ করে দিন।',
+            reference: 'Quran 20:25-26'
+        },
+        {
+            id: 'd16',
+            topic: 'protection_grief',
+            arabic: 'اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الْهَمِّ وَالْحَزَنِ',
+            english: 'O Allah, I seek refuge in You from worry and grief.',
+            bengali: 'হে আল্লাহ, আমি আপনার কাছে দুশ্চিন্তা ও দুঃখ থেকে আশ্রয় প্রার্থনা করছি।',
+            reference: 'Sahih Bukhari 6363'
+        },
+        {
+            id: 'd17',
+            topic: 'trust',
+            arabic: 'وَمَنْ يَتَوَكَّلْ عَلَى اللَّهِ فَهُوَ حَسْبُهُ',
+            english: 'And whoever relies upon Allah - then He is sufficient for him.',
+            bengali: 'যে আল্লাহর ওপর ভরসা করে, তিনিই তার জন্য যথেষ্ট।',
+            reference: 'Quran 65:3'
+        },
+        {
+            id: 'd18',
+            topic: 'steadfastness_heart',
+            arabic: 'يَا مُقَلِّبَ الْقُلُوبِ ثَبِّتْ قَلْبِي عَلَى دِينِكَ',
+            english: 'O Turner of the hearts, keep my heart steadfast upon Your religion.',
+            bengali: 'হে অন্তরসমূহের পরিবর্তনকারী, আমার অন্তরকে আপনার দ্বীনের ওপর অবিচল রাখুন।',
+            reference: 'Sunan al-Tirmidhi 3522'
+        },
+        {
+            id: 'd19',
+            topic: 'ease_hardship',
+            arabic: 'فَإِنَّ مَعَ الْعُسْرِ يُسْرًا',
+            english: 'For indeed, with hardship [will be] ease.',
+            bengali: 'নিশ্চয়ই কষ্টের সাথেই রয়েছে স্বস্তি।',
+            reference: 'Quran 94:5'
+        },
+        {
+            id: 'd20',
+            topic: 'wisdom',
+            arabic: 'رَبِّ هَبْ لِي حُكْمًا وَأَلْحِقْنِي بِالصَّالِحِينَ',
+            english: 'My Lord, grant me wisdom and join me with the righteous.',
+            bengali: 'হে আমার রব, আমাকে হিকমত (প্রজ্ঞা) দান করুন এবং আমাকে নেককারদের অন্তর্ভুক্ত করুন।',
+            reference: 'Quran 26:83'
         }
     ];
 
