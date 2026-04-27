@@ -92,28 +92,13 @@
         },
         {
             id: 'd12',
-            topic: 'guidance_mercy',
-            arabic: 'رَبَّنَا آتِنَا مِنْ لَدُنْكَ رَحْمَةً وَهَيِّئْ لَنَا مِنْ أَمْرِنَا رَشَدًا',
-            english: 'Our Lord, grant us from Yourself mercy and prepare for us from our affair right guidance.',
-            bengali: 'হে আমাদের রব, আমাদের আপনার পক্ষ থেকে রহমত দান করুন এবং আমাদের জন্য আমাদের কাজ সঠিকভাবে পরিচালনার ব্যবস্থা করুন।',
-            reference: 'Quran 18:10'
-        },
-        {
-            id: 'd13',
             topic: 'dunya_akhira',
-            arabic: 'رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً وَفِي الْآخِرَةِ حَسَنَةً وَقِنَا عَذَابَ النَّارِ',
+            arabic: 'رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً وَفِي الْآخِرَةِ حَسَنَةً وَقِنَا عَذَابَ النَّارِ',
             english: 'Our Lord, grant us good in this world and good in the Hereafter, and protect us from the punishment of the Fire.',
             bengali: 'হে আমাদের রব, আমাদের দুনিয়াতে কল্যাণ দিন, আখিরাতে কল্যাণ দিন এবং জাহান্নামের শাস্তি থেকে রক্ষা করুন।',
             reference: 'Quran 2:201'
         }
     ];
-
-    var currentDuaIndex = DUAS_DB.findIndex(d => d.id === 'd13');
-
-    function getNextDua() {
-        currentDuaIndex = (currentDuaIndex + 1) % DUAS_DB.length;
-        return DUAS_DB[currentDuaIndex];
-    }
 
     function randIndex(max) {
         return Math.floor(Math.random() * max);
@@ -151,7 +136,6 @@
         all: DUAS_DB,
         byTopic: byTopic,
         getRandomDua: getRandomDua,
-        getRandomDuas: getRandomDuas,
-        getNextDua: getNextDua
+        getRandomDuas: getRandomDuas
     };
 })(typeof window !== 'undefined' ? window : this);
