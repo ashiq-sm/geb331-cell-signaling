@@ -157,7 +157,16 @@ Transcription factors (Nuclear response)
 ৫. **GSK3 inactivation:** সক্রিয় Akt তখন **GSK3 (Glycogen Synthase Kinase 3)**-কে phosphorylate করে। মজার ব্যাপার হলো, phosphorylate হলে GSK3 **নিষ্ক্রিয় (inactivated)** হয়ে যায় [19,20]।
 ৬. **Glycogen Synthesis:** সাধারণভাবে GSK3 গ্লাইকোজেন তৈরি বন্ধ রাখে (Glycogen Synthase-কে ফসফোরাইলেট করে)। কিন্তু Akt যখন GSK3-কে নিষ্ক্রিয় করে দেয়, তখন **Glycogen Synthase সক্রিয় হয়ে মাথা চাড়া দেয়** এবং গ্লুকোজকে জোড়া লাগিয়ে গ্লাইকোজেন তৈরি শুরু করে [19,20]।
 
-**মনে রাখার ট্রিক:** "Insulin → PI3K → Akt → Kills GSK3 → Frees Glycogen Synthase → Glycogen made!"`,
+**মনে রাখার ট্রিক:** "Insulin → PI3K → Akt → Kills GSK3 → Frees Glycogen Synthase → Glycogen made!"
+
+---
+
+### 💡 Exam Tips & Summary (দ্রুত রিভিশন)
+- এই সেটের বারবার আসা বছরভিত্তিক প্রশ্ন আগে শেষ করো।
+- ৩-লাইন ফরম্যাটে উত্তর লেখো: সংজ্ঞা, মূল মেকানিজম/স্টেপ, এক্সাম-কিওয়ার্ড।
+- বড় উত্তরে ১টা টেবিল/ফ্লো/তুলনা যোগ করলে নম্বর বাড়ে।
+- ২৪ ঘণ্টার মধ্যে ১ বার এবং ফাইনাল রিভিশনে ১ বার সেটটি রিভিশন দাও।
+`,
         rawMd_en: `### Enzyme-Linked Receptors & Cancer
 
 **[Q023] MARKS: 6**  
@@ -426,7 +435,16 @@ Transcription factors (Nuclear response)
 * **Normal function:** স্বাভাবিক অবস্থায় এটি Wnt পাথওয়ের Destruction complex-এর একটি মাচা (scaffold) হিসেবে কাজ করে, যা β-catenin-কে আটকে ধরে ধ্বংস করতে সাহায্য করে [57,131]।
 * **Mutation & Cancer:** যদি কোনো কারণে APC জিনে মিউটেশন হয় (যেমন FAP বা Familial Adenomatous Polyposis নামক বংশগত রোগে), তাহলে Destruction complex আর গঠিত হতে পারে না [61,134]।
 * **Consequence:** এর ফলে Wnt সিগন্যাল ছাড়াই কোষে প্রচুর পরিমাণে **β-catenin** জমতে থাকে। β-catenin নিউক্লিয়াসে গিয়ে c-Myc এবং Cyclin D1 জিন অবিরাম চালু রাখে।
-* **Result:** অন্ত্রের কোষে অনিয়ন্ত্রিত বিভাজন হয়, যার ফলে শত শত পলিপস (polyps) তৈরি হয় এবং শেষমেশ তা **Colorectal Cancer** (মলাশয়ের ক্যানসার)-এ পরিণত হয় [61,134]।`,
+* **Result:** অন্ত্রের কোষে অনিয়ন্ত্রিত বিভাজন হয়, যার ফলে শত শত পলিপস (polyps) তৈরি হয় এবং শেষমেশ তা **Colorectal Cancer** (মলাশয়ের ক্যানসার)-এ পরিণত হয় [61,134]।
+
+---
+
+### 💡 Exam Tips & Summary (দ্রুত রিভিশন)
+- এই সেটের বারবার আসা বছরভিত্তিক প্রশ্ন আগে শেষ করো।
+- ৩-লাইন ফরম্যাটে উত্তর লেখো: সংজ্ঞা, মূল মেকানিজম/স্টেপ, এক্সাম-কিওয়ার্ড।
+- বড় উত্তরে ১টা টেবিল/ফ্লো/তুলনা যোগ করলে নম্বর বাড়ে।
+- ২৪ ঘণ্টার মধ্যে ১ বার এবং ফাইনাল রিভিশনে ১ বার সেটটি রিভিশন দাও।
+`,
         rawMd_en: `### Notch Processing by Proteolytic Cleavage
 
 **[Q032] MARKS: 14**  

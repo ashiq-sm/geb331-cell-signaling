@@ -140,7 +140,16 @@ Current industrial fermentation utilizes **Stirred-Tank Bioreactors (STRs)**, wh
 | Main controls | DO, pH, temperature, feed profile | Purity, yield, contaminant removal |
 | Cost share trend | Lower | Higher in biologics workflows |
 `,
-    rawMd_bn: `[Bengali version not yet implemented — using English with Bengali terms in parentheses as per user preference]`
+    rawMd_bn: `[Bengali version not yet implemented — using English with Bengali terms in parentheses as per user preference]
+
+---
+
+### 💡 Exam Tips & Summary (দ্রুত রিভিশন)
+- এই সেটের বারবার আসা বছরভিত্তিক প্রশ্ন আগে শেষ করো।
+- ৩-লাইন ফরম্যাটে উত্তর লেখো: সংজ্ঞা, মূল মেকানিজম/স্টেপ, এক্সাম-কিওয়ার্ড।
+- বড় উত্তরে ১টা টেবিল/ফ্লো/তুলনা যোগ করলে নম্বর বাড়ে।
+- ২৪ ঘণ্টার মধ্যে ১ বার এবং ফাইনাল রিভিশনে ১ বার সেটটি রিভিশন দাও।
+`
   },
   {
     id: "set2",
@@ -248,8 +257,26 @@ Current industrial fermentation utilizes **Stirred-Tank Bioreactors (STRs)**, wh
 | Viscosity behavior | Constant with shear | Changes with shear | Pump/impeller sizing differs |
 | Scale-up reliability | Easier correlations | More complex correlations | Requires rheology-aware scale-up |
 | Typical examples | Water, dilute media | Dense cell/polymer broth | Use in agitation answer for extra credit |
+
+
+---
+
+### 💡 Exam Tips & Summary
+- Prioritize repeated year-tagged questions from this set.
+- Keep a 3-line answer frame ready: definition, key mechanism/steps, exam keywords.
+- Use one quick table/flow or contrast point for higher marks in long answers.
+- Revise this set once within 24 hours and once in final revision week.
 `,
-    rawMd_bn: `[Bengali version not yet implemented — using English with Bengali terms in parentheses as per user preference]`
+    rawMd_bn: `[Bengali version not yet implemented — using English with Bengali terms in parentheses as per user preference]
+
+---
+
+### 💡 Exam Tips & Summary (দ্রুত রিভিশন)
+- এই সেটের বারবার আসা বছরভিত্তিক প্রশ্ন আগে শেষ করো।
+- ৩-লাইন ফরম্যাটে উত্তর লেখো: সংজ্ঞা, মূল মেকানিজম/স্টেপ, এক্সাম-কিওয়ার্ড।
+- বড় উত্তরে ১টা টেবিল/ফ্লো/তুলনা যোগ করলে নম্বর বাড়ে।
+- ২৪ ঘণ্টার মধ্যে ১ বার এবং ফাইনাল রিভিশনে ১ বার সেটটি রিভিশন দাও।
+`
   },
   {
     id: "set3",
@@ -350,8 +377,26 @@ Current industrial fermentation utilizes **Stirred-Tank Bioreactors (STRs)**, wh
 | French press | Clean lysis quality | Poor large-scale practicality | Small-scale high-quality lysis |
 | Sonication | Fast in micro-volumes | Hard to scale | Lab extraction and DNA shearing |
 | Enzymatic lysis | Gentle, selective | Slow and expensive | Labile intracellular proteins |
+
+
+---
+
+### 💡 Exam Tips & Summary
+- Prioritize repeated year-tagged questions from this set.
+- Keep a 3-line answer frame ready: definition, key mechanism/steps, exam keywords.
+- Use one quick table/flow or contrast point for higher marks in long answers.
+- Revise this set once within 24 hours and once in final revision week.
 `,
-    rawMd_bn: `[Bengali version not yet implemented — using English with Bengali terms in parentheses as per user preference]`
+    rawMd_bn: `[Bengali version not yet implemented — using English with Bengali terms in parentheses as per user preference]
+
+---
+
+### 💡 Exam Tips & Summary (দ্রুত রিভিশন)
+- এই সেটের বারবার আসা বছরভিত্তিক প্রশ্ন আগে শেষ করো।
+- ৩-লাইন ফরম্যাটে উত্তর লেখো: সংজ্ঞা, মূল মেকানিজম/স্টেপ, এক্সাম-কিওয়ার্ড।
+- বড় উত্তরে ১টা টেবিল/ফ্লো/তুলনা যোগ করলে নম্বর বাড়ে।
+- ২৪ ঘণ্টার মধ্যে ১ বার এবং ফাইনাল রিভিশনে ১ বার সেটটি রিভিশন দাও।
+`
   },
   {
     id: "set4",
@@ -488,7 +533,16 @@ Mixing is evaluated using dimensionless numbers:
 | Pitched blade | Mixed axial-radial | Medium | General-purpose bioreactor duty |
 | Anchor/ribbon | Tangential in viscous media | Low-medium | High-viscosity/non-Newtonian fluids |
 `,
-    rawMd_bn: `[Bengali version not yet implemented — using English with Bengali terms in parentheses as per user preference]`
+    rawMd_bn: `[Bengali version not yet implemented — using English with Bengali terms in parentheses as per user preference]
+
+---
+
+### 💡 Exam Tips & Summary (দ্রুত রিভিশন)
+- এই সেটের বারবার আসা বছরভিত্তিক প্রশ্ন আগে শেষ করো।
+- ৩-লাইন ফরম্যাটে উত্তর লেখো: সংজ্ঞা, মূল মেকানিজম/স্টেপ, এক্সাম-কিওয়ার্ড।
+- বড় উত্তরে ১টা টেবিল/ফ্লো/তুলনা যোগ করলে নম্বর বাড়ে।
+- ২৪ ঘণ্টার মধ্যে ১ বার এবং ফাইনাল রিভিশনে ১ বার সেটটি রিভিশন দাও।
+`
   },
   {
     id: "set5",
@@ -609,8 +663,26 @@ Mixing is evaluated using dimensionless numbers:
 | Prandtl (Pr) | Momentum diffusivity vs thermal diffusivity | Relative boundary layer thickness |
 | Nusselt (Nu) | Convective vs conductive heat transfer | Heat transfer enhancement metric |
 | Overall U | Combined resistance through all layers | Directly tied to exchanger duty |
+
+
+---
+
+### 💡 Exam Tips & Summary
+- Prioritize repeated year-tagged questions from this set.
+- Keep a 3-line answer frame ready: definition, key mechanism/steps, exam keywords.
+- Use one quick table/flow or contrast point for higher marks in long answers.
+- Revise this set once within 24 hours and once in final revision week.
 `,
-    rawMd_bn: `[Bengali version not yet implemented — using English with Bengali terms in parentheses as per user preference]`
+    rawMd_bn: `[Bengali version not yet implemented — using English with Bengali terms in parentheses as per user preference]
+
+---
+
+### 💡 Exam Tips & Summary (দ্রুত রিভিশন)
+- এই সেটের বারবার আসা বছরভিত্তিক প্রশ্ন আগে শেষ করো।
+- ৩-লাইন ফরম্যাটে উত্তর লেখো: সংজ্ঞা, মূল মেকানিজম/স্টেপ, এক্সাম-কিওয়ার্ড।
+- বড় উত্তরে ১টা টেবিল/ফ্লো/তুলনা যোগ করলে নম্বর বাড়ে।
+- ২৪ ঘণ্টার মধ্যে ১ বার এবং ফাইনাল রিভিশনে ১ বার সেটটি রিভিশন দাও।
+`
   },
   {
     id: "set6",
@@ -724,8 +796,26 @@ Mixing is evaluated using dimensionless numbers:
 | Multiple-effect | High | Higher | Large-scale concentration lines |
 | Forward feed | Simpler hot-feed progression | Moderate | Heat-sensitive feeds |
 | Backward feed | Better for viscous final liquor | More pumping load | High-viscosity product targets |
+
+
+---
+
+### 💡 Exam Tips & Summary
+- Prioritize repeated year-tagged questions from this set.
+- Keep a 3-line answer frame ready: definition, key mechanism/steps, exam keywords.
+- Use one quick table/flow or contrast point for higher marks in long answers.
+- Revise this set once within 24 hours and once in final revision week.
 `,
-    rawMd_bn: `[Bengali version not yet implemented — using English with Bengali terms in parentheses as per user preference]`
+    rawMd_bn: `[Bengali version not yet implemented — using English with Bengali terms in parentheses as per user preference]
+
+---
+
+### 💡 Exam Tips & Summary (দ্রুত রিভিশন)
+- এই সেটের বারবার আসা বছরভিত্তিক প্রশ্ন আগে শেষ করো।
+- ৩-লাইন ফরম্যাটে উত্তর লেখো: সংজ্ঞা, মূল মেকানিজম/স্টেপ, এক্সাম-কিওয়ার্ড।
+- বড় উত্তরে ১টা টেবিল/ফ্লো/তুলনা যোগ করলে নম্বর বাড়ে।
+- ২৪ ঘণ্টার মধ্যে ১ বার এবং ফাইনাল রিভিশনে ১ বার সেটটি রিভিশন দাও।
+`
   },
   {
     id: "set7",
@@ -873,8 +963,26 @@ Efficiency is influenced by **temperature** (Mesophilic: 30-38°C vs. Thermophil
 | Acidogenesis | Monomers to VFAs/alcohols | Acidogens | pH drift monitoring |
 | Acetogenesis | VFAs to acetate/H2/CO2 | Acetogens | Hydrogen balance |
 | Methanogenesis | Acetate/H2 to methane | Methanogenic archaea | Strict pH and toxicity control |
+
+
+---
+
+### 💡 Exam Tips & Summary
+- Prioritize repeated year-tagged questions from this set.
+- Keep a 3-line answer frame ready: definition, key mechanism/steps, exam keywords.
+- Use one quick table/flow or contrast point for higher marks in long answers.
+- Revise this set once within 24 hours and once in final revision week.
 `,
-    rawMd_bn: `[Bengali version not yet implemented — using English with Bengali terms in parentheses as per user preference]`
+    rawMd_bn: `[Bengali version not yet implemented — using English with Bengali terms in parentheses as per user preference]
+
+---
+
+### 💡 Exam Tips & Summary (দ্রুত রিভিশন)
+- এই সেটের বারবার আসা বছরভিত্তিক প্রশ্ন আগে শেষ করো।
+- ৩-লাইন ফরম্যাটে উত্তর লেখো: সংজ্ঞা, মূল মেকানিজম/স্টেপ, এক্সাম-কিওয়ার্ড।
+- বড় উত্তরে ১টা টেবিল/ফ্লো/তুলনা যোগ করলে নম্বর বাড়ে।
+- ২৪ ঘণ্টার মধ্যে ১ বার এবং ফাইনাল রিভিশনে ১ বার সেটটি রিভিশন দাও।
+`
   },
   {
     id: "set8",
@@ -952,8 +1060,26 @@ A bioprocess is a dynamic system influenced by biological (internal) and environ
 | External physicochemical | pH, temperature, DO, pressure | Directly controls cellular performance |
 | External mechanical | Agitation, aeration, shear | Defines transport efficiency and cell stress |
 | External nutritional | Medium composition, feed strategy | Controls biomass and product titer trajectory |
+
+
+---
+
+### 💡 Exam Tips & Summary
+- Prioritize repeated year-tagged questions from this set.
+- Keep a 3-line answer frame ready: definition, key mechanism/steps, exam keywords.
+- Use one quick table/flow or contrast point for higher marks in long answers.
+- Revise this set once within 24 hours and once in final revision week.
 `,
-    rawMd_bn: `[Bengali version not yet implemented — using English with Bengali terms in parentheses as per user preference]`
+    rawMd_bn: `[Bengali version not yet implemented — using English with Bengali terms in parentheses as per user preference]
+
+---
+
+### 💡 Exam Tips & Summary (দ্রুত রিভিশন)
+- এই সেটের বারবার আসা বছরভিত্তিক প্রশ্ন আগে শেষ করো।
+- ৩-লাইন ফরম্যাটে উত্তর লেখো: সংজ্ঞা, মূল মেকানিজম/স্টেপ, এক্সাম-কিওয়ার্ড।
+- বড় উত্তরে ১টা টেবিল/ফ্লো/তুলনা যোগ করলে নম্বর বাড়ে।
+- ২৪ ঘণ্টার মধ্যে ১ বার এবং ফাইনাল রিভিশনে ১ বার সেটটি রিভিশন দাও।
+`
   }
 ];
 

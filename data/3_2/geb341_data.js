@@ -348,7 +348,16 @@ Where:
 ---
 
 **Total Set 1: ~3,000 words | All questions with answer keys | Enhanced formatting with Bangla terms, mathematical formulas, strategic tips**`,
-    rawMd_bn: `[Bengali version not yet implemented — using English with Bengali terms in parentheses as per user preference]`
+    rawMd_bn: `[Bengali version not yet implemented — using English with Bengali terms in parentheses as per user preference]
+
+---
+
+### 💡 Exam Tips & Summary (দ্রুত রিভিশন)
+- এই সেটের বারবার আসা বছরভিত্তিক প্রশ্ন আগে শেষ করো।
+- ৩-লাইন ফরম্যাটে উত্তর লেখো: সংজ্ঞা, মূল মেকানিজম/স্টেপ, এক্সাম-কিওয়ার্ড।
+- বড় উত্তরে ১টা টেবিল/ফ্লো/তুলনা যোগ করলে নম্বর বাড়ে।
+- ২৪ ঘণ্টার মধ্যে ১ বার এবং ফাইনাল রিভিশনে ১ বার সেটটি রিভিশন দাও।
+`
   },
   {
     id: "set2",
@@ -691,8 +700,26 @@ Rapid growth: 0.5cm → 15cm in 70-80 days
 
 ---
 
-**Total Set 2: ~4,000 words | Comprehensive tables | All questions integrated | Mathematical formulas | Bangla terminology throughout**`,
-    rawMd_bn: `[Bengali version not yet implemented — using English with Bengali terms in parentheses as per user preference]`
+**Total Set 2: ~4,000 words | Comprehensive tables | All questions integrated | Mathematical formulas | Bangla terminology throughout**
+
+---
+
+### 💡 Exam Tips & Summary
+- Prioritize repeated year-tagged questions from this set.
+- Keep a 3-line answer frame ready: definition, key mechanism/steps, exam keywords.
+- Use one quick table/flow or contrast point for higher marks in long answers.
+- Revise this set once within 24 hours and once in final revision week.
+`,
+    rawMd_bn: `[Bengali version not yet implemented — using English with Bengali terms in parentheses as per user preference]
+
+---
+
+### 💡 Exam Tips & Summary (দ্রুত রিভিশন)
+- এই সেটের বারবার আসা বছরভিত্তিক প্রশ্ন আগে শেষ করো।
+- ৩-লাইন ফরম্যাটে উত্তর লেখো: সংজ্ঞা, মূল মেকানিজম/স্টেপ, এক্সাম-কিওয়ার্ড।
+- বড় উত্তরে ১টা টেবিল/ফ্লো/তুলনা যোগ করলে নম্বর বাড়ে।
+- ২৪ ঘণ্টার মধ্যে ১ বার এবং ফাইনাল রিভিশনে ১ বার সেটটি রিভিশন দাও।
+`
   },
   {
     id: "set3",
@@ -901,8 +928,26 @@ Ducks must not exceed 2 birds/100m² water surface to prevent pollution
 
 ---
 
-**Total Set 3: ~3,500 words | All integration models detailed | Economics calculated | Strategic tips included**`,
-    rawMd_bn: `[Bengali version not yet implemented — using English with Bengali terms in parentheses as per user preference]`
+**Total Set 3: ~3,500 words | All integration models detailed | Economics calculated | Strategic tips included**
+
+---
+
+### 💡 Exam Tips & Summary
+- Prioritize repeated year-tagged questions from this set.
+- Keep a 3-line answer frame ready: definition, key mechanism/steps, exam keywords.
+- Use one quick table/flow or contrast point for higher marks in long answers.
+- Revise this set once within 24 hours and once in final revision week.
+`,
+    rawMd_bn: `[Bengali version not yet implemented — using English with Bengali terms in parentheses as per user preference]
+
+---
+
+### 💡 Exam Tips & Summary (দ্রুত রিভিশন)
+- এই সেটের বারবার আসা বছরভিত্তিক প্রশ্ন আগে শেষ করো।
+- ৩-লাইন ফরম্যাটে উত্তর লেখো: সংজ্ঞা, মূল মেকানিজম/স্টেপ, এক্সাম-কিওয়ার্ড।
+- বড় উত্তরে ১টা টেবিল/ফ্লো/তুলনা যোগ করলে নম্বর বাড়ে।
+- ২৪ ঘণ্টার মধ্যে ১ বার এবং ফাইনাল রিভিশনে ১ বার সেটটি রিভিশন দাও।
+`
   },
   {
     id: "set4",
@@ -1116,8 +1161,26 @@ Step 7: Fertilization time: 30-40 seconds contact time optimal
 **Total Marks:** 40+ marks across 3 sets | **Exam Frequency:** 9-10 repetitions each  
 **Priority Level:** 🔴 🔴 🔴 CRITICAL - Most mathematically rigorous!
 
----`,
-    rawMd_bn: `[Bengali version not yet implemented — using English with Bengali terms in parentheses as per user preference]`
+---
+
+---
+
+### 💡 Exam Tips & Summary
+- Prioritize repeated year-tagged questions from this set.
+- Keep a 3-line answer frame ready: definition, key mechanism/steps, exam keywords.
+- Use one quick table/flow or contrast point for higher marks in long answers.
+- Revise this set once within 24 hours and once in final revision week.
+`,
+    rawMd_bn: `[Bengali version not yet implemented — using English with Bengali terms in parentheses as per user preference]
+
+---
+
+### 💡 Exam Tips & Summary (দ্রুত রিভিশন)
+- এই সেটের বারবার আসা বছরভিত্তিক প্রশ্ন আগে শেষ করো।
+- ৩-লাইন ফরম্যাটে উত্তর লেখো: সংজ্ঞা, মূল মেকানিজম/স্টেপ, এক্সাম-কিওয়ার্ড।
+- বড় উত্তরে ১টা টেবিল/ফ্লো/তুলনা যোগ করলে নম্বর বাড়ে।
+- ২৪ ঘণ্টার মধ্যে ১ বার এবং ফাইনাল রিভিশনে ১ বার সেটটি রিভিশন দাও।
+`
   },
   {
     id: "set5",
@@ -1216,8 +1279,26 @@ Or in viable offspring: **3 Scaly : 6 Linear : 1 Mirror : 2 Leathery** (total 12
 
 ---
 
-### 5.3 Quantitative Traits & Heritability`,
-    rawMd_bn: `[Bengali version not yet implemented — using English with Bengali terms in parentheses as per user preference]`
+### 5.3 Quantitative Traits & Heritability
+
+---
+
+### 💡 Exam Tips & Summary
+- Prioritize repeated year-tagged questions from this set.
+- Keep a 3-line answer frame ready: definition, key mechanism/steps, exam keywords.
+- Use one quick table/flow or contrast point for higher marks in long answers.
+- Revise this set once within 24 hours and once in final revision week.
+`,
+    rawMd_bn: `[Bengali version not yet implemented — using English with Bengali terms in parentheses as per user preference]
+
+---
+
+### 💡 Exam Tips & Summary (দ্রুত রিভিশন)
+- এই সেটের বারবার আসা বছরভিত্তিক প্রশ্ন আগে শেষ করো।
+- ৩-লাইন ফরম্যাটে উত্তর লেখো: সংজ্ঞা, মূল মেকানিজম/স্টেপ, এক্সাম-কিওয়ার্ড।
+- বড় উত্তরে ১টা টেবিল/ফ্লো/তুলনা যোগ করলে নম্বর বাড়ে।
+- ২৪ ঘণ্টার মধ্যে ১ বার এবং ফাইনাল রিভিশনে ১ বার সেটটি রিভিশন দাও।
+`
   },
   {
     id: "set6",
@@ -1314,8 +1395,26 @@ Example:
 - Genotype A¹A¹B¹B¹C¹C¹D¹D¹E²E² = 10 dominant alleles (but different combination)
 - Both produce the SAME phenotype (10 contributing alleles) despite different genotypes
 
----`,
-    rawMd_bn: `[Bengali version not yet implemented — using English with Bengali terms in parentheses as per user preference]`
+---
+
+---
+
+### 💡 Exam Tips & Summary
+- Prioritize repeated year-tagged questions from this set.
+- Keep a 3-line answer frame ready: definition, key mechanism/steps, exam keywords.
+- Use one quick table/flow or contrast point for higher marks in long answers.
+- Revise this set once within 24 hours and once in final revision week.
+`,
+    rawMd_bn: `[Bengali version not yet implemented — using English with Bengali terms in parentheses as per user preference]
+
+---
+
+### 💡 Exam Tips & Summary (দ্রুত রিভিশন)
+- এই সেটের বারবার আসা বছরভিত্তিক প্রশ্ন আগে শেষ করো।
+- ৩-লাইন ফরম্যাটে উত্তর লেখো: সংজ্ঞা, মূল মেকানিজম/স্টেপ, এক্সাম-কিওয়ার্ড।
+- বড় উত্তরে ১টা টেবিল/ফ্লো/তুলনা যোগ করলে নম্বর বাড়ে।
+- ২৪ ঘণ্টার মধ্যে ১ বার এবং ফাইনাল রিভিশনে ১ বার সেটটি রিভিশন দাও।
+`
   },
   {
     id: "set7",
@@ -1512,8 +1611,26 @@ $$\Delta F = \frac{1}{2Ne} = \frac{1}{100} = 0.01 \text{ (inbreeding increases 1
 
 **Total Marks:** 15-20 marks | **Exam Frequency:** Regular appearances
 
----`,
-    rawMd_bn: `[Bengali version not yet implemented — using English with Bengali terms in parentheses as per user preference]`
+---
+
+---
+
+### 💡 Exam Tips & Summary
+- Prioritize repeated year-tagged questions from this set.
+- Keep a 3-line answer frame ready: definition, key mechanism/steps, exam keywords.
+- Use one quick table/flow or contrast point for higher marks in long answers.
+- Revise this set once within 24 hours and once in final revision week.
+`,
+    rawMd_bn: `[Bengali version not yet implemented — using English with Bengali terms in parentheses as per user preference]
+
+---
+
+### 💡 Exam Tips & Summary (দ্রুত রিভিশন)
+- এই সেটের বারবার আসা বছরভিত্তিক প্রশ্ন আগে শেষ করো।
+- ৩-লাইন ফরম্যাটে উত্তর লেখো: সংজ্ঞা, মূল মেকানিজম/স্টেপ, এক্সাম-কিওয়ার্ড।
+- বড় উত্তরে ১টা টেবিল/ফ্লো/তুলনা যোগ করলে নম্বর বাড়ে।
+- ২৪ ঘণ্টার মধ্যে ১ বার এবং ফাইনাল রিভিশনে ১ বার সেটটি রিভিশন দাও।
+`
   },
   {
     id: "set8",
@@ -1618,8 +1735,26 @@ $$\Delta F = \frac{1}{2Ne} = \frac{1}{100} = 0.01 \text{ (inbreeding increases 1
 | **Relative Weight** | Visual assessment (not weighing) | Symmetrical flanks [পার্শ্ব] ; normal belly contour | Hollow cheeks [গাল পড়ে যাওয়া]; protruding belly (ascites/dropsy); asymmetrical |
 | **Stability Test** | Place in water; observe orientation | Remains upright; actively avoids obstacles | Floating [ভাসমান]; sinking [ডুবি]; loss of equilibrium [সাম্যাবস্থা হারানো] |
 
----`,
-    rawMd_bn: `[Bengali version not yet implemented — using English with Bengali terms in parentheses as per user preference]`
+---
+
+---
+
+### 💡 Exam Tips & Summary
+- Prioritize repeated year-tagged questions from this set.
+- Keep a 3-line answer frame ready: definition, key mechanism/steps, exam keywords.
+- Use one quick table/flow or contrast point for higher marks in long answers.
+- Revise this set once within 24 hours and once in final revision week.
+`,
+    rawMd_bn: `[Bengali version not yet implemented — using English with Bengali terms in parentheses as per user preference]
+
+---
+
+### 💡 Exam Tips & Summary (দ্রুত রিভিশন)
+- এই সেটের বারবার আসা বছরভিত্তিক প্রশ্ন আগে শেষ করো।
+- ৩-লাইন ফরম্যাটে উত্তর লেখো: সংজ্ঞা, মূল মেকানিজম/স্টেপ, এক্সাম-কিওয়ার্ড।
+- বড় উত্তরে ১টা টেবিল/ফ্লো/তুলনা যোগ করলে নম্বর বাড়ে।
+- ২৪ ঘণ্টার মধ্যে ১ বার এবং ফাইনাল রিভিশনে ১ বার সেটটি রিভিশন দাও।
+`
   },
   {
     id: "set9",
@@ -1831,7 +1966,25 @@ $$W_{30} = 0.5 \times e^{0.08 \times 30} = 0.5 \times e^{2.4} = 0.5 \times 11.02
 
 **Total Sets 8-9: ~2,500 words | All disease classifications | Field health assessment | Ocean zones detailed | Growth models with calculations | Ecosystem components comprehensive**
 
----`,
-    rawMd_bn: `[Bengali version not yet implemented — using English with Bengali terms in parentheses as per user preference]`
+---
+
+---
+
+### 💡 Exam Tips & Summary
+- Prioritize repeated year-tagged questions from this set.
+- Keep a 3-line answer frame ready: definition, key mechanism/steps, exam keywords.
+- Use one quick table/flow or contrast point for higher marks in long answers.
+- Revise this set once within 24 hours and once in final revision week.
+`,
+    rawMd_bn: `[Bengali version not yet implemented — using English with Bengali terms in parentheses as per user preference]
+
+---
+
+### 💡 Exam Tips & Summary (দ্রুত রিভিশন)
+- এই সেটের বারবার আসা বছরভিত্তিক প্রশ্ন আগে শেষ করো।
+- ৩-লাইন ফরম্যাটে উত্তর লেখো: সংজ্ঞা, মূল মেকানিজম/স্টেপ, এক্সাম-কিওয়ার্ড।
+- বড় উত্তরে ১টা টেবিল/ফ্লো/তুলনা যোগ করলে নম্বর বাড়ে।
+- ২৪ ঘণ্টার মধ্যে ১ বার এবং ফাইনাল রিভিশনে ১ বার সেটটি রিভিশন দাও।
+`
   }
 ];

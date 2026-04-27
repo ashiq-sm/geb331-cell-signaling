@@ -130,7 +130,16 @@ Why preferred: Diffuse fast, energy efficient, specific spatial range.
 **[Q078] (ADDITION)**
 Ans:
 Heterotrimeric: 3 subunits (α, β, γ). Coupled to GPCR.
-Monomeric: 1 subunit (Ras, Rho). Modulated by GEF/GAPs directly.`,
+Monomeric: 1 subunit (Ras, Rho). Modulated by GEF/GAPs directly.
+
+---
+
+### 💡 Exam Tips & Summary (দ্রুত রিভিশন)
+- এই সেটের বারবার আসা বছরভিত্তিক প্রশ্ন আগে শেষ করো।
+- ৩-লাইন ফরম্যাটে উত্তর লেখো: সংজ্ঞা, মূল মেকানিজম/স্টেপ, এক্সাম-কিওয়ার্ড।
+- বড় উত্তরে ১টা টেবিল/ফ্লো/তুলনা যোগ করলে নম্বর বাড়ে।
+- ২৪ ঘণ্টার মধ্যে ১ বার এবং ফাইনাল রিভিশনে ১ বার সেটটি রিভিশন দাও।
+`,
 rawMd_en: `### Intracellular Signaling Pathway
 **[Q001] MARKS: 14**
 a) Illustrate a simple intracellular signaling pathway activated by an extracellular signaling molecule. [3]
@@ -332,7 +341,16 @@ rawMd_bn: `### G-Protein & PKA Signaling
 **c) What is CaM kinase? How does CaM kinase frequency-decode calcium oscillations? [4]**
 
 **Ans:** **CaM kinase II** হলো ক্যালসিয়াম- Calmodulin নির্ভর প্রোটিন কাইনেজ যা কোষের **Memory Device** হিসেবে কাজ করে।
-* **Frequency Decoding:** ক্যালসিয়ামের ঘনঘন স্পন্দনে (High frequency cycles) এনজাইমটি পুরোপুরি বন্ধ হওয়ার আগেই পরবর্তী সংকেত পায়। এর ফলে এটি **Autophosphorylation**-এর মাধ্যমে নিজের সক্রিয়তা বজায় রাখে এবং সিগন্যাল শেষ হওয়ার পরেও সক্রিয় থাকতে পারে [১৫৫, ১৬০, ২৪৫]। এভাবে এটি ক্যালসিয়ামের কম্পাঙ্ক বিশ্লেষণ করে ভিন্ন ভিন্ন সাড়া তৈরি করে।`,
+* **Frequency Decoding:** ক্যালসিয়ামের ঘনঘন স্পন্দনে (High frequency cycles) এনজাইমটি পুরোপুরি বন্ধ হওয়ার আগেই পরবর্তী সংকেত পায়। এর ফলে এটি **Autophosphorylation**-এর মাধ্যমে নিজের সক্রিয়তা বজায় রাখে এবং সিগন্যাল শেষ হওয়ার পরেও সক্রিয় থাকতে পারে [১৫৫, ১৬০, ২৪৫]। এভাবে এটি ক্যালসিয়ামের কম্পাঙ্ক বিশ্লেষণ করে ভিন্ন ভিন্ন সাড়া তৈরি করে।
+
+---
+
+### 💡 Exam Tips & Summary (দ্রুত রিভিশন)
+- এই সেটের বারবার আসা বছরভিত্তিক প্রশ্ন আগে শেষ করো।
+- ৩-লাইন ফরম্যাটে উত্তর লেখো: সংজ্ঞা, মূল মেকানিজম/স্টেপ, এক্সাম-কিওয়ার্ড।
+- বড় উত্তরে ১টা টেবিল/ফ্লো/তুলনা যোগ করলে নম্বর বাড়ে।
+- ২৪ ঘণ্টার মধ্যে ১ বার এবং ফাইনাল রিভিশনে ১ বার সেটটি রিভিশন দাও।
+`,
 rawMd_en: `### G-Protein & PKA Signaling
 
 **[Q013] MARKS: 14**

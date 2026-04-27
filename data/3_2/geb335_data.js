@@ -200,6 +200,15 @@ The total fermentation technology can be outlined as a sequential flow:
 1.  **Upstream:** [Stock Culture] $\\rightarrow$ [Inoculum Development in Shake Flasks/Seed Fermenters] $\\rightarrow$ [Media Sterilization].
 2.  **Fermentation:** Growth of the organism in the **Production Fermenter** under optimized conditions (Oxygen, pH, temperature control).
 3.  **Downstream:** [Harvested Broth] $\\rightarrow$ [Cell Separation] $\\rightarrow$ [Primary Isolation] $\\rightarrow$ [Purification] $\\rightarrow$ [Packaging].
+
+
+---
+
+### 💡 Exam Tips & Summary
+- Prioritize repeated year-tagged questions from this set.
+- Keep a 3-line answer frame ready: definition, key mechanism/steps, exam keywords.
+- Use one quick table/flow or contrast point for higher marks in long answers.
+- Revise this set once within 24 hours and once in final revision week.
 `,
         rawMd_bn: `
 ### **Q1. How many phases are there in fermentation technology? Illustrate/mention the phases highlighting the activities done in the first and last phases.**
@@ -226,6 +235,15 @@ The total fermentation technology can be outlined as a sequential flow:
 1.  **Upstream:** [Stock Culture] $\\rightarrow$ [Inoculum Development in Shake Flasks/Seed Fermenters] $\\rightarrow$ [Media Sterilization].
 2.  **Fermentation:** Growth of the organism in the **Production Fermenter** under optimized conditions (Oxygen, pH, temperature control).
 3.  **Downstream:** [Harvested Broth] $\\rightarrow$ [Cell Separation] $\\rightarrow$ [Primary Isolation] $\\rightarrow$ [Purification] $\\rightarrow$ [Packaging].
+
+
+---
+
+### 💡 Exam Tips & Summary (দ্রুত রিভিশন)
+- এই সেটের বারবার আসা বছরভিত্তিক প্রশ্ন আগে শেষ করো।
+- ৩-লাইন ফরম্যাটে উত্তর লেখো: সংজ্ঞা, মূল মেকানিজম/স্টেপ, এক্সাম-কিওয়ার্ড।
+- বড় উত্তরে ১টা টেবিল/ফ্লো/তুলনা যোগ করলে নম্বর বাড়ে।
+- ২৪ ঘণ্টার মধ্যে ১ বার এবং ফাইনাল রিভিশনে ১ বার সেটটি রিভিশন দাও।
 `
     },
     {
@@ -400,6 +418,15 @@ Producing plant proteins (e.g., **leghemoglobin** for meat alternatives) in a mi
     2.  **Regulatory Sequence Identification:** To identify signals in the **UTRs** (Untranslated Regions) that control mRNA stability and how fast the protein is made.
     3.  **Promoter Analysis:** Essential for identifying the **Transcription Start Site (TSS)** to place the gene under the control of powerful industrial promoters.
     4.  **Fixing Truncated Clones:** Standard cDNA libraries often contain "broken" or incomplete sequences; RACE "fills in" the missing ends.
+
+
+---
+
+### 💡 Exam Tips & Summary
+- Prioritize repeated year-tagged questions from this set.
+- Keep a 3-line answer frame ready: definition, key mechanism/steps, exam keywords.
+- Use one quick table/flow or contrast point for higher marks in long answers.
+- Revise this set once within 24 hours and once in final revision week.
 `,
         rawMd_bn: `
 ### **Q1. What do you mean by a recombinant strain? / Why is recombinant strain development needed? / Schematically show the process.**
@@ -460,6 +487,15 @@ Producing plant proteins (e.g., **leghemoglobin** for meat alternatives) in a mi
     2.  **Regulatory Sequence Identification:** To identify signals in the **UTRs** (Untranslated Regions) that control mRNA stability and how fast the protein is made.
     3.  **Promoter Analysis:** Essential for identifying the **Transcription Start Site (TSS)** to place the gene under the control of powerful industrial promoters.
     4.  **Fixing Truncated Clones:** Standard cDNA libraries often contain "broken" or incomplete sequences; RACE "fills in" the missing ends.
+
+
+---
+
+### 💡 Exam Tips & Summary (দ্রুত রিভিশন)
+- এই সেটের বারবার আসা বছরভিত্তিক প্রশ্ন আগে শেষ করো।
+- ৩-লাইন ফরম্যাটে উত্তর লেখো: সংজ্ঞা, মূল মেকানিজম/স্টেপ, এক্সাম-কিওয়ার্ড।
+- বড় উত্তরে ১টা টেবিল/ফ্লো/তুলনা যোগ করলে নম্বর বাড়ে।
+- ২৪ ঘণ্টার মধ্যে ১ বার এবং ফাইনাল রিভিশনে ১ বার সেটটি রিভিশন দাও।
 `
     },
     {
@@ -581,6 +617,15 @@ Producing plant proteins (e.g., **leghemoglobin** for meat alternatives) in a mi
     1.  **Avoid foam formation** — use defined media and modify physical parameters (pH, temperature, aeration, agitation). Assumes foam is due to a medium component, not a microbial metabolite.
     2.  **Use antifoam agents** — the most standard industrial approach.
     3.  **Use a mechanical foam breaker.**
+
+
+---
+
+### 💡 Exam Tips & Summary
+- Prioritize repeated year-tagged questions from this set.
+- Keep a 3-line answer frame ready: definition, key mechanism/steps, exam keywords.
+- Use one quick table/flow or contrast point for higher marks in long answers.
+- Revise this set once within 24 hours and once in final revision week.
 `,
         rawMd_bn: `
 ### **Q1. Define media/fermentation media/medium formulation. Criteria for an ideal medium? Which types are chosen for industrial microorganisms?**
@@ -694,6 +739,15 @@ Producing plant proteins (e.g., **leghemoglobin** for meat alternatives) in a mi
     3.  Falls slightly early, then rises.
     4.  Low initially, then rises significantly due to microbial activity.
     5.  Complex patterns.
+
+
+---
+
+### 💡 Exam Tips & Summary (দ্রুত রিভিশন)
+- এই সেটের বারবার আসা বছরভিত্তিক প্রশ্ন আগে শেষ করো।
+- ৩-লাইন ফরম্যাটে উত্তর লেখো: সংজ্ঞা, মূল মেকানিজম/স্টেপ, এক্সাম-কিওয়ার্ড।
+- বড় উত্তরে ১টা টেবিল/ফ্লো/তুলনা যোগ করলে নম্বর বাড়ে।
+- ২৪ ঘণ্টার মধ্যে ১ বার এবং ফাইনাল রিভিশনে ১ বার সেটটি রিভিশন দাও।
 `
     },
     {
@@ -788,6 +842,15 @@ Producing plant proteins (e.g., **leghemoglobin** for meat alternatives) in a mi
     2.  **0.5 $\\mu$m filter:** Bulk microbial and lipid layer removal.
     3.  **0.1 $\\mu$m filter:** This tight pore specifically targets, traps, and completely removes the highly deformable **mycoplasmas** and many endotoxins.
     4.  **0.04 $\\mu$m filter:** Added at the end if strict viral clearance is also a mandatory requirement.
+
+
+---
+
+### 💡 Exam Tips & Summary
+- Prioritize repeated year-tagged questions from this set.
+- Keep a 3-line answer frame ready: definition, key mechanism/steps, exam keywords.
+- Use one quick table/flow or contrast point for higher marks in long answers.
+- Revise this set once within 24 hours and once in final revision week.
 `,
         rawMd_bn: `
 ### **Q1. Define sterilization. Reasons? Approaches to avoid contamination? Consequences of contamination?**
@@ -843,6 +906,15 @@ Producing plant proteins (e.g., **leghemoglobin** for meat alternatives) in a mi
     2.  **0.5 $\\mu$m filter:** Bulk microbial and lipid layer removal.
     3.  **0.1 $\\mu$m filter:** This tight pore specifically targets, traps, and completely removes the highly deformable **mycoplasmas** and many endotoxins.
     4.  **0.04 $\\mu$m filter:** Added at the end if strict viral clearance is also a mandatory requirement.
+
+
+---
+
+### 💡 Exam Tips & Summary (দ্রুত রিভিশন)
+- এই সেটের বারবার আসা বছরভিত্তিক প্রশ্ন আগে শেষ করো।
+- ৩-লাইন ফরম্যাটে উত্তর লেখো: সংজ্ঞা, মূল মেকানিজম/স্টেপ, এক্সাম-কিওয়ার্ড।
+- বড় উত্তরে ১টা টেবিল/ফ্লো/তুলনা যোগ করলে নম্বর বাড়ে।
+- ২৪ ঘণ্টার মধ্যে ১ বার এবং ফাইনাল রিভিশনে ১ বার সেটটি রিভিশন দাও।
 `
     },
     {
@@ -892,6 +964,15 @@ The production of the aminoglycoside antibiotic Sagamycin by *Micromonospora sag
 2.  **Second Stage:** 30 mL of culture is used to inoculate 300 mL of medium in a 2L flask for 2 days.
 3.  **Third Stage:** 1.5L of the 2nd seed culture is added to 15L of medium in a small **stainless steel seed fermenter**.
 4.  **Final Stage:** 60L of the 4th seed culture is used to inoculate the main **production tank** (e.g., 1000L). It is grown for several days with tightly controlled aeration and agitation to optimize antibiotic synthesis.
+
+
+---
+
+### 💡 Exam Tips & Summary
+- Prioritize repeated year-tagged questions from this set.
+- Keep a 3-line answer frame ready: definition, key mechanism/steps, exam keywords.
+- Use one quick table/flow or contrast point for higher marks in long answers.
+- Revise this set once within 24 hours and once in final revision week.
 `,
         rawMd_bn: `
 ### **Q1. What do you mean by inoculum? Importance of size? Ideal properties? Criteria for transfer?**
@@ -937,6 +1018,15 @@ The production of Sagamycin by *Micromonospora sagamiensis* involves a **four-st
 2.  **Second Stage:** 30 mL of culture used to inoculate 300 mL of medium in a 2L flask for 2 days.
 3.  **Third Stage:** 1.5L of 2nd seed culture added to 15L of medium in a **stainless steel jar fermenter**.
 4.  **Final Stage:** 60L of 4th seed culture used for the **production tank** (e.g., 1000L) after several days of growth with controlled aeration and agitation.
+
+
+---
+
+### 💡 Exam Tips & Summary (দ্রুত রিভিশন)
+- এই সেটের বারবার আসা বছরভিত্তিক প্রশ্ন আগে শেষ করো।
+- ৩-লাইন ফরম্যাটে উত্তর লেখো: সংজ্ঞা, মূল মেকানিজম/স্টেপ, এক্সাম-কিওয়ার্ড।
+- বড় উত্তরে ১টা টেবিল/ফ্লো/তুলনা যোগ করলে নম্বর বাড়ে।
+- ২৪ ঘণ্টার মধ্যে ১ বার এবং ফাইনাল রিভিশনে ১ বার সেটটি রিভিশন দাও।
 `
     },
     {
@@ -1001,6 +1091,15 @@ The **Cellular Yield Coefficient (YX/S)** is defined biologically as the **quant
 It is represented by the formula: 
 $$Y = \\frac{\\text{Biomass Produced (}\\Delta X)}{\\text{Substrate Consumed (}\\Delta S)}$$
 It reflects the fundamental metabolic efficiency of turning a raw carbohydrate source into structural cellular weight.
+
+
+---
+
+### 💡 Exam Tips & Summary
+- Prioritize repeated year-tagged questions from this set.
+- Keep a 3-line answer frame ready: definition, key mechanism/steps, exam keywords.
+- Use one quick table/flow or contrast point for higher marks in long answers.
+- Revise this set once within 24 hours and once in final revision week.
 `,
         rawMd_bn: `
 ### **Q1. Define Bioreactor. Design considerations? Types? Most used type and why?**
@@ -1059,6 +1158,15 @@ Fermentations are classified into **Batch, Fed-Batch, and Continuous** processes
 ### **Q8. What is the Cellular Yield Coefficient ($Y$)?**
 The **Cellular Yield Coefficient** is defined as the **quantity of cell dry matter produced** per gram of **carbon substrate utilized**. It is represented by the formula: 
 $$Y = \\frac{\\text{Biomass Produced } (\\Delta X)}{\\text{Substrate Consumed } (\\Delta S)}$$
+
+
+---
+
+### 💡 Exam Tips & Summary (দ্রুত রিভিশন)
+- এই সেটের বারবার আসা বছরভিত্তিক প্রশ্ন আগে শেষ করো।
+- ৩-লাইন ফরম্যাটে উত্তর লেখো: সংজ্ঞা, মূল মেকানিজম/স্টেপ, এক্সাম-কিওয়ার্ড।
+- বড় উত্তরে ১টা টেবিল/ফ্লো/তুলনা যোগ করলে নম্বর বাড়ে।
+- ২৪ ঘণ্টার মধ্যে ১ বার এবং ফাইনাল রিভিশনে ১ বার সেটটি রিভিশন দাও।
 `
     }
 ];

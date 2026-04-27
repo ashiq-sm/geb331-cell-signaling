@@ -396,12 +396,12 @@
                 <div class="status-badge status-active">▶ Access Notebook</div>
             </a>
 
-            <div class="course-card card-disabled">
+            <a href="GEB349_BIOENERGETICS_INTERACTIVE.html" class="course-card">
                 <div class="course-icon">⚡</div>
-                <div class="course-code">GEB 336</div>
+                <div class="course-code">GEB 349</div>
                 <div class="course-name">Bioenergetics</div>
-                <div class="status-badge status-upcoming">⏳ Coming Soon</div>
-            </div>
+                <div class="status-badge status-active">▶ Access Notebook</div>
+            </a>
 
             <a href="GEB341_AQUACULTURE_INTERACTIVE.html" class="course-card">
                 <div class="course-icon">🐟</div>
@@ -568,6 +568,15 @@
                 }
             } else if (lastVisited === 'geb337') {
                 const card = document.querySelector('a[href="GEB337_RDNA_TECH_INTERACTIVE.html"]');
+                if (card) {
+                    card.classList.add('last-visited');
+                    const badge = document.createElement('div');
+                    badge.className = 'last-visited-badge';
+                    badge.textContent = '⏰ Last Visited';
+                    card.appendChild(badge);
+                }
+            } else if (lastVisited === 'geb349') {
+                const card = document.querySelector('a[href="GEB349_BIOENERGETICS_INTERACTIVE.html"]');
                 if (card) {
                     card.classList.add('last-visited');
                     const badge = document.createElement('div');

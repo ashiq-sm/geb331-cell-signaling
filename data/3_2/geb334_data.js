@@ -245,7 +245,16 @@ const geb334_sets = [
 7. **Cell Population Dynamics:** Populations evolve in response to therapy and immune pressure (চিকিৎসায় বাধা দান)
 
 💡 **Logic Hint:** Remember "Soil and Seed" theory — Cancer cell is the Seed, target organ is the Soil. Metastasis only grows if seed finds compatible soil.
-    `,
+    
+
+---
+
+### 💡 Exam Tips & Summary
+- Prioritize repeated year-tagged questions from this set.
+- Keep a 3-line answer frame ready: definition, key mechanism/steps, exam keywords.
+- Use one quick table/flow or contrast point for higher marks in long answers.
+- Revise this set once within 24 hours and once in final revision week.
+`,
     rawMd_bn: `
 ### ক্লাস্টার 1.1: মূল সংজ্ঞা এবং টিউমার বৃদ্ধির গতিবিদ্যা
 
@@ -262,7 +271,16 @@ const geb334_sets = [
 **ক্যান্সার:** অস্বাভাবিক কোষ বৃদ্ধি দ্বারা চিহ্নিত রোগের একটি গ্রুপ যা আক্রমণ বা ছড়িয়ে পড়ার সম্ভাবনা রয়েছে।
 
 **টিউমোরিজেনেসিস:** স্বাভাবিক কোষগুলি ক্যান্সার কোষে রূপান্তরিত হওয়ার বহুপদক্ষেপী প্রক্রিয়া।
-    `
+    
+
+---
+
+### 💡 Exam Tips & Summary (দ্রুত রিভিশন)
+- এই সেটের বারবার আসা বছরভিত্তিক প্রশ্ন আগে শেষ করো।
+- ৩-লাইন ফরম্যাটে উত্তর লেখো: সংজ্ঞা, মূল মেকানিজম/স্টেপ, এক্সাম-কিওয়ার্ড।
+- বড় উত্তরে ১টা টেবিল/ফ্লো/তুলনা যোগ করলে নম্বর বাড়ে।
+- ২৪ ঘণ্টার মধ্যে ১ বার এবং ফাইনাল রিভিশনে ১ বার সেটটি রিভিশন দাও।
+`
   },
   
   {
@@ -380,7 +398,16 @@ const geb334_sets = [
 - High-grade tumors have microscopic spread even at diagnosis
 - Present in ~20-30% of "localized" cancers at presentation
 - Requires systemic adjuvant therapy even with negative imaging
-    `,
+    
+
+---
+
+### 💡 Exam Tips & Summary
+- Prioritize repeated year-tagged questions from this set.
+- Keep a 3-line answer frame ready: definition, key mechanism/steps, exam keywords.
+- Use one quick table/flow or contrast point for higher marks in long answers.
+- Revise this set once within 24 hours and once in final revision week.
+`,
     rawMd_bn: `
 ### ক্লাস্টার 2.1: টিউমার আক্রমণ এবং বিচ্ছুরণ
 **বছর:** 2023, 2022, 2016, 2014, 2013 | **মার্ক:** 1+3, 4, 5
@@ -396,7 +423,16 @@ const geb334_sets = [
 | **1** | **সংযুক্তি** | ইন্টিগ্রিন, ফাইব্রোনেক্টিন, ল্যামিনিন রিসেপ্টর ব্যবহার করে বাঁধা |
 | **2** | **প্রোটিওলাইসিস** | ম্যাট্রিক্স মেটালোপ্রোটিনেজ/এমএমপি দ্বারা স্থানীয় অবক্ষয় |
 | **3** | **লোকোমোশন** | ইনভেডোপডিয়া এক্সটেনশন ব্যবহার করে মাইগ্রেশন |
-    `
+    
+
+---
+
+### 💡 Exam Tips & Summary (দ্রুত রিভিশন)
+- এই সেটের বারবার আসা বছরভিত্তিক প্রশ্ন আগে শেষ করো।
+- ৩-লাইন ফরম্যাটে উত্তর লেখো: সংজ্ঞা, মূল মেকানিজম/স্টেপ, এক্সাম-কিওয়ার্ড।
+- বড় উত্তরে ১টা টেবিল/ফ্লো/তুলনা যোগ করলে নম্বর বাড়ে।
+- ২৪ ঘণ্টার মধ্যে ১ বার এবং ফাইনাল রিভিশনে ১ বার সেটটি রিভিশন দাও।
+`
   },
 
   {
@@ -562,7 +598,16 @@ const geb334_sets = [
 4. **Tissue Tropism:** Infect specific cell types (HPV→epithelium, EBV→B-cells)
 5. **Immune Evasion:** Virus evolves to avoid immune detection
 6. **Insertional Mutagenesis:** Random integration can activate or inactivate crucial genes
-    `,
+    
+
+---
+
+### 💡 Exam Tips & Summary
+- Prioritize repeated year-tagged questions from this set.
+- Keep a 3-line answer frame ready: definition, key mechanism/steps, exam keywords.
+- Use one quick table/flow or contrast point for higher marks in long answers.
+- Revise this set once within 24 hours and once in final revision week.
+`,
     rawMd_bn: `
 ### ক্লাস্টার 3.1: প্রোটো-অনকোজিন এবং অনকোজিন সক্রিয়করণ
 
@@ -576,7 +621,16 @@ const geb334_sets = [
 3. **ইনসার্শন** - ভাইরাল ডিএনএ নিয়ন্ত্রক সিকোয়েন্স সংযোজন
 4. **ডিলিশন** - ক্রোমোসোমাল সেগমেন্ট হারানো
 5. **ট্রান্সলোকেশন** - জিনের নতুন অবস্থানে স্থানান্তর
-    `
+    
+
+---
+
+### 💡 Exam Tips & Summary (দ্রুত রিভিশন)
+- এই সেটের বারবার আসা বছরভিত্তিক প্রশ্ন আগে শেষ করো।
+- ৩-লাইন ফরম্যাটে উত্তর লেখো: সংজ্ঞা, মূল মেকানিজম/স্টেপ, এক্সাম-কিওয়ার্ড।
+- বড় উত্তরে ১টা টেবিল/ফ্লো/তুলনা যোগ করলে নম্বর বাড়ে।
+- ২৪ ঘণ্টার মধ্যে ১ বার এবং ফাইনাল রিভিশনে ১ বার সেটটি রিভিশন দাও।
+`
   },
 
   {
@@ -735,7 +789,16 @@ const geb334_sets = [
 5. **Immune Modulation:** Altered immune response favors tumor growth
 
 💡 **Key Point:** Most tumor viruses act as cofactors, not complete carcinogens. Additional mutations needed for transformation.
-    `,
+    
+
+---
+
+### 💡 Exam Tips & Summary
+- Prioritize repeated year-tagged questions from this set.
+- Keep a 3-line answer frame ready: definition, key mechanism/steps, exam keywords.
+- Use one quick table/flow or contrast point for higher marks in long answers.
+- Revise this set once within 24 hours and once in final revision week.
+`,
     rawMd_bn: `
 ### ক্লাস্টার 4.1: কার্সিনোজেনেসিস শ্রেণীবিভাগ
 
@@ -748,7 +811,16 @@ const geb334_sets = [
 | **ইনিশিয়েশন** | প্রথম আনুবংশিক পরিবর্তন | অপ্রতিরোধ্য; একক ঘটনা যথেষ্ট |
 | **প্রচার** | সূচিত কোষ বিভাজন অস্বাভাবিক ক্লাস্টার গঠন | পুনরাবৃত্তিযোগ্য; একাধিক/দীর্ঘমেয়াদী ডোজ প্রয়োজন |
 | **অগ্রগতি** | কোষ আক্রমণাত্মক বৈশিষ্ট্য অর্জন করে | স্পষ্ট ম্যালিগন্যান্সিতে পরিণত হয় |
-    `
+    
+
+---
+
+### 💡 Exam Tips & Summary (দ্রুত রিভিশন)
+- এই সেটের বারবার আসা বছরভিত্তিক প্রশ্ন আগে শেষ করো।
+- ৩-লাইন ফরম্যাটে উত্তর লেখো: সংজ্ঞা, মূল মেকানিজম/স্টেপ, এক্সাম-কিওয়ার্ড।
+- বড় উত্তরে ১টা টেবিল/ফ্লো/তুলনা যোগ করলে নম্বর বাড়ে।
+- ২৪ ঘণ্টার মধ্যে ১ বার এবং ফাইনাল রিভিশনে ১ বার সেটটি রিভিশন দাও।
+`
   },
 
   {
@@ -946,7 +1018,16 @@ const geb334_sets = [
    - Example: Tobacco mosaic virus
 
 💡 **Key Insight:** High burst size = efficient dispersal but rapid host cell death; low burst size = chronic infection but cell survival.
-    `,
+    
+
+---
+
+### 💡 Exam Tips & Summary
+- Prioritize repeated year-tagged questions from this set.
+- Keep a 3-line answer frame ready: definition, key mechanism/steps, exam keywords.
+- Use one quick table/flow or contrast point for higher marks in long answers.
+- Revise this set once within 24 hours and once in final revision week.
+`,
     rawMd_bn: `
 ### ক্লাস্টার 5.1: ভাইরাস শ্রেণীবিভাগ এবং কাঠামো
 
@@ -955,7 +1036,16 @@ const geb334_sets = [
 **ভাইরয়েড সংজ্ঞা:** সংক্রামক বৃত্তাকার একক-স্ট্র্যান্ডেড আরএনএ যা প্রোটিন কোট ছাড়াই উদ্ভিদ হোস্টে প্রতিলিপি করে।
 
 **প্রিয়ন সংজ্ঞা:** প্রোটিনযুক্ত সংক্রামক কণা; ভুলভাবে ভাঁজ করা PrPSc প্রোটিন নিউরোডিজেনারেটিভ রোগ সৃষ্টি করে।
-    `
+    
+
+---
+
+### 💡 Exam Tips & Summary (দ্রুত রিভিশন)
+- এই সেটের বারবার আসা বছরভিত্তিক প্রশ্ন আগে শেষ করো।
+- ৩-লাইন ফরম্যাটে উত্তর লেখো: সংজ্ঞা, মূল মেকানিজম/স্টেপ, এক্সাম-কিওয়ার্ড।
+- বড় উত্তরে ১টা টেবিল/ফ্লো/তুলনা যোগ করলে নম্বর বাড়ে।
+- ২৪ ঘণ্টার মধ্যে ১ বার এবং ফাইনাল রিভিশনে ১ বার সেটটি রিভিশন দাও।
+`
   },
 
   {
@@ -1129,7 +1219,16 @@ const geb334_sets = [
 - International travel screening in pandemic phases
 
 💡 **Key Concept:** SARS-CoV-2 severity stems from BOTH viral replication + host overreaction (cytokine storm). Treatment targets both: antivirals + immunomodulation.
-    `,
+    
+
+---
+
+### 💡 Exam Tips & Summary
+- Prioritize repeated year-tagged questions from this set.
+- Keep a 3-line answer frame ready: definition, key mechanism/steps, exam keywords.
+- Use one quick table/flow or contrast point for higher marks in long answers.
+- Revise this set once within 24 hours and once in final revision week.
+`,
     rawMd_bn: `
 ### ক্লাস্টার 6.1: ইনফ্লুয়েঞ্জা ভাইরাস এবং জেনেটিক্যাল পুনর্গঠন
 
@@ -1141,7 +1240,16 @@ const geb334_sets = [
 2. প্রতিলিপির সময়, আরএনএ সেগমেন্টগুলি মিশ্রিত এবং পুনরায় মিলিত হয়
 3. প্রোজেনি ভাইরাসগুলিতে সেগমেন্টের উপন্যাস সংমিশ্রণ রয়েছে
 4. নতুন ভাইরাল স্ট্রেন তাত্ক্ষণিকভাবে তৈরি হয় (ব্যক্তিগত মিউটেশন ছাড়াই)
-    `
+    
+
+---
+
+### 💡 Exam Tips & Summary (দ্রুত রিভিশন)
+- এই সেটের বারবার আসা বছরভিত্তিক প্রশ্ন আগে শেষ করো।
+- ৩-লাইন ফরম্যাটে উত্তর লেখো: সংজ্ঞা, মূল মেকানিজম/স্টেপ, এক্সাম-কিওয়ার্ড।
+- বড় উত্তরে ১টা টেবিল/ফ্লো/তুলনা যোগ করলে নম্বর বাড়ে।
+- ২৪ ঘণ্টার মধ্যে ১ বার এবং ফাইনাল রিভিশনে ১ বার সেটটি রিভিশন দাও।
+`
   },
 
   {
@@ -1430,7 +1538,16 @@ CD4+ loss = Loss of immune "generals" → Immune "soldiers" (B cells, CTLs, macr
 - Detection Methods use natural viral replication machinery (reverse transcriptase)
 
 💡 **Key Concept:** The same receptors (CD4/CCR5) that allow viral entry also allow researchers to specifically detect and isolate HIV-positive cells for molecular analysis.
-    `,
+    
+
+---
+
+### 💡 Exam Tips & Summary
+- Prioritize repeated year-tagged questions from this set.
+- Keep a 3-line answer frame ready: definition, key mechanism/steps, exam keywords.
+- Use one quick table/flow or contrast point for higher marks in long answers.
+- Revise this set once within 24 hours and once in final revision week.
+`,
     rawMd_bn: `
 ### ক্লাস্টার 7.1: এইচআইভি কাঠামো এবং জিনোম
 
@@ -1444,7 +1561,16 @@ CD4+ loss = Loss of immune "generals" → Immune "soldiers" (B cells, CTLs, macr
 | **Gag** | MA (p17), CA (p24), NC (p7) | কাঠামোগত প্রোটিন |
 | **Pol** | RT (p66/p51), IN (p31), PR (p11) | এনজাইম |
 | **Env** | gp120, gp41 | আবরণীয় গ্লাইকোপ্রোটিন |
-    `
+    
+
+---
+
+### 💡 Exam Tips & Summary (দ্রুত রিভিশন)
+- এই সেটের বারবার আসা বছরভিত্তিক প্রশ্ন আগে শেষ করো।
+- ৩-লাইন ফরম্যাটে উত্তর লেখো: সংজ্ঞা, মূল মেকানিজম/স্টেপ, এক্সাম-কিওয়ার্ড।
+- বড় উত্তরে ১টা টেবিল/ফ্লো/তুলনা যোগ করলে নম্বর বাড়ে।
+- ২৪ ঘণ্টার মধ্যে ১ বার এবং ফাইনাল রিভিশনে ১ বার সেটটি রিভিশন দাও।
+`
   },
 
   {
@@ -1711,7 +1837,16 @@ CD4+ loss = Loss of immune "generals" → Immune "soldiers" (B cells, CTLs, macr
 - ভাইরাল সংযুক্তি প্রোটিন নির্দিষ্ট কোষ পৃষ্ঠ রিসেপ্টর স্বীকৃতি দেয়
 - রিসেপ্টর বিভিন্ন টিস্যুতে ভিন্নভাবে প্রকাশিত হয়
 - কোন অঙ্গ/টিস্যু সংক্রামিত হয় তা নির্ধারণ করে
-    `
+    
+
+---
+
+### 💡 Exam Tips & Summary (দ্রুত রিভিশন)
+- এই সেটের বারবার আসা বছরভিত্তিক প্রশ্ন আগে শেষ করো।
+- ৩-লাইন ফরম্যাটে উত্তর লেখো: সংজ্ঞা, মূল মেকানিজম/স্টেপ, এক্সাম-কিওয়ার্ড।
+- বড় উত্তরে ১টা টেবিল/ফ্লো/তুলনা যোগ করলে নম্বর বাড়ে।
+- ২৪ ঘণ্টার মধ্যে ১ বার এবং ফাইনাল রিভিশনে ১ বার সেটটি রিভিশন দাও।
+`
   }
 ];
 

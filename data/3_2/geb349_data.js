@@ -659,8 +659,8 @@ Here are the exam-ready solutions for SET 5 and SET 6 of your Bioenergetics cour
   },
   {
     id: "set6",
-    title: "SET 6: <span style=\"background-color:#fff59d; padding:0 2px; border-radius:3px;\">Oxidative Phosphorylation</span> & <span style=\"background-color:#fff59d; padding:0 2px; border-radius:3px;\">ATP Synthase</span>",
-    rawMd_en: `### ★ SET 6: <span style="background-color:#fff59d; padding:0 2px; border-radius:3px;">Oxidative Phosphorylation</span> & <span style="background-color:#fff59d; padding:0 2px; border-radius:3px;">ATP Synthase</span>
+    title: "SET 6: Oxidative Phosphorylation & ATP Synthase",
+    rawMd_en: `### ★ SET 6: Oxidative Phosphorylation & ATP Synthase
 
 #### Cluster 6.1: <span style="background-color:#fff59d; padding:0 2px; border-radius:3px;">Chemiosmotic</span> Theory & Evidence
 **Q: State the chemiosmotic model theory. Show evidence for the role of a proton gradient in ATP synthesis. [2022, 2+5 Marks] ★**
@@ -777,7 +777,7 @@ Here are the exam-ready solutions for **SET 7** and **SET 8** of your Bioenerget
 ---`,
     rawMd_bn: `### বাংলা নোট (ইংরেজি কনটেন্ট মিরর)
 
-### ★ SET 6: <span style="background-color:#fff59d; padding:0 2px; border-radius:3px;">Oxidative Phosphorylation</span> & <span style="background-color:#fff59d; padding:0 2px; border-radius:3px;">ATP Synthase</span>
+### ★ SET 6: Oxidative Phosphorylation & ATP Synthase
 
 #### Cluster 6.1: <span style="background-color:#fff59d; padding:0 2px; border-radius:3px;">Chemiosmotic</span> Theory & Evidence
 **Q: State the chemiosmotic model theory. Show evidence for the role of a proton gradient in ATP synthesis. [2022, 2+5 Marks] ★**
@@ -1073,8 +1073,8 @@ ATP-producing flux in TCA is controlled by energy charge and redox state:
   },
   {
     id: "set8",
-    title: "SET 8: Photosynthesis vs. <span style=\"background-color:#fff59d; padding:0 2px; border-radius:3px;\">Oxidative Phosphorylation</span>",
-    rawMd_en: `### SET 8: Photosynthesis vs. <span style="background-color:#fff59d; padding:0 2px; border-radius:3px;">Oxidative Phosphorylation</span>
+    title: "SET 8: Photosynthesis vs. Oxidative Phosphorylation",
+    rawMd_en: `### SET 8: Photosynthesis vs. Oxidative Phosphorylation
 
 #### Cluster 8.1: Light Reactions & <span style="background-color:#fff59d; padding:0 2px; border-radius:3px;">Photophosphorylation</span>
 **Q: How is light energy converted to chemical energy? PS I vs. PS II. [2016, 5 Marks]**
@@ -1118,7 +1118,7 @@ ATP-producing flux in TCA is controlled by energy charge and redox state:
 ---`,
     rawMd_bn: `### বাংলা নোট (ইংরেজি কনটেন্ট মিরর)
 
-### SET 8: Photosynthesis vs. <span style="background-color:#fff59d; padding:0 2px; border-radius:3px;">Oxidative Phosphorylation</span>
+### SET 8: Photosynthesis vs. Oxidative Phosphorylation
 
 #### Cluster 8.1: Light Reactions & <span style="background-color:#fff59d; padding:0 2px; border-radius:3px;">Photophosphorylation</span>
 **Q: How is light energy converted to chemical energy? PS I vs. PS II. [2016, 5 Marks]**
@@ -1163,8 +1163,8 @@ ATP-producing flux in TCA is controlled by energy charge and redox state:
   },
   {
     id: "set9",
-    title: "SET 9: Oxygen Toxicity, <span style=\"background-color:#ffcdd2; padding:0 2px; border-radius:3px;\">ROS</span> & Mitochondrial Diseases",
-    rawMd_en: `### ★ SET 9: Oxygen Toxicity, <span style="background-color:#ffcdd2; padding:0 2px; border-radius:3px;">ROS</span> & Mitochondrial Diseases
+    title: "SET 9: Oxygen Toxicity, ROS & Mitochondrial Diseases",
+    rawMd_en: `### ★ SET 9: Oxygen Toxicity, ROS & Mitochondrial Diseases
 
 #### Cluster 9.1: Oxygen Toxicity, <span style="background-color:#ffcdd2; padding:0 2px; border-radius:3px;">ROS</span> & Antioxidant Defense Systems
 **Q: What is oxygen toxicity? How do cells defend against reactive oxygen species (<span style="background-color:#ffcdd2; padding:0 2px; border-radius:3px;">ROS</span>)? [HIGH ★]**
@@ -1245,7 +1245,7 @@ When O<sub>2</sub> is reduced univalently instead of tetravalently, toxic **Reac
 - 🌐 BioNotes: [https://sm-nextgen-bionotes.vercel.app/](https://sm-nextgen-bionotes.vercel.app/)`,
     rawMd_bn: `### বাংলা নোট (ইংরেজি কনটেন্ট মিরর)
 
-### ★ SET 9: Oxygen Toxicity, <span style="background-color:#ffcdd2; padding:0 2px; border-radius:3px;">ROS</span> & Mitochondrial Diseases
+### ★ SET 9: Oxygen Toxicity, ROS & Mitochondrial Diseases
 
 #### Cluster 9.1: Oxygen Toxicity, <span style="background-color:#ffcdd2; padding:0 2px; border-radius:3px;">ROS</span> & Antioxidant Defense Systems
 **Q: What is oxygen toxicity? How do cells defend against reactive oxygen species (<span style="background-color:#ffcdd2; padding:0 2px; border-radius:3px;">ROS</span>)? [HIGH ★]**

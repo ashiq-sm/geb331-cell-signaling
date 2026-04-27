@@ -95,7 +95,16 @@ const geb331_sets_part3 = [
 ৩. **Limb Patterning (হাত-পায়ের আকার গঠন):** হাত-পায়ের আঙুলের মাঝখানের কোষগুলোকে মেরে ফেলে (Apoptosis) সুন্দর আঙুল তৈরি করতে BMP কাজ করে।
 ৪. **Fracture Healing (প্লাস্টার/হাড় জোড়া লাগানো):** হাড় ভেঙে গেলে সেখানে নতুন হাড় তৈরি করার জন্য ক্লিনিক্যালি রিকম্বিন্যান্ট BMP-2 এবং BMP-7 ব্যবহার করা হয়।
 
-**Disease (রোগ):** BMP রিসেপ্টরে মিউটেশন হলে **FOP (Fibrodysplasia ossificans progressiva)** নামক ভয়াবহ রোগ হয়, যেখানে মাংসপেশিগুলো নিজে নিজেই শক্ত হাড়ে পরিণত হয়ে যায় [28]।`,
+**Disease (রোগ):** BMP রিসেপ্টরে মিউটেশন হলে **FOP (Fibrodysplasia ossificans progressiva)** নামক ভয়াবহ রোগ হয়, যেখানে মাংসপেশিগুলো নিজে নিজেই শক্ত হাড়ে পরিণত হয়ে যায় [28]।
+
+---
+
+### 💡 Exam Tips & Summary (দ্রুত রিভিশন)
+- এই সেটের বারবার আসা বছরভিত্তিক প্রশ্ন আগে শেষ করো।
+- ৩-লাইন ফরম্যাটে উত্তর লেখো: সংজ্ঞা, মূল মেকানিজম/স্টেপ, এক্সাম-কিওয়ার্ড।
+- বড় উত্তরে ১টা টেবিল/ফ্লো/তুলনা যোগ করলে নম্বর বাড়ে।
+- ২৪ ঘণ্টার মধ্যে ১ বার এবং ফাইনাল রিভিশনে ১ বার সেটটি রিভিশন দাও।
+`,
         rawMd_en: `### TGF-β: Definition, Functions, & Canonical Pathway
 
 **[Q040] MARKS: 13**  
@@ -270,7 +279,16 @@ ER Stress থেকে কোষকে বাঁচানোর জন্য য
 | **Gene Expression** | HRE (Hypoxia Response Elements) জিনগুলো বন্ধ থাকে | **VEGF** (নতুন রক্তনালী তৈরি), **GLUT1** (গ্লুকোজ গ্রহণ বৃদ্ধি), **EPO** (রক্তকণিকা বৃদ্ধি) জিনগুলো চালু হয় |
 | **Metabolism** | Oxidative Phosphorylation (TCA Cycle) | Anaerobic Glycolysis (Lactate তৈরি) |
 
-**স্যারের স্লাইড থেকে:** "Under normoxia, HIF-1α is continually degraded. Under hypoxia, HIF-1α escapes degradation, dimerizes with HIF-1β, and translocates to the nucleus to activate genes promoting survival in low oxygen."`,
+**স্যারের স্লাইড থেকে:** "Under normoxia, HIF-1α is continually degraded. Under hypoxia, HIF-1α escapes degradation, dimerizes with HIF-1β, and translocates to the nucleus to activate genes promoting survival in low oxygen."
+
+---
+
+### 💡 Exam Tips & Summary (দ্রুত রিভিশন)
+- এই সেটের বারবার আসা বছরভিত্তিক প্রশ্ন আগে শেষ করো।
+- ৩-লাইন ফরম্যাটে উত্তর লেখো: সংজ্ঞা, মূল মেকানিজম/স্টেপ, এক্সাম-কিওয়ার্ড।
+- বড় উত্তরে ১টা টেবিল/ফ্লো/তুলনা যোগ করলে নম্বর বাড়ে।
+- ২৪ ঘণ্টার মধ্যে ১ বার এবং ফাইনাল রিভিশনে ১ বার সেটটি রিভিশন দাও।
+`,
         rawMd_en: `### CaMKII as an Intracellular Memory Device
 
 **[Q048 / Q052] MARKS: 3**  
@@ -436,7 +454,16 @@ To save the cell, the ER launches an alarm system called UPR. It has 3 main arms
 | **Signal molecule** | **Hormones** | **Neurotransmitters** |
 | **Path & Distance** | Via bloodstream (many meters) | Via the tiny gap (20 nm) |
 | **Speed** | **Slow** (minutes to hours) | **Extremely Fast** (milliseconds) |
-| **Target** | Broad (any cell with receptor) | Precise (one neuron or muscle) |`,
+| **Target** | Broad (any cell with receptor) | Precise (one neuron or muscle) |
+
+---
+
+### 💡 Exam Tips & Summary (দ্রুত রিভিশন)
+- এই সেটের বারবার আসা বছরভিত্তিক প্রশ্ন আগে শেষ করো।
+- ৩-লাইন ফরম্যাটে উত্তর লেখো: সংজ্ঞা, মূল মেকানিজম/স্টেপ, এক্সাম-কিওয়ার্ড।
+- বড় উত্তরে ১টা টেবিল/ফ্লো/তুলনা যোগ করলে নম্বর বাড়ে।
+- ২৪ ঘণ্টার মধ্যে ১ বার এবং ফাইনাল রিভিশনে ১ বার সেটটি রিভিশন দাও।
+`,
         rawMd_en: `### Bacterial Chemotaxis
 
 **[Q059 / Q074] MARKS: 6+14**  
