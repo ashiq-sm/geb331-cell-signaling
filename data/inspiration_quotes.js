@@ -144,7 +144,8 @@
         "👀 Tightly close your eyes. চোখের যত্ন নাও, পৃথিবীটা দেখার জন্য তো চাই!",
         "👀 Roll eyes to each side to relieve eye strain.",
         "👀 Rotate eyes clockwise to relax your eye muscles.",
-        "👀 20-20-20 Rule: Look 20ft away for 20s every 20min. Rotate eyes counterclockwise.",
+        "👀 20-20-20 Rule: Look 20ft away for 20s every 20min.",
+        "👀 Rotate eyes counterclockwise to relax your eye muscles.",
         "👀 Blink your eyes frequently to keep them moist.",
         "👀 Focus on a distant point. Refresh your vision.",
         "💧 Have some water. Hydration is key to eye health!"
