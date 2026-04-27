@@ -52,11 +52,11 @@
         },
         {
             id: 'd7',
-            topic: 'protection',
-            arabic: 'حَسْبُنَا اللَّهُ وَنِعْمَ الْوَكِيلُ',
-            english: 'Allah is sufficient for us, and He is the best disposer of affairs.',
-            bengali: 'আল্লাহই আমাদের জন্য যথেষ্ট, আর তিনিই উত্তম কর্মবিধায়ক।',
-            reference: 'Quran 3:173'
+            topic: 'wellbeing',
+            arabic: 'اللَّهُمَّ إِنِّي أَسْأَلُكَ الْعَفْوَ وَالْعَافِيَةَ فِي الدُّنْيَا وَالْآخِرَةِ',
+            english: 'O Allah, I ask You for forgiveness and well-being in this world and the Hereafter.',
+            bengali: 'হে আল্লাহ, আমি আপনার কাছে দুনিয়া ও আখিরাতে ক্ষমা ও নিরাপত্তা প্রার্থনা করছি।',
+            reference: 'Sunan Abi Dawud 5074'
         },
         {
             id: 'd8',
@@ -108,11 +108,11 @@
         },
         {
             id: 'd14',
-            topic: 'patience',
-            arabic: 'إِنَّ اللَّهَ مَعَ الصَّابِرِينَ',
-            english: 'Indeed, Allah is with the patient.',
-            bengali: 'নিশ্চয়ই আল্লাহ ধৈর্যশীলদের সাথে আছেন।',
-            reference: 'Quran 2:153'
+            topic: 'family',
+            arabic: 'رَبَّنَا هَبْ لَنَا مِنْ أَزْوَاجِنَا وَذُرِّيَّاتِنَا قُرَّةَ أَعْيُنٍ',
+            english: 'Our Lord, grant us from among our wives and offspring comfort to our eyes.',
+            bengali: 'হে আমাদের রব, আমাদের স্ত্রী ও সন্তানদের আমাদের জন্য নয়নপ্রীতিকর করুন।',
+            reference: 'Quran 25:74'
         },
         {
             id: 'd15',
@@ -132,11 +132,11 @@
         },
         {
             id: 'd17',
-            topic: 'trust',
-            arabic: 'وَمَنْ يَتَوَكَّلْ عَلَى اللَّهِ فَهُوَ حَسْبُهُ',
-            english: 'And whoever relies upon Allah - then He is sufficient for him.',
-            bengali: 'যে আল্লাহর ওপর ভরসা করে, তিনিই তার জন্য যথেষ্ট।',
-            reference: 'Quran 65:3'
+            topic: 'guidance_piety',
+            arabic: 'اللَّهُمَّ إِنِّي أَسْأَلُكَ الْهُدَى وَالتُّقَى وَالْعَفَافَ وَالْغِنَى',
+            english: 'O Allah, I ask You for guidance, piety, chastity, and self-sufficiency.',
+            bengali: 'হে আল্লাহ, আমি আপনার কাছে হেদায়াত, তাকওয়া, পবিত্রতা ও সচ্ছলতা প্রার্থনা করছি।',
+            reference: 'Sahih Muslim 2721'
         },
         {
             id: 'd18',
@@ -148,11 +148,11 @@
         },
         {
             id: 'd19',
-            topic: 'ease_hardship',
-            arabic: 'فَإِنَّ مَعَ الْعُسْرِ يُسْرًا',
-            english: 'For indeed, with hardship [will be] ease.',
-            bengali: 'নিশ্চয়ই কষ্টের সাথেই রয়েছে স্বস্তি।',
-            reference: 'Quran 94:5'
+            topic: 'purification',
+            arabic: 'اللَّهُمَّ آتِ نَفْسِي تَقْوَاهَا وَزَكِّهَا أَنْتَ خَيْرُ مَنْ زَكَّاهَا',
+            english: 'O Allah, grant my soul its piety and purify it; You are the best to purify it.',
+            bengali: 'হে আল্লাহ, আমার নফসকে তাকওয়া দান করুন এবং একে পবিত্র করুন; আপনিই নফস পবিত্র করার জন্য শ্রেষ্ঠ।',
+            reference: 'Sahih Muslim 2722'
         },
         {
             id: 'd20',
