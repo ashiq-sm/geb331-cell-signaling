@@ -106,7 +106,48 @@
             quote_en: 'Small steps every day build great journeys.',
             quote_bn: 'প্রতিদিনের ছোট ছোট পদক্ষেপই বড় যাত্রা গড়ে।',
             reference: 'Motivational proverb'
+        },
+        {
+            id: 'q16',
+            category: 'quran',
+            quote_en: 'Truly, in Allah’s remembrance hearts find peace.',
+            quote_bn: 'নিশ্চয়ই আল্লাহর স্মরণেই অন্তরসমূহ প্রশান্তি লাভ করে।',
+            reference: 'Quran 13:28'
+        },
+        {
+            id: 'q17',
+            category: 'hadith',
+            quote_en: 'Take advantage of five before five: youth before old age, health before illness, wealth before poverty, leisure before busyness, and life before death.',
+            quote_bn: 'পাঁচটি জিনিসের আগে পাঁচটি জিনিসকে কাজে লাগাও: বার্ধক্যের আগে যৌবনকে, অসুস্থতার আগে সুস্থতাকে, দারিদ্র্যের আগে সম্পদকে, ব্যস্ততার আগে অবসরকে এবং মৃত্যুর আগে জীবনকে।',
+            reference: 'Hadith (Al-Hakim)'
+        },
+        {
+            id: 'q18',
+            category: 'quran',
+            quote_en: 'So when you have finished [your duties], devote yourself [to worship], and turn eagerly to your Lord.',
+            quote_bn: 'অতঃপর যখন তুমি (কাজ থেকে) অবসর পাও, তখন ইবাদতে কঠোর পরিশ্রম করো এবং তোমার রবের প্রতিই মনোযোগ দাও।',
+            reference: 'Quran 94:7-8'
+        },
+        {
+            id: 'q19',
+            category: 'proverb',
+            quote_en: 'Help comes effortlessly through labor; patience is bestowed during hardship.',
+            quote_bn: 'শ্রম অনুযায়ী সাহায্য, বিপদ অনুযায়ী ধৈর্য নাযিল হয়ে থাকে।',
+            reference: 'Islamic Proverb'
         }
+    ];
+
+    var EYE_TIPS_DB = [
+        "👀 Take a short walk. Return mind to the Lord, seek help!",
+        "👀 Rest your body, mind, and spirit—small breaks recharge big dreams!",
+        "👀 Lean back at your seat and relax. (Allah does not burden a soul beyond its capacity)",
+        "👀 Tightly close your eyes. চোখের যত্ন নাও, পৃথিবীটা দেখার জন্য তো চাই!",
+        "👀 Roll eyes to each side to relieve eye strain.",
+        "👀 Rotate eyes clockwise to relax your eye muscles.",
+        "👀 20-20-20 Rule: Look 20ft away for 20s every 20min. Rotate eyes counterclockwise.",
+        "👀 Blink your eyes frequently to keep them moist.",
+        "👀 Focus on a distant point. Refresh your vision.",
+        "💧 Have some water. Hydration is key to eye health!"
     ];
 
     function randIndex(max) {
@@ -141,10 +182,16 @@
         return out;
     }
 
+    function getRandomEyeTip() {
+        return pickRandom(EYE_TIPS_DB);
+    }
+
     global.SM_QUOTES = {
         all: QUOTES_DB,
+        eyeTips: EYE_TIPS_DB,
         byCategory: byCategory,
         getRandomQuote: getRandomQuote,
-        getRandomQuotes: getRandomQuotes
+        getRandomQuotes: getRandomQuotes,
+        getRandomEyeTip: getRandomEyeTip
     };
 })(typeof window !== 'undefined' ? window : this);

@@ -20,6 +20,9 @@ class AdminPowers {
         // Check if already logged in
         this.checkAdminSession();
         
+        // Load quotes database
+        this.loadQuotesDB();
+        
         // Add options menu to page
         this.addOptionsMenu();
         
@@ -135,6 +138,9 @@ class AdminPowers {
                 }
             }
         });
+
+        // Initialize Quote Replacement Observer
+        this.initQuoteObserver();
     }
 
     initAutoTheme() {
@@ -178,6 +184,82 @@ class AdminPowers {
             toast.classList.remove('show');
             setTimeout(() => toast.remove(), 500);
         }, 6000);
+    }
+
+    loadQuotesDB() {
+        if (window.SM_QUOTES) return;
+        const script = document.createElement('script');
+        script.src = 'data/inspiration_quotes.js';
+        script.onload = () => {
+            console.log('🌟 SM Inspiration Quotes Loaded');
+            this.replaceSupportWithQuotes();
+        };
+        document.head.appendChild(script);
+    }
+
+    initQuoteObserver() {
+        const container = document.getElementById('setsContainer');
+        if (!container) return;
+
+        // Watch for sets being rendered
+        const observer = new MutationObserver((mutations) => {
+            let shouldReplace = false;
+            mutations.forEach(mutation => {
+                if (mutation.addedNodes.length) shouldReplace = true;
+            });
+            if (shouldReplace) {
+                this.replaceSupportWithQuotes();
+            }
+        });
+
+        observer.observe(container, { childList: true, subtree: true });
+        
+        // Initial replacement if already rendered
+        setTimeout(() => this.replaceSupportWithQuotes(), 1000);
+    }
+
+    replaceSupportWithQuotes() {
+        if (!window.SM_QUOTES) return;
+
+        const container = document.getElementById('setsContainer');
+        if (!container) return;
+
+        // Find all support message blocks
+        // The pattern is a div with text-align:center containing "Found this helpful?"
+        const cards = container.querySelectorAll('.set-card');
+        cards.forEach(card => {
+            if (card.dataset.quoteAdded === 'true') return;
+
+            const content = card.querySelector('.set-content');
+            if (!content) return;
+
+            // Look for the specific support div
+            const possibleDivs = content.querySelectorAll('div[style*="text-align:center"]');
+            possibleDivs.forEach(div => {
+                if (div.textContent.includes('Found this helpful?')) {
+                    const quote = window.SM_QUOTES.getRandomQuote();
+                    const eyeTip = window.SM_QUOTES.getRandomEyeTip ? window.SM_QUOTES.getRandomEyeTip() : null;
+                    if (quote) {
+                        let html = `
+                            <div class="sm-quote-box">
+                                <div class="sm-quote-bn">${quote.quote_bn}</div>
+                                <div class="sm-quote-en">"${quote.quote_en}"</div>
+                                <div class="sm-quote-ref">— ${quote.reference}</div>
+                        `;
+                        if (eyeTip) {
+                            html += `
+                                <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px dashed rgba(16, 185, 129, 0.2); font-size: 0.9rem; color: var(--accent-color); font-weight: 600; opacity: 0.9;">
+                                    ${eyeTip}
+                                </div>
+                            `;
+                        }
+                        html += `</div>`;
+                        div.innerHTML = html;
+                        card.dataset.quoteAdded = 'true';
+                    }
+                }
+            });
+        });
     }
 
     checkAdminSession() {
@@ -367,7 +449,7 @@ class AdminPowers {
             </div>
             <div class="menu-section">
                 <div class="menu-label">Platform Settings</div>
-                <button class="menu-item" onclick="if(typeof toggleTheme === 'function') toggleTheme()">
+                <button class="menu-item" onclick="AdminPowersInstance.menuToggleTheme()">
                     🌓 Toggle Theme (Dark/Light)
                 </button>
             </div>
@@ -378,10 +460,10 @@ class AdminPowers {
                 <div class="menu-section">
                     <div class="menu-label">Reading Controls</div>
                     <div class="menu-grid">
-                        <div class="menu-grid-item" onclick="if(typeof changeFont === 'function') changeFont(-1)">A− Smaller</div>
-                        <div class="menu-grid-item" onclick="if(typeof changeFont === 'function') changeFont(1)">A+ Larger</div>
+                        <div class="menu-grid-item" onclick="AdminPowersInstance.menuChangeFont(-1)">A− Smaller</div>
+                        <div class="menu-grid-item" onclick="AdminPowersInstance.menuChangeFont(1)">A+ Larger</div>
                     </div>
-                    <select class="menu-select" onchange="if(typeof applyFontFamily === 'function') applyFontFamily(this.value)">
+                    <select class="menu-select" onchange="AdminPowersInstance.menuApplyFontFamily(this.value)">
                         <option value="'Inter', 'Noto Sans Bengali'">👁️ Eye Saver (Inter)</option>
                         <option value="'Outfit', 'Noto Sans Bengali'">✨ Premium (Outfit)</option>
                         <option value="'Roboto Slab', 'Noto Sans Bengali'">📖 Academic (Slab)</option>
@@ -389,11 +471,11 @@ class AdminPowers {
                 </div>
                 <div class="menu-section">
                     <div class="menu-label">Language & View</div>
-                    <select class="menu-select" onchange="if(typeof changeLanguage === 'function') changeLanguage(this.value)">
+                    <select class="menu-select" onchange="AdminPowersInstance.menuChangeLanguage(this.value)">
                         <option value="en" selected>🌐 English (Academic)</option>
                         <option value="bn">🌐 Smart Mix (Bilingual)</option>
                     </select>
-                    <select class="menu-select" style="margin-top: 10px;" onchange="if(typeof applyViewMode === 'function') applyViewMode(this.value)">
+                    <select class="menu-select" style="margin-top: 10px;" onchange="AdminPowersInstance.menuApplyViewMode(this.value)">
                         <option value="auto">🖥️ Auto View</option>
                         <option value="mobile">📱 Mobile</option>
                         <option value="desktop">💻 Desktop</option>
@@ -450,6 +532,71 @@ class AdminPowers {
             };
             document.addEventListener('click', closeMenu);
         }, 100);
+    }
+
+    menuToggleTheme() {
+        if (typeof window.toggleTheme === 'function') {
+            window.toggleTheme();
+            return;
+        }
+        const root = document.documentElement;
+        const current = root.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+        const next = current === 'dark' ? 'light' : 'dark';
+        root.setAttribute('data-theme', next);
+        localStorage.setItem('sm-theme', next);
+    }
+
+    menuChangeFont(delta) {
+        if (typeof window.changeFont === 'function') {
+            window.changeFont(delta);
+            return;
+        }
+        const current = parseInt(localStorage.getItem('fontSize') || '16', 10);
+        const next = Math.max(12, Math.min(24, current + Number(delta || 0)));
+        document.documentElement.style.setProperty('--font-size-base', `${next}px`);
+        localStorage.setItem('fontSize', String(next));
+    }
+
+    menuApplyFontFamily(font) {
+        if (typeof window.applyFontFamily === 'function') {
+            window.applyFontFamily(font);
+            return;
+        }
+        if (!font) return;
+        document.documentElement.style.setProperty('--body-font', font);
+        localStorage.setItem('bodyFont', font);
+    }
+
+    menuChangeLanguage(lang) {
+        if (!lang) return;
+        if (typeof window.changeLanguage === 'function') {
+            window.changeLanguage(lang);
+            return;
+        }
+        localStorage.setItem('language', lang);
+        localStorage.setItem('sm-language-manual-override', 'true');
+        if (typeof window.currentLang !== 'undefined') {
+            window.currentLang = lang;
+        }
+        if (typeof window.renderSets === 'function') {
+            window.renderSets();
+        }
+    }
+
+    menuApplyViewMode(mode) {
+        if (typeof window.applyViewMode === 'function') {
+            window.applyViewMode(mode);
+            return;
+        }
+        const container = document.querySelector('.container');
+        if (!container) return;
+        if (mode === 'mobile') {
+            container.style.maxWidth = '450px';
+        } else if (mode === 'desktop') {
+            container.style.maxWidth = '1300px';
+        } else {
+            container.style.maxWidth = '100%';
+        }
     }
 
     showLoginModal() {

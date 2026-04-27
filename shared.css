@@ -361,8 +361,8 @@ body {
 /* ═══ Main Menu Button ═══ */
 #main-menu-btn {
     position: fixed;
-    top: 20px;
-    right: 20px;
+    top: 15px;
+    right: 15px;
     z-index: 10000;
     width: 54px;
     height: 54px;
@@ -433,8 +433,8 @@ body {
 /* ═══ Top Menu Dropdown ═══ */
 #top-menu {
     position: fixed;
-    top: 80px;
-    right: 20px;
+    top: 75px;
+    right: 15px;
     --menu-glass-surface: rgba(var(--bg-rgb, 255, 255, 255), 0.24);
     --menu-glass-hover: rgba(var(--bg-rgb, 255, 255, 255), 0.34);
     background: rgba(var(--bg-rgb, 255, 255, 255), 0.5);
@@ -615,9 +615,10 @@ body {
     .qs-card.open .qs-content { padding: 1.2rem 0.9rem !important; }
     
     #top-menu {
-        width: calc(100% - 40px);
-        left: 20px;
-        right: 20px;
+        top: 76px;
+        right: 12px;
+        left: auto;
+        width: min(350px, calc(100vw - 24px));
     }
     .mission-section {
         padding: 1.5rem 1.2rem;
@@ -675,4 +676,63 @@ body {
 /* ═══ Global Interaction Fixes ═══ */
 #main-menu-btn, .toggle-floatbar-btn, .toggle-bookmark-panel-btn, #support-project-btn {
     transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease !important;
+}
+/* ═══ Premium Inspiration Quotes ═══ */
+.sm-quote-box {
+    background: var(--nav-pill-bg);
+    border-radius: 1.5rem;
+    padding: 1.8rem 2rem;
+    margin: 2.5rem 0 1rem;
+    position: relative;
+    border-left: 6px solid var(--accent-color);
+    text-align: left;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+}
+.sm-quote-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+}
+.sm-quote-box::after {
+    content: '\f10e';
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 2.5rem;
+    opacity: 0.08;
+    color: var(--accent-color);
+    pointer-events: none;
+}
+.sm-quote-bn {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--accent-color);
+    margin-bottom: 0.8rem;
+    line-height: 1.5;
+    font-family: 'Noto Sans Bengali', sans-serif;
+}
+.sm-quote-en {
+    font-size: 0.95rem;
+    opacity: 0.8;
+    font-style: italic;
+    margin-bottom: 1rem;
+    line-height: 1.5;
+    font-family: 'Outfit', sans-serif;
+}
+.sm-quote-ref {
+    font-size: 0.8rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--accent-color);
+    opacity: 0.7;
+}
+
+[data-theme="dark"] .sm-quote-box {
+    background: rgba(255, 255, 255, 0.03);
+    border-color: var(--accent-color);
 }

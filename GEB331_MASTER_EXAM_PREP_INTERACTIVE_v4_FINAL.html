@@ -257,6 +257,40 @@ function changeLanguage(lang) {
     renderSets();
 }
 
+function toggleTheme() {
+    sessionStorage.setItem("sm-theme-manual-override", "true");
+    const root = document.documentElement;
+    const theme = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', theme);
+    localStorage.setItem('sm-theme', theme);
+}
+
+function changeFont(delta) {
+    currentFontSize = Math.max(12, Math.min(24, currentFontSize + Number(delta || 0)));
+    document.documentElement.style.setProperty('--font-size-base', currentFontSize + 'px');
+    localStorage.setItem('fontSize', currentFontSize);
+}
+
+function applyFontFamily(font) {
+    if(!font) font = document.getElementById('fontFamily')?.value;
+    if (!font) return;
+    document.documentElement.style.setProperty('--body-font', font);
+    localStorage.setItem('bodyFont', font);
+}
+
+function applyViewMode(mode) {
+    if(!mode) mode = document.getElementById('viewMode')?.value;
+    const container = document.querySelector('.container');
+    if (!container) return;
+    if(mode === 'mobile') {
+        container.style.maxWidth = '450px';
+    } else if(mode === 'desktop') {
+        container.style.maxWidth = '1300px';
+    } else {
+        container.style.maxWidth = '100%';
+    }
+}
+
 function addCopyButtons() {
     document.querySelectorAll('.markdown-body pre').forEach(pre => {
         if (pre.querySelector('.copy-btn')) return;

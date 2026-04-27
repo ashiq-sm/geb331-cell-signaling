@@ -906,10 +906,11 @@ function toggleHighlightStyle() {
     const isUnderline = oldClass.includes('highlight-underline');
     const colorMatch = oldClass.match(/(?:underline-)?(red|green|indigo|yellow)/);
     const color = colorMatch ? colorMatch[1] : 'red';
-    if (isUnderline) currentHighlightElement.className = `highlight-${color}`;
-    AdminPowersInstance.pushHighlightState(); saveHighlightsToStorage();
-    else currentHighlightElement.className = `highlight-underline underline-${color}`;
-    AdminPowersInstance.pushHighlightState(); saveHighlightsToStorage();
+    if (isUnderline) {
+        currentHighlightElement.className = `highlight-${color}`;
+    } else {
+        currentHighlightElement.className = `highlight-underline underline-${color}`;
+    }
     currentHighlightElement.dataset.userHighlight = '1';
     document.getElementById('highlightMenu').classList.remove('show');
     AdminPowersInstance.pushHighlightState(); saveHighlightsToStorage();
