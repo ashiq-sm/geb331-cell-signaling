@@ -22,9 +22,6 @@ class AdminPowers {
         
         // Load quotes database
         this.loadQuotesDB();
-
-        // Load and init Dua system
-        this.initDuaSystem();
         
         // Add options menu to page
         this.addOptionsMenu();
@@ -198,65 +195,6 @@ class AdminPowers {
             this.replaceSupportWithQuotes();
         };
         document.head.appendChild(script);
-    }
-
-    initDuaSystem() {
-        if (window.SM_DUAS) {
-            this.setupDynamicDuaModal();
-            return;
-        }
-        const script = document.createElement('script');
-        script.src = 'data/duas_data.js';
-        script.onload = () => {
-            console.log('🌙 SM Duas System Loaded');
-            this.setupDynamicDuaModal();
-        };
-        document.head.appendChild(script);
-    }
-
-    setupDynamicDuaModal() {
-        // Update link text
-        const updateLinks = () => {
-            document.querySelectorAll('.dua-link').forEach(link => {
-                link.textContent = 'Have a random সুন্দর দোয়া HERE!';
-            });
-        };
-        updateLinks();
-        
-        // Watch for dynamic content (MutationObserver)
-        const observer = new MutationObserver(() => updateLinks());
-        observer.observe(document.body, { childList: true, subtree: true });
-
-        // Redefine global openDuaModal
-        window.openDuaModal = () => {
-            const modal = document.getElementById('duaModal');
-            if (!modal || !window.SM_DUAS || !window.SM_DUAS.getShuffledDua) {
-                if (modal) modal.style.display = 'flex';
-                return;
-            }
-
-            const dua = window.SM_DUAS.getShuffledDua();
-            const arabicEl = modal.querySelector('.dua-arabic');
-            const meaningEl = modal.querySelector('.dua-meaning');
-
-            if (arabicEl) arabicEl.textContent = dua.arabic;
-            if (meaningEl) {
-                meaningEl.innerHTML = `
-                    <div style="margin-bottom: 0.8rem; padding-bottom: 0.8rem; border-bottom: 1px dashed rgba(0,0,0,0.1);">
-                        <strong style="color: var(--accent-color); display: block; margin-bottom: 0.3rem;">English:</strong>
-                        <div style="font-style: italic; opacity: 0.9;">"${dua.english}"</div>
-                    </div>
-                    <div>
-                        <strong style="color: var(--accent-color); display: block; margin-bottom: 0.3rem;">অর্থ:</strong>
-                        <div style="font-weight: 500;">${dua.bengali}</div>
-                    </div>
-                    <div style="margin-top: 1.2rem; font-size: 0.75rem; opacity: 0.5; text-align: right; font-weight: 700;">
-                        — ${dua.reference}
-                    </div>
-                `;
-            }
-            modal.style.display = 'flex';
-        };
     }
 
     initQuoteObserver() {
