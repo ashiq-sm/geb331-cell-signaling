@@ -201,6 +201,39 @@
         
         [data-theme="light"] .status-upcoming { background: #f0fdf4; }
         
+        .card-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 1.2rem;
+            flex-wrap: wrap;
+        }
+        
+        .materials-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 14px;
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(16, 185, 129, 0.08));
+            border: 1.5px solid var(--accent-color);
+            border-radius: 12px;
+            color: var(--accent-color);
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .materials-btn:hover {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.25), rgba(16, 185, 129, 0.15));
+            transform: translateX(4px);
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.25);
+        }
+        
+        .materials-btn i {
+            font-size: 1.1rem;
+        }
+        
         .card-disabled { cursor: not-allowed; opacity: 0.8; border-left-color: #cbd5e1; filter: grayscale(50%); }
         [data-theme="dark"] .card-disabled { border-left-color: #475569; }
 
@@ -368,54 +401,103 @@
         <h2 class="semester-title">Year 3, Semester 2</h2>
         <div class="course-grid">
             
-            <a href="GEB331_MASTER_EXAM_PREP_INTERACTIVE_v4_FINAL.html" class="course-card">
-                <div class="course-icon">📘</div>
-                <div class="course-code">GEB 331</div>
-                <div class="course-name">Cell Signaling</div>
-                <div class="status-badge status-active">▶ Access Notebook</div>
-            </a>
+            <div class="course-card" style="text-decoration: none; padding: 0; display: flex; flex-direction: column;">
+                <a href="GEB331_MASTER_EXAM_PREP_INTERACTIVE_v4_FINAL.html" style="text-decoration: none; color: inherit; padding: 2rem; flex-grow: 1; display: flex; flex-direction: column;">
+                    <div class="course-icon">📘</div>
+                    <div class="course-code">GEB 331</div>
+                    <div class="course-name">Cell Signaling</div>
+                    <div class="status-badge status-active">▶ Access Notebook</div>
+                </a>
+                <div style="padding: 0 2rem 2rem; border-top: 1px solid var(--border-color); margin-top: auto;">
+                    <a href="https://drive.google.com/drive/folders/1zRId8n4sRGt7D71tDDOfNMXgjnS4JtPt?usp=drive_link" target="_blank" rel="noopener noreferrer" class="materials-btn" title="Open 3/2 semester materials folder">
+                        📁 Course Materials
+                    </a>
+                </div>
+            </div>
             
-            <a href="GEB335_FERMENTATION_TECH_INTERACTIVE.html" class="course-card">
-                <div class="course-icon">🔬</div>
-                <div class="course-code">GEB 335</div>
-                <div class="course-name">Fermentation Technology</div>
-                <div class="status-badge status-active">▶ Access Notebook</div>
-            </a>
+            <div class="course-card" style="text-decoration: none; padding: 0; display: flex; flex-direction: column;">
+                <a href="GEB335_FERMENTATION_TECH_INTERACTIVE.html" style="text-decoration: none; color: inherit; padding: 2rem; flex-grow: 1; display: flex; flex-direction: column;">
+                    <div class="course-icon">🔬</div>
+                    <div class="course-code">GEB 335</div>
+                    <div class="course-name">Fermentation Technology</div>
+                    <div class="status-badge status-active">▶ Access Notebook</div>
+                </a>
+                <div style="padding: 0 2rem 2rem; border-top: 1px solid var(--border-color); margin-top: auto;">
+                    <a href="https://drive.google.com/drive/folders/1zRId8n4sRGt7D71tDDOfNMXgjnS4JtPt?usp=drive_link" target="_blank" rel="noopener noreferrer" class="materials-btn" title="Open 3/2 semester materials folder">
+                        📁 Course Materials
+                    </a>
+                </div>
+            </div>
 
-            <a href="GEB337_RDNA_TECH_INTERACTIVE.html" class="course-card">
-                <div class="course-icon">🧬</div>
-                <div class="course-code">GEB 337</div>
-                <div class="course-name">Recombinant DNA Technology</div>
-                <div class="status-badge status-active">▶ Access Notebook</div>
-            </a>
+            <div class="course-card" style="text-decoration: none; padding: 0; display: flex; flex-direction: column;">
+                <a href="GEB337_RDNA_TECH_INTERACTIVE.html" style="text-decoration: none; color: inherit; padding: 2rem; flex-grow: 1; display: flex; flex-direction: column;">
+                    <div class="course-icon">🧬</div>
+                    <div class="course-code">GEB 337</div>
+                    <div class="course-name">Recombinant DNA Technology</div>
+                    <div class="status-badge status-active">▶ Access Notebook</div>
+                </a>
+                <div style="padding: 0 2rem 2rem; border-top: 1px solid var(--border-color); margin-top: auto;">
+                    <a href="https://drive.google.com/drive/folders/1zRId8n4sRGt7D71tDDOfNMXgjnS4JtPt?usp=drive_link" target="_blank" rel="noopener noreferrer" class="materials-btn" title="Open 3/2 semester materials folder">
+                        📁 Course Materials
+                    </a>
+                </div>
+            </div>
 
-            <a href="GEB334_ONCOLOGY_VIROLOGY_INTERACTIVE.html" class="course-card">
-                <div class="course-icon">🦠</div>
-                <div class="course-code">GEB 334</div>
-                <div class="course-name">Oncology and Virology</div>
-                <div class="status-badge status-active">▶ Access Notebook</div>
-            </a>
+            <div class="course-card" style="text-decoration: none; padding: 0; display: flex; flex-direction: column;">
+                <a href="GEB334_ONCOLOGY_VIROLOGY_INTERACTIVE.html" style="text-decoration: none; color: inherit; padding: 2rem; flex-grow: 1; display: flex; flex-direction: column;">
+                    <div class="course-icon">🦠</div>
+                    <div class="course-code">GEB 334</div>
+                    <div class="course-name">Oncology and Virology</div>
+                    <div class="status-badge status-active">▶ Access Notebook</div>
+                </a>
+                <div style="padding: 0 2rem 2rem; border-top: 1px solid var(--border-color); margin-top: auto;">
+                    <a href="https://drive.google.com/drive/folders/1zRId8n4sRGt7D71tDDOfNMXgjnS4JtPt?usp=drive_link" target="_blank" rel="noopener noreferrer" class="materials-btn" title="Open 3/2 semester materials folder">
+                        📁 Course Materials
+                    </a>
+                </div>
+            </div>
 
-            <a href="GEB349_BIOENERGETICS_INTERACTIVE.html" class="course-card">
-                <div class="course-icon">⚡</div>
-                <div class="course-code">GEB 349</div>
-                <div class="course-name">Bioenergetics</div>
-                <div class="status-badge status-active">▶ Access Notebook</div>
-            </a>
+            <div class="course-card" style="text-decoration: none; padding: 0; display: flex; flex-direction: column;">
+                <a href="GEB349_BIOENERGETICS_INTERACTIVE.html" style="text-decoration: none; color: inherit; padding: 2rem; flex-grow: 1; display: flex; flex-direction: column;">
+                    <div class="course-icon">⚡</div>
+                    <div class="course-code">GEB 349</div>
+                    <div class="course-name">Bioenergetics</div>
+                    <div class="status-badge status-active">▶ Access Notebook</div>
+                </a>
+                <div style="padding: 0 2rem 2rem; border-top: 1px solid var(--border-color); margin-top: auto;">
+                    <a href="https://drive.google.com/drive/folders/1zRId8n4sRGt7D71tDDOfNMXgjnS4JtPt?usp=drive_link" target="_blank" rel="noopener noreferrer" class="materials-btn" title="Open 3/2 semester materials folder">
+                        📁 Course Materials
+                    </a>
+                </div>
+            </div>
 
-            <a href="GEB341_AQUACULTURE_INTERACTIVE.html" class="course-card">
-                <div class="course-icon">🐟</div>
-                <div class="course-code">GEB 341</div>
-                <div class="course-name">Aquaculture & Fish Genetics</div>
-                <div class="status-badge status-active">▶ Access Notebook</div>
-            </a>
+            <div class="course-card" style="text-decoration: none; padding: 0; display: flex; flex-direction: column;">
+                <a href="GEB341_AQUACULTURE_INTERACTIVE.html" style="text-decoration: none; color: inherit; padding: 2rem; flex-grow: 1; display: flex; flex-direction: column;">
+                    <div class="course-icon">🐟</div>
+                    <div class="course-code">GEB 341</div>
+                    <div class="course-name">Aquaculture & Fish Genetics</div>
+                    <div class="status-badge status-active">▶ Access Notebook</div>
+                </a>
+                <div style="padding: 0 2rem 2rem; border-top: 1px solid var(--border-color); margin-top: auto;">
+                    <a href="https://drive.google.com/drive/folders/1zRId8n4sRGt7D71tDDOfNMXgjnS4JtPt?usp=drive_link" target="_blank" rel="noopener noreferrer" class="materials-btn" title="Open 3/2 semester materials folder">
+                        📁 Course Materials
+                    </a>
+                </div>
+            </div>
 
-            <a href="GEB343_BIOPROCESS_INTERACTIVE_v1.html" class="course-card">
-                <div class="course-icon">⚙️</div>
-                <div class="course-code">GEB 343</div>
-                <div class="course-name">Bioprocess Engineering</div>
-                <div class="status-badge status-active">▶ Access Notebook</div>
-            </a>
+            <div class="course-card" style="text-decoration: none; padding: 0; display: flex; flex-direction: column;">
+                <a href="GEB343_BIOPROCESS_INTERACTIVE_v1.html" style="text-decoration: none; color: inherit; padding: 2rem; flex-grow: 1; display: flex; flex-direction: column;">
+                    <div class="course-icon">⚙️</div>
+                    <div class="course-code">GEB 343</div>
+                    <div class="course-name">Bioprocess Engineering</div>
+                    <div class="status-badge status-active">▶ Access Notebook</div>
+                </a>
+                <div style="padding: 0 2rem 2rem; border-top: 1px solid var(--border-color); margin-top: auto;">
+                    <a href="https://drive.google.com/drive/folders/1zRId8n4sRGt7D71tDDOfNMXgjnS4JtPt?usp=drive_link" target="_blank" rel="noopener noreferrer" class="materials-btn" title="Open 3/2 semester materials folder">
+                        📁 Course Materials
+                    </a>
+                </div>
+            </div>
 
         </div>
     </div>

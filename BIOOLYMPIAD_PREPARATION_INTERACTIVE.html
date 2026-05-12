@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <meta name="description" content="GEB 343 Bioprocess Engineering — Bilingual interactive study notebook by SM Ashikur Rahman. Smart Mix Bengali/English, search, PDF export.">
-    <meta property="og:title" content="GEB 343 · Bioprocess Engineering | SM NextGen BioNotes">
-    <meta property="og:description" content="Bilingual interactive exam prep for GEB 343 Bioprocess Engineering.">
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔬</text></svg>">
-    <title>GEB 343 · Bioprocess Study (Ben+Eng)</title>
+    <meta name="description" content="IBO Preparation — BioOlympiad Bilingual interactive study notebook by SM Ashikur Rahman. Smart Mix Bengali/English, search, PDF export.">
+    <meta property="og:title" content="IBO Preparation · BioOlympiad | SM NextGen BioNotes">
+    <meta property="og:description" content="Bilingual interactive prep for IBO BioOlympiad.">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏆</text></svg>">
+    <title>IBO Prep · BioOlympiad (Ben+Eng)</title>
     <!-- Google Fonts for Eye-Saving Typography -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Noto+Sans+Bengali:wght@400;700&family=Outfit:wght@400;700&family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -24,13 +24,11 @@
     </div>
 
     <div class="header">
-        <h1>⚙️ GEB 343 — Bioprocess Engineering <span>Bilingual Interactive Note</span></h1>
+        <h1>🏆 IBO Preparation — BioOlympiad <span>Bilingual Interactive Note</span></h1>
                 <div class="controls">
             <button class="control-btn" onclick="window.location.href='/'" style="font-weight: bold;">🏠 Home Hub</button>
             <select class="control-btn" style="background: #fff3cd !important; color: #856404 !important; font-weight: bold; border-color: #ffeeba;">
-                <option value="3/2" selected>🎓 Semester 3/2</option>
-                <option value="4/1">🎓 Semester 4/1 (Soon)</option>
-                <option value="4/2">🎓 Semester 4/2 (Soon)</option>
+                <option value="Special" selected>🎓 Olympiads/Special</option>
             </select>
             <select class="control-btn live-btn" id="courseSelect" onchange="if(this.value !== '#') window.open(this.value, '_self')" style="background: #e4f0e4 !important; color: #1a4d1a !important;" title="Switch Course">
                 <option value="GEB331_MASTER_EXAM_PREP_INTERACTIVE_v4_FINAL.html">📘 GEB 331: Cell Signaling</option>
@@ -38,8 +36,9 @@
                 <option value="GEB337_RDNA_TECH_INTERACTIVE.html">🧬 GEB 337: Recombinant DNA Tech</option>
                 <option value="GEB334_ONCOLOGY_VIROLOGY_INTERACTIVE.html">🦠 GEB 334: Oncology & Virology</option>
                 <option value="GEB341_AQUACULTURE_INTERACTIVE.html">🐟 GEB 341: Aquaculture & Genetics</option>
-                <option value="GEB343_BIOPROCESS_INTERACTIVE_v1.html" selected>⚙️ GEB 343: Bioprocess Engineering</option>
+                <option value="GEB343_BIOPROCESS_INTERACTIVE_v1.html">⚙️ GEB 343: Bioprocess Engineering</option>
                 <option value="GEB349_BIOENERGETICS_INTERACTIVE.html">⚡ GEB 349: Bioenergetics</option>
+            <option value="BIOOLYMPIAD_PREPARATION_INTERACTIVE.html" selected>🏆 BioOlympiad Prep</option>
             </select>
             <a href="https://drive.google.com/drive/folders/1zRId8n4sRGt7D71tDDOfNMXgjnS4JtPt?usp=drive_link" target="_blank" rel="noopener noreferrer" class="control-btn" style="background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(59, 130, 246, 0.08)) !important; color: #3b82f6 !important; border-color: rgba(59, 130, 246, 0.3) !important; font-weight: bold; text-decoration: none; display: inline-flex; align-items: center; gap: 6px;" title="Open 3/2 semester materials folder">📁 Materials</a>
             <!-- Options moved to Main Menu (3===) -->
@@ -98,7 +97,6 @@
         <button id="floatbarCloseBtn" onclick="toggleFloatingBar()" title="Show or Hide Floating Bar [G]">✕ Close</button>
         <div class="separator"></div>
         <span style="font-weight: 600; color: var(--accent-color); font-size: 0.85rem;">Text:</span>
-        <button onclick="toggleTheme()" title="Toggle Theme [T]">🌓</button>
         <button onclick="changeFont(-1)" title="Decrease Font Size">A−</button>
         <button onclick="changeFont(1)" title="Increase Font Size">A+</button>
         <button class="expand-all-btn" onclick="toggleAllSets()" title="Expand or Collapse All Sets [E]">📂 Expand All</button>
@@ -112,16 +110,17 @@
         </div>
         <div class="bookmark-list" id="bookmarkList"></div>
     </aside>
-    <div class="floatbar-tip" id="floatbarTip">Longpress/hover on buttons/icons to know tooltips and shortcuts</div>
     
     <!-- Highlight Context Menu -->
     <div class="highlight-menu" id="highlightMenu">
-        <button onclick="changeHighlightColor('red')" title="Change Highlight to Red">🔴</button>
-        <button onclick="changeHighlightColor('green')" title="Change Highlight to Green">🟢</button>
-        <button onclick="changeHighlightColor('indigo')" title="Change Highlight to Indigo">🔵</button>
-        <button onclick="changeHighlightColor('yellow')" title="Change Highlight to Yellow">🟡</button>
-        <button onclick="toggleHighlightStyle()" title="Toggle Underline or Background">🔄</button>
-        <button class="delete" onclick="deleteHighlight()" title="Delete This Highlight">🗑️</button>
+        <button onclick="changeHighlightColor('red')">🔴 Red</button>
+        <button onclick="changeHighlightColor('green')">🟢 Green</button>
+        <button onclick="changeHighlightColor('indigo')">🔵 Indigo</button>
+        <div class="highlight-menu-divider"></div>
+        <button onclick="toggleHighlightStyle()">🔄 Toggle Style</button>
+        <button onclick="editHighlightNote()">📝 Add/Edit Note</button>
+        <div class="highlight-menu-divider"></div>
+        <button class="delete" onclick="deleteHighlight()">🗑️ Delete</button>
     </div>
 
     <div class="inline-toggles-container" style="display: none;">
@@ -175,19 +174,17 @@
                 <div id="profileFallback" class="profile-fallback">SM</div>
             </div>
             <a href="https://www.linkedin.com/in/sm-ashikur-rahman/" target="_blank" class="author-name">SM Ashikur Rahman</a>
-            <div class="author-title">Developed with 💚 for GEB 343 | Bioprocess Engineering</div>
+            <div class="author-title">Developed with 💚 for IBO Aspirants</div>
         </div>
 
         <div class="donation-card" id="donationCard">
             <div class="donation-head">💚 Support This Study Project</div>
             <div class="donation-sub">Select method, drag the slider to choose amount, then tap the button to donate.</div>
-
             <div class="donation-methods" id="donationMethods">
                 <button class="donate-method-btn active" type="button" data-method="bkash">bKash</button>
                 <button class="donate-method-btn" type="button" data-method="nagad">Nagad</button>
                 <button class="donate-method-btn" type="button" data-method="rocket">Rocket</button>
             </div>
-
             
             <div style="margin: 1.2rem 0 0.4rem; display:flex; align-items:center; gap:12px; flex-wrap:wrap;">
                 <span style="font-size:0.9rem; font-weight:700; color:var(--accent-color);">Amount:</span>
@@ -208,7 +205,7 @@
 </div>
 
 <!-- Load external data -->
-<script src="data/3_2/geb343_data.js"></script>
+<script src="data/3_2/bioolympiad_data.js"></script>
 <script>
 let selectedDonationMethod = "bkash"; 
 let selectedDonationAmount = 50; 
@@ -219,14 +216,13 @@ let currentLang = 'en';
 let allExpanded = false;
 let highlightMode = 'background';
 let currentHighlightColor = null;
-const HIGHLIGHT_STORE_KEY = 'sm-geb343-highlights-v1';
-const HIGHLIGHT_VISIBILITY_KEY = 'sm-geb343-highlights-visible';
-let floatbarTipTimer = null;
-const setsData = geb343_sets;
+const setsData = bioolympiad_sets;
 
-const PROGRESS_KEY = 'sm-progress-geb343';
+const PROGRESS_KEY = 'sm-progress-bioolympiad';
+const HIGHLIGHT_STORE_KEY = "sm-highlights-bioolympiad-v1";
+const HIGHLIGHT_VISIBILITY_KEY = "sm-highlights-visible";
 let visitedSets = new Set(JSON.parse(localStorage.getItem(PROGRESS_KEY) || '[]'));
-const BOOKMARK_STORE_KEY = 'sm-bookmarks-geb343-v1';
+const BOOKMARK_STORE_KEY = 'sm-bookmarks-bioolympiad-v1';
 let bookmarkPositions = JSON.parse(localStorage.getItem(BOOKMARK_STORE_KEY) || '[]');
 
 function updateProgressBar() {
@@ -245,235 +241,29 @@ function getReadingTime(md) {
     return mins <= 1 ? '~1 min' : '~' + mins + ' min';
 }
 
-function getLocalizedSetMarkdown(item) {
-    const preferred = item['rawMd_' + currentLang];
-    if (preferred && preferred.trim().length > 50) return preferred; // Assuming 50 chars as 'complete' enough
-    
-    // Fallback logic
-    const fallback = item.rawMd_bn || item.rawMd || item.rawMd_en || "";
-    if (!fallback) return "";
-
-    const isEng = currentLang === 'en';
-    const langLabel = isEng ? 'English (Academic)' : 'Smart Mix (Bilingual)';
-    const otherLabel = isEng ? 'Smart Mix (Bilingual)' : 'English (Academic)';
-    
-    const hint = `
-<div style="background: rgba(251, 191, 36, 0.1); border-left: 5px solid #fbbf24; padding: 1rem; border-radius: 8px; margin-bottom: 1.5rem; font-size: 0.9rem; color: var(--text-color);">
-    <strong>⚠️ Content Notice:</strong> This set is currently unavailable in <b>${langLabel}</b>. 
-    Showing available version instead. Please switch to <b>${otherLabel}</b> in the ≡ Menu for the complete bilingual experience.
-</div>
-`;
-
-    return hint + fallback;
-}
-
-function cleanSetIntroHeading(md, item) {
-    if (!md) return "";
-    const titleClean = item.title.replace(/^🔹\s*/i, '').replace(/—.*$/i, '').trim();
-    const titleRegex = new RegExp(`^#\\s*${titleClean}.*?\\n`, 'i');
-    return md.replace(titleRegex, '').trim();
-}
-
-function autoDetectBestLanguage() {
-    if (!setsData || !Array.isArray(setsData) || setsData.length === 0) return;
-    
-    // Only detect if no manual override exists
-    if (localStorage.getItem('sm-language-manual-override')) return;
-
-    let enLen = 0;
-    let bnLen = 0;
-    
-    setsData.forEach(set => {
-        enLen += (set.rawMd_en || "").length;
-        bnLen += (set.rawMd_bn || "").length;
-        // Also check default rawMd which is often BN
-        if (!set.rawMd_bn && set.rawMd) bnLen += set.rawMd.length;
-    });
-    
-    const bestLang = enLen >= bnLen ? 'en' : 'bn';
-    if (currentLang !== bestLang) {
-        currentLang = bestLang;
-        localStorage.setItem('language', currentLang);
-        console.log(`[Auto-Detect] Switched to ${bestLang} (EN:${enLen} vs BN:${bnLen})`);
-    }
-}
-
-function renderSets() {
-    console.log('renderSets called. setsData:', setsData ? setsData.length + ' sets' : 'undefined');
-    const container = document.getElementById('setsContainer');
-    const spinner = document.getElementById('loadingSpinner');
-    
-    if (!setsData || !Array.isArray(setsData) || setsData.length === 0) {
-        console.error('ERROR: setsData not found or empty!', setsData);
-        if (spinner) spinner.classList.add('hidden');
-        
-        const isEng = currentLang === 'en';
-        const otherLang = isEng ? 'Smart Mix (Bilingual)' : 'English (Academic)';
-        
-        container.innerHTML = `
-            <div style="padding: 2.5rem; text-align: center; background: var(--nav-pill-bg); border-radius: 1.5rem; border: 2px dashed var(--accent-color); margin: 2rem 0;">
-                <div style="font-size: 3rem; margin-bottom: 1rem;">🤔</div>
-                <h3 style="color: var(--accent-color); margin-bottom: 1rem;">No content loaded for this language</h3>
-                <p style="color: var(--text-color); opacity: 0.8; margin-bottom: 1.5rem;">
-                    It seems there are no sets available in the selected language yet. 
-                    Please try switching to <b>${otherLang}</b> from the ≡ Menu to see the content.
-                </p>
-                <button onclick="AdminPowersInstance.showTopMenu()" style="background: var(--accent-color); color: white; border: none; padding: 0.8rem 1.5rem; border-radius: 50px; font-weight: 700; cursor: pointer; transition: 0.3s;">
-                    Open Menu to Change Language
-                </button>
-            </div>
-        `;
-        return;
-    }
-
-    
-    // Check if marked.js is loaded
-    if (!marked) {
-        const errorMsg = 'Error: Markdown parser (marked.js) failed to load';
-        console.error(errorMsg);
-        container.innerHTML = `<div style="padding:2rem; color:red; background:#ffe6e6; border:1px solid red; border-radius:5px;">${errorMsg}</div>`;
-        const spinner = document.getElementById('loadingSpinner');
-        if (spinner) setTimeout(() => spinner.classList.add('hidden'), 50);
-        return;
-    }
-    
-    let index = 0;
-    function renderNext() {
-        if (index >= setsData.length) {
-            setupNavObserver();
-            
-            if (typeof enhanceResponsiveTables === 'function') enhanceResponsiveTables(container);
-            if (window.MathJax && MathJax.typesetPromise) {
-                MathJax.typesetPromise().catch(err => console.error('MathJax error:', err));
-            }
-                if (typeof restoreHighlightsFromStorage === "function") restoreHighlightsFromStorage();
-    if (window.AdminPowersInstance) AdminPowersInstance.pushHighlightState();
-    return;
-        }
-
-        try {
-            const item = setsData[index];
-            console.log('Rendering set ' + (index + 1) + '/' + setsData.length + ': ' + (item?.id || 'unknown'));
-            
-            const card = document.createElement('div');
-            card.className = 'set-card';
-            card.id = item.id;
-            
-                        const mdContent = cleanSetIntroHeading(getLocalizedSetMarkdown(item), item);
-            
-            let mdRaw = item['rawMd_' + currentLang];
-            let hasDirectLang = mdRaw && mdRaw.trim() !== '';
-            let langHintHTML = '';
-            
-            if (!hasDirectLang) {
-                const targetLangName = currentLang === 'en' ? 'Smart Mix (Bilingual)' : 'English (Academic)';
-                const targetLangCode = currentLang === 'en' ? 'bn' : 'en';
-                langHintHTML = `
-                    <div class="empty-lang-hint" style="margin-top:0; margin-bottom:1.5rem; padding: 1.5rem;">
-                        <p style="font-size:0.9rem;">🌐 This set is primarily available in <b>${targetLangName}</b>.</p>
-                        <button class="control-btn" style="background:var(--accent-color); color:white; padding: 6px 16px; border-radius: 20px; margin-top: 10px; font-size:0.8rem;" onclick="changeLanguage('${targetLangCode}')">
-                            Switch to ${targetLangName} 🚀
-                        </button>
-                    </div>
-                `;
-            }
-            const readTime = getReadingTime(mdContent);
-            const isDone = visitedSets.has(item.id);
-
-            const parts = mdContent.split(/(?=###\s+)/g);
-            let flashcardsHTML = '';
-            
-            parts.forEach(part => {
-                const trimmed = part.trim();
-                if (!trimmed) return;
-
-                if (trimmed.startsWith('###')) {
-                    const lines = trimmed.split('\n');
-                    const qHeader = lines[0].replace('###', '').trim();
-                    const qBody = lines.slice(1).join('\n').trim();
-                    const qId = qHeader.match(/\[Q(\d+)\]/i)?.[1] || Math.random().toString(36).substr(2, 5);
-                    
-                    flashcardsHTML += `
-                        <div class="qs-card" id="q-${qId}">
-                            <div class="qs-header" onclick="toggleQS(this)">
-                                <div class="qs-title">${marked.parseInline(qHeader)}</div>
-                                <div class="qs-actions">
-                                    <button class="qs-action-btn" onclick="copyQS(this, event)" title="Copy this question and answer">📋 Copy</button>
-                                    <span class="qs-toggle-icon">▶</span>
-                                </div>
-                            </div>
-                            <div class="qs-content">
-                                <div class="markdown-body">${marked.parse(qBody)}</div>
-                            </div>
-                        </div>
-                    `;
-                } else {
-                    flashcardsHTML += `<div class="markdown-body" style="margin-bottom:1.5rem; opacity:0.8;">${marked.parse(trimmed)}</div>`;
-                }
-            });
-
-            card.innerHTML = `
-                <div class="set-header" onclick="toggleSet(this)">
-                    <div class="set-info">
-                        <div class="set-title">${item.title}</div>
-                        <div class="set-meta">
-                            <span>⏱️ approx. ${readTime} min read</span>
-                            ${isDone ? '<span class="status-done">✅ Completed</span>' : '<span class="status-pending">📖 Not started</span>'}
-                        </div>
-                    </div>
-                    <div class="toggle-icon">${isDone ? '▼' : '▶'}</div>
-                </div>
-                <div class="set-content ${isDone ? 'open' : ''}">
-                    ${langHintHTML}
-                    <div class="local-toggle-bar">
-                        <button class="local-toggle-btn" onclick="toggleLocalQS('${item.id}', event)" title="Expand or collapse all questions in this set">💡 Show All</button>
-                    </div>
-                    ${flashcardsHTML}
-                    <div style="margin-top:2.5rem; padding-top:2rem; border-top:1px solid var(--border-color); text-align:center;">
-                        <div style="font-size:0.95rem; color:var(--text-muted); margin-bottom:0.8rem;">Found this helpful?</div>
-                        <button onclick="donateNow()" style="background:linear-gradient(135deg,#10b981,#059669);color:#fff;border:none;padding:0.7rem 1.5rem;border-radius:0.8rem;font-weight:700;cursor:pointer;font-size:0.95rem;">💚 Support This Project</button>
-                    </div>
-                </div>
-            `;
-            
-            container.appendChild(card);
-            if (isDone || index === 0) {
-                card.classList.add('open');
-                const icon = card.querySelector('.toggle-icon');
-                if(icon) icon.innerHTML = '▼'; 
-                visitedSets.add(item.id); 
-                activeSetId = item.id; 
-            }
-        } catch (err) {
-            console.error('Error rendering set ' + index + ':', err);
-            container.innerHTML += `<div style="padding:1rem; color:red; background:#ffe6e6; border:1px solid red; border-radius:5px; margin:1rem 0;">Error: Failed to render set ${index + 1}: ${err.message}</div>`;
-        }
-
-        index++;
-        requestAnimationFrame(renderNext);
-    }
-    requestAnimationFrame(renderNext);
-}
-
-function toggleSet(header) {
-    const card = header.parentElement;
-    card.classList.toggle('open');
-    const icon = card.querySelector('.toggle-icon');
-    if(icon) icon.innerHTML = card.classList.contains('open') ? '▼' : '▶';
-    if (card.classList.contains('open')) {
-        const id = card.id;
-        visitedSets.add(id);
-        localStorage.setItem(PROGRESS_KEY, JSON.stringify([...visitedSets]));
-        updateProgressBar();
-    }
-}
-
 function changeLanguage(lang) {
     if(!lang) lang = document.getElementById('languageSelect')?.value || currentLang;
     currentLang = lang;
     localStorage.setItem('language', currentLang);
     localStorage.setItem('sm-language-manual-override', 'true');
     renderSets();
+}
+
+function addCopyButtons() {
+    document.querySelectorAll('.markdown-body pre').forEach(pre => {
+        if (pre.querySelector('.copy-btn')) return;
+        const btn = document.createElement('button');
+        btn.className = 'copy-btn';
+        btn.textContent = '📋 Copy';
+        btn.onclick = () => {
+            const code = pre.querySelector('code')?.textContent || pre.textContent;
+            navigator.clipboard.writeText(code).then(() => {
+                btn.textContent = '✅ Copied!';
+                setTimeout(() => btn.textContent = '📋 Copy', 2000);
+            }).catch(() => { btn.textContent = '⚠️ Failed'; setTimeout(() => btn.textContent = '📋 Copy', 2000); });
+        };
+        pre.appendChild(btn);
+    });
 }
 
 function setupNavObserver() {
@@ -507,20 +297,13 @@ function updateBannerTitle(id) {
     if (set && titleEl) {
         titleEl.textContent = set.title;
         titleEl.classList.remove('slide-in-right');
-        void titleEl.offsetWidth;
+        void titleEl.offsetWidth; // Trigger reflow
         titleEl.classList.add('slide-in-right');
         banner.classList.add('active');
     }
 }
 
 window.addEventListener('scroll', () => {
-    const toggleBtn = document.getElementById('toggleFloatbarBtn');
-    const setsContainer = document.getElementById('setsContainer');
-    if (toggleBtn && setsContainer) {
-        const compactStartY = setsContainer.offsetTop + 220;
-        toggleBtn.classList.toggle('compact', window.scrollY > compactStartY);
-    }
-    
     if (!activeSetId) return;
     const banner = document.getElementById('progressBanner');
     const fill = document.getElementById('progressBannerFill');
@@ -553,7 +336,6 @@ function toggleAllSets() {
     const qsCards = document.querySelectorAll('.qs-card');
     const btn = document.getElementById('toggleAllBtn');
     
-    const floatingExpandBtn = document.querySelector('.expand-all-btn');
     
     cards.forEach(card => {
         if (allExpanded) {
@@ -574,9 +356,7 @@ function toggleAllSets() {
         else qs.classList.remove('open');
     });
     
-    const label = allExpanded ? '📁 Collapse All' : '📂 Expand All';
-    btn.innerHTML = label;
-    if (floatingExpandBtn) floatingExpandBtn.innerHTML = label;
+    if (btn) btn.innerHTML = allExpanded ? '📁 Collapse All' : '📂 Expand All';
     
     document.querySelectorAll('.local-toggle-btn').forEach(lbtn => {
         lbtn.innerHTML = allExpanded ? '💡 Hide All' : '💡 Show All';
@@ -667,6 +447,234 @@ function applyViewMode(mode) {
     }
 }
 
+function getLocalizedSetMarkdown(item) {
+    const preferred = item['rawMd_' + currentLang];
+    if (preferred && preferred.trim().length > 50) return preferred; // Assuming 50 chars as 'complete' enough
+    
+    // Fallback logic
+    const fallback = item.rawMd_bn || item.rawMd || item.rawMd_en || "";
+    if (!fallback) return "";
+
+    const isEng = currentLang === 'en';
+    const langLabel = isEng ? 'English (Academic)' : 'Smart Mix (Bilingual)';
+    const otherLabel = isEng ? 'Smart Mix (Bilingual)' : 'English (Academic)';
+    
+    const hint = `
+<div style="background: rgba(251, 191, 36, 0.1); border-left: 5px solid #fbbf24; padding: 1rem; border-radius: 8px; margin-bottom: 1.5rem; font-size: 0.9rem; color: var(--text-color);">
+    <strong>⚠️ Content Notice:</strong> This set is currently unavailable in <b>${langLabel}</b>. 
+    Showing available version instead. Please switch to <b>${otherLabel}</b> in the ≡ Menu for the complete bilingual experience.
+</div>
+`;
+
+    return hint + fallback;
+}
+
+function cleanSetIntroHeading(md, item) {
+    if (!md) return "";
+    const titleClean = item.title.replace(/^🔹\s*/i, '').replace(/—.*$/i, '').trim();
+    const titleRegex = new RegExp(`^#\\s*${titleClean}.*?\\n`, 'i');
+    return md.replace(titleRegex, '').trim();
+}
+
+function autoDetectBestLanguage() {
+    if (!setsData || !Array.isArray(setsData) || setsData.length === 0) return;
+    
+    // Only detect if no manual override exists
+    if (localStorage.getItem('sm-language-manual-override')) return;
+
+    let enLen = 0;
+    let bnLen = 0;
+    
+    setsData.forEach(set => {
+        enLen += (set.rawMd_en || "").length;
+        bnLen += (set.rawMd_bn || "").length;
+        // Also check default rawMd which is often BN
+        if (!set.rawMd_bn && set.rawMd) bnLen += set.rawMd.length;
+    });
+    
+    const bestLang = enLen >= bnLen ? 'en' : 'bn';
+    if (currentLang !== bestLang) {
+        currentLang = bestLang;
+        localStorage.setItem('language', currentLang);
+        console.log(`[Auto-Detect] Switched to ${bestLang} (EN:${enLen} vs BN:${bnLen})`);
+    }
+}
+
+function renderSets() {
+    console.log('renderSets called. setsData:', setsData ? setsData.length + ' sets' : 'undefined');
+    const container = document.getElementById('setsContainer');
+    const spinner = document.getElementById('loadingSpinner');
+    
+    if (!setsData || !Array.isArray(setsData) || setsData.length === 0) {
+        console.error('ERROR: setsData not found or empty!', setsData);
+        if (spinner) spinner.classList.add('hidden');
+        
+        const isEng = currentLang === 'en';
+        const otherLang = isEng ? 'Smart Mix (Bilingual)' : 'English (Academic)';
+        
+        container.innerHTML = `
+            <div style="padding: 2.5rem; text-align: center; background: var(--nav-pill-bg); border-radius: 1.5rem; border: 2px dashed var(--accent-color); margin: 2rem 0;">
+                <div style="font-size: 3rem; margin-bottom: 1rem;">🤔</div>
+                <h3 style="color: var(--accent-color); margin-bottom: 1rem;">No content loaded for this language</h3>
+                <p style="color: var(--text-color); opacity: 0.8; margin-bottom: 1.5rem;">
+                    It seems there are no sets available in the selected language yet. 
+                    Please try switching to <b>${otherLang}</b> from the ≡ Menu to see the content.
+                </p>
+                <button onclick="AdminPowersInstance.showTopMenu()" style="background: var(--accent-color); color: white; border: none; padding: 0.8rem 1.5rem; border-radius: 50px; font-weight: 700; cursor: pointer; transition: 0.3s;">
+                    Open Menu to Change Language
+                </button>
+            </div>
+        `;
+        return;
+    }
+
+    
+    if (!marked) {
+        console.error('ERROR: marked.js not loaded!');
+        if (spinner) spinner.classList.add('hidden');
+        container.innerHTML = '<div style="padding: 2rem; color: red;">Error: Markdown renderer not loaded. Please refresh page.</div>';
+        return;
+    }
+    
+    container.innerHTML = '';
+    
+    let index = 0;
+    function renderNext() {
+        try {
+            if (index >= setsData.length) {
+                console.log('All sets rendered successfully');
+                setupNavObserver();
+                
+                if (typeof enhanceResponsiveTables === 'function') enhanceResponsiveTables(container);
+                if (window.MathJax && MathJax.typesetPromise) {
+                    MathJax.typesetPromise().catch(err => console.error('MathJax error:', err));
+                }
+                // Hide spinner after rendering complete
+                if (spinner) {
+                    setTimeout(() => spinner.classList.add('hidden'), 50);
+                }
+                    if (typeof restoreHighlightsFromStorage === "function") restoreHighlightsFromStorage();
+    if (window.AdminPowersInstance) AdminPowersInstance.pushHighlightState();
+    return;
+            }
+
+            const item = setsData[index];
+            console.log(`Rendering set ${index + 1}/${setsData.length}: ${item?.id}`);
+            
+            const card = document.createElement('div');
+            card.className = 'set-card';
+            card.id = item.id;
+            
+                        const mdContent = cleanSetIntroHeading(getLocalizedSetMarkdown(item), item);
+            
+            let mdRaw = item['rawMd_' + currentLang];
+            let hasDirectLang = mdRaw && mdRaw.trim() !== '';
+            let langHintHTML = '';
+            
+            if (!hasDirectLang) {
+                const targetLangName = currentLang === 'en' ? 'Smart Mix (Bilingual)' : 'English (Academic)';
+                const targetLangCode = currentLang === 'en' ? 'bn' : 'en';
+                langHintHTML = `
+                    <div class="empty-lang-hint" style="margin-top:0; margin-bottom:1.5rem; padding: 1.5rem;">
+                        <p style="font-size:0.9rem;">🌐 This set is primarily available in <b>${targetLangName}</b>.</p>
+                        <button class="control-btn" style="background:var(--accent-color); color:white; padding: 6px 16px; border-radius: 20px; margin-top: 10px; font-size:0.8rem;" onclick="changeLanguage('${targetLangCode}')">
+                            Switch to ${targetLangName} 🚀
+                        </button>
+                    </div>
+                `;
+            }
+            const readTime = getReadingTime(mdContent);
+            const isDone = visitedSets.has(item.id);
+
+            const parts = mdContent.split(/(?=###\s+)/g);
+            let flashcardsHTML = '';
+            
+            parts.forEach(part => {
+                const trimmed = part.trim();
+                if (!trimmed) return;
+
+                if (trimmed.startsWith('###')) {
+                    const lines = trimmed.split('\n');
+                    const qHeader = lines[0].replace('###', '').trim();
+                    const qBody = lines.slice(1).join('\n').trim();
+                    const qId = qHeader.match(/\[Q(\d+)\]/i)?.[1] || Math.random().toString(36).substr(2, 5);
+                    
+                    flashcardsHTML += `
+                        <div class="qs-card" id="q-${qId}">
+                            <div class="qs-header" onclick="toggleQS(this)">
+                                <div class="qs-title">${marked.parseInline(qHeader)}</div>
+                                <div class="qs-actions">
+                                    <button class="qs-action-btn" onclick="copyQS(this, event)" title="Copy this question and answer">📋 Copy</button>
+                                    <span class="qs-toggle-icon">▶</span>
+                                </div>
+                            </div>
+                            <div class="qs-content">
+                                <div class="markdown-body">${marked.parse(qBody)}</div>
+                            </div>
+                        </div>
+                    `;
+                } else {
+                    flashcardsHTML += `<div class="markdown-body" style="margin-bottom:1.5rem; opacity:0.8;">${marked.parse(trimmed)}</div>`;
+                }
+            });
+
+            card.innerHTML = `
+                <div class="set-header" onclick="toggleSet(this)">
+                    <div class="set-info">
+                        <div class="set-title">${item.title}</div>
+                        <div class="set-meta">
+                            <span>⏱️ approx. ${readTime} min read</span>
+                            ${isDone ? '<span class="status-done">✅ Completed</span>' : '<span class="status-pending">📖 Not started</span>'}
+                        </div>
+                    </div>
+                    <div class="toggle-icon">${isDone ? '▼' : '▶'}</div>
+                </div>
+                <div class="set-content ${isDone ? 'open' : ''}">
+                    ${langHintHTML}
+                    <div class="local-toggle-bar">
+                        <button class="local-toggle-btn" onclick="toggleLocalQS('${item.id}', event)" title="Expand or collapse all questions in this set">💡 Show All</button>
+                    </div>
+                    ${flashcardsHTML}
+                    <div style="margin-top:2.5rem; padding-top:2rem; border-top:1px solid var(--border-color); text-align:center;">
+                        <div style="font-size:0.95rem; color:var(--text-muted); margin-bottom:0.8rem;">Found this helpful?</div>
+                        <button onclick="donateNow()" style="background:linear-gradient(135deg,#10b981,#059669);color:#fff;border:none;padding:0.7rem 1.5rem;border-radius:0.8rem;font-weight:700;cursor:pointer;font-size:0.95rem;">💚 Support This Project</button>
+                    </div>
+                </div>
+            `;
+            
+            container.appendChild(card);
+            if (isDone || index === 0) {
+                card.classList.add('open');
+                const icon = card.querySelector('.toggle-icon');
+                if(icon) icon.innerHTML = '▼'; 
+                visitedSets.add(item.id); 
+                activeSetId = item.id; 
+            }
+
+            index++;
+            requestAnimationFrame(renderNext);
+        } catch (e) {
+            console.error(`Error rendering set ${index}:`, e);
+            if (spinner) spinner.classList.add('hidden');
+            container.innerHTML += `<div style="padding: 1rem; background: #fee; border: 1px solid #fcc; border-radius: 8px; margin: 1rem;">Error rendering set ${index}: ${e.message}</div>`;
+        }
+    }
+    requestAnimationFrame(renderNext);
+}
+
+function toggleSet(header) {
+    const card = header.parentElement;
+    card.classList.toggle('open');
+    const icon = card.querySelector('.toggle-icon');
+    if(icon) icon.innerHTML = card.classList.contains('open') ? '▼' : '▶';
+    if (card.classList.contains('open')) {
+        const id = card.id;
+        visitedSets.add(id);
+        localStorage.setItem(PROGRESS_KEY, JSON.stringify([...visitedSets]));
+        updateProgressBar();
+    }
+}
+
 function buildQuickNav() {
     const nav = document.getElementById('quickNav');
     setsData.forEach(item => {
@@ -718,21 +726,18 @@ function highlightSelected(color) {
         span.className = 'highlight-underline underline-' + color;
         span.dataset.userHighlight = "1";
     }
-    span.dataset.userHighlight = '1';
     
-    // Remove previous highlight class on overlapping selections
     removeHighlightsInRange(range);
     
     span.appendChild(range.extractContents());
     range.insertNode(span);
-    selection.removeAllRanges();
+        selection.removeAllRanges();
+        AdminPowersInstance.pushHighlightState(); saveHighlightsToStorage();
     
     localStorage.setItem('lastHighlightColor', color);
-    AdminPowersInstance.pushHighlightState(); saveHighlightsToStorage();
 }
 
-// Set highlight mode and enable/disable highlighting
-let isHighlightingEnabled = true; // Track if highlighting is on or off
+let isHighlightingEnabled = true;
 
 function setHighlightMode(mode) {
     if (mode === 'off') {
@@ -751,7 +756,6 @@ function updateHighlightButtons() {
     document.getElementById('highlightRed').classList.remove('active');
     document.getElementById('highlightGreen').classList.remove('active');
     document.getElementById('highlightIndigo').classList.remove('active');
-    document.getElementById('highlightYellow').classList.remove('active');
     document.getElementById('highlightOff').classList.remove('active');
     
     if (currentHighlightColor === 'red') {
@@ -760,52 +764,35 @@ function updateHighlightButtons() {
         document.getElementById('highlightGreen').classList.add('active');
     } else if (currentHighlightColor === 'indigo') {
         document.getElementById('highlightIndigo').classList.add('active');
-    } else if (currentHighlightColor === 'yellow') {
-        document.getElementById('highlightYellow').classList.add('active');
     } else {
         document.getElementById('highlightOff').classList.add('active');
     }
 }
 
-// Toggle floating control bar visibility
 let isFloatingBarVisible = localStorage.getItem('floatingBarVisible') !== 'false';
 
 function toggleFloatingBar() {
     isFloatingBarVisible = !isFloatingBarVisible;
     const controlBar = document.getElementById('topControls');
     const toggleBtn = document.getElementById('toggleFloatbarBtn');
-    const toggleLabel = toggleBtn ? toggleBtn.querySelector('.floatbar-label') : null;
     
     if (isFloatingBarVisible) {
         controlBar.classList.add('visible');
-        if (toggleLabel) toggleLabel.textContent = 'Floating Control Bar Mode (ON)';
+        toggleBtn.textContent = '⚙️ Floating Control Bar Mode (ON)';
     } else {
         controlBar.classList.remove('visible');
-        if (toggleLabel) toggleLabel.textContent = 'Floating Control Bar Mode (OFF)';
+        toggleBtn.textContent = '⚙️ Floating Control Bar Mode (OFF)';
     }
     localStorage.setItem('floatingBarVisible', isFloatingBarVisible);
 }
 
-function showFloatbarTip() {
-    const tip = document.getElementById('floatbarTip');
-    if (!tip) return;
-    tip.classList.add('show');
-    if (floatbarTipTimer) clearTimeout(floatbarTipTimer);
-    floatbarTipTimer = setTimeout(() => {
-        tip.classList.remove('show');
-    }, 3500);
-}
-
-// Auto-highlight selected text when a color is active
 document.addEventListener('mouseup', () => {
     if (!isHighlightingEnabled || !currentHighlightColor) return;
     
     const selection = window.getSelection();
     if (selection.toString().length > 0) {
-        // Auto-highlight the selected text with the current color
         const range = selection.getRangeAt(0);
         const span = document.createElement('span');
-        span.dataset.userHighlight = '1';
         
         if (highlightMode === 'background') {
             span.className = 'highlight-' + currentHighlightColor;
@@ -827,10 +814,9 @@ function removeHighlightsInRange(range) {
     const container = range.commonAncestorContainer;
     if (container.nodeType === Node.TEXT_NODE) return;
     
-    const highlightedElements = container.querySelectorAll('[data-user-highlight="1"]');
+    const highlightedElements = container.querySelectorAll('[class*="highlight"]');
     highlightedElements.forEach(el => {
         if (isNodeInRange(el, range)) {
-            // Unwrap the element
             while (el.firstChild) {
                 el.parentNode.insertBefore(el.firstChild, el);
             }
@@ -847,22 +833,6 @@ function isNodeInRange(node, range) {
     }
 }
 
-function clearAllHighlights() {
-    const highlighted = document.querySelectorAll('[data-user-highlight="1"]');
-    if (!highlighted.length) return;
-    const proceed = window.confirm('Erase all saved highlights? This action cannot be undone.');
-    if (!proceed) return;
-
-    highlighted.forEach(el => {
-        const parent = el.parentNode;
-        while (el.firstChild) {
-            parent.insertBefore(el.firstChild, el);
-        }
-        parent.removeChild(el);
-    });
-    AdminPowersInstance.pushHighlightState(); saveHighlightsToStorage();
-    AdminPowersInstance.pushHighlightState(); saveHighlightsToStorage();
-}
 
 function saveHighlightsToStorage() {
     const payload = {};
@@ -917,50 +887,38 @@ function restoreHighlightsFromStorage(forceClear) {
     });
 }
 
-function toggleHighlightsVisibility() {
-    const isHidden = document.body.classList.toggle('highlights-hidden');
-    const btn = document.getElementById('toggleHighlightsBtn');
-    if (btn) btn.textContent = isHidden ? '🙈' : '👁️';
-    if (btn) btn.title = isHidden ? 'Show Highlights' : 'Hide Highlights';
-    localStorage.setItem(HIGHLIGHT_VISIBILITY_KEY, String(!isHidden));
+function clearAllHighlights() {
+    const highlighted = document.querySelectorAll('[class*="highlight-"]');
+    highlighted.forEach(el => {
+        const parent = el.parentNode;
+        while (el.firstChild) {
+            parent.insertBefore(el.firstChild, el);
+        }
+        parent.removeChild(el);
+    });
+    AdminPowersInstance.pushHighlightState(); saveHighlightsToStorage();
 }
 
-// Load highlight settings on page load
 window.addEventListener('load', () => {
     const savedMode = localStorage.getItem('highlightMode');
     const savedColor = localStorage.getItem('lastHighlightColor');
     
-    // Restore highlight mode
     if (savedMode === 'underline') {
         toggleUnderlineMode();
     }
     
-    // Restore highlight color/off state
-    if (savedColor === 'red' || savedColor === 'green' || savedColor === 'indigo' || savedColor === 'yellow') {
+    if (savedColor === 'red' || savedColor === 'green' || savedColor === 'indigo') {
         setHighlightMode(savedColor);
     } else {
         setHighlightMode('off');
     }
     
-    // Restore floating bar state
     isFloatingBarVisible = localStorage.getItem('floatingBarVisible') !== 'false';
     if (!isFloatingBarVisible) {
         document.getElementById('topControls').classList.remove('visible');
-        const label = document.querySelector('#toggleFloatbarBtn .floatbar-label');
-        if (label) label.textContent = 'Floating Control Bar Mode (OFF)';
+        document.getElementById('toggleFloatbarBtn').textContent = '⚙️ Floating Control Bar Mode (OFF)';
     } else {
-        const label = document.querySelector('#toggleFloatbarBtn .floatbar-label');
-        if (label) label.textContent = 'Floating Control Bar Mode (ON)';
-    }
-
-    const highlightsVisible = localStorage.getItem(HIGHLIGHT_VISIBILITY_KEY) !== 'false';
-    if (!highlightsVisible) {
-        document.body.classList.add('highlights-hidden');
-        const toggleBtn = document.getElementById('toggleHighlightsBtn');
-        if (toggleBtn) {
-            toggleBtn.textContent = '🙈';
-            toggleBtn.title = 'Show Highlights';
-        }
+        document.getElementById('toggleFloatbarBtn').textContent = '⚙️ Floating Control Bar Mode (ON)';
     }
     
     setupHighlightContextMenu();
@@ -972,60 +930,36 @@ window.addEventListener('load', () => {
 
 let currentHighlightElement = null;
 
-function findHighlightTarget(node) {
-    if (!node || !node.closest) return null;
-    const target = node.closest('[data-user-highlight="1"], .highlight-red, .highlight-green, .highlight-indigo, .highlight-yellow, .highlight-underline');
-    if (target && !target.dataset.userHighlight) {
-        target.dataset.userHighlight = '1';
-    }
-    return target;
-}
-
 function setupHighlightContextMenu() {
-    let hoverTimer;
-
-    document.addEventListener('mouseover', (e) => {
-        const highlightNode = findHighlightTarget(e.target);
-        if (!highlightNode) return;
-        clearTimeout(hoverTimer);
-        hoverTimer = setTimeout(() => {
-            showHighlightMenu(highlightNode);
-        }, 420);
-    });
-
-    document.addEventListener('mouseout', () => {
-        clearTimeout(hoverTimer);
-    });
-
-    document.addEventListener('contextmenu', (e) => {
-        const highlightNode = findHighlightTarget(e.target);
-        if (highlightNode) {
-            e.preventDefault();
-            showHighlightMenu(highlightNode, e.clientX, e.clientY);
+    document.addEventListener('mouseup', () => {
+        const selection = window.getSelection();
+        const highlighted = document.querySelector('[class*="highlight-"]:hover');
+        if (highlighted && highlighted.className.includes('highlight-')) {
+            showHighlightMenu(highlighted);
         }
     });
     
-    // Long press support for mobile
-    let longPressTimer;
-    document.addEventListener('touchstart', (e) => {
-        const highlighted = findHighlightTarget(e.target);
-        if (highlighted) {
-            longPressTimer = setTimeout(() => {
-                const touch = e.touches[0];
-                showHighlightMenu(highlighted, touch ? touch.clientX : null, touch ? touch.clientY : null);
-            }, 500);
+    document.addEventListener('contextmenu', (e) => {
+        if (e.target.closest('[class*="highlight-"]')) {
+            e.preventDefault();
+            showHighlightMenu(e.target.closest('[class*="highlight-"]'));
         }
     });
-
-    document.addEventListener('touchmove', () => {
-        clearTimeout(longPressTimer);
+    
+    let longPressTimer;
+    document.addEventListener('touchstart', (e) => {
+        const highlighted = e.target.closest('[class*="highlight-"]');
+        if (highlighted && highlighted.className.includes('highlight-')) {
+            longPressTimer = setTimeout(() => {
+                showHighlightMenu(highlighted);
+            }, 500);
+        }
     });
     
     document.addEventListener('touchend', () => {
         clearTimeout(longPressTimer);
     });
     
-    // Click outside to close menu
     document.addEventListener('click', (e) => {
         if (!e.target.closest('.highlight-menu')) {
             document.getElementById('highlightMenu').classList.remove('show');
@@ -1033,14 +967,12 @@ function setupHighlightContextMenu() {
     });
 }
 
-function showHighlightMenu(element, clientX = null, clientY = null) {
+function showHighlightMenu(element) {
     currentHighlightElement = element;
     const menu = document.getElementById('highlightMenu');
     const rect = element.getBoundingClientRect();
-    const menuX = clientX !== null ? clientX : rect.left;
-    const menuY = clientY !== null ? clientY : (rect.bottom + 5);
-    menu.style.left = Math.max(8, Math.min(menuX, window.innerWidth - 265)) + 'px';
-    menu.style.top = Math.max(8, Math.min(menuY + 5, window.innerHeight - 220)) + 'px';
+    menu.style.left = rect.left + 'px';
+    menu.style.top = (rect.bottom + 5) + 'px';
     menu.classList.add('show');
 }
 
@@ -1068,7 +1000,6 @@ function changeHighlightColor(newColor) {
     if (window.AdminPowersInstance) AdminPowersInstance.pushHighlightState();
     if (!currentHighlightElement) return;
     const oldClass = currentHighlightElement.className;
-    // Remove old color class
     const classList = oldClass.split(' ').filter(c => !c.includes('highlight-') || c.includes('underline'));
     const isUnderline = oldClass.includes('highlight-underline');
     
@@ -1078,11 +1009,9 @@ function changeHighlightColor(newColor) {
         classList.push(`highlight-${newColor}`);
         currentHighlightElement.className = classList.join(' ');
     }
-    currentHighlightElement.dataset.userHighlight = '1';
     localStorage.setItem('lastHighlightColor', newColor);
     AdminPowersInstance.pushHighlightState(); saveHighlightsToStorage();
     document.getElementById('highlightMenu').classList.remove('show');
-    AdminPowersInstance.pushHighlightState(); saveHighlightsToStorage();
 }
 
 function toggleHighlightStyle() {
@@ -1090,21 +1019,17 @@ function toggleHighlightStyle() {
     if (!currentHighlightElement) return;
     const oldClass = currentHighlightElement.className;
     const isUnderline = oldClass.includes('highlight-underline');
-    const colorMatch = oldClass.match(/(?:underline-)?(red|green|indigo|yellow)/);
+    const colorMatch = oldClass.match(/(?:underline-)?(red|green|indigo)/);
     const color = colorMatch ? colorMatch[1] : 'red';
     
     if (isUnderline) {
-        // Switch to background
         currentHighlightElement.className = `highlight-${color}`;
     AdminPowersInstance.pushHighlightState(); saveHighlightsToStorage();
     } else {
-        // Switch to underline
         currentHighlightElement.className = `highlight-underline underline-${color}`;
     AdminPowersInstance.pushHighlightState(); saveHighlightsToStorage();
     }
-    currentHighlightElement.dataset.userHighlight = '1';
     document.getElementById('highlightMenu').classList.remove('show');
-    AdminPowersInstance.pushHighlightState(); saveHighlightsToStorage();
 }
 
 function deleteHighlight() {
@@ -1117,61 +1042,18 @@ function deleteHighlight() {
     parent.removeChild(currentHighlightElement);
     AdminPowersInstance.pushHighlightState(); saveHighlightsToStorage();
     document.getElementById('highlightMenu').classList.remove('show');
-    AdminPowersInstance.pushHighlightState(); saveHighlightsToStorage();
 }
 
-/* ═══════════════════════════════════════════════════════════ */
-/* EXPAND ALL FUNCTIONALITY */
-/* ═══════════════════════════════════════════════════════════ */
-
-function expandAllRecursive() {
-    // Expand all set cards - FORCE all to open
-    document.querySelectorAll('.set-card').forEach(card => {
-        card.classList.add('open');
-        const toggleIcon = card.querySelector('.toggle-icon');
-        if (toggleIcon) toggleIcon.innerHTML = '▼';
-    });
-    
-    // Expand all question cards and their content - FORCE all to open
-    document.querySelectorAll('.qs-card').forEach(card => {
-        card.classList.add('open');
-        const content = card.querySelector('.qs-content');
-        if (content) {
-            content.style.display = 'block';
-            content.style.maxHeight = 'none';
-        }
-        const icon = card.querySelector('.qs-toggle-icon');
-        if (icon) icon.innerHTML = '▼';
-    });
-    
-    // Also ensure all answer content (.answer divs) is visible
-    document.querySelectorAll('.answer').forEach(answer => {
-        answer.style.display = 'block';
-        answer.style.visibility = 'visible';
-    });
-    
-    // Update visited sets for progress tracking
-    setsData.forEach(item => {
-        visitedSets.add(item.id);
-    });
-    localStorage.setItem(PROGRESS_KEY, JSON.stringify([...visitedSets]));
-    updateProgressBar();
-}
-
-function saveBookmarks() {
-    localStorage.setItem(BOOKMARK_STORE_KEY, JSON.stringify(bookmarkPositions));
-}
-
+function saveBookmarks() { localStorage.setItem(BOOKMARK_STORE_KEY, JSON.stringify(bookmarkPositions)); }
 function getBookmarkLabel() {
     const cards = [...document.querySelectorAll('.set-card')];
     const active = cards.find(card => {
         const rect = card.getBoundingClientRect();
         return rect.top <= 160 && rect.bottom > 160;
     });
-    const title = active?.querySelector('.set-header-title')?.textContent?.trim();
+    const title = active?.querySelector('.set-title')?.textContent?.trim();
     return title || `Scroll Y: ${Math.round(window.scrollY)}px`;
 }
-
 function renderBookmarkPanel() {
     const list = document.getElementById('bookmarkList');
     if (!list) return;
@@ -1183,64 +1065,37 @@ function renderBookmarkPanel() {
     bookmarkPositions.forEach((bm, idx) => {
         const item = document.createElement('div');
         item.className = 'bookmark-item';
-        item.innerHTML = `
-            <div class="bookmark-item-title">${idx + 1}. ${bm.label}</div>
-            <div class="bookmark-item-meta">Y: ${Math.round(bm.y)} • ${bm.time || ''}</div>
-            <button type="button">Go</button>
-        `;
+        item.innerHTML = `<div class="bookmark-item-title">${idx + 1}. ${bm.label}</div><div class="bookmark-item-meta">Y: ${Math.round(bm.y)} • ${bm.time || ''}</div><button type="button">Go</button>`;
         item.querySelector('button').addEventListener('click', () => goToBookmarkIndex(idx));
         list.appendChild(item);
     });
 }
-
 function addBookmarkPosition() {
     const y = window.scrollY;
     const duplicate = bookmarkPositions.some(bm => Math.abs(bm.y - y) < 24);
-    if (duplicate) {
-        alert('A bookmark already exists very close to this position.');
-        return;
-    }
-    bookmarkPositions.push({
-        y,
-        label: getBookmarkLabel(),
-        time: new Date().toLocaleTimeString()
-    });
+    if (duplicate) { alert('A bookmark already exists very close to this position.'); return; }
+    bookmarkPositions.push({ y, label: getBookmarkLabel(), time: new Date().toLocaleTimeString() });
     bookmarkPositions.sort((a, b) => a.y - b.y);
     saveBookmarks();
     renderBookmarkPanel();
     alert('Bookmark saved for current page position.');
 }
-
-function goToBookmarkIndex(idx) {
-    if (idx < 0 || idx >= bookmarkPositions.length) return;
-    window.scrollTo({ top: bookmarkPositions[idx].y, behavior: 'smooth' });
-}
-
+function goToBookmarkIndex(idx) { if (idx < 0 || idx >= bookmarkPositions.length) return; window.scrollTo({ top: bookmarkPositions[idx].y, behavior: 'smooth' }); }
 function goToPreviousBookmark() {
-    if (!bookmarkPositions.length) {
-        alert('No bookmarks saved yet. Press B to add one.');
-        return;
-    }
+    if (!bookmarkPositions.length) { alert('No bookmarks saved yet. Press B to add one.'); return; }
     const y = window.scrollY;
     let idx = -1;
-    for (let i = bookmarkPositions.length - 1; i >= 0; i--) {
-        if (bookmarkPositions[i].y < y - 8) { idx = i; break; }
-    }
+    for (let i = bookmarkPositions.length - 1; i >= 0; i--) { if (bookmarkPositions[i].y < y - 8) { idx = i; break; } }
     if (idx === -1) idx = bookmarkPositions.length - 1;
     goToBookmarkIndex(idx);
 }
-
 function goToNextBookmark() {
-    if (!bookmarkPositions.length) {
-        alert('No bookmarks saved yet. Press B to add one.');
-        return;
-    }
+    if (!bookmarkPositions.length) { alert('No bookmarks saved yet. Press B to add one.'); return; }
     const y = window.scrollY;
     let idx = bookmarkPositions.findIndex(bm => bm.y > y + 8);
     if (idx === -1) idx = 0;
     goToBookmarkIndex(idx);
 }
-
 function toggleBookmarkPanel(forceOpen) {
     const panel = document.getElementById('bookmarkPanel');
     const btn = document.getElementById('toggleBookmarkPanelBtn');
@@ -1250,12 +1105,8 @@ function toggleBookmarkPanel(forceOpen) {
     btn.classList.toggle('active', willOpen);
     if (willOpen) renderBookmarkPanel();
 }
-
 function eraseAllBookmarks() {
-    if (!bookmarkPositions.length) {
-        alert('No bookmark positions to erase.');
-        return;
-    }
+    if (!bookmarkPositions.length) { alert('No bookmark positions to erase.'); return; }
     if (!confirm('Erase all saved bookmark positions?')) return;
     bookmarkPositions = [];
     saveBookmarks();
@@ -1263,34 +1114,50 @@ function eraseAllBookmarks() {
     alert('All bookmark positions erased.');
 }
 
-// Restore font size on page load
-window.addEventListener('load', () => {
-    const savedFontSize = localStorage.getItem('fontSize');
-    if (savedFontSize) {
-        currentFontSize = parseInt(savedFontSize);
-        document.documentElement.style.setProperty('--font-size-base', currentFontSize + 'px');
+
+
+let searchMatches = [];
+let currentSearchMatchIndex = -1;
+
+function performSearch() {
+    const term = document.getElementById('searchInput').value.trim().toLowerCase();
+    const sets = document.querySelectorAll('.set-card');
+    const nav = document.getElementById('searchNav');
+    searchMatches = []; currentSearchMatchIndex = -1;
+    if (!term) {
+        sets.forEach(s => { s.style.display = 'block'; s.querySelectorAll('.qs-card').forEach(q => q.style.display = 'block'); });
+        if (nav) nav.style.display = 'none'; return;
     }
-}, { once: true });
+    sets.forEach(s => {
+        let has = s.querySelector('.set-header').textContent.toLowerCase().includes(term);
+        s.querySelectorAll('.qs-card').forEach(q => {
+            if (q.textContent.toLowerCase().includes(term)) { q.style.display = 'block'; q.classList.add('open'); has = true; searchMatches.push(q); }
+            else { q.style.display = 'none'; q.classList.remove('open'); }
+        });
+        s.style.display = has ? 'block' : 'none';
+        if(has) { s.classList.add('open'); const i = s.querySelector('.toggle-icon'); if(i) i.innerHTML = '▼'; }
+    });
+    if (searchMatches.length) {
+        if(nav) nav.style.display = 'flex'; currentSearchMatchIndex = 0;
+        updateSearchNav(); scrollToSearchMatch(0);
+    } else if(nav) nav.style.display = 'none';
+}
 
+function updateSearchNav() {
+    const c = document.getElementById('searchCount');
+    if (c) c.textContent = `${currentSearchMatchIndex + 1}/${searchMatches.length}`;
+}
 
+function scrollToSearchMatch(i) {
+    if (i<0 || i>=searchMatches.length) return;
+    const t = searchMatches[i]; t.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    t.style.transition = 'box-shadow 0.3s'; t.style.boxShadow = '0 0 20px var(--accent-color)';
+    setTimeout(() => { t.style.boxShadow = ''; }, 1000);
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-// Initial configuration
-document.getElementById('searchInput').addEventListener('input', searchHighlights);
-marked.setOptions({ gfm: true, breaks: true });
-
-// Load saved settings
+function nextSearchMatch() { if(!searchMatches.length) return; currentSearchMatchIndex = (currentSearchMatchIndex+1)%searchMatches.length; updateSearchNav(); scrollToSearchMatch(currentSearchMatchIndex); }
+function prevSearchMatch() { if(!searchMatches.length) return; currentSearchMatchIndex = (currentSearchMatchIndex-1+searchMatches.length)%searchMatches.length; updateSearchNav(); scrollToSearchMatch(currentSearchMatchIndex); }
+function searchHighlights() { performSearch(); }
 
 function selectDonationMethod(method) {
     selectedDonationMethod = method;
@@ -1314,11 +1181,6 @@ function updateDonateNowButtonText() {
     btn.textContent = `Go to Donate ৳${selectedDonationAmount} via ${methodNames[selectedDonationMethod] || selectedDonationMethod}`;
 }
 
-
-
-
-
-
 function getDonationUrl(method, amount) {
     const amt = encodeURIComponent(String(amount));
     const num = encodeURIComponent(DONATION_NUMBER);
@@ -1335,7 +1197,6 @@ function donateNow() {
     const mt     = { bkash:'bKash', nagad:'Nagad', rocket:'Rocket' };
     const name   = mt[method] || method;
 
-    // 1. Try deep-link via a temporary anchor (non-blocking on mobile)
     const deepLink = getDonationUrl(method, amount);
     const a = document.createElement('a');
     a.href = deepLink;
@@ -1344,13 +1205,11 @@ function donateNow() {
     a.click();
     setTimeout(() => document.body.removeChild(a), 300);
 
-    // 2. Copy info to clipboard silently
     const info = name + '\nNumber: ' + num + '\nAmount: ৳' + amount;
     if (navigator.clipboard && navigator.clipboard.writeText) {
         navigator.clipboard.writeText(info).catch(() => {});
     }
 
-    // 3. Show the in-page payment info modal immediately (no alert)
     showDonateModal(name, num, amount);
 }
 
@@ -1414,33 +1273,6 @@ function initDonationWidget() {
     updateDonateNowButtonText();
 }
 
-let searchMatches = [];
-let currentSearchMatchIndex = -1;
-
-function performSearch() {
-    const term = document.getElementById('searchInput').value.trim().toLowerCase();
-    const sets = document.querySelectorAll('.set-card');
-    const nav = document.getElementById('searchNav');
-    searchMatches = []; currentSearchMatchIndex = -1;
-    if (!term) {
-        sets.forEach(s => { s.style.display = 'block'; s.querySelectorAll('.qs-card').forEach(q => q.style.display = 'block'); });
-        if (nav) nav.style.display = 'none'; return;
-    }
-    sets.forEach(s => {
-        let has = s.querySelector('.set-header').textContent.toLowerCase().includes(term);
-        s.querySelectorAll('.qs-card').forEach(q => {
-            if (q.textContent.toLowerCase().includes(term)) { q.style.display = 'block'; q.classList.add('open'); has = true; searchMatches.push(q); }
-            else { q.style.display = 'none'; q.classList.remove('open'); }
-        });
-        s.style.display = has ? 'block' : 'none';
-        if(has) { s.classList.add('open'); const i = s.querySelector('.toggle-icon'); if(i) i.innerHTML = '▼'; }
-    });
-    if (searchMatches.length) {
-        if(nav) nav.style.display = 'flex'; currentSearchMatchIndex = 0;
-        updateSearchNav(); scrollToSearchMatch(0);
-    } else if(nav) nav.style.display = 'none';
-}
-
 function updateSearchNav() {
     const c = document.getElementById('searchCount');
     if (c) c.textContent = `${currentSearchMatchIndex + 1}/${searchMatches.length}`;
@@ -1476,7 +1308,7 @@ function promoteComplexInlineMath(m) {
 window.onload = () => {
     const spinner = document.getElementById('loadingSpinner');
     try {
-        localStorage.setItem('sm-last-visited', 'geb343');
+        localStorage.setItem('sm-last-visited', 'geb337');
         const savedTheme = localStorage.getItem('sm-theme');
         if (savedTheme) {
             document.documentElement.setAttribute('data-theme', savedTheme);
@@ -1498,21 +1330,20 @@ window.onload = () => {
             currentLang = savedLang;
             const lEl = document.getElementById('languageSelect'); if(lEl) lEl.value = currentLang;
         }
-        console.log('[GEB343 DEBUG] About to call renderSets. setsData exists?', typeof setsData !== 'undefined', 'setsData is array?', Array.isArray(setsData), 'setsData length?', setsData ? setsData.length : 'N/A');
+        console.log('[BioOlympiad DEBUG] About to call renderSets. setsData exists?', typeof setsData !== 'undefined', 'setsData is array?', Array.isArray(setsData), 'setsData length?', setsData ? setsData.length : 'N/A');
         if (typeof renderSets === 'function') {
-            console.log('[GEB343 DEBUG] renderSets function found, calling it now');
+            console.log('[BioOlympiad DEBUG] renderSets function found, calling it now');
             autoDetectBestLanguage();
             renderSets();
-            console.log('[GEB343 DEBUG] renderSets completed');
+            console.log('[BioOlympiad DEBUG] renderSets completed');
         } else {
-            console.error('[GEB343 DEBUG] renderSets function NOT found!');
+            console.error('[BioOlympiad DEBUG] renderSets function NOT found!');
         }
         if (typeof buildQuickNav === 'function') buildQuickNav();
         requestAnimationFrame(addCopyButtons);
         if (typeof updateProgressBar === 'function') updateProgressBar();
         if (typeof renderBookmarkPanel === 'function') renderBookmarkPanel();
         if (typeof initDonationWidget === 'function') initDonationWidget();
-        setTimeout(() => showFloatbarTip(), 250);
     } catch (e) {
         console.error('Error during page initialization:', e);
     } finally {
@@ -1529,8 +1360,8 @@ window.onload = () => {
     <script>
         window.MathJax = {
             tex: {
-                inlineMath: [['\\(', '\\)']],
-                displayMath: [['\\[', '\\]']]
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
             },
             chtml: { matchFontHeight: false }
         };

@@ -1,0 +1,24 @@
+{
+  "name": "exports",
+  "version": "1.0.0",
+  "description": "![GitHub last commit](https://img.shields.io/github/last-commit/ashiq-sm/geb331-cell-signaling?color=10b981&style=for-the-badge) ![GitHub repo size](https://img.shields.io/github/repo-size/ashiq-sm/geb331-cell-signaling?color=10b981&style=for-the-badge)",
+  "main": "admin-powers.js",
+  "scripts": {
+    "dev": "http-server -p 5517 -c-1",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ashiq-sm/geb331-cell-signaling.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ashiq-sm/geb331-cell-signaling/issues"
+  },
+  "homepage": "https://github.com/ashiq-sm/geb331-cell-signaling#readme",
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  }
+}
